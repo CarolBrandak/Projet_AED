@@ -1,4 +1,4 @@
-"D:\Programas\CLion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" D:\aqui\Projet_AED
+"D:\Programas\CLion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" D:\Projet_AED
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/aqui/Projet_AED/cmake-build-debug
+-- Build files have been written to: D:/Projet_AED/cmake-build-debug

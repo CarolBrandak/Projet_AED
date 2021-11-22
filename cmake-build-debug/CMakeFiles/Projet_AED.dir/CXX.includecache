@@ -6,7 +6,21 @@
 
 #IncludeRegexTransform: 
 
-D:/aqui/Projet_AED/main.cpp
+D:/Projet_AED/main.cpp
+src/Application.cpp
+D:/Projet_AED/src/Application.cpp
+
+D:/Projet_AED/src/Application.cpp
 iostream
+-
+exception
+-
+string
+-
+FirstClass.cpp
+D:/Projet_AED/src/FirstClass.cpp
+
+D:/Projet_AED/src/FirstClass.cpp
+string
 -
 
