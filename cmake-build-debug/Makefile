@@ -262,30 +262,6 @@ Source/FirstClass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/FirstClass.cpp.s
 .PHONY : Source/FirstClass.cpp.s
 
-Tests/FirstClassTest.obj: Tests/FirstClassTest.cpp.obj
-.PHONY : Tests/FirstClassTest.obj
-
-# target to build an object file
-Tests/FirstClassTest.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Tests/FirstClassTest.cpp.obj
-.PHONY : Tests/FirstClassTest.cpp.obj
-
-Tests/FirstClassTest.i: Tests/FirstClassTest.cpp.i
-.PHONY : Tests/FirstClassTest.i
-
-# target to preprocess a source file
-Tests/FirstClassTest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Tests/FirstClassTest.cpp.i
-.PHONY : Tests/FirstClassTest.cpp.i
-
-Tests/FirstClassTest.s: Tests/FirstClassTest.cpp.s
-.PHONY : Tests/FirstClassTest.s
-
-# target to generate assembly for a file
-Tests/FirstClassTest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Tests/FirstClassTest.cpp.s
-.PHONY : Tests/FirstClassTest.cpp.s
-
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -331,9 +307,6 @@ help:
 	@echo ... Source/FirstClass.obj
 	@echo ... Source/FirstClass.i
 	@echo ... Source/FirstClass.s
-	@echo ... Tests/FirstClassTest.obj
-	@echo ... Tests/FirstClassTest.i
-	@echo ... Tests/FirstClassTest.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -5,17 +5,12 @@
 
 int main() {
 
-    testing::InitGoogleTest();
-    char answer;
+    // Comentar a opção que não queremos
 
-    cout << "Run Tests (T) or Application (A):  "; cin >> answer;
+    Application() ;
+    return 0;
 
-    if (answer == 'T' || answer == 't') {
-        cout << "Run Tests" << endl;
-        return RUN_ALL_TESTS();
-    } else {
-        cout << "Run Application" << endl;
-        Application();
-        return 0;
-    }
+    // testing::InitGoogleTest();
+    // return RUN_ALL_TESTS();
+
 }

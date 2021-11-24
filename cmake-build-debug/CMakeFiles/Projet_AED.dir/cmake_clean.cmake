@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Projet_AED.dir/Source/FirstClass.cpp.obj"
-  "CMakeFiles/Projet_AED.dir/Tests/FirstClassTest.cpp.obj"
   "CMakeFiles/Projet_AED.dir/main.cpp.obj"
   "Projet_AED.exe"
   "Projet_AED.exe.manifest"

@@ -334,9 +334,6 @@
 		<Unit filename="D:/AED Aula/Projet_AED/Source/FirstClass.h">
 			<Option target="Projet_AED"/>
 		</Unit>
-		<Unit filename="D:/AED Aula/Projet_AED/Tests/FirstClassTest.cpp">
-			<Option target="Projet_AED"/>
-		</Unit>
 		<Unit filename="D:/AED Aula/Projet_AED/lib/googletest-master/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>
