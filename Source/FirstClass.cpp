@@ -1,11 +1,12 @@
 #ifndef First_CPP
 #define First_CPP
 
-class First {
+#include "FirstClass.h"
 
-    public:
-        First() {};
-        int sum (int a, int b) { return a+b ; }
-};
+First::First() {};
+
+int First::sum (int a, int b) {
+    return a+b ;
+}
 
 #endif // First_CPP

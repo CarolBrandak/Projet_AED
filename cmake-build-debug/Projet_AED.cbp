@@ -5,7 +5,7 @@
 		<Option title="Projet_AED"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\lib\;CMake Files\lib\googletest-master\;CMake Files\lib\googletest-master\googlemock\;CMake Files\lib\googletest-master\googlemock\cmake\;CMake Files\lib\googletest-master\googletest\;CMake Files\lib\googletest-master\googletest\cmake\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Documentation\;CMake Files\lib\;CMake Files\lib\googletest-master\;CMake Files\lib\googletest-master\googlemock\;CMake Files\lib\googletest-master\googlemock\cmake\;CMake Files\lib\googletest-master\googletest\;CMake Files\lib\googletest-master\googletest\cmake\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="D:/AED Aula/Projet_AED/cmake-build-debug"/>
@@ -60,6 +60,16 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 Projet_AED/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Doxygen">
+				<Option working_dir="D:/AED Aula/Projet_AED/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 Doxygen"/>
 					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;D:/AED Aula/Projet_AED/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -344,6 +354,9 @@
 		</Unit>
 		<Unit filename="D:/AED Aula/Projet_AED/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Documentation/Doxyfile">
+			<Option virtualFolder="CMake Files\Documentation\"/>
 		</Unit>
 		<Unit filename="D:/AED Aula/Projet_AED/lib/googletest-master/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\lib\googletest-master\"/>
