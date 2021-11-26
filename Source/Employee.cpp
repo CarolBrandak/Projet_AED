@@ -6,7 +6,7 @@
 Passenger::Passenger() {}
 
 Passenger::Passenger(string name, short int age, char gender, string passportNumber, vector<Luggage> passengerLuggage) :
-    Person (name, age, gender) {
+        Person (name, age, gender) {
     this->passportNumber = passportNumber;
     this->passengerLuggage = passengerLuggage;
 }
@@ -29,7 +29,7 @@ vector<Luggage> getPassengerLuggage() {
 
 bool operator == (const Passenger &passenger) const {
     return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getAge() &&
-            passportNumber == passenger.getPassportNumber() && passengerLuggage == passenger.getPassengerLuggage();
+           passportNumber == passenger.getPassportNumber() && passengerLuggage == passenger.getPassengerLuggage();
 }
 
 bool operator < (const Passenger &passenger) const {
