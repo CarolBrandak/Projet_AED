@@ -16,6 +16,7 @@ using namespace std;
 void Application() {
 
     cout << "Test:\n" << endl;
+    cout << "cmake-build-debug is ignored now!" << endl;
 
     vector<Luggage> myLuggage = {};
     Volume v1;
