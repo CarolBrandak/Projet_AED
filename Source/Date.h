@@ -1,5 +1,5 @@
-#ifndef DATE_H
-#define DATE_H
+#ifndef Date_H
+#define Date_H
 
 /**
  * A class that represents a Date
@@ -7,11 +7,24 @@
 class Date {
 
     private:
+
+        /**
+         * @var day, an integer value
+         */
         int day;
+
+        /**
+         * @var month, an integer value
+         */
         int month;
+
+        /**
+         * @var year, an integer value
+         */
         int year;
 
     public:
+
         /**
         * A default constructor of class Date.
         */
@@ -29,19 +42,19 @@ class Date {
          * Return Date's day
          * @return a int, containing date's day
          */
-        int getDay();
+        int getDay() const;
 
         /**
          * Return Date's month
          * @return a int, containing date's month
          */
-        int getMonth();
+        int getMonth() const;
 
         /**
          * Return Date's year
          * @return a int, containing date's year
          */
-        int getYear();
+        int getYear() const;
 
         /**
          * Set Date day
@@ -61,6 +74,30 @@ class Date {
          */
         void setYear(int year);
 
-}
+        /**
+         * @overload
+         * Boolean function that compares two objects of this class
+         * @param date another object that will be compared
+         * @return if the current object is the same of object passed by reference
+         */
+        bool operator == (const Date &date) const;
 
-#endif //DATE_H
+        /**
+         * @overload
+         * Boolean function that compares two objects of this class
+         * @param date another object that will be compared
+         * @return if the current object is less than object passed by reference
+         */
+        bool operator < (const Date &date) const;
+};
+
+/**
+* @overload
+* Function that returns all characteristics of the Date being manipulated
+* @param os ostream object, passed by reference
+* @param date Date object, passed by reference
+* @return ostream object
+*/
+ostream & operator << (ostream & os, const Date &date);
+
+#endif // Date_H
