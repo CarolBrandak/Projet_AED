@@ -39,12 +39,12 @@ bool Date::operator == (const Date &date) const {
     return day == date.getDay() && month == date.getMonth() && year == date.getYear();
 }
 
-bool Employee::operator < (const Date &date) const {
-    if (day == date.getDay()) {
+bool Date::operator < (const Date &date) const {
+    if (year == date.getYear()) {
         if (month == date.getMonth()) {
-            return year < date.getYear();
+            return day < date.getDay();
         } else return month < date.getMonth();
-    } else return day < date.getDay();
+    } else return year < date.getYear();
 }
 
 ostream & operator << (ostream & os, const Date &date) {

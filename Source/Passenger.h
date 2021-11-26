@@ -9,8 +9,17 @@
  */
 class Passenger : public Person {
 
-    string passportNumber;
-    vector<Luggage> luggage;
+    private:
+
+        /**
+         * @var passportNumber, a string
+         */
+        string passportNumber;
+
+        /**
+         * @var luggage, a vector with Luggage's objects
+         */
+        vector<Luggage> luggage;
 
     public:
 

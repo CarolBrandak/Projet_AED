@@ -1,6 +1,10 @@
 #ifndef Date_H
 #define Date_H
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 /**
  * A class that represents a Date
  */

@@ -12,8 +12,20 @@ using namespace std;
 class Person {
 
     protected:
+
+        /**
+         * @var name, a Person's name
+         */
         string name;
+
+        /**
+         * @var age, a Person's age
+         */
         short int age;
+
+        /**
+         * @var gender, a Person's gender
+         */
         char gender;
 
     public:

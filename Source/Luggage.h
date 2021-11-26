@@ -7,14 +7,22 @@ using namespace std;
 
 /**
  * Struct that groups the three dimensions of the luggage
- * @param width, luggage's width, an integer value
- * @param height, luggage's height, an integer value
- * @param depth, luggage's width, an integer value
  */
 struct Volume {
 
+    /**
+     * @var width, luggage's width, an integer value
+     */
     int width;
+
+    /**
+     * height, luggage's height, an integer value
+     */
     int height;
+
+    /**
+     * depth, luggage's width, an integer value
+     */
     int depth;
 };
 
@@ -24,8 +32,19 @@ struct Volume {
  */
 class Luggage {
 
+    /**
+     * @var WEIGHT, luggage's weight, a short integer value
+     */
     short int WEIGHT;
+
+    /**
+     * @var VOLUME, luggage's volume, a struct
+     */
     Volume VOLUME;
+
+    /**
+     * @var planeHold, luggage's planeHold, a boolean value
+     */
     bool planeHold;
 
     public:

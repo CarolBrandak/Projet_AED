@@ -50,5 +50,17 @@ void Application() {
     Employee p3 = Employee("Ana Paula", 45, 'F', "PROF292");
     cout << p3;
 
+    cout << "\nTeste de datas: " << endl;
+    vector<Date> dates = {};
+    Date d1 = Date(26, 11, 2021); dates.push_back(d1);
+    Date d2 = Date(24, 11, 2021); dates.push_back(d2);
+    Date d3 = Date(11, 12, 2021); dates.push_back(d3);
+
+    sort(dates.begin(), dates.end());
+    cout << "Datas por ordem crescente, usando o overload do operador < e << :" << endl;
+    for (auto date : dates) {
+        cout << date;
+    }
+
     cout << "Exit" << endl;
 }
