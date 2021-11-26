@@ -1,11 +1,8 @@
 #ifndef Person_H
 #define Person_H
 
-#include <iostream>
-#include <string>
-
 /**
- * An abstract class
+ * An abstract class to serve as a base for Employees and Passengers
  */
 class Person {
 
@@ -69,14 +66,14 @@ class Person {
          * @param person another object that will be compared
          * @return if the current object is the same of object passed by reference
          */
-        virtual bool operator == (const Person &person) const;
+        virtual bool operator == (const Person &person) const = 0;
 
         /**
         * Boolean virtual function that compares two objects of this class
         * @param person another object that will be compared
         * @return if the current object is less than object passed by reference
         */
-        virtual bool operator < (const Person &person) const;
+        virtual bool operator < (const Person &person) const = 0;
 };
 
 /**
@@ -85,6 +82,6 @@ class Person {
  * @param person Person object, passed by reference
  * @return ostream object
  */
-virtual ostream & operator << (ostream & os, const Person &person);
+ostream & operator << (ostream & os, const Person &person);
 
-#endif // Person_H
+#endif // Person_
