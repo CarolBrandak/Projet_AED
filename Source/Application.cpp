@@ -1,5 +1,13 @@
 #include <iostream>
-#include "FirstClass.h"
+#include <string>
+#include <vector>
+#include <algorithm>
+
+#include "Person.h"
+#include "Passenger.h"
+#include "Employee.h"
+#include "Luggage.h"
+
 using namespace std;
 
 /**
@@ -7,11 +15,5 @@ using namespace std;
  */
 void Application() {
 
-    int n1, n2;
-    First f = First();
-
-    cout << "Number 1: "; cin >> n1;
-    cout << "Number 2: "; cin >> n2;
-    cout << "Result = " << f.sum(n1, n2) << endl;
-
+    cout << "Tests:" << endl;
 }

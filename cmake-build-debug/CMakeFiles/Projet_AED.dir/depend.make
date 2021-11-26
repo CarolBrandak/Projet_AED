@@ -41,5 +41,8 @@ CMakeFiles/Projet_AED.dir/main.cpp.obj: \
  ../lib/googletest-master/googletest/include/gtest/internal/gtest-string.h \
  ../lib/googletest-master/googletest/include/gtest/internal/gtest-type-util.h \
  ../Source/Application.cpp \
- ../Source/FirstClass.h \
+ ../Source/Employee.h \
+ ../Source/Luggage.h \
+ ../Source/Passenger.h \
+ ../Source/Person.h \
  ../main.cpp

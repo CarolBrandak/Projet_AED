@@ -41,5 +41,8 @@ CMakeFiles/Projet_AED.dir/main.cpp.obj
  ../lib/googletest-master/googletest/include/gtest/internal/gtest-string.h
  ../lib/googletest-master/googletest/include/gtest/internal/gtest-type-util.h
  D:/AED Aula/Projet_AED/Source/Application.cpp
- D:/AED Aula/Projet_AED/Source/FirstClass.h
+ D:/AED Aula/Projet_AED/Source/Employee.h
+ D:/AED Aula/Projet_AED/Source/Luggage.h
+ D:/AED Aula/Projet_AED/Source/Passenger.h
+ D:/AED Aula/Projet_AED/Source/Person.h
  D:/AED Aula/Projet_AED/main.cpp

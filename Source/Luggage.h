@@ -1,14 +1,33 @@
 #ifndef Luggage_H
 #define Luggage_H
 
+#include <iostream>
+#include <string>
+using namespace std;
+
+/**
+ * Struct that groups the three dimensions of the luggage
+ * @param width, luggage's width, an integer value
+ * @param height, luggage's height, an integer value
+ * @param depth, luggage's width, an integer value
+ */
+struct Volume {
+
+    int width;
+    int height;
+    int depth;
+};
+
+
 /**
  * A class that represents a Passenger's luggage
  */
 class Luggage {
 
-    private const short int WEIGHT;
-    private const Volume VOLUME;
-    private bool planeHold;
+    private:
+        short int WEIGHT;
+        const Volume VOLUME;
+        bool planeHold;
 
     public:
 
@@ -66,19 +85,6 @@ class Luggage {
          * @return if the current object is less than object passed by reference
          */
         bool operator < (const Luggage &luggage) const;
-};
-
-/**
- * Struct that groups the three dimensions of the luggage
- * @param width, luggage's width, an integer value
- * @param height, luggage's height, an integer value
- * @param depth, luggage's width, an integer value
- */
-struct Volume {
-
-    int width;
-    int height;
-    int depth;
 };
 
 /**

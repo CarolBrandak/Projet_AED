@@ -2,14 +2,16 @@
 #define Passenger_H
 
 #include "Person.h"
+#include "Luggage.h"
 
 /**
  * Person's derived class
  */
 class Passenger : public Person {
 
-    private string passportNumber;
-    private vector<Luggage> luggage;
+    private:
+        string passportNumber;
+        vector<Luggage> luggage;
 
     public:
 

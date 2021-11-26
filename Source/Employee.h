@@ -8,7 +8,8 @@
  */
 class Employee : public Person {
 
-    private string ID;
+    private:
+        string ID;
 
     public:
 
