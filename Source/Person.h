@@ -62,6 +62,7 @@ class Person {
         char getGender();
 
         /**
+         * @overload
          * Boolean virtual function that compares two objects of this class
          * @param person another object that will be compared
          * @return if the current object is the same of object passed by reference
@@ -69,6 +70,7 @@ class Person {
         virtual bool operator == (const Person &person) const = 0;
 
         /**
+         * @overload
         * Boolean virtual function that compares two objects of this class
         * @param person another object that will be compared
         * @return if the current object is less than object passed by reference
@@ -77,6 +79,7 @@ class Person {
 };
 
 /**
+ * @overload
  * Function that returns all characteristics of the Object being manipulated
  * @param os ostream object, passed by reference
  * @param person Person object, passed by reference

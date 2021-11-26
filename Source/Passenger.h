@@ -53,6 +53,7 @@ class Passenger : public Person {
         vector<Luggage> getLuggage();
 
         /**
+         * @overload
          * Boolean function that compares two objects of this class
          * @param passenger another object that will be compared
          * @return if the current object is the same of object passed by reference
@@ -60,6 +61,7 @@ class Passenger : public Person {
         bool operator == (const Passenger &passenger) const;
 
         /**
+         * @overload
         * Boolean function that compares two objects of this class
         * @param passenger another object that will be compared
         * @return if the current object is less than object passed by reference
@@ -68,7 +70,8 @@ class Passenger : public Person {
 };
 
 /**
- * Function that returns all characteristics of the Object being manipulated
+ * @overload
+ * Function that returns all characteristics of the Passenger being manipulated
  * @param os ostream object, passed by reference
  * @param passenger Passenger object, passed by reference
  * @return ostream object

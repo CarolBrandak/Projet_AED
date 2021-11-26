@@ -39,6 +39,7 @@ class Employee : public Person {
         string getID();
 
         /**
+         * @overload
          * Boolean function that compares two objects of this class
          * @param employee another object that will be compared
          * @return if the current object is the same of object passed by reference
@@ -46,6 +47,7 @@ class Employee : public Person {
         bool operator == (const Employee &employee) const;
 
         /**
+         * @overload
         * Boolean function that compares two objects of this class
         * @param employee another object that will be compared
         * @return if the current object is less than object passed by reference
@@ -54,7 +56,8 @@ class Employee : public Person {
 };
 
 /**
-* Function that returns all characteristics of the Object being manipulated
+ * @overload
+* Function that returns all characteristics of the Employee being manipulated
 * @param os ostream object, passed by reference
 * @param Employee Employee object, passed by reference
 * @return ostream object
