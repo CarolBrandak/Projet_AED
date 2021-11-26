@@ -8,7 +8,7 @@
  */
 class Employee : public Person {
 
-    private string employeeID;
+    private string ID;
 
     public:
 
@@ -22,21 +22,21 @@ class Employee : public Person {
          * @param name Employee's name, a string passed by value
          * @param age Employee's age, a short integer passed by value
          * @param gender Employee's gender, a char passed by value
-         * @param employeeID Employee's id, a string passed by value
+         * @param ID Employee's ID, a string passed by value
          */
-        Employee(string name, short int age, char gender, string employeeID);
+        Employee(string name, short int age, char gender, string ID);
 
         /**
-         * Set Employee Id
-         * @param employeeID Employee's new id, a string passed by value
+         * Set Employee ID
+         * @param ID Employee's new ID, a string passed by value
          */
-        void setEmployeeID(string employeeID);
+        void setID(string ID);
 
         /**
-         * Returns Employee's id
-         * @return a string, containing employee's id
+         * Returns Employee's ID
+         * @return a string, containing employee's ID
          */
-        string getEmployeeID();
+        string getID();
 
         /**
          * Boolean function that compares two objects of this class
@@ -51,7 +51,7 @@ class Employee : public Person {
         * @return if the current object is less than object passed by reference
         */
         bool operator < (const Employee &employee) const;
-    };
+};
 
 /**
 * Function that returns all characteristics of the Object being manipulated

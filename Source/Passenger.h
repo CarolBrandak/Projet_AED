@@ -9,7 +9,7 @@
 class Passenger : public Person {
 
     private string passportNumber;
-    private vector<Luggage> passengerLuggage;
+    private vector<Luggage> luggage;
 
     public:
 
@@ -24,9 +24,9 @@ class Passenger : public Person {
          * @param age Passenger's age, a short integer passed by value
          * @param gender Passenger's gender, a char passed by value
          * @param passportNumber Passenger's passport number, a string passed by value
-         * @param passengerLuggage Passenger's luggage, a vector of Luggage objects passed by value
+         * @param luggage Passenger's luggage, a vector of Luggage objects passed by value
          */
-        Passenger(string name, short int age, char gender, string passportNumber, vector<Luggage> passengerLuggage);
+        Passenger(string name, short int age, char gender, string passportNumber, vector<Luggage> luggage);
 
         /**
          * Set Passenger passport number
@@ -36,9 +36,9 @@ class Passenger : public Person {
 
         /**
          * Set Passenger luggage
-         * @param passengerLuggage Passenger's new luggage, a vector with Luggage objects passed value
+         * @param luggage Passenger's new luggage, a vector with Luggage objects passed value
          */
-        void setPassengerLuggage(vector<Luggage> passengerLuggage);
+        void setLuggage(vector<Luggage> luggage);
 
         /**
          * Returns Passenger's passport number
@@ -50,7 +50,7 @@ class Passenger : public Person {
          * Returns Passenger's luggage
          * @return a vector, containing passenger's luggage objects
          */
-        vector<Luggage> getPassengerLuggage();
+        vector<Luggage> getLuggage();
 
         /**
          * Boolean function that compares two objects of this class

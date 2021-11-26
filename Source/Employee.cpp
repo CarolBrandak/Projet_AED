@@ -1,45 +1,36 @@
-#ifndef Passenger_CPP
-#define Passenger_CPP
+#ifndef Employee_CPP
+#define Employee_CPP
 
-#include "Passenger.h"
+#include "Employee.h"
 
-Passenger::Passenger() {}
+Employee::Employee() {}
 
-Passenger::Passenger(string name, short int age, char gender, string passportNumber, vector<Luggage> passengerLuggage) :
-        Person (name, age, gender) {
-    this->passportNumber = passportNumber;
-    this->passengerLuggage = passengerLuggage;
+Employee::Employee(string name, short int age, char gender, string ID) :
+    Person (name, age, gender) {
+    this->ID = ID;
 }
 
-void setPassportNumber(string passportNumber) {
-    this->passportNumber = passportNumber;
+void Employee::setID(string ID) {
+    this->ID = ID;
 }
 
-void setPassengerLuggage(vector<Luggage> passengerLuggage) {
-    this->passengerLuggage = passengerLuggage;
+string Employee::getID() {
+    return this->ID;
 }
 
-string getPassportNumber() {
-    return this->passportNumber;
+bool operator == (const Employee &employee) const {
+    return name == employee.getName() && age == employee.getAge() && gender == employee.getAge() &&
+        ID == employee.getID();
 }
 
-vector<Luggage> getPassengerLuggage() {
-    return this->passengerLuggage;
+bool operator < (const Employee &employee) const {
+    if (age == employee.getAge()) return name < employee.getName();
+    return age < employee.getAge();
 }
 
-bool operator == (const Passenger &passenger) const {
-    return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getAge() &&
-           passportNumber == passenger.getPassportNumber() && passengerLuggage == passenger.getPassengerLuggage();
-}
-
-bool operator < (const Passenger &passenger) const {
-    if (age == passenger.getAge() return name < passenger.getName();
-    return age < passenger.getAge();
-}
-
-ostream & operator << (ostream & os, const Passenger &passenger) {
-    os << passenger.getName << " " << passenger.getAge << " " << passenger.getGender << " " << passenger.getPassportNumber << endl;
+ostream & operator << (ostream & os, const Employee &employee) {
+    os << employee.getName << " " << employee.getAge << " " << employee.getGender << " " << passenger.getID << endl;
     return os;
 }
 
-#endif // Passenger_CPP
+#endif // Employee_CPP
