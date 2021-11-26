@@ -77,32 +77,31 @@ $(function() {
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_employee.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_employee.html">Employee</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_person.html">Person</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordtype">string</span> ID;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_function" href="class_employee.html#a003c7bd08c40924e381eb0750cbb906f">Employee</a>();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_function" href="class_employee.html#a003c7bd08c40924e381eb0750cbb906f">Employee</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">short</span> <span class="keywordtype">int</span> age, <span class="keywordtype">char</span> gender, <span class="keywordtype">string</span> ID);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_employee.html#a4ffd405cf2cf8853c87576c70d639048">setID</a>(<span class="keywordtype">string</span> ID);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_employee.html#a7e85e3746eb56bca8f57f5cca19604c2">getID</a>();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_employee.html#aaa71b9e8a4c6011142eb889e36ffb6a9">operator == </a>(<span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_employee.html#a6b90984be07bd9eae79d8a87576b4f84">operator &lt; </a>(<span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>ostream &amp; operator &lt;&lt; (ostream &amp; os, <span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif </span><span class="comment">// Employee_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">string</span> ID;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_function" href="class_employee.html#a003c7bd08c40924e381eb0750cbb906f">Employee</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <a class="code hl_function" href="class_employee.html#a003c7bd08c40924e381eb0750cbb906f">Employee</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">short</span> <span class="keywordtype">int</span> age, <span class="keywordtype">char</span> gender, <span class="keywordtype">string</span> ID);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_employee.html#a4ffd405cf2cf8853c87576c70d639048">setID</a>(<span class="keywordtype">string</span> ID);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_employee.html#a447564fb390258cc26715cac3eae9773">getID</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_employee.html#aaa71b9e8a4c6011142eb889e36ffb6a9">operator == </a>(<span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_employee.html#a6b90984be07bd9eae79d8a87576b4f84">operator &lt; </a>(<span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>ostream &amp; operator &lt;&lt; (ostream &amp; os, <span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif </span><span class="comment">// Employee_H</span></div>
 <div class="ttc" id="aclass_employee_html"><div class="ttname"><a href="class_employee.html">Employee</a></div><div class="ttdef"><b>Definition:</b> Employee.h:9</div></div>
 <div class="ttc" id="aclass_employee_html_a003c7bd08c40924e381eb0750cbb906f"><div class="ttname"><a href="class_employee.html#a003c7bd08c40924e381eb0750cbb906f">Employee::Employee</a></div><div class="ttdeci">Employee()</div><div class="ttdef"><b>Definition:</b> Employee.cpp:6</div></div>
+<div class="ttc" id="aclass_employee_html_a447564fb390258cc26715cac3eae9773"><div class="ttname"><a href="class_employee.html#a447564fb390258cc26715cac3eae9773">Employee::getID</a></div><div class="ttdeci">string getID() const</div><div class="ttdef"><b>Definition:</b> Employee.cpp:17</div></div>
 <div class="ttc" id="aclass_employee_html_a4ffd405cf2cf8853c87576c70d639048"><div class="ttname"><a href="class_employee.html#a4ffd405cf2cf8853c87576c70d639048">Employee::setID</a></div><div class="ttdeci">void setID(string ID)</div><div class="ttdef"><b>Definition:</b> Employee.cpp:13</div></div>
 <div class="ttc" id="aclass_employee_html_a6b90984be07bd9eae79d8a87576b4f84"><div class="ttname"><a href="class_employee.html#a6b90984be07bd9eae79d8a87576b4f84">Employee::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Employee &amp;employee) const</div><div class="ttdef"><b>Definition:</b> Employee.cpp:26</div></div>
-<div class="ttc" id="aclass_employee_html_a7e85e3746eb56bca8f57f5cca19604c2"><div class="ttname"><a href="class_employee.html#a7e85e3746eb56bca8f57f5cca19604c2">Employee::getID</a></div><div class="ttdeci">string getID()</div><div class="ttdef"><b>Definition:</b> Employee.cpp:17</div></div>
 <div class="ttc" id="aclass_employee_html_aaa71b9e8a4c6011142eb889e36ffb6a9"><div class="ttname"><a href="class_employee.html#aaa71b9e8a4c6011142eb889e36ffb6a9">Employee::operator==</a></div><div class="ttdeci">bool operator==(const Employee &amp;employee) const</div><div class="ttdef"><b>Definition:</b> Employee.cpp:21</div></div>
 <div class="ttc" id="aclass_person_html"><div class="ttname"><a href="class_person.html">Person</a></div><div class="ttdef"><b>Definition:</b> Person.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->

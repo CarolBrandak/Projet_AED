@@ -9,9 +9,8 @@
  */
 class Passenger : public Person {
 
-    private:
-        string passportNumber;
-        vector<Luggage> luggage;
+    string passportNumber;
+    vector<Luggage> luggage;
 
     public:
 
@@ -60,7 +59,7 @@ class Passenger : public Person {
          * @param passenger another object that will be compared
          * @return if the current object is the same of object passed by reference
          */
-        bool operator == (const Passenger &passenger) const;
+        bool operator == (Passenger &passenger) const;
 
         /**
          * @overload
@@ -68,7 +67,7 @@ class Passenger : public Person {
         * @param passenger another object that will be compared
         * @return if the current object is less than object passed by reference
         */
-        bool operator < (const Passenger &passenger) const;
+        bool operator < (Passenger &passenger) const;
 };
 
 /**

@@ -238,6 +238,30 @@ gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f lib\googletest-master\googletest\CMakeFiles\gtest_main.dir\build.make lib/googletest-master/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+Source/Employee.obj: Source/Employee.cpp.obj
+.PHONY : Source/Employee.obj
+
+# target to build an object file
+Source/Employee.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Employee.cpp.obj
+.PHONY : Source/Employee.cpp.obj
+
+Source/Employee.i: Source/Employee.cpp.i
+.PHONY : Source/Employee.i
+
+# target to preprocess a source file
+Source/Employee.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Employee.cpp.i
+.PHONY : Source/Employee.cpp.i
+
+Source/Employee.s: Source/Employee.cpp.s
+.PHONY : Source/Employee.s
+
+# target to generate assembly for a file
+Source/Employee.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Employee.cpp.s
+.PHONY : Source/Employee.cpp.s
+
 Source/FirstClass.obj: Source/FirstClass.cpp.obj
 .PHONY : Source/FirstClass.obj
 
@@ -261,6 +285,78 @@ Source/FirstClass.s: Source/FirstClass.cpp.s
 Source/FirstClass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/FirstClass.cpp.s
 .PHONY : Source/FirstClass.cpp.s
+
+Source/Luggage.obj: Source/Luggage.cpp.obj
+.PHONY : Source/Luggage.obj
+
+# target to build an object file
+Source/Luggage.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Luggage.cpp.obj
+.PHONY : Source/Luggage.cpp.obj
+
+Source/Luggage.i: Source/Luggage.cpp.i
+.PHONY : Source/Luggage.i
+
+# target to preprocess a source file
+Source/Luggage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Luggage.cpp.i
+.PHONY : Source/Luggage.cpp.i
+
+Source/Luggage.s: Source/Luggage.cpp.s
+.PHONY : Source/Luggage.s
+
+# target to generate assembly for a file
+Source/Luggage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Luggage.cpp.s
+.PHONY : Source/Luggage.cpp.s
+
+Source/Passenger.obj: Source/Passenger.cpp.obj
+.PHONY : Source/Passenger.obj
+
+# target to build an object file
+Source/Passenger.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Passenger.cpp.obj
+.PHONY : Source/Passenger.cpp.obj
+
+Source/Passenger.i: Source/Passenger.cpp.i
+.PHONY : Source/Passenger.i
+
+# target to preprocess a source file
+Source/Passenger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Passenger.cpp.i
+.PHONY : Source/Passenger.cpp.i
+
+Source/Passenger.s: Source/Passenger.cpp.s
+.PHONY : Source/Passenger.s
+
+# target to generate assembly for a file
+Source/Passenger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Passenger.cpp.s
+.PHONY : Source/Passenger.cpp.s
+
+Source/Person.obj: Source/Person.cpp.obj
+.PHONY : Source/Person.obj
+
+# target to build an object file
+Source/Person.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Person.cpp.obj
+.PHONY : Source/Person.cpp.obj
+
+Source/Person.i: Source/Person.cpp.i
+.PHONY : Source/Person.i
+
+# target to preprocess a source file
+Source/Person.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Person.cpp.i
+.PHONY : Source/Person.cpp.i
+
+Source/Person.s: Source/Person.cpp.s
+.PHONY : Source/Person.s
+
+# target to generate assembly for a file
+Source/Person.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_AED.dir\build.make CMakeFiles/Projet_AED.dir/Source/Person.cpp.s
+.PHONY : Source/Person.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -304,9 +400,21 @@ help:
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
+	@echo ... Source/Employee.obj
+	@echo ... Source/Employee.i
+	@echo ... Source/Employee.s
 	@echo ... Source/FirstClass.obj
 	@echo ... Source/FirstClass.i
 	@echo ... Source/FirstClass.s
+	@echo ... Source/Luggage.obj
+	@echo ... Source/Luggage.i
+	@echo ... Source/Luggage.s
+	@echo ... Source/Passenger.obj
+	@echo ... Source/Passenger.i
+	@echo ... Source/Passenger.s
+	@echo ... Source/Person.obj
+	@echo ... Source/Person.i
+	@echo ... Source/Person.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -1,18 +1,4 @@
 "D:\Programas\CLion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" "D:\AED Aula\Projet_AED"
--- The C compiler identification is GNU 9.2.0
--- The CXX compiler identification is GNU 9.2.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: C:/MinGW/bin/gcc.exe - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: C:/MinGW/bin/g++.exe - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found Python: C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe (found version "3.7.8") found components: Interpreter 
--- Found Doxygen: D:/Programas/doxygen/bin/doxygen.exe (found version "1.9.2 (caa4e3de211fbbef2c3adf58a6bd4c86d0eb7cb8)") found components: doxygen missing components: dot
 Doxygen build started
 -- Configuring done
 -- Generating done

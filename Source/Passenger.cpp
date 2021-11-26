@@ -1,6 +1,7 @@
 #ifndef Passenger_CPP
 #define Passenger_CPP
 
+#include "Person.h"
 #include "Passenger.h"
 
 Passenger::Passenger() {}
@@ -11,34 +12,34 @@ Passenger::Passenger(string name, short int age, char gender, string passportNum
     this->luggage = luggage;
 }
 
-void setPassportNumber(string passportNumber) {
+void Passenger::setPassportNumber(string passportNumber) {
     this->passportNumber = passportNumber;
 }
 
-void setLuggage(vector<Luggage> luggage) {
+void Passenger::setLuggage(vector<Luggage> luggage) {
     this->luggage = luggage;
 }
 
-string getPassportNumber() {
-    return this->passportNumber;
+string Passenger::getPassportNumber() {
+    return passportNumber;
 }
 
-vector<Luggage> getLuggage() {
-    return this->luggage;
+vector<Luggage> Passenger::getLuggage(){
+    return luggage;
 }
 
-bool Passenger::operator == (const Passenger &passenger) const {
+bool Passenger::operator == (Passenger &passenger) const {
     return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getAge() &&
             passportNumber == passenger.getPassportNumber() && luggage == passenger.getLuggage();
 }
 
-bool Passenger::operator < (const Passenger &passenger) const {
-    if (age == passenger.getAge() return name < passenger.getName();
+bool Passenger::operator < (Passenger &passenger) const {
+    if (age == passenger.getAge()) return name < passenger.getName();
     return age < passenger.getAge();
 }
 
 ostream & operator << (ostream & os, const Passenger &passenger) {
-    os << passenger.getName << " " << passenger.getAge << " " << passenger.getGender << " " << passenger.getPassportNumber << endl;
+    os << passenger.getName() << " " << passenger.getAge() << " " << passenger.getGender() << endl;
     return os;
 }
 

@@ -11,27 +11,27 @@ Person::Person(string name, short int age, char gender) {
     this->gender = gender;
 }
 
-void setName(string name) {
+void Person::setName(string name) {
     this->name = name;
 }
 
-void setAge(short int age) {
+void Person::setAge(short int age) {
     this->age = age;
 }
 
-void setGender(char gender) {
+void Person::setGender(char gender) {
     this->gender = gender;
 }
 
-string getName() {
+string Person::getName() const {
     return this->name;
 }
 
-short int getAge() {
+short int Person::getAge() const {
     return this->age;
 }
 
-char getGender() {
+char Person::getGender() const {
     return this->gender;
 }
 

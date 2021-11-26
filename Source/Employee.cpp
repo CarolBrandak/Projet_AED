@@ -14,12 +14,12 @@ void Employee::setID(string ID) {
     this->ID = ID;
 }
 
-string Employee::getID() {
+string Employee::getID() const {
     return this->ID;
 }
 
 bool Employee::operator == (const Employee &employee) const {
-    return name == employee.getName() && age == employee.getAge() && gender == employee.getAge() &&
+    return this->name == employee.getName() && this->age == employee.getAge() && this->gender == employee.getAge() &&
         ID == employee.getID();
 }
 
@@ -29,7 +29,7 @@ bool Employee::operator < (const Employee &employee) const {
 }
 
 ostream & operator << (ostream & os, const Employee &employee) {
-    os << employee.getName << " " << employee.getAge << " " << employee.getGender << " " << passenger.getID << endl;
+    os << employee.getName() << " " << employee.getAge() << " " << employee.getGender() << " " << employee.getID() << endl;
     return os;
 }
 

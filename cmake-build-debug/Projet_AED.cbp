@@ -328,10 +328,34 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Employee.cpp">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Employee.h">
+			<Option target="Projet_AED"/>
+		</Unit>
 		<Unit filename="D:/AED Aula/Projet_AED/Source/FirstClass.cpp">
 			<Option target="Projet_AED"/>
 		</Unit>
 		<Unit filename="D:/AED Aula/Projet_AED/Source/FirstClass.h">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Luggage.cpp">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Luggage.h">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Passenger.cpp">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Passenger.h">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Person.cpp">
+			<Option target="Projet_AED"/>
+		</Unit>
+		<Unit filename="D:/AED Aula/Projet_AED/Source/Person.h">
 			<Option target="Projet_AED"/>
 		</Unit>
 		<Unit filename="D:/AED Aula/Projet_AED/lib/googletest-master/googlemock/src/gmock-all.cc">

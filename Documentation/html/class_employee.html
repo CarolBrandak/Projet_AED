@@ -90,8 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2c881055893a8530b937461571bd9fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ffd405cf2cf8853c87576c70d639048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_employee.html#a4ffd405cf2cf8853c87576c70d639048">setID</a> (string ID)</td></tr>
 <tr class="separator:a4ffd405cf2cf8853c87576c70d639048"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e85e3746eb56bca8f57f5cca19604c2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_employee.html#a7e85e3746eb56bca8f57f5cca19604c2">getID</a> ()</td></tr>
-<tr class="separator:a7e85e3746eb56bca8f57f5cca19604c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a447564fb390258cc26715cac3eae9773"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_employee.html#a447564fb390258cc26715cac3eae9773">getID</a> () const</td></tr>
+<tr class="separator:a447564fb390258cc26715cac3eae9773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa71b9e8a4c6011142eb889e36ffb6a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_employee.html#aaa71b9e8a4c6011142eb889e36ffb6a9">operator==</a> (const <a class="el" href="class_employee.html">Employee</a> &amp;employee) const</td></tr>
 <tr class="separator:aaa71b9e8a4c6011142eb889e36ffb6a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b90984be07bd9eae79d8a87576b4f84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_employee.html#a6b90984be07bd9eae79d8a87576b4f84">operator&lt;</a> (const <a class="el" href="class_employee.html">Employee</a> &amp;employee) const</td></tr>
@@ -107,22 +107,31 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab45b8bf14b937d6c9a43b7c27bd80bf1 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc9fa3bb25decbe01f119214b0ad3c48 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#acc9fa3bb25decbe01f119214b0ad3c48">setGender</a> (char gender)</td></tr>
 <tr class="separator:acc9fa3bb25decbe01f119214b0ad3c48 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f98501a519ee5d44f53a6d6423ae67b inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#a1f98501a519ee5d44f53a6d6423ae67b">getName</a> ()</td></tr>
-<tr class="separator:a1f98501a519ee5d44f53a6d6423ae67b inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafc98557c84f31667beea72483cb6796 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#aafc98557c84f31667beea72483cb6796">getAge</a> ()</td></tr>
-<tr class="separator:aafc98557c84f31667beea72483cb6796 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fe8cd7ad02fe00d4055eb16a8364851 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#a1fe8cd7ad02fe00d4055eb16a8364851">getGender</a> ()</td></tr>
-<tr class="separator:a1fe8cd7ad02fe00d4055eb16a8364851 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3bd99ae323b83d040ed2bd8200bd341 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#ac3bd99ae323b83d040ed2bd8200bd341">operator==</a> (const <a class="el" href="class_person.html">Person</a> &amp;person) const =0</td></tr>
-<tr class="separator:ac3bd99ae323b83d040ed2bd8200bd341 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b82e0c94adf48a67067c503f9ce616d inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#a6b82e0c94adf48a67067c503f9ce616d">operator&lt;</a> (const <a class="el" href="class_person.html">Person</a> &amp;person) const =0</td></tr>
-<tr class="separator:a6b82e0c94adf48a67067c503f9ce616d inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9db2e2ccfc6cfa0d7979613ec2aaa922 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#a9db2e2ccfc6cfa0d7979613ec2aaa922">getName</a> () const</td></tr>
+<tr class="separator:a9db2e2ccfc6cfa0d7979613ec2aaa922 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30bbad542ac905450717ebb1c4f5a019 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#a30bbad542ac905450717ebb1c4f5a019">getAge</a> () const</td></tr>
+<tr class="separator:a30bbad542ac905450717ebb1c4f5a019 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a880800be111d460d6d3723db65e846 inherit pub_methods_class_person"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_person.html#a4a880800be111d460d6d3723db65e846">getGender</a> () const</td></tr>
+<tr class="separator:a4a880800be111d460d6d3723db65e846 inherit pub_methods_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a312ed2f679d4e69d736d6656c1f78e1f"><td class="memItemLeft" align="right" valign="top"><a id="a312ed2f679d4e69d736d6656c1f78e1f" name="a312ed2f679d4e69d736d6656c1f78e1f"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
 <tr class="separator:a312ed2f679d4e69d736d6656c1f78e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_class_person"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_person')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_person.html">Person</a></td></tr>
+<tr class="memitem:a669b64897b4d823a27bb5866368d4dfa inherit pro_attribs_class_person"><td class="memItemLeft" align="right" valign="top"><a id="a669b64897b4d823a27bb5866368d4dfa" name="a669b64897b4d823a27bb5866368d4dfa"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:a669b64897b4d823a27bb5866368d4dfa inherit pro_attribs_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc3062504d9ad8f936531e17ade4d24 inherit pro_attribs_class_person"><td class="memItemLeft" align="right" valign="top"><a id="a1bc3062504d9ad8f936531e17ade4d24" name="a1bc3062504d9ad8f936531e17ade4d24"></a>
+short int&#160;</td><td class="memItemRight" valign="bottom"><b>age</b></td></tr>
+<tr class="separator:a1bc3062504d9ad8f936531e17ade4d24 inherit pro_attribs_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadbaa9e7532dcc90a2734868347b59d3 inherit pro_attribs_class_person"><td class="memItemLeft" align="right" valign="top"><a id="aadbaa9e7532dcc90a2734868347b59d3" name="aadbaa9e7532dcc90a2734868347b59d3"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>gender</b></td></tr>
+<tr class="separator:aadbaa9e7532dcc90a2734868347b59d3 inherit pro_attribs_class_person"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="class_person.html">Person</a>'s derived class </p>
@@ -195,8 +204,8 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7e85e3746eb56bca8f57f5cca19604c2" name="a7e85e3746eb56bca8f57f5cca19604c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e85e3746eb56bca8f57f5cca19604c2">&#9670;&nbsp;</a></span>getID()</h2>
+<a id="a447564fb390258cc26715cac3eae9773" name="a447564fb390258cc26715cac3eae9773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a447564fb390258cc26715cac3eae9773">&#9670;&nbsp;</a></span>getID()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +214,7 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
           <td class="memname">string Employee::getID </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">

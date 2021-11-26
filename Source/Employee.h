@@ -8,8 +8,7 @@
  */
 class Employee : public Person {
 
-    private:
-        string ID;
+    string ID;
 
     public:
 
@@ -37,7 +36,7 @@ class Employee : public Person {
          * Returns Employee's ID
          * @return a string, containing employee's ID
          */
-        string getID();
+        string getID() const;
 
         /**
          * @overload

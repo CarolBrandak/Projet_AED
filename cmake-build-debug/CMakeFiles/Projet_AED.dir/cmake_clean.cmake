@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Projet_AED.dir/Source/Employee.cpp.obj"
   "CMakeFiles/Projet_AED.dir/Source/FirstClass.cpp.obj"
+  "CMakeFiles/Projet_AED.dir/Source/Luggage.cpp.obj"
+  "CMakeFiles/Projet_AED.dir/Source/Passenger.cpp.obj"
+  "CMakeFiles/Projet_AED.dir/Source/Person.cpp.obj"
   "CMakeFiles/Projet_AED.dir/main.cpp.obj"
   "Projet_AED.exe"
   "Projet_AED.exe.manifest"

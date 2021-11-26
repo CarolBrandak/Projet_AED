@@ -24,27 +24,24 @@ struct Volume {
  */
 class Luggage {
 
-    private:
-        short int WEIGHT;
-        const Volume VOLUME;
-        bool planeHold;
+    short int WEIGHT;
+    Volume VOLUME;
+    bool planeHold;
 
     public:
 
         /**
          * A default constructor of class Luggage. No arguments needed.
          */
-        Luggage();
+         Luggage();
 
         /**
          * Main constructor
          * @param weight Luggage's weight, a short int passed by value
-         * @param width Luggage's width, a integer passed by value
-         * @param height Luggage's height, a integer passed by value
-         * @param depth Luggage's depth, a integer passed by value
+         * @param width Luggage's volume, a struct
          * @param planeHold Luggage's planeHold, a boolean passed by value
          */
-        Luggage(short int weight, int width, int height, int depth, bool planeHold);
+        Luggage(short int weight, Volume volume, bool planeHold);
 
         /**
          * Set Luggage plane hold
@@ -56,19 +53,19 @@ class Luggage {
          * Returns Luggage's weight
          * @return a short int, containing luggage's weight
          */
-        short int getWeight();
+        short int getWeight() const;
 
         /**
          * Returns Luggage's volume
          * @return an integer, representing luggage's volume
          */
-        int getVolume();
+        int getVolume() const;
 
         /**
          * Returns Plane Hold
          * @return a boolean that check if this luggage it's hand luggage
          */
-        bool getPlaneHold();
+        bool getPlaneHold() const;
 
         /**
          * @overload

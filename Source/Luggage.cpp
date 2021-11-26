@@ -5,13 +5,7 @@
 
 Luggage::Luggage() {}
 
-Luggage::Luggage(short int weight, int width, int height, int depth, bool planeHold) {
-    this->WEIGHT = weight;
-    Volume volume;
-    volume.width = width;
-    volume.height = height;
-    volume.depth = depth;
-    this->VOLUME = volume;
+Luggage::Luggage(short int weight, Volume volume, bool planeHold) : WEIGHT(weight), VOLUME(volume) {
     this->planeHold = planeHold;
 }
 
@@ -19,15 +13,15 @@ void Luggage::setPlaneHold(bool planeHold) {
     this->planeHold = planeHold;
 }
 
-short int Luggage::getWeight() {
+short int Luggage::getWeight() const {
     return this->WEIGHT;
 }
 
-int Luggage::getVolume() {
+int Luggage::getVolume() const {
     return this->VOLUME.width * this->VOLUME.height * this->VOLUME.depth;
 }
 
-bool Luggage::getPlaneHold() {
+bool Luggage::getPlaneHold() const {
     return this->planeHold;
 }
 
@@ -41,7 +35,7 @@ bool Luggage::operator < (const Luggage &luggage) const {
 }
 
 ostream & operator << (ostream & os, const Luggage &luggage) {
-    os << WEIGHT << " " << getVolume() << " " << planeHold << endl;
+    os << luggage.getWeight() << " " << luggage.getVolume() << " " << luggage.getPlaneHold() << endl;
     return os;
 }
 

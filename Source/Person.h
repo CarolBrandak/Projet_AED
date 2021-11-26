@@ -7,11 +7,11 @@
 using namespace std;
 
 /**
- * An abstract class to serve as a base for Employees and Passengers
+ * An class to serve as a base for Employees and Passengers
  */
 class Person {
 
-    private:
+    protected:
         string name;
         short int age;
         char gender;
@@ -53,44 +53,19 @@ class Person {
          * Returns Person's name
          * @return a string, containing person's name
          */
-        string getName();
+        string getName() const;
 
         /**
          * Returns Person's age
          * @return a short int, containing person's age
          */
-        short int getAge();
+        short int getAge() const;
 
         /**
          * Returns Person's gender
          * @return a char, containing person's gender
          */
-        char getGender();
-
-        /**
-         * @overload
-         * Boolean virtual function that compares two objects of this class
-         * @param person another object that will be compared
-         * @return if the current object is the same of object passed by reference
-         */
-        virtual bool operator == (const Person &person) const = 0;
-
-        /**
-         * @overload
-        * Boolean virtual function that compares two objects of this class
-        * @param person another object that will be compared
-        * @return if the current object is less than object passed by reference
-        */
-        virtual bool operator < (const Person &person) const = 0;
+        char getGender() const;
 };
-
-/**
- * @overload
- * Function that returns all characteristics of the Object being manipulated
- * @param os ostream object, passed by reference
- * @param person Person object, passed by reference
- * @return ostream object
- */
-ostream & operator << (ostream & os, const Person &person);
 
 #endif // Person_H
