@@ -27,12 +27,12 @@ vector<Luggage> getLuggage() {
     return this->luggage;
 }
 
-bool operator == (const Passenger &passenger) const {
+bool Passenger::operator == (const Passenger &passenger) const {
     return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getAge() &&
             passportNumber == passenger.getPassportNumber() && luggage == passenger.getLuggage();
 }
 
-bool operator < (const Passenger &passenger) const {
+bool Passenger::operator < (const Passenger &passenger) const {
     if (age == passenger.getAge() return name < passenger.getName();
     return age < passenger.getAge();
 }

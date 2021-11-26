@@ -18,12 +18,12 @@ string Employee::getID() {
     return this->ID;
 }
 
-bool operator == (const Employee &employee) const {
+bool Employee::operator == (const Employee &employee) const {
     return name == employee.getName() && age == employee.getAge() && gender == employee.getAge() &&
         ID == employee.getID();
 }
 
-bool operator < (const Employee &employee) const {
+bool Employee::operator < (const Employee &employee) const {
     if (age == employee.getAge()) return name < employee.getName();
     return age < employee.getAge();
 }
