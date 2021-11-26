@@ -84,4 +84,4 @@ class Person {
  */
 ostream & operator << (ostream & os, const Person &person);
 
-#endif // Person_
+#endif // Person_H

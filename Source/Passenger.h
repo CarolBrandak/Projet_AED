@@ -73,6 +73,6 @@ class Passenger : public Person {
  * @param passenger Passenger object, passed by reference
  * @return ostream object
  */
-ostream & operator << (ostream & os, const Person &passenger);
+ostream & operator << (ostream & os, const Passenger &passenger);
 
 #endif // Passenger_H
