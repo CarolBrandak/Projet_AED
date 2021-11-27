@@ -48,7 +48,8 @@ bool Date::operator < (const Date &date) const {
 }
 
 ostream & operator << (ostream & os, const Date &date) {
-    os << date.getDay() << "-" << date.getMonth() << "-" << date.getYear() << endl;
+    os << setfill('0') << setw(2) << date.getDay() << "-" << setfill('0') << setw(2) << date.getMonth()
+        << "-" << setfill('0') << setw(4) << date.getYear() << endl;
     return os;
 }
 

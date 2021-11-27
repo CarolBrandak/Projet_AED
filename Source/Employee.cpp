@@ -19,7 +19,7 @@ string Employee::getID() const {
 }
 
 bool Employee::operator == (const Employee &employee) const {
-    return this->name == employee.getName() && this->age == employee.getAge() && this->gender == employee.getAge() &&
+    return name == employee.getName() && age == employee.getAge() && gender == employee.getGender() &&
         ID == employee.getID();
 }
 

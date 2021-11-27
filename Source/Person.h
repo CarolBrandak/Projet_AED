@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
- * An class to serve as a base for Employees and Passengers
+ * An abstract class to serve as a base for Employees and Passengers
  */
 class Person {
 
