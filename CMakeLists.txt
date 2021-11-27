@@ -4,12 +4,18 @@ set(CMAKE_CXX_STANDARD 14)
 
 # To run Code, available in "Source"
 add_executable(     Projet_AED main.cpp
+
                     Source/FirstClass.cpp Source/FirstClass.h
                     Source/Employee.cpp Source/Employee.h
                     Source/Luggage.cpp Source/Luggage.h
                     Source/Passenger.cpp Source/Person.h
                     Source/Person.cpp Source/Person.h
-                    Source/Date.cpp Source/Date.h            )
+                    Source/Date.cpp Source/Date.h
+
+                    Tests/DateTest.cpp
+                    Tests/LuggageTest.cpp
+                    Tests/EmployeeTest.cpp
+                    Tests/PassengerTest.cpp                 )
 
 #To run Tests, available in "Tests"
 add_subdirectory(lib/googletest-master)
