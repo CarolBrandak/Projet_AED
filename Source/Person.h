@@ -47,19 +47,19 @@ class Person {
          * Set Person's name
          * @param name Person's new name, a string passed by value
          */
-        void setName(string name);
+        void setName(const string &name);
 
         /**
          * Set Person's age
          * @param age Person's new age, a short integer passed by value
          */
-        void setAge(short int age);
+        void setAge(const short int &age);
 
         /**
          * Set Person's gender
          * @param gender Person's new gender, a char passed by value
          */
-        void setGender(char gender);
+        void setGender(const char &gender);
 
         /**
          * Returns Person's name

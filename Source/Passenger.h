@@ -63,6 +63,18 @@ class Passenger : public Person {
         vector<Luggage> getLuggage();
 
         /**
+         * Returns total weight of Passenger's luggage
+         * @return an integer value, containing passenger's luggage total weight
+         */
+        int getTotalWeight() const;
+
+        /**
+         * Returns total volume of Passenger's luggage
+         * @return an integer value, containing passenger's luggage total volume
+         */
+        int getTotalVolume() const;
+
+        /**
          * @overload
          * Boolean function that compares two objects of this class
          * @param passenger another object that will be compared

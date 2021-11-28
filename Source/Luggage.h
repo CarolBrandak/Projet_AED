@@ -66,7 +66,7 @@ class Luggage {
          * Set Luggage plane hold
          * @param planeHold Luggage's new plane hold, a boolean passed by value
          */
-        void setPlaneHold(bool planeHold);
+        void setPlaneHold(const bool &planeHold);
 
         /**
          * Returns Luggage's weight

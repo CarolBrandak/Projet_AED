@@ -10,7 +10,7 @@ Employee::Employee(string name, short int age, char gender, string ID) :
     this->ID = ID;
 }
 
-void Employee::setID(string ID) {
+void Employee::setID(const string &ID) {
     this->ID = ID;
 }
 

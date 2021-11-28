@@ -23,15 +23,15 @@ int Date::getYear() const {
     return year;
 }
 
-void Date::setDay(int day){
+void Date::setDay(const int &day){
     this->day=day;
 }
 
-void Date::setMonth(int month){
+void Date::setMonth(const int &month){
     this->month=month;
 }
 
-void Date::setYear(int year){
+void Date::setYear(const int &year){
     this->year=year;
 }
 

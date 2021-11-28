@@ -35,7 +35,7 @@ class Employee : public Person {
          * Set Employee ID
          * @param ID Employee's new ID, a string passed by value
          */
-        void setID(string ID);
+        void setID(const string &ID);
 
         /**
          * Returns Employee's ID

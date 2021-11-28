@@ -12,11 +12,11 @@ Passenger::Passenger(string name, short int age, char gender, string passportNum
     this->luggage = luggage;
 }
 
-void Passenger::setPassportNumber(string passportNumber) {
+void Passenger::setPassportNumber(const string &passportNumber) {
     this->passportNumber = passportNumber;
 }
 
-void Passenger::setLuggage(vector<Luggage> luggage) {
+void Passenger::setLuggage(const vector<Luggage> &luggage) {
     this->luggage = luggage;
 }
 
@@ -28,8 +28,16 @@ vector<Luggage> Passenger::getLuggage() {
     return this->luggage;
 }
 
-bool Passenger::operator == (const Passenger &passenger) const {
-    return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getGender() && passportNumber == passenger.getPassportNumber();
+int Passenger::getTotalWeight() const {
+    int total = 0;
+    for (auto l : luggage) { total += l.getWeight(); }
+    return total;
+}
+
+int Passenger::getTotalVolume() const {
+    int total = 0;
+    for (auto l : luggage) { total += l.getVolume(); }
+    return total;
 }
 
 bool Passenger::operator < (const Passenger &passenger) const {
