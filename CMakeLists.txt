@@ -16,7 +16,7 @@ add_executable(     Projet_AED main.cpp
                     Tests/DateTest.cpp
                     Tests/LuggageTest.cpp
                     Tests/EmployeeTest.cpp
-                    Tests/PassengerTest.cpp                 )
+                    Tests/PassengerTest.cpp Source/Service.h Source/Maintenance.h Source/Maintenance.cpp)
 
 #To run Tests, available in "Tests"
 add_subdirectory(lib/googletest-master)
