@@ -3,17 +3,24 @@
 
 #include "Plane.h"
 
-Plane::Plane() : MAX_WEIGHT_CAPACITY(0), MAX_PASSENGERS_CAPACITY(0) {}
+Plane::Plane() : MAX_WEIGHT_CAPACITY(0), MAX_PASSENGERS_CAPACITY(0),
+                        LICENSE_PLATE(""), TYPE("") {}
 
-Plane::Plane(std::list<Flight> flights,std::queue<Service> servicesToBeMade,
-             std::list<Service> madeServices,std::string LICENSE_PLATE,
-             std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY,
+Plane::Plane(std::list<Flight> flights,
+             std::queue<Service> servicesToBeMade,
+             std::list<Service> madeServices,
+             std::string LICENSE_PLATE,
+             std::string TYPE,
+             unsigned int MAX_WEIGHT_CAPACITY,
              unsigned int MAX_PASSENGERS_CAPACITY):
+
         LICENSE_PLATE(LICENSE_PLATE),
         TYPE(TYPE),
         MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
         MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY),
-        flights(flights) {}
+        flights(flights),
+        madeServices(madeServices),
+        servicesToBeMade(servicesToBeMade) {}
 
 std::string Plane::getLicensePlate() const {
     return LICENSE_PLATE;
@@ -35,9 +42,9 @@ unsigned int Plane::getMaxPassengersCapacity() const {
     return MAX_PASSENGERS_CAPACITY;
 }
 
-void Plane::checkFlights() const {
+void Plane::checkFlights() {
 
-    for (auto const &flight : flights) {
+    for (auto flight : flights) {
         cout << flight;
     }
 }
@@ -74,13 +81,12 @@ void Plane::checkServicesToBeMade() {
 }
 
 void Plane::checkMadeServices() {
-    for(auto it = madeServices.begin(); it != madeServices.end(); it++)
-        cout << *it;
+    for (auto const &service : madeServices)
+        cout << service;
 }
 
 bool Plane::operator == (const Plane &plane) const {
-    return LICENSE_PLATE == plane.getLicensePlate() && TYPE == plane.getType() && MAX_WEIGHT_CAPACITY == plane.getMaxWeightCapacity() &&
-        MAX_PASSENGERS_CAPACITY == plane.getMaxPassengersCapacity();
+    return true;
 }
 
 bool Plane::operator < (const Plane &plane) const {

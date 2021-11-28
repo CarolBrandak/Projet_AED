@@ -2,6 +2,7 @@
 #define PROJET_AED_AIRPORT_CPP
 
 #include "Airport.h"
+
 Airport::Airport() : name(""), city("") {}
 
 Airport::Airport(string name, string city, vector<Plane> planes) :
@@ -47,14 +48,14 @@ void Airport::addPlane(const Plane &plane) {
 void Airport::removePlane(const Plane &plane) {
 
     cout << "Teste" << endl;
-    /**
-    for (vector<Plane>::iterator it = planes.begin() ; it != planes.end() ; it++) {
-        if ((*it) == plane) {
+
+    for (auto it = planes.begin() ; it != planes.end() ; it++) {
+        if (*it == plane) {
             planes.erase(it);
             return;
         }
     }
-     */
+
 }
 
 void Airport::showPossibleFlights(const vector<Flight> &possibleFlights) {

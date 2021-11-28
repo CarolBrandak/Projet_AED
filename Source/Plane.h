@@ -7,6 +7,7 @@
 #include <iostream>
 #include <iterator>
 #include <queue>
+
 #include "Flight.h"
 #include "Service.h"
 
@@ -19,22 +20,22 @@ private:
      * @var licensePlate - string variable that contains the Plane's license plate in the form "XX-XXX"
      * where each X is a letter.
      */
-    const std::string LICENSE_PLATE;
+     std::string LICENSE_PLATE;
 
     /**
      * @var type - string variable that contains the Plane's type in the form "AXXX" where each X is a number.
      */
-    const std::string TYPE;
+     std::string TYPE;
 
     /**
      * @var MAX_WEIGHT_CAPACITY - constant that contains the plane's maximum weight capacity.
      */
-    const unsigned int MAX_WEIGHT_CAPACITY;
+     unsigned int MAX_WEIGHT_CAPACITY;
 
     /**
      * @var MAX_PASSENGERS_CAPACITY - constant that contains the plane's maximum passengers capacity.
      */
-    const unsigned short int MAX_PASSENGERS_CAPACITY;
+     unsigned int MAX_PASSENGERS_CAPACITY;
 
     /**
      * @var flights - vector that contains all the flights programmed for the specific plane.
@@ -99,7 +100,7 @@ public:
     /**
      * Prints all flights of the plane
      */
-    void checkFlights() const;
+    void checkFlights();
     /**
      * Function that add a flight into vector flights
      * @param flight - A Flight type object that will be added to vector flights
