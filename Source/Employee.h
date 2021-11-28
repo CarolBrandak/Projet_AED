@@ -8,7 +8,12 @@
  */
 class Employee : public Person {
 
-    string ID;
+    private:
+
+        /**
+         * @var Employee's id, a string
+         */
+        string ID;
 
     public:
 
@@ -48,15 +53,15 @@ class Employee : public Person {
 
         /**
          * @overload
-        * Boolean function that compares two objects of this class
-        * @param employee another object that will be compared
-        * @return if the current object is less than object passed by reference
+         * Boolean function that compares two objects of this class
+         * @param employee another object that will be compared
+         * @return if the current object is less than object passed by reference
         */
         bool operator < (const Employee &employee) const;
 };
 
 /**
- * @overload
+* @overload
 * Function that returns all characteristics of the Employee being manipulated
 * @param os ostream object, passed by reference
 * @param Employee Employee object, passed by reference

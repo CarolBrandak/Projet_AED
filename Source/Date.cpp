@@ -11,25 +11,46 @@ Date::Date(int day, int month, int year) {
     this-> year=year;
 }
 
-int Date::getDay() {
+int Date::getDay() const {
     return day;
 }
 
-int Date::getMonth() {
+int Date::getMonth() const {
     return month;
 }
 
-int Date::getYear() {
+int Date::getYear() const {
     return year;
 }
+
 void Date::setDay(int day){
     this->day=day;
 }
+
 void Date::setMonth(int month){
     this->month=month;
 }
+
 void Date::setYear(int year){
     this->year=year;
 }
 
-#endif //DATE_CPP
+bool Date::operator == (const Date &date) const {
+    return day == date.getDay() && month == date.getMonth() && year == date.getYear();
+}
+
+bool Date::operator < (const Date &date) const {
+    if (year == date.getYear()) {
+        if (month == date.getMonth()) {
+            return day < date.getDay();
+        } else return month < date.getMonth();
+    } else return year < date.getYear();
+}
+
+ostream & operator << (ostream & os, const Date &date) {
+    os << setfill('0') << setw(2) << date.getDay() << "-" << setfill('0') << setw(2) << date.getMonth()
+        << "-" << setfill('0') << setw(4) << date.getYear() << endl;
+    return os;
+}
+
+#endif // Date_CPP

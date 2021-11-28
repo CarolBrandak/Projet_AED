@@ -9,8 +9,17 @@
  */
 class Passenger : public Person {
 
-    string passportNumber;
-    vector<Luggage> luggage;
+    private:
+
+        /**
+         * @var passportNumber, a string
+         */
+        string passportNumber;
+
+        /**
+         * @var luggage, a vector with Luggage's objects
+         */
+        vector<Luggage> luggage;
 
     public:
 
@@ -45,7 +54,7 @@ class Passenger : public Person {
          * Returns Passenger's passport number
          * @return a string, containing passenger's passport number
          */
-        string getPassportNumber();
+        string getPassportNumber() const;
 
         /**
          * Returns Passenger's luggage
@@ -59,7 +68,7 @@ class Passenger : public Person {
          * @param passenger another object that will be compared
          * @return if the current object is the same of object passed by reference
          */
-        bool operator == (Passenger &passenger) const;
+        bool operator == (const Passenger &passenger) const;
 
         /**
          * @overload
@@ -67,7 +76,7 @@ class Passenger : public Person {
         * @param passenger another object that will be compared
         * @return if the current object is less than object passed by reference
         */
-        bool operator < (Passenger &passenger) const;
+        bool operator < (const Passenger &passenger) const;
 };
 
 /**

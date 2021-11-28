@@ -20,26 +20,25 @@ void Passenger::setLuggage(vector<Luggage> luggage) {
     this->luggage = luggage;
 }
 
-string Passenger::getPassportNumber() {
-    return passportNumber;
+string Passenger::getPassportNumber() const {
+    return this->passportNumber;
 }
 
-vector<Luggage> Passenger::getLuggage(){
-    return luggage;
+vector<Luggage> Passenger::getLuggage() {
+    return this->luggage;
 }
 
-bool Passenger::operator == (Passenger &passenger) const {
-    return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getAge() &&
-            passportNumber == passenger.getPassportNumber() && luggage == passenger.getLuggage();
+bool Passenger::operator == (const Passenger &passenger) const {
+    return name == passenger.getName() && age == passenger.getAge() && gender == passenger.getGender() && passportNumber == passenger.getPassportNumber();
 }
 
-bool Passenger::operator < (Passenger &passenger) const {
+bool Passenger::operator < (const Passenger &passenger) const {
     if (age == passenger.getAge()) return name < passenger.getName();
     return age < passenger.getAge();
 }
 
 ostream & operator << (ostream & os, const Passenger &passenger) {
-    os << passenger.getName() << " " << passenger.getAge() << " " << passenger.getGender() << endl;
+    os << passenger.getName() << " " << passenger.getAge() << " " << passenger.getGender() << " " << passenger.getPassportNumber() << endl;
     return os;
 }
 

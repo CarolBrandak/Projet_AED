@@ -8,7 +8,7 @@ Person::Person() {}
 Person::Person(string name, short int age, char gender) {
     this->name = name;
     this->age = age;
-    this->gender = gender;
+    this->gender = toupper(gender);
 }
 
 void Person::setName(string name) {

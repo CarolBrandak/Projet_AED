@@ -8,7 +8,15 @@ add_executable(     Projet_AED main.cpp
                     Source/Employee.cpp Source/Employee.h
                     Source/Luggage.cpp Source/Luggage.h
                     Source/Passenger.cpp Source/Person.h
-                    Source/Person.cpp Source/Person.h Source/Plane.h Source/Plane.cpp Source/Flight.h Source/Flight.cpp)
+                    Source/Person.cpp Source/Person.h
+                    Source/Date.cpp Source/Date.h
+                    Source/Person.cpp Source/Person.h
+                    Source/Plane.h Source/Plane.cpp
+                    Source/Flight.h Source/Flight.cpp
+                    Tests/DateTest.cpp
+                    Tests/LuggageTest.cpp
+                    Tests/EmployeeTest.cpp
+                    Tests/PassengerTest.cpp                 )
 
 #To run Tests, available in "Tests"
 add_subdirectory(lib/googletest-master)
