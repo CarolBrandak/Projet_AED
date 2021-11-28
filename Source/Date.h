@@ -54,7 +54,7 @@ class Date {
         Date(int day, int month, int year);
 
         /**
-        * Main constructor
+        * Another constructor
         * @param day Date's day, a int passed by value
         * @param month Date's month, a int passed by value
         * @param year Date's year, a int passed by value
@@ -95,25 +95,25 @@ class Date {
 
         /**
          * Set Date day
-         * @param day Date's new day, a int passed by value
+         * @param day Date's new day, a int passed by reference
          */
         void setDay(const int &day);
 
         /**
          * Set Date month
-         * @param month Date's new month, a int passed by value
+         * @param month Date's new month, a int passed by reference
          */
         void setMonth(const int &month);
 
         /**
          * Set Date year
-         * @param year Date's new year, a int passed by value
+         * @param year Date's new year, a int passed by reference
          */
         void setYear(const int &year);
 
         /**
          * Set Date hour
-         * @param hour, Date's new hour, a int passed by value
+         * @param hour, Date's new hour, a int passed by reference
          */
         void setHour(const int &hour);
 
