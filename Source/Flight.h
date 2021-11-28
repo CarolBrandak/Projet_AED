@@ -8,15 +8,6 @@
 #include <iostream>
 
 /**
- * A struct that defines a location
- * @var city - a string, that defines a city
- * @var airport - a string, that defines an airport
- */
-struct Location {
-        std::string city;
-        std::string airport;
-};
-/**
  * A class to manage flights
  */
 class Flight{
@@ -36,11 +27,11 @@ private:
     /**
      * @var origin - a Location type struct that contains the origin of the flight
      */
-    const Location origin;
+    const string origin;
     /**
      * @var destination - a Location type struct that contains the destination of the flight
      */
-    const Location destination;
+    const string destination;
     /**
      * @var quantityOfPassengers - a short int variable that contains the quantity of passengers in the flight
      */
@@ -64,12 +55,12 @@ public:
      * @param flightDate - a Date type object that contains the date of the flight
      * @param FLIGHT_ID - a string constant variable thar contains the ID of the flight
      * @param FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
-     * @param origin - a Location type struct that contains the origin of the flight
-     * @param destination - a Location type struct that contains the destination of the flight
+     * @param origin - a string that contains the origin of the flight
+     * @param destination - a string that contains the destination of the flight
      * @param quantityOfPassengers - a short int variable that contains the quantity of passengers in the flight
      * @param quantityOfWeight - a short int variable that contains the quantity of weight in the flight
      */
-    Flight(Date flightDate, std::string flightID, short int flightDuration, Location origin, Location destination,
+    Flight(Date flightDate, std::string flightID, short int flightDuration, string origin, string destination,
            short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers);
     /**
      * Returns the flight id
@@ -95,12 +86,12 @@ public:
      * Returns the flight origin in a Location type struct
      * @return a Location type struct, containing the flight origin
      */
-    Location getFlightOrigin() const;
+    string getFlightOrigin() const;
     /**
      * Returns the flight destination
      * @return a Location type struct, containing the flight destination
      */
-    Location getFlightDestination() const;
+    string getFlightDestination() const;
 
     /**
      * Returns the quantity of weight inside the plane
@@ -141,6 +132,14 @@ public:
      * @return if the current object is equal to the object passed by reference
      */
     bool operator == (const Flight &flight) const;
+
+    /**
+     * @overload
+     * Boolean function that compares two objects of this class
+     * @param flight another object that will be compared
+     * @return if the current object is equal to the object passed by reference
+     */
+    bool operator < (const Flight &flight) const;
 
 };
 

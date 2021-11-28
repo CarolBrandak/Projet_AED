@@ -3,14 +3,17 @@
 
 #include "Plane.h"
 
+Plane::Plane() : MAX_WEIGHT_CAPACITY(0), MAX_PASSENGERS_CAPACITY(0) {}
+
 Plane::Plane(std::list<Flight> flights,std::queue<Service> servicesToBeMade,
              std::list<Service> madeServices,std::string LICENSE_PLATE,
              std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY,
-             unsigned short int MAX_PASSENGERS_CAPACITY):
-        LICENSE_PLATE(std::move(LICENSE_PLATE)),
-        TYPE(std::move(TYPE)),
+             unsigned int MAX_PASSENGERS_CAPACITY):
+        LICENSE_PLATE(LICENSE_PLATE),
+        TYPE(TYPE),
         MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
-        MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY),flights(std::move(flights)) {}
+        MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY),
+        flights(flights) {}
 
 std::string Plane::getLicensePlate() const {
     return LICENSE_PLATE;
@@ -20,16 +23,20 @@ std::string Plane::getType() const {
     return TYPE;
 }
 
+list<Flight> Plane::getFlights() const {
+    return flights;
+}
+
 unsigned int Plane::getMaxWeightCapacity() const {
     return MAX_WEIGHT_CAPACITY;
 }
 
-unsigned short int Plane::getMaxPassengersCapacity() const {
+unsigned int Plane::getMaxPassengersCapacity() const {
     return MAX_PASSENGERS_CAPACITY;
 }
 
 void Plane::checkFlights() const {
-    //Do a toString for flights
+
     for (auto const &flight : flights) {
         cout << flight;
     }
@@ -40,7 +47,7 @@ void Plane::addFlight(const Flight &flight) {
 }
 
 void Plane::removeFlight(const Flight &flight) {
-    //Sort flights and then use binary search
+
     for(auto it = flights.begin() ; it != flights.end() ; it++) {
         if((*it) == flight) {
             flights.erase(it);
@@ -71,25 +78,25 @@ void Plane::checkMadeServices() {
         cout << *it;
 }
 
-bool Plane::operator == (const Plane &plane) {
+bool Plane::operator == (const Plane &plane) const {
     return LICENSE_PLATE == plane.getLicensePlate() && TYPE == plane.getType() && MAX_WEIGHT_CAPACITY == plane.getMaxWeightCapacity() &&
         MAX_PASSENGERS_CAPACITY == plane.getMaxPassengersCapacity();
 }
 
-bool Plane::operator < (const Plane &plane) {
+bool Plane::operator < (const Plane &plane) const {
     if (MAX_PASSENGERS_CAPACITY == plane.getMaxPassengersCapacity()) return MAX_WEIGHT_CAPACITY < plane.getMaxWeightCapacity();
     return MAX_PASSENGERS_CAPACITY < plane.getMaxPassengersCapacity();
 }
 
-unsigned short int Plane::getQuantityOfFlights() const {
+unsigned int Plane::getQuantityOfFlights() const {
     return flights.size();
 }
 
-unsigned short int Plane::getQuantityOfServicesToBeMade() const {
+unsigned int Plane::getQuantityOfServicesToBeMade() const {
     return servicesToBeMade.size();
 }
 
-unsigned short int Plane::getQuantityOfMadeServices() const {
+unsigned int Plane::getQuantityOfMadeServices() const {
     return madeServices.size();
 }
 

@@ -50,6 +50,7 @@ private:
     std::list<Service> madeServices;
     
 public:
+    Plane();
     /**
      * Main constructor
      * @param flights - a list that contains Flight type objects
@@ -58,7 +59,7 @@ public:
      * @param MAX_WEIGHT_CAPACITY - a int constant containing the max weight capacity of the plane
      * @param MAX_PASSENGERS_CAPACITY - a int constant containing the max people capacity of the plane
      */
-    Plane(std::list<Flight> flights,std::queue<Service> servicesToBeMade,std::list<Service> madeServices,std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned short int MAX_PASSENGERS_CAPACITY);
+    Plane(std::list<Flight> flights,std::queue<Service> servicesToBeMade,std::list<Service> madeServices,std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
     /**
      * Returns the plane's license plate
      * @return a string, containing the plane's license plate
@@ -73,27 +74,28 @@ public:
      * Returns the plane's maximum weight capacity
      * @return a string, containing the plane's maximum weight capacity
      */
+    list<Flight> getFlights() const;
     unsigned int getMaxWeightCapacity() const;
     /**
      * Returns the plane's maximum passengers capacity
      * @return a string, containing the plane's maximum passengers capacity
      */
-    unsigned short int getMaxPassengersCapacity() const;
+    unsigned int getMaxPassengersCapacity() const;
     /**
      * Returns the number of flights
      * @return an integer, containing the number of flights
      */
-    unsigned short int getQuantityOfFlights() const;
+    unsigned int getQuantityOfFlights() const;
     /**
      * Returns the number of services to be made
      * @return an integer, containing the number of services to be made
      */
-    unsigned short int getQuantityOfServicesToBeMade() const;
+    unsigned int getQuantityOfServicesToBeMade() const;
     /**
      * Returns the number of services done
      * @return an integer, containing the number of services done
      */
-    unsigned short int getQuantityOfMadeServices() const;
+    unsigned int getQuantityOfMadeServices() const;
     /**
      * Prints all flights of the plane
      */
@@ -135,14 +137,14 @@ public:
      * @param plane - object to be compared
      * @return true, if objects are the same, false if they are different
      */
-    bool operator == (const Plane &plane);
+    bool operator == (const Plane &plane) const ;
     /**
      * @overload
      * Boolean function that compares 2 objects of this class
      * @param plane - object to be compared
      * @return true, if
      */
-    bool operator < (const Plane &plane);
+    bool operator < (const Plane &plane) const ;
 };
 
 ostream & operator << (ostream & os, const Plane &plane);

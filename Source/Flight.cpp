@@ -3,10 +3,10 @@
 
 #include "Flight.h"
 
-Flight::Flight(Date flightDate,std::string flightID, short int flightDuration, Location origin, Location destination,
+Flight::Flight(Date flightDate,std::string flightID, short int flightDuration, string origin, string destination,
                short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers):
                flightDate(flightDate),
-               FLIGHT_ID(std::move(flightID)),
+               FLIGHT_ID(flightID),
                FLIGHT_DURATION(flightDuration),
                origin(origin),
                destination(destination){
@@ -31,11 +31,11 @@ short int Flight::getFlightDuration() const {
     return FLIGHT_DURATION;
 }
 
-Location Flight::getFlightOrigin() const {
+string Flight::getFlightOrigin() const {
     return origin;
 }
 
-Location Flight::getFlightDestination() const {
+string Flight::getFlightDestination() const {
     return destination;
 }
 
@@ -49,6 +49,10 @@ unsigned int Flight::getWeightQuantity() const {
 
 bool Flight::operator==(const Flight &flight) const {
     return FLIGHT_ID == flight.getFlightID();
+}
+
+bool Flight::operator < (const Flight &flight) const {
+    return this->getFlightID() < flight.getFlightID();
 }
 
 bool Flight::addPassenger(const Passenger& passenger, const int &MAX_PASSENGERS_CAPACITY, const int &MAX_WEIGHT_CAPACITY) {
@@ -92,8 +96,8 @@ void Flight::checkPassenger(const Passenger& passenger) const {
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
     os << "Flight ID: " << flight.getFlightID() << "\nFlight Date: " << flight.getFlightDate() << "\nFlight Duration: "
-    << flight.getFlightDuration() << "\nOrigin: " << flight.getFlightOrigin().city+" "+flight.getFlightOrigin().airport
-    << "\nDestination: "<< flight.getFlightDestination().city+" "+flight.getFlightDestination().airport <<
+    << flight.getFlightDuration() << "\nOrigin: " << flight.getFlightOrigin() << " " << flight.getFlightOrigin()
+    << "\nDestination: "<< flight.getFlightDestination() << " " << flight.getFlightDestination() <<
     "\nQuantity of Weight: " << flight.getWeightQuantity() << "\nQuantity Of Passengers: "
     << flight.getPassengersQuantity() << std::endl;
     return os;
