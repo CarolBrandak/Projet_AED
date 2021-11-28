@@ -42,13 +42,13 @@ class Passenger : public Person {
          * Set Passenger passport number
          * @param passportNumber Passenger's new passport number, a string passed by value
          */
-        void setPassportNumber(string passportNumber);
+        void setPassportNumber(const string &passportNumber);
 
         /**
          * Set Passenger luggage
          * @param luggage Passenger's new luggage, a vector with Luggage objects passed value
          */
-        void setLuggage(vector<Luggage> luggage);
+        void setLuggage(const vector<Luggage> &luggage);
 
         /**
          * Returns Passenger's passport number
