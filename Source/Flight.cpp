@@ -1,14 +1,10 @@
-//
-// Created by gabrieltmjr on 11/27/2021.
-//
-
+#ifndef PROJET_AED_FLIGHT_CPP
+#define PROJET_AED_FLIGHT_CPP
 
 #include "Flight.h"
 
-#include <iostream>
-
 Flight::Flight(Date flightDate,std::string flightID, short int flightDuration, Location origin, Location destination,
-               short int quantityOfPassengers, short int quantityOfWeight):
+               short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers):
                flightDate(flightDate),
                FLIGHT_ID(std::move(flightID)),
                FLIGHT_DURATION(flightDuration),
@@ -16,6 +12,7 @@ Flight::Flight(Date flightDate,std::string flightID, short int flightDuration, L
                destination(destination){
     this->quantityOfPassengers = quantityOfPassengers;
     this->quantityOfWeight = quantityOfWeight;
+    this->passengers = passengers;
 }
 
 std::string Flight::getFlightID() const {
@@ -26,7 +23,7 @@ Date Flight::getFlightDate() const {
     return flightDate;
 }
 
-void Flight::setFlightDate(Date newDate) {
+void Flight::setFlightDate(const Date &newDate) {
     this->flightDate = newDate;
 }
 
@@ -54,8 +51,10 @@ bool Flight::operator==(const Flight &flight) const {
     return FLIGHT_ID == flight.getFlightID();
 }
 
-bool Flight::addPassenger(const Passenger& passenger) {
-    if(quantityOfPassengers < MAX_PASSENGERS_CAPACITY) {
+bool Flight::addPassenger(const Passenger& passenger, const int &MAX_PASSENGERS_CAPACITY, const int &MAX_WEIGHT_CAPACITY) {
+    int auxWeight = passenger.getTotalWeight() + this->getWeightQuantity();
+
+    if(quantityOfPassengers < MAX_PASSENGERS_CAPACITY && auxWeight < MAX_WEIGHT_CAPACITY) {
         passengers.push_back(passenger);
         quantityOfPassengers++;
         return true;
@@ -63,7 +62,7 @@ bool Flight::addPassenger(const Passenger& passenger) {
     return false;
 }
 
-bool Flight::removePassenger(Passenger &passenger) {
+bool Flight::removePassenger(const Passenger &passenger) {
     //Sort and binary search
     size_t passengerIndex = INT_MAX;
     for(size_t i = 0; i < passengers.size(); i++) {
@@ -73,6 +72,7 @@ bool Flight::removePassenger(Passenger &passenger) {
         }
     }
     if(passengerIndex != INT_MAX) {
+        this->quantityOfWeight-=passengers.at(passengerIndex).getTotalWeight();
         passengers.erase(passengers.begin()+passengerIndex);
         return true;
     } else {
@@ -99,3 +99,5 @@ std::ostream & operator << (std::ostream & os, const Flight &flight) {
     << flight.getPassengersQuantity() << std::endl;
     return os;
 }
+
+#endif //PROJET_AED_FLIGHT_CPP

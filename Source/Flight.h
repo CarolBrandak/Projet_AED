@@ -2,10 +2,10 @@
 #define PROJET_AED_FLIGHT_H
 
 #include "Date.h"
-#include "Plane.h"
 #include "Passenger.h"
 #include <string>
 #include <vector>
+#include <iostream>
 
 /**
  * A struct that defines a location
@@ -19,7 +19,7 @@ struct Location {
 /**
  * A class to manage flights
  */
-class Flight: public Plane{
+class Flight{
 private:
     /**
      * @var FLIGHT_ID - a string constant variable that contains the ID of the flight
@@ -70,7 +70,7 @@ public:
      * @param quantityOfWeight - a short int variable that contains the quantity of weight in the flight
      */
     Flight(Date flightDate, std::string flightID, short int flightDuration, Location origin, Location destination,
-           short int quantityOfPassengers, short int quantityOfWeight);
+           short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers);
     /**
      * Returns the flight id
      * @return a string type, containing the flight's ID
@@ -85,7 +85,7 @@ public:
      * Sets the new date of the flight
      * @param newDate - a Date type object that contains the new date of the flight
      */
-    void setFlightDate(Date newDate);
+    void setFlightDate(const Date &newDate);
     /**
      * Returns the flight duration in minutes
      * @return an short int, containing the flight duration in minutes
@@ -117,13 +117,13 @@ public:
      * @param passenger
      * @return a boolean value that indicates if passenger was added or not
      */
-    bool addPassenger(const Passenger& passenger);
+    bool addPassenger(const Passenger& passenger, const int &MAX_PASSENGERS_CAPACITY, const int &MAX_WEIGHT_CAPACITY);
     /**
      * Removes a passenger to the flight
      * @param passenger
      * @return a boolean that indicates if passenger was removed or not
      */
-    bool removePassenger(Passenger &passenger);
+    bool removePassenger(const Passenger &passenger);
     /**
      * Prints out the information of all passengers
      */

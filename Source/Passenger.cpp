@@ -45,6 +45,10 @@ bool Passenger::operator < (const Passenger &passenger) const {
     return age < passenger.getAge();
 }
 
+bool Passenger::operator==(const Passenger &passenger) const {
+    return this->passportNumber == passenger.getPassportNumber();
+}
+
 ostream & operator << (ostream & os, const Passenger &passenger) {
     os << passenger.getName() << " " << passenger.getAge() << " " << passenger.getGender() << " " << passenger.getPassportNumber() << endl;
     return os;
