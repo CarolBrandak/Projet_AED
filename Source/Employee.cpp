@@ -29,7 +29,10 @@ bool Employee::operator < (const Employee &employee) const {
 }
 
 ostream & operator << (ostream & os, const Employee &employee) {
-    os << employee.getName() << " " << employee.getAge() << " " << employee.getGender() << " " << employee.getID() << endl;
+    os  << employee.getName()
+        << " " << employee.getAge()
+        << " " << employee.getGender()
+        << " " << employee.getID() << endl;
     return os;
 }
 

@@ -33,7 +33,7 @@ class Employee : public Person {
 
         /**
          * Set Employee ID
-         * @param ID Employee's new ID, a string passed by value
+         * @param ID Employee's new ID, a string passed by reference
          */
         void setID(const string &ID);
 
