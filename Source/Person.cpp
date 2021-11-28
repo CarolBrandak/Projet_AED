@@ -11,15 +11,15 @@ Person::Person(string name, short int age, char gender) {
     this->gender = toupper(gender);
 }
 
-void Person::setName(string name) {
+void Person::setName(const string &name) {
     this->name = name;
 }
 
-void Person::setAge(short int age) {
+void Person::setAge(const short int &age) {
     this->age = age;
 }
 
-void Person::setGender(char gender) {
+void Person::setGender(const char &gender) {
     this->gender = gender;
 }
 

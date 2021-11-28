@@ -65,19 +65,19 @@ class Date {
          * Set Date day
          * @param day Date's new day, a int passed by value
          */
-        void setDay(int day);
+        void setDay(const int &day);
 
         /**
          * Set Date month
          * @param month Date's new month, a int passed by value
          */
-        void setMonth(int month);
+        void setMonth(const int &month);
 
         /**
          * Set Date year
          * @param year Date's new year, a int passed by value
          */
-        void setYear(int year);
+        void setYear(const int &year);
 
         /**
          * @overload

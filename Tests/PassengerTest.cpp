@@ -56,3 +56,26 @@ TEST(Passenger, operators) {
         cout << passenger;
     }
 }
+
+TEST(Passenger, totalLuggageVolume) {
+
+    Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
+    Luggage commonLuggage1 = Luggage(45, v1, true);
+    Luggage commonLuggage2 = Luggage(3, v1, false);
+    vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
+    Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
+
+    ASSERT_EQ(56, e1.getTotalVolume());
+
+}
+
+TEST(Passenger, totalLuggageWeight) {
+
+    Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
+    Luggage commonLuggage1 = Luggage(45, v1, true);
+    Luggage commonLuggage2 = Luggage(3, v1, false);
+    vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
+    Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
+
+    ASSERT_EQ(48, e1.getTotalWeight());
+}

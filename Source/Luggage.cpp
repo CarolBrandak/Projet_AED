@@ -9,7 +9,7 @@ Luggage::Luggage(short int weight, Volume volume, bool planeHold) : WEIGHT(weigh
     this->planeHold = planeHold;
 }
 
-void Luggage::setPlaneHold(bool planeHold) {
+void Luggage::setPlaneHold(const bool &planeHold) {
     this->planeHold = planeHold;
 }
 

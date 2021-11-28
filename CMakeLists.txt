@@ -4,7 +4,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 # To run Code, available in "Source"
 add_executable(     Projet_AED main.cpp
-                    Source/FirstClass.cpp Source/FirstClass.h
                     Source/Employee.cpp Source/Employee.h
                     Source/Luggage.cpp Source/Luggage.h
                     Source/Passenger.cpp Source/Person.h
@@ -23,7 +22,6 @@ add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master/googletest/include)
 include_directories(lib/googletest-master/googlemock/include)
 #Se quisermos testar, colocar aqui também os ficheiros de teste
-#add_executable(Projet_AED main.cpp Source/FirstClass.cpp Tests/FirstClassTest.cpp)
 target_link_libraries(Projet_AED gtest gtest_main)
 
 # To run Doxygen, available in "Documentation"

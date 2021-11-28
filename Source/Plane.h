@@ -2,14 +2,17 @@
 #define PROJET_AED_PLANE_H
 
 #include <string>
-#include <vector>
+#include <utility>
+#include <list>
+#include <iostream>
+#include <iterator>
 #include "Flight.h"
 
 /**
  * A class to manage an Plane.
  */
-class Plane{
-protected:
+class Plane {
+private:
     /**
      * @var licensePlate - string variable that holds the Plane's license plate in the form "XX-XXX"
      * where each X is a letter.
@@ -34,30 +37,18 @@ protected:
     /**
      * @var flights - vector that holds all the flights programmed for the specific plane.
      */
-    std::vector<Flight> flights;
+    std::list<Flight> flights;
 
 public:
     /**
-     * A default constructor
-     */
-    Plane();
-    /**
      * Main constructor
-     * @param flights - a vector that contains Flight type objects
+     * @param flights - a list that contains Flight type objects
      * @param LICENSE_PLATE - a string containing license plate of the plane
      * @param TYPE - a string containing the type of the plane
      * @param MAX_WEIGHT_CAPACITY - a int constant containing the max weight capacity of the plane
      * @param MAX_PASSENGERS_CAPACITY - a int constant containing the max people capacity of the plane
      */
-    Plane(std::vector<Flight> flights,std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
-    /**
-     * Constructor to use when no vector is created
-     * @param LICENSE_PLATE - a string containing license plate of the plane
-     * @param TYPE - a string containing the type of the plane
-     * @param MAX_WEIGHT_CAPACITY - a int constant containing the max weight capacity of the plane
-     * @param MAX_PASSENGERS_CAPACITY - a int constant containing the max people capacity of the plane
-     */
-    Plane(std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
+    Plane(std::list<Flight> flights,std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
     /**
      * Returns the plane's license plate
      * @return a string, containing the plane's license plate
@@ -92,6 +83,10 @@ public:
      * @param flight - A Flight type object thar will be removed to vector flights
      */
     void removeFlight(Flight flight);
+
+    // plane1 == plane2
+    // plane1 < plane2 --> capacity
+    // cout << plane --> com todos os atributos
 };
 
 #endif //PROJET_AED_PLANE_H

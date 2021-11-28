@@ -42,13 +42,13 @@ class Passenger : public Person {
          * Set Passenger passport number
          * @param passportNumber Passenger's new passport number, a string passed by value
          */
-        void setPassportNumber(string passportNumber);
+        void setPassportNumber(const string &passportNumber);
 
         /**
          * Set Passenger luggage
          * @param luggage Passenger's new luggage, a vector with Luggage objects passed value
          */
-        void setLuggage(vector<Luggage> luggage);
+        void setLuggage(const vector<Luggage> &luggage);
 
         /**
          * Returns Passenger's passport number
@@ -61,6 +61,18 @@ class Passenger : public Person {
          * @return a vector, containing passenger's luggage objects
          */
         vector<Luggage> getLuggage();
+
+        /**
+         * Returns total weight of Passenger's luggage
+         * @return an integer value, containing passenger's luggage total weight
+         */
+        int getTotalWeight() const;
+
+        /**
+         * Returns total volume of Passenger's luggage
+         * @return an integer value, containing passenger's luggage total volume
+         */
+        int getTotalVolume() const;
 
         /**
          * @overload
