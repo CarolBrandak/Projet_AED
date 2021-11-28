@@ -28,6 +28,16 @@ class Date {
          */
         int year;
 
+        /**
+         * @var hour, an integer value
+         */
+        int hour;
+
+        /**
+         * @var minute, an integer value
+         */
+        int minute;
+
     public:
 
         /**
@@ -42,6 +52,16 @@ class Date {
          * @param year Date's year, a int passed by value
          */
         Date(int day, int month, int year);
+
+        /**
+        * Main constructor
+        * @param day Date's day, a int passed by value
+        * @param month Date's month, a int passed by value
+        * @param year Date's year, a int passed by value
+        * @param hour, Date's hour, a integer passed by value
+        * @param minute, Date's minute, a integer passed by value
+        */
+        Date(int day, int month, int year, int hour, int minute);
 
         /**
          * Return Date's day
@@ -62,6 +82,18 @@ class Date {
         int getYear() const;
 
         /**
+        * Return Date's hour
+        * @return a int, containing date's hour
+        */
+        int getHour() const;
+
+        /**
+         * Return Date's year
+         * @return a int, containing date's year
+        */
+        int getMinute() const;
+
+        /**
          * Set Date day
          * @param day Date's new day, a int passed by value
          */
@@ -78,6 +110,18 @@ class Date {
          * @param year Date's new year, a int passed by value
          */
         void setYear(const int &year);
+
+        /**
+         * Set Date hour
+         * @param hour, Date's new hour, a int passed by value
+         */
+        void setHour(const int &hour);
+
+        /**
+         * Set Date minute
+         * @param minute, Date's hew minute, a int passed by reference
+         */
+        void setMinute(const int &minute);
 
         /**
          * @overload
