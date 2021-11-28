@@ -1,34 +1,49 @@
-//
-// Created by gabrieltmjr on 11/28/2021.
-//
-
 #ifndef PROJET_AED_SERVICE_H
 #define PROJET_AED_SERVICE_H
 
+#include <string>
 #include "Date.h"
 #include "Employee.h"
 
 class Service {
-protected:
+private:
     /**
-     * @var serviceDate - Date type attribute that holds the date of the service
+     * @var serviceType - string type attribute that contains the type of service
+     */
+    const std::string serviceType;
+    /**
+     * @var serviceDate - Date type attribute that contains the date of the service
      */
     const Date serviceDate;
     /**
-     * @var responsible - Employee type attribute that holds the information of the responsible for the service
+     * @var responsible - Employee type attribute that contains the information of the responsible for the service
      */
     const Employee responsible;
 public:
     /**
+     * Constructor that creates an service
+     * @param serviceType - a string, containing the service type
+     * @param serviceDate - a Date type object containing the Date of the service
+     * @param responsible - a Employee type object, containing the Employee responsible for the service
+     */
+    Service(std::string serviceType, Date serviceDate, Employee responsible);
+    /**
+     * Returns the type of service
+     * @return a string, containing the service type
+     */
+    std::string getServiceType() const;
+    /**
      * Returns the date of the service
      * @return a Date object, containing the date of the service
      */
-    virtual Date getServiceDate() = 0;
+    Date getServiceDate() const;
     /**
      * Returns the responsible of the service
      * @return an Employee object, containing the employee responsible for the service
      */
-    virtual Employee getResponsible() = 0;
+    Employee getResponsible() const;
 };
+
+ostream & operator << (ostream & os, const Service &service);
 
 #endif //PROJET_AED_SERVICE_H

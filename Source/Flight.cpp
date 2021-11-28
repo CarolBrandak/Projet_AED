@@ -91,8 +91,7 @@ void Flight::checkPassenger(const Passenger& passenger) const {
 }
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
-    os << "Flight ID: " << flight.getFlightID() << "\nFlight Date: " << flight.getFlightDate().getDay() << "/" <<
-     flight.getFlightDate().getMonth() << "/" << flight.getFlightDate().getYear() << "\nFlight Duration: "
+    os << "Flight ID: " << flight.getFlightID() << "\nFlight Date: " << flight.getFlightDate() << "\nFlight Duration: "
     << flight.getFlightDuration() << "\nOrigin: " << flight.getFlightOrigin().city+" "+flight.getFlightOrigin().airport
     << "\nDestination: "<< flight.getFlightDestination().city+" "+flight.getFlightDestination().airport <<
     "\nQuantity of Weight: " << flight.getWeightQuantity() << "\nQuantity Of Passengers: "
