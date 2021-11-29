@@ -20,6 +20,10 @@ Date Service::getServiceDate() const {
     return serviceDate;
 }
 
+void Service::setResponsible(const Employee &employee) {
+    this->responsible = employee;
+}
+
 ostream & operator << (ostream & os, const Service &service) {
     os << "Type: " << service.getServiceType() <<
         "\nDate: " << service.getServiceDate() <<
