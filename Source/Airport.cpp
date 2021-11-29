@@ -78,6 +78,14 @@ bool Airport::operator < (const Airport &airport) const {
     return this->getName() < airport.getName();
 }
 
+bool byName(const Airport &a1, const Airport&a2) {
+    return a1.name < a2.name;
+}
+
+bool byQuantityOfPlanes(const Airport &a1, const Airport&a2) {
+    return a1.planes.size() < a2.planes.size();
+}
+
 ostream & operator << (ostream & os, const Airport &airport) {
     os  << "Name: " << airport.getName()
         << "\nCity: " << airport.getCity()

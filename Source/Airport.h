@@ -30,6 +30,8 @@ class Airport {
         void buyFlight(Flight flight, const vector<Passenger> &passengers);
         bool operator == (const Airport &airport) const;
         bool operator < (const Airport &airport) const;
+        friend bool byName(const Airport &a1, const Airport&a2);
+        friend bool byQuantityOfPlanes(const Airport &a1, const Airport&a2);
 };
 
 ostream & operator << (ostream & os, const Airport &airport);
