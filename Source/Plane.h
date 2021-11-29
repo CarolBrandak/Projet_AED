@@ -197,6 +197,14 @@ class Plane {
         * @return if p1 has less flights than p2
         */
         friend bool byNumberOfFlights(const Plane &p1, const Plane &p2);
+
+        /**
+        * Boolean function thar compares to objects of this class, based on their total number of services
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less services than p2
+        */
+        friend bool byNumberOfServices(const Plane &p1, const Plane &p2);
 };
 
 /**

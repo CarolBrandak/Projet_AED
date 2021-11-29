@@ -106,9 +106,21 @@ unsigned int Plane::getQuantityOfMadeServices() const {
     return madeServices.size();
 }
 
-bool byMaximumWeight(const Plane &p1, const Plane &p2);
-bool byMaximumCapacity(const Plane &p1, const Plane &p2);
-bool byNumberOfFlights(const Plane &p1, const Plane &p2);
+bool byMaximumWeight(const Plane &p1, const Plane &p2) {
+    return p1.MAX_WEIGHT_CAPACITY < p2.MAX_WEIGHT_CAPACITY;
+}
+
+bool byMaximumCapacity(const Plane &p1, const Plane &p2) {
+    return p1.MAX_PASSENGERS_CAPACITY < p2.MAX_PASSENGERS_CAPACITY;
+}
+
+bool byNumberOfFlights(const Plane &p1, const Plane &p2) {
+    return p1.getQuantityOfFlights() < p2.getQuantityOfFlights();
+}
+
+bool byNumberOfServices(const Plane &p1, const Plane &p2) {
+    return (p1.getQuantityOfMadeServices() + p1.getQuantityOfServicesToBeMade()) < (p2.getQuantityOfMadeServices() + p2.getQuantityOfServicesToBeMade());
+}
 
 ostream & operator << (ostream & os, const Plane &plane) {
     os << "License Plate: " << plane.getLicensePlate() <<
