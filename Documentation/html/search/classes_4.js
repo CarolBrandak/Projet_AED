@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['volume_0',['Volume',['../struct_volume.html',1,'']]]
+  ['luggage_0',['Luggage',['../class_luggage.html',1,'']]]
 ];

@@ -66,6 +66,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_luggage-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Luggage Class Reference</div></div>
 </div><!--header-->
@@ -79,8 +80,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adc5c29282fae82cf4739e4437a5545ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8770251c4bb6b3d9e67c883e653067dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#a8770251c4bb6b3d9e67c883e653067dd">Luggage</a> (short int weight, <a class="el" href="struct_volume.html">Volume</a> volume, bool planeHold)</td></tr>
 <tr class="separator:a8770251c4bb6b3d9e67c883e653067dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfda627d9a213bb6f5456acc36ceb838"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#abfda627d9a213bb6f5456acc36ceb838">setPlaneHold</a> (bool planeHold)</td></tr>
-<tr class="separator:abfda627d9a213bb6f5456acc36ceb838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7509c1a9fc66d18806ccada8dfce1d29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#a7509c1a9fc66d18806ccada8dfce1d29">setPlaneHold</a> (const bool &amp;planeHold)</td></tr>
+<tr class="separator:a7509c1a9fc66d18806ccada8dfce1d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d44cc6bb936c06b699285b928306dd"><td class="memItemLeft" align="right" valign="top">short int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#ae3d44cc6bb936c06b699285b928306dd">getWeight</a> () const</td></tr>
 <tr class="separator:ae3d44cc6bb936c06b699285b928306dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f6c5278248bedf60d7bd1c3786bd343"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#a4f6c5278248bedf60d7bd1c3786bd343">getVolume</a> () const</td></tr>
@@ -103,6 +104,13 @@ short int&#160;</td><td class="memItemRight" valign="bottom"><b>WEIGHT</b></td><
 <tr class="memitem:ae84d68376f0f16cd8e49245bfc5c20f6"><td class="memItemLeft" align="right" valign="top"><a id="ae84d68376f0f16cd8e49245bfc5c20f6" name="ae84d68376f0f16cd8e49245bfc5c20f6"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>planeHold</b></td></tr>
 <tr class="separator:ae84d68376f0f16cd8e49245bfc5c20f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a3c6efdef2f0535404dcb44589b9a4d7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#a3c6efdef2f0535404dcb44589b9a4d7c">byWeight</a> (const <a class="el" href="class_luggage.html">Luggage</a> &amp;l1, const <a class="el" href="class_luggage.html">Luggage</a> &amp;l2)</td></tr>
+<tr class="separator:a3c6efdef2f0535404dcb44589b9a4d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4323e7bb0d0f151b26ac2906b95713"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#a2c4323e7bb0d0f151b26ac2906b95713">byVolume</a> (const <a class="el" href="class_luggage.html">Luggage</a> &amp;l1, const <a class="el" href="class_luggage.html">Luggage</a> &amp;l2)</td></tr>
+<tr class="separator:a2c4323e7bb0d0f151b26ac2906b95713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class that represents a <a class="el" href="class_passenger.html">Passenger</a>'s luggage </p>
@@ -182,7 +190,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>planeHold</b></td></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Returns Plane Hold </p><dl class="section return"><dt>Returns</dt><dd>a boolean that check if this luggage it's hand luggage </dd></dl>
+<p >Returns <a class="el" href="class_plane.html">Plane</a> Hold </p><dl class="section return"><dt>Returns</dt><dd>a boolean that check if this luggage it's hand luggage </dd></dl>
 
 </div>
 </div>
@@ -272,8 +280,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>planeHold</b></td></t
 
 </div>
 </div>
-<a id="abfda627d9a213bb6f5456acc36ceb838" name="abfda627d9a213bb6f5456acc36ceb838"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfda627d9a213bb6f5456acc36ceb838">&#9670;&nbsp;</a></span>setPlaneHold()</h2>
+<a id="a7509c1a9fc66d18806ccada8dfce1d29" name="a7509c1a9fc66d18806ccada8dfce1d29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7509c1a9fc66d18806ccada8dfce1d29">&#9670;&nbsp;</a></span>setPlaneHold()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,7 +289,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>planeHold</b></td></t
         <tr>
           <td class="memname">void Luggage::setPlaneHold </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
           <td class="paramname"><em>planeHold</em></td><td>)</td>
           <td></td>
         </tr>
@@ -289,10 +297,99 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>planeHold</b></td></t
 </div><div class="memdoc">
 <p >Set <a class="el" href="class_luggage.html">Luggage</a> plane hold </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">planeHold</td><td><a class="el" href="class_luggage.html">Luggage</a>'s new plane hold, a boolean passed by value </td></tr>
+    <tr><td class="paramname">planeHold</td><td><a class="el" href="class_luggage.html">Luggage</a>'s new plane hold, a boolean passed by reference </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a2c4323e7bb0d0f151b26ac2906b95713" name="a2c4323e7bb0d0f151b26ac2906b95713"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4323e7bb0d0f151b26ac2906b95713">&#9670;&nbsp;</a></span>byVolume</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool byVolume </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_luggage.html">Luggage</a> &amp;&#160;</td>
+          <td class="paramname"><em>l1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_luggage.html">Luggage</a> &amp;&#160;</td>
+          <td class="paramname"><em>l2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Boolean function thar compares to objects of this class, based on their volume </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l1</td><td>first luggage that will be compared </td></tr>
+    <tr><td class="paramname">l2</td><td>second luggage object that will be compared </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if l1 has less volume than l2 </dd></dl>
+
+</div>
+</div>
+<a id="a3c6efdef2f0535404dcb44589b9a4d7c" name="a3c6efdef2f0535404dcb44589b9a4d7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c6efdef2f0535404dcb44589b9a4d7c">&#9670;&nbsp;</a></span>byWeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool byWeight </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_luggage.html">Luggage</a> &amp;&#160;</td>
+          <td class="paramname"><em>l1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_luggage.html">Luggage</a> &amp;&#160;</td>
+          <td class="paramname"><em>l2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Boolean function thar compares to objects of this class, based on their weight </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l1</td><td>first luggage that will be compared </td></tr>
+    <tr><td class="paramname">l2</td><td>second luggage object that will be compared </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if l1 has less weight than l2 </dd></dl>
 
 </div>
 </div>

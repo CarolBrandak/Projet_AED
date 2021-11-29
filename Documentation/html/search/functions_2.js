@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['getage_0',['getAge',['../class_person.html#a30bbad542ac905450717ebb1c4f5a019',1,'Person']]],
-  ['getgender_1',['getGender',['../class_person.html#a4a880800be111d460d6d3723db65e846',1,'Person']]],
-  ['getid_2',['getID',['../class_employee.html#a447564fb390258cc26715cac3eae9773',1,'Employee']]],
-  ['getluggage_3',['getLuggage',['../class_passenger.html#a0007f95e7743527edb8641aae6a4296f',1,'Passenger']]],
-  ['getname_4',['getName',['../class_person.html#a9db2e2ccfc6cfa0d7979613ec2aaa922',1,'Person']]],
-  ['getpassportnumber_5',['getPassportNumber',['../class_passenger.html#af81ea428286e4150924eda6bf3b8b585',1,'Passenger']]],
-  ['getplanehold_6',['getPlaneHold',['../class_luggage.html#a62ed07a6f4aab30f14b2061bf4d935c5',1,'Luggage']]],
-  ['getvolume_7',['getVolume',['../class_luggage.html#a4f6c5278248bedf60d7bd1c3786bd343',1,'Luggage']]],
-  ['getweight_8',['getWeight',['../class_luggage.html#ae3d44cc6bb936c06b699285b928306dd',1,'Luggage']]]
+  ['checkflights_0',['checkFlights',['../class_plane.html#ad23607b1e6010bd5faf91106fd89d7ef',1,'Plane']]],
+  ['checkmadeservices_1',['checkMadeServices',['../class_plane.html#a2f5fbf8b926e8c5ee238b43f78264498',1,'Plane']]],
+  ['checkpassenger_2',['checkPassenger',['../class_flight.html#a822c9222317d88d21f13bd42778fae8a',1,'Flight']]],
+  ['checkpassengers_3',['checkPassengers',['../class_flight.html#a2807bc636f7dd20b7bb04f456b5b1ae2',1,'Flight']]],
+  ['checkplanes_4',['checkPlanes',['../class_airport.html#a12834075bd35788d6c7da9e701b72665',1,'Airport']]],
+  ['checkservicestobemade_5',['checkServicesToBeMade',['../class_plane.html#a1d58f86f2b321c6cebbc268cdf90638f',1,'Plane']]]
 ];

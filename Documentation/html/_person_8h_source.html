@@ -81,38 +81,41 @@ $(function() {
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_person.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_person.html">Person</a> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordtype">string</span> name;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keywordtype">short</span> <span class="keywordtype">int</span> age;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordtype">char</span> gender;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">string</span> name;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_function" href="class_person.html#a0397c6f89fafc12e738923f612bc41a3">Person</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">short</span> <span class="keywordtype">int</span> age;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_function" href="class_person.html#a0397c6f89fafc12e738923f612bc41a3">Person</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">short</span> <span class="keywordtype">int</span> age, <span class="keywordtype">char</span> gender);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_person.html#a9fa68f82727e6de0137b3c1b1537a0bf">setName</a>(<span class="keywordtype">string</span> name);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_person.html#ab45b8bf14b937d6c9a43b7c27bd80bf1">setAge</a>(<span class="keywordtype">short</span> <span class="keywordtype">int</span> age);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">char</span> gender;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_function" href="class_person.html#a0397c6f89fafc12e738923f612bc41a3">Person</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_function" href="class_person.html#a0397c6f89fafc12e738923f612bc41a3">Person</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">short</span> <span class="keywordtype">int</span> age, <span class="keywordtype">char</span> gender);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_person.html#acc9fa3bb25decbe01f119214b0ad3c48">setGender</a>(<span class="keywordtype">char</span> gender);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_person.html#a4b39c1f5d600b1e41ef95c09f4b42935">setName</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_person.html#a9db2e2ccfc6cfa0d7979613ec2aaa922">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_person.html#aabd5b71bb4270ee87a09229cc360bfd9">setAge</a>(<span class="keyword">const</span> <span class="keywordtype">short</span> <span class="keywordtype">int</span> &amp;age);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_person.html#a30bbad542ac905450717ebb1c4f5a019">getAge</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_person.html#aaa0dc4f09c879f7a9f806ec58a171c29">setGender</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> &amp;gender);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">char</span> <a class="code hl_function" href="class_person.html#a4a880800be111d460d6d3723db65e846">getGender</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// Person_H</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_person.html#a9db2e2ccfc6cfa0d7979613ec2aaa922">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_person.html#a30bbad542ac905450717ebb1c4f5a019">getAge</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordtype">char</span> <a class="code hl_function" href="class_person.html#a4a880800be111d460d6d3723db65e846">getGender</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif </span><span class="comment">// Person_H</span></div>
 <div class="ttc" id="aclass_person_html"><div class="ttname"><a href="class_person.html">Person</a></div><div class="ttdef"><b>Definition:</b> Person.h:12</div></div>
 <div class="ttc" id="aclass_person_html_a0397c6f89fafc12e738923f612bc41a3"><div class="ttname"><a href="class_person.html#a0397c6f89fafc12e738923f612bc41a3">Person::Person</a></div><div class="ttdeci">Person()</div><div class="ttdef"><b>Definition:</b> Person.cpp:6</div></div>
 <div class="ttc" id="aclass_person_html_a30bbad542ac905450717ebb1c4f5a019"><div class="ttname"><a href="class_person.html#a30bbad542ac905450717ebb1c4f5a019">Person::getAge</a></div><div class="ttdeci">short int getAge() const</div><div class="ttdef"><b>Definition:</b> Person.cpp:30</div></div>
 <div class="ttc" id="aclass_person_html_a4a880800be111d460d6d3723db65e846"><div class="ttname"><a href="class_person.html#a4a880800be111d460d6d3723db65e846">Person::getGender</a></div><div class="ttdeci">char getGender() const</div><div class="ttdef"><b>Definition:</b> Person.cpp:34</div></div>
+<div class="ttc" id="aclass_person_html_a4b39c1f5d600b1e41ef95c09f4b42935"><div class="ttname"><a href="class_person.html#a4b39c1f5d600b1e41ef95c09f4b42935">Person::setName</a></div><div class="ttdeci">void setName(const string &amp;name)</div><div class="ttdef"><b>Definition:</b> Person.cpp:14</div></div>
 <div class="ttc" id="aclass_person_html_a9db2e2ccfc6cfa0d7979613ec2aaa922"><div class="ttname"><a href="class_person.html#a9db2e2ccfc6cfa0d7979613ec2aaa922">Person::getName</a></div><div class="ttdeci">string getName() const</div><div class="ttdef"><b>Definition:</b> Person.cpp:26</div></div>
-<div class="ttc" id="aclass_person_html_a9fa68f82727e6de0137b3c1b1537a0bf"><div class="ttname"><a href="class_person.html#a9fa68f82727e6de0137b3c1b1537a0bf">Person::setName</a></div><div class="ttdeci">void setName(string name)</div><div class="ttdef"><b>Definition:</b> Person.cpp:14</div></div>
-<div class="ttc" id="aclass_person_html_ab45b8bf14b937d6c9a43b7c27bd80bf1"><div class="ttname"><a href="class_person.html#ab45b8bf14b937d6c9a43b7c27bd80bf1">Person::setAge</a></div><div class="ttdeci">void setAge(short int age)</div><div class="ttdef"><b>Definition:</b> Person.cpp:18</div></div>
-<div class="ttc" id="aclass_person_html_acc9fa3bb25decbe01f119214b0ad3c48"><div class="ttname"><a href="class_person.html#acc9fa3bb25decbe01f119214b0ad3c48">Person::setGender</a></div><div class="ttdeci">void setGender(char gender)</div><div class="ttdef"><b>Definition:</b> Person.cpp:22</div></div>
+<div class="ttc" id="aclass_person_html_aaa0dc4f09c879f7a9f806ec58a171c29"><div class="ttname"><a href="class_person.html#aaa0dc4f09c879f7a9f806ec58a171c29">Person::setGender</a></div><div class="ttdeci">void setGender(const char &amp;gender)</div><div class="ttdef"><b>Definition:</b> Person.cpp:22</div></div>
+<div class="ttc" id="aclass_person_html_aabd5b71bb4270ee87a09229cc360bfd9"><div class="ttname"><a href="class_person.html#aabd5b71bb4270ee87a09229cc360bfd9">Person::setAge</a></div><div class="ttdeci">void setAge(const short int &amp;age)</div><div class="ttdef"><b>Definition:</b> Person.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
