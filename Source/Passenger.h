@@ -40,13 +40,13 @@ class Passenger : public Person {
 
         /**
          * Set Passenger passport number
-         * @param passportNumber Passenger's new passport number, a string passed by value
+         * @param passportNumber Passenger's new passport number, a string passed by reference
          */
         void setPassportNumber(const string &passportNumber);
 
         /**
          * Set Passenger luggage
-         * @param luggage Passenger's new luggage, a vector with Luggage objects passed value
+         * @param luggage Passenger's new luggage, a vector with Luggage objects passed reference
          */
         void setLuggage(const vector<Luggage> &luggage);
 
@@ -89,6 +89,30 @@ class Passenger : public Person {
         * @return if the current object is less than object passed by reference
         */
         bool operator < (const Passenger &passenger) const;
+
+        /**
+         * Boolean function thar compares to objects of this class, based on their Name
+         * @param p1 first person that will be compared
+         * @param p2 second person that will be compared
+         * @return if p1 has less name than p2, based on alphabetic order
+         */
+        friend bool byName(const Passenger &p1, const Passenger &p2);
+
+        /**
+        * Boolean function thar compares to objects of this class, based on their age
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less age than p2
+        */
+        friend bool byAge(const Passenger &p1, const Passenger &p2);
+
+        /**
+        * Boolean function thar compares to objects of this class, based on their total luggage's weight
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less luggage name than p2
+        */
+        friend bool byLuggage(const Passenger &p1, const Passenger &p2);
 };
 
 /**
