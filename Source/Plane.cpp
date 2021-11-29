@@ -67,7 +67,7 @@ void Plane::addService(const Service &service) {
     servicesToBeMade.push(service);
 }
 
-void Plane::setServiceAsDone() {
+void Plane::setNextServiceAsDone() {
     madeServices.push_back(servicesToBeMade.front());
     servicesToBeMade.pop();
 }
