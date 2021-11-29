@@ -1,5 +1,5 @@
-#ifndef PROJET_AED_SERVICE_H
-#define PROJET_AED_SERVICE_H
+#ifndef PROJECT_AED_SERVICE_H
+#define PROJECT_AED_SERVICE_H
 
 #include <string>
 #include "Date.h"
@@ -44,6 +44,13 @@ public:
     Employee getResponsible() const;
 };
 
+/**
+ * @overload
+ * Function that returns all characteristics of the Service being manipulated
+ * @param ostream object, passed by reference
+ * @param service object, passed by reference
+ * @return ostream object
+ */
 ostream & operator << (ostream & os, const Service &service);
 
-#endif //PROJET_AED_SERVICE_H
+#endif // PROJECT_AED_SERVICE_H

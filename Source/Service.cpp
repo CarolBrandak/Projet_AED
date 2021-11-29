@@ -1,5 +1,5 @@
-#ifndef PROJET_AED_SERVICE_CPP
-#define PROJET_AED_SERVICE_CPP
+#ifndef PROJECT_AED_SERVICE_CPP
+#define PROJECT_AED_SERVICE_CPP
 
 #include "Service.h"
 
@@ -27,4 +27,4 @@ ostream & operator << (ostream & os, const Service &service) {
     return os;
 }
 
-#endif //PROJET_AED_SERVICE_CPP
+#endif // PROJECT_AED_SERVICE_CPP
