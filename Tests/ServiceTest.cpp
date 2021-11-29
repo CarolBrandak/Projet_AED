@@ -18,7 +18,11 @@ TEST(Service, gettersAndSetters) {
 
     // Setters
     s1.setResponsible(e2);
+
+    // Na realidade este comando não modifica o nome do funcionário, mas deveria :(
     s1.getResponsible().setName("Joana");
+    cout << s1.getResponsible().getName();
+
     ASSERT_EQ(e2, s1.getResponsible());
     ASSERT_EQ("Joana", s1.getResponsible().getName());
 
