@@ -1,5 +1,5 @@
-#ifndef PROJET_AED_AIRPORT_H
-#define PROJET_AED_AIRPORT_H
+#ifndef PROJECT_AED_AIRPORT_H
+#define PROJECT_AED_AIRPORT_H
 
 #include <iostream>
 #include <vector>
@@ -145,4 +145,4 @@ class Airport {
  */
 ostream & operator << (ostream & os, const Airport &airport);
 
-#endif //PROJET_AED_AIRPORT_H
+#endif // PROJECT_AED_AIRPORT_H

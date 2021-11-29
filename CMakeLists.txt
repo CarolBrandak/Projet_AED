@@ -23,7 +23,6 @@ add_executable(     Projet_AED main.cpp
 add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master/googletest/include)
 include_directories(lib/googletest-master/googlemock/include)
-#Se quisermos testar, colocar aqui também os ficheiros de teste
 target_link_libraries(Projet_AED gtest gtest_main)
 
 # To run Doxygen, available in "Documentation"
