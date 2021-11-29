@@ -1,4 +1,16 @@
-//
-// Created by Fábio Sá on 29/11/2021.
-//
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include "../Source/Service.h"
 
+using testing::Eq;
+
+TEST(Service, gettersAndSetters) {
+
+
+
+    // Getters
+
+
+    // Setters
+
+}
