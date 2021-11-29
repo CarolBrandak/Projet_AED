@@ -27,7 +27,7 @@ class Airport {
         void addPlane(const Plane &plane);
         void removePlane(const Plane &plane);
         void showPossibleFlights(const vector<Flight> &possibleFlights);
-        void buyFlight(Flight flight, const vector<Passenger> &passengers);
+        bool buyTicket(Flight flight, const vector<Passenger> &passengers);
         bool operator == (const Airport &airport) const;
         bool operator < (const Airport &airport) const;
         friend bool byName(const Airport &a1, const Airport&a2);

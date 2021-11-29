@@ -143,6 +143,13 @@ class Plane {
         void addService(const Service &service);
 
         /**
+         * A bool function that returns if the flight passed by parameter exists in this plane
+         * @param flight - a Flight object that will be searched
+         * @return if flight exists in current plane
+         */
+        bool findFlight(const Flight &flight);
+
+        /**
          * Sets a service as done by popping it from the servicesToBeMade queue and adding it
          * to the madeServices list.
          */

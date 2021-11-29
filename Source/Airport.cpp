@@ -1,5 +1,5 @@
-#ifndef PROJET_AED_AIRPORT_CPP
-#define PROJET_AED_AIRPORT_CPP
+#ifndef PROJECT_AED_AIRPORT_CPP
+#define PROJECT_AED_AIRPORT_CPP
 
 #include "Airport.h"
 
@@ -31,7 +31,6 @@ vector<Flight> Airport::getPossibleFlights(const string &city, const Date &date)
             }
         }
     }
-
     return possibleFlights;
 }
 
@@ -47,15 +46,12 @@ void Airport::addPlane(const Plane &plane) {
 
 void Airport::removePlane(const Plane &plane) {
 
-    cout << "Teste" << endl;
-
     for (auto it = planes.begin() ; it != planes.end() ; it++) {
         if (*it == plane) {
             planes.erase(it);
-            return;
+            break;
         }
     }
-
 }
 
 void Airport::showPossibleFlights(const vector<Flight> &possibleFlights) {
@@ -64,9 +60,36 @@ void Airport::showPossibleFlights(const vector<Flight> &possibleFlights) {
     }
 }
 
-void Airport::buyFlight(Flight flight, const vector<Passenger> &passengers) {
+bool Airport::buyTicket(Flight flight, const vector<Passenger> &passengers) {
 
-    cout << "Ainda não implementada!" << endl;
+    int totalPassengers = passengers.size();
+    int totalPassengersWeight = 0;
+
+    for (Passenger passenger : passengers) totalPassengersWeight += passenger.getTotalWeight();
+
+    for (Plane plane : planes) {
+
+        bool found = plane.findFlight(flight);
+        if (found) {
+
+            int futureTotalPassengers = totalPassengers + flight.getPassengersQuantity();
+            int futureTotalWeight = totalPassengersWeight + flight.getWeightQuantity();
+
+            if (futureTotalPassengers <= plane.getMaxPassengersCapacity() &&
+                futureTotalWeight <= plane.getMaxWeightCapacity() ) {
+
+                flight.addPassengers(passengers);
+                if (passengers.size() == 1) cout << "Bilhete comprado com sucesso, ou algo do tipo" << endl;
+                else cout << "Bilhetes comprados com sucesso, ou algo" << endl;
+                return true;
+
+            } else {
+                cout << "Não podes ir no voo que indicaste -> levas peso a mais ou pessoas a mais!" << endl;
+                return false;
+            }
+        }
+    }
+    return false;
 }
 
 bool Airport::operator == (const Airport &airport) const {
@@ -93,4 +116,4 @@ ostream & operator << (ostream & os, const Airport &airport) {
     return os;
 }
 
-#endif //PROJET_AED_AIRPORT_CPP
+#endif // PROJECT_AED_AIRPORT_CPP

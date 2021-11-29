@@ -63,6 +63,13 @@ void Plane::removeFlight(const Flight &flight) {
     }
 }
 
+bool Plane::findFlight(const Flight &flight) {
+    for (Flight f : flights) {
+        if (f == flight) return true;
+    }
+    return false;
+}
+
 void Plane::addService(const Service &service) {
     servicesToBeMade.push(service);
 }
