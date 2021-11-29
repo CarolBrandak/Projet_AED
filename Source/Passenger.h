@@ -110,7 +110,7 @@ class Passenger : public Person {
         * Boolean function thar compares to objects of this class, based on their total luggage's weight
         * @param p1 first person that will be compared
         * @param p2 second person that will be compared
-        * @return if p1 has less luggage name than p2
+        * @return if p1 has less luggage weight than p2
         */
         friend bool byLuggage(const Passenger &p1, const Passenger &p2);
 };

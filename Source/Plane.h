@@ -177,7 +177,7 @@ class Plane {
          * @overload
          * Boolean function that compares 2 objects of this class
          * @param plane - object to be compared
-         * @return true, if first object have
+         * @return true, if first plane has less weight than second plane
          */
         bool operator < (const Plane &plane) const ;
 
