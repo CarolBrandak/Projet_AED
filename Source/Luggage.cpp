@@ -34,6 +34,14 @@ bool Luggage::operator < (const Luggage &luggage) const {
     return WEIGHT < luggage.getWeight();
 }
 
+bool byWeight(const Luggage &l1, const Luggage &l2) {
+    return l1.getWeight() < l2.getWeight();
+}
+
+bool byVolume(const Luggage &l1, const Luggage &l2) {
+    return l1.getVolume() < l2.getVolume();
+}
+
 ostream & operator << (ostream & os, const Luggage &luggage) {
     os << luggage.getWeight() << " " << luggage.getVolume() << " " << luggage.getPlaneHold() << endl;
     return os;

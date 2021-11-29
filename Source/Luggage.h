@@ -64,7 +64,7 @@ class Luggage {
 
         /**
          * Set Luggage plane hold
-         * @param planeHold Luggage's new plane hold, a boolean passed by value
+         * @param planeHold Luggage's new plane hold, a boolean passed by reference
          */
         void setPlaneHold(const bool &planeHold);
 
@@ -101,6 +101,22 @@ class Luggage {
          * @return if the current object is less than object passed by reference
          */
         bool operator < (const Luggage &luggage) const;
+
+        /**
+         * Boolean function thar compares to objects of this class, based on their weight
+         * @param l1 first luggage that will be compared
+         * @param l2 second luggage object that will be compared
+         * @return if l1 has less weight than l2
+         */
+        friend bool byWeight(const Luggage &l1, const Luggage &l2);
+
+        /**
+         * Boolean function thar compares to objects of this class, based on their volume
+         * @param l1 first luggage that will be compared
+         * @param l2 second luggage object that will be compared
+         * @return if l1 has less volume than l2
+         */
+        friend bool byVolume(const Luggage &l1, const Luggage &l2);
 };
 
 /**

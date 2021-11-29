@@ -24,6 +24,7 @@ ostream & operator << (ostream & os, const Service &service) {
     os << "Type: " << service.getServiceType() <<
         "\nDate: " << service.getServiceDate() <<
         "\nResponsible: " << service.getResponsible() << std::endl;
+    return os;
 }
 
 #endif //PROJET_AED_SERVICE_CPP
