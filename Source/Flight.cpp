@@ -1,18 +1,19 @@
-#ifndef PROJET_AED_FLIGHT_CPP
-#define PROJET_AED_FLIGHT_CPP
+#ifndef PROJECT_AED_FLIGHT_CPP
+#define PROJECT_AED_FLIGHT_CPP
 
 #include "Flight.h"
 
 Flight::Flight(Date flightDate,std::string flightID, short int flightDuration, string origin, string destination,
-               short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers):
+                    short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers, vector<Luggage> luggage):
                flightDate(flightDate),
                FLIGHT_ID(flightID),
                FLIGHT_DURATION(flightDuration),
                origin(origin),
-               destination(destination){
+               destination(destination) {
     this->quantityOfPassengers = quantityOfPassengers;
     this->quantityOfWeight = quantityOfWeight;
     this->passengers = passengers;
+    this->luggage = luggage;
 }
 
 std::string Flight::getFlightID() const {
@@ -71,32 +72,36 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
-bool Flight::addPassenger(const Passenger& passenger, const int &MAX_PASSENGERS_CAPACITY, const int &MAX_WEIGHT_CAPACITY) {
-    int auxWeight = passenger.getTotalWeight() + this->getWeightQuantity();
+void Flight::addPassengers(const vector<Passenger> &toPush) {
 
-    if(quantityOfPassengers < MAX_PASSENGERS_CAPACITY && auxWeight < MAX_WEIGHT_CAPACITY) {
+    for (Passenger passenger : passengers) {
+        this->quantityOfPassengers++;
+        this->quantityOfWeight += passenger.getTotalWeight();
         passengers.push_back(passenger);
-        quantityOfPassengers++;
-        return true;
-    }
-    return false;
-}
-
-bool Flight::removePassenger(const Passenger &passenger) {
-    //Sort and binary search
-    size_t passengerIndex = INT_MAX;
-    for(size_t i = 0; i < passengers.size(); i++) {
-        if(passengers.at(i) == passenger) {
-            passengerIndex = i;
-            break;
+        for (Luggage l : passenger.getLuggage()) {
+            luggage.push_back(l);
         }
     }
-    if(passengerIndex != INT_MAX) {
-        this->quantityOfWeight-=passengers.at(passengerIndex).getTotalWeight();
-        passengers.erase(passengers.begin()+passengerIndex);
-        return true;
-    } else {
-        return false;
+}
+
+void Flight::removePassenger(const Passenger &passenger) {
+
+    for (Luggage l : passenger.getLuggage()) {
+        for (vector<Luggage>::iterator it = luggage.begin() ; it != luggage.end() ; it++) {
+            if (l == *it) {
+                luggage.erase(it);
+                it--;
+            }
+        }
+    }
+
+    for (vector<Passenger>::iterator it = passengers.begin() ; it != passengers.end() ; it++) {
+        if (passenger == *it) {
+            this->quantityOfPassengers--;
+            this->quantityOfWeight -= passenger.getTotalWeight();
+            passengers.erase(it);
+            break;
+        }
     }
 }
 
@@ -111,12 +116,14 @@ void Flight::checkPassenger(const Passenger& passenger) const {
 }
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
-    os << "Flight ID: " << flight.getFlightID() << "\nFlight Date: " << flight.getFlightDate() << "\nFlight Duration: "
-    << flight.getFlightDuration() << "\nOrigin: " << flight.getFlightOrigin() << " " << flight.getFlightOrigin()
-    << "\nDestination: "<< flight.getFlightDestination() << " " << flight.getFlightDestination() <<
-    "\nQuantity of Weight: " << flight.getWeightQuantity() << "\nQuantity Of Passengers: "
-    << flight.getPassengersQuantity() << std::endl;
+    os  << "Flight ID: " << flight.getFlightID()
+        << "\nFlight Date: " << flight.getFlightDate()
+        << "\nFlight Duration: " << flight.getFlightDuration()
+        << "\nOrigin: " << flight.getFlightOrigin()
+        << "\nDestination: "<< flight.getFlightDestination()
+        << "\nQuantity of Weight: " << flight.getWeightQuantity()
+        << "\nQuantity Of Passengers: " << flight.getPassengersQuantity() << endl;
     return os;
 }
 
-#endif //PROJET_AED_FLIGHT_CPP
+#endif // PROJECT_AED_FLIGHT_CPP

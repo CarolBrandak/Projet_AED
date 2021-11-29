@@ -58,7 +58,7 @@ class Flight {
         /**
          * @var luggages - a Luggage type vector that contains all luggage in the flight
          */
-        std::vector<Luggage> luggages;
+        std::vector<Luggage> luggage;
 
     public:
 
@@ -77,10 +77,10 @@ class Flight {
          * @param quantityOfPassengers - a short int variable that contains the quantity of passengers in the flight
          * @param quantityOfWeight - a short int variable that contains the quantity of weight in the flight
          * @param passengers - a Passenger type vector that contains all passengers in the flight
-         * @param luggages - a Luggage type vector that contains all luggage in the flight
+         * @param luggage - a Luggage type vector that contains all luggage in the flight
          */
         Flight(Date flightDate, std::string flightID, short int flightDuration, string origin, string destination,
-               short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers, vector<Luggage> luggages);
+               short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers, vector<Luggage> luggage);
 
         /**
          * Returns the flight id
@@ -132,9 +132,9 @@ class Flight {
 
         /**
          * Adds passengers to the flight
-         * @param passengers - Passenger type vector that contains all passengers that will be added in flight
+         * @param toPush - Passenger type vector that contains all passengers that will be added in flight
          */
-        void addPassengers(const vector<Passenger>& passengers);
+        void addPassengers(const vector<Passenger>& toPush);
 
         /**
          * Removes a passenger to the flight

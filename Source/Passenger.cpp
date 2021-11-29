@@ -24,7 +24,7 @@ string Passenger::getPassportNumber() const {
     return this->passportNumber;
 }
 
-vector<Luggage> Passenger::getLuggage() {
+vector<Luggage> Passenger::getLuggage() const {
     return this->luggage;
 }
 

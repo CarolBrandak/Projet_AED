@@ -60,7 +60,7 @@ class Passenger : public Person {
          * Returns Passenger's luggage
          * @return a vector, containing passenger's luggage objects
          */
-        vector<Luggage> getLuggage();
+        vector<Luggage> getLuggage() const;
 
         /**
          * Returns total weight of Passenger's luggage
