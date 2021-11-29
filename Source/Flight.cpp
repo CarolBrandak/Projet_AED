@@ -55,6 +55,22 @@ bool Flight::operator < (const Flight &flight) const {
     return this->getFlightID() < flight.getFlightID();
 }
 
+bool byNumberOfPassengers(const Flight &f1, const Flight &f2) {
+    return f1.quantityOfPassengers < f2.quantityOfPassengers;
+}
+
+bool byTotalWeight(const Flight &f1, const Flight &f2) {
+    return f1.quantityOfWeight < f2.quantityOfWeight;
+}
+
+bool byDate(const Flight &f1, const Flight &f2) {
+    return f1.flightDate < f2.flightDate;
+}
+
+bool byDuration(const Flight &f1, const Flight &f2) {
+    return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
+}
+
 bool Flight::addPassenger(const Passenger& passenger, const int &MAX_PASSENGERS_CAPACITY, const int &MAX_WEIGHT_CAPACITY) {
     int auxWeight = passenger.getTotalWeight() + this->getWeightQuantity();
 
