@@ -1,5 +1,5 @@
-#ifndef PROJET_AED_PLANE_H
-#define PROJET_AED_PLANE_H
+#ifndef PROJECT_AED_PLANE_H
+#define PROJECT_AED_PLANE_H
 
 #include <string>
 #include <utility>
@@ -170,12 +170,42 @@ class Plane {
          * @overload
          * Boolean function that compares 2 objects of this class
          * @param plane - object to be compared
-         * @return true, if
+         * @return true, if first object have
          */
         bool operator < (const Plane &plane) const ;
+
+        /**
+        * Boolean function thar compares to objects of this class, based on their total weight capacity
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less weight capacity than p2
+        */
+        friend bool byMaximumWeight(const Plane &p1, const Plane &p2);
+
+        /**
+        * Boolean function thar compares to objects of this class, based on their total capacity
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less capacity than p2
+        */
+        friend bool byMaximumCapacity(const Plane &p1, const Plane &p2);
+
+        /**
+        * Boolean function thar compares to objects of this class, based on their total number of flights
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less flights than p2
+        */
+        friend bool byNumberOfFlights(const Plane &p1, const Plane &p2);
 };
 
-
+/**
+ * @overload
+ * Function that returns all characteristics of the Plane being manipulated
+ * @param os ostream object, passed by reference
+ * @param plane Plane object, passed by reference
+ * @return ostream object
+ */
 ostream & operator << (ostream & os, const Plane &plane);
 
-#endif //PROJET_AED_PLANE_H
+#endif // PROJECT_AED_PLANE_H

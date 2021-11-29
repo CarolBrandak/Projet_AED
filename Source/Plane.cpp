@@ -1,5 +1,5 @@
-#ifndef PROJET_AED_PLANE_CPP
-#define PROJET_AED_PLANE_CPP
+#ifndef PROJECT_AED_PLANE_CPP
+#define PROJECT_AED_PLANE_CPP
 
 #include "Plane.h"
 
@@ -12,7 +12,7 @@ Plane::Plane(std::list<Flight> flights,
              std::string LICENSE_PLATE,
              std::string TYPE,
              unsigned int MAX_WEIGHT_CAPACITY,
-             unsigned int MAX_PASSENGERS_CAPACITY):
+             unsigned int MAX_PASSENGERS_CAPACITY) :
 
         LICENSE_PLATE(LICENSE_PLATE),
         TYPE(TYPE),
@@ -106,6 +106,10 @@ unsigned int Plane::getQuantityOfMadeServices() const {
     return madeServices.size();
 }
 
+bool byMaximumWeight(const Plane &p1, const Plane &p2);
+bool byMaximumCapacity(const Plane &p1, const Plane &p2);
+bool byNumberOfFlights(const Plane &p1, const Plane &p2);
+
 ostream & operator << (ostream & os, const Plane &plane) {
     os << "License Plate: " << plane.getLicensePlate() <<
         "\nType: " << plane.getType() <<
@@ -117,4 +121,4 @@ ostream & operator << (ostream & os, const Plane &plane) {
     return os;
 }
 
-#endif //PROJET_AED_PLANE_CPP
+#endif // PROJECT_AED_PLANE_CPP
