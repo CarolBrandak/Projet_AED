@@ -4,6 +4,20 @@
 
 using testing::Eq;
 
+void fillDates(vector<Date> &dates) {
+
+    dates.push_back(Date(27, 11, 2021, 14, 3));
+    dates.push_back(Date(27, 11, 2021, 14, 31));
+    dates.push_back(Date(27, 11, 2021, 4, 3));
+    dates.push_back(Date(27, 11, 2021, 11, 31));
+    dates.push_back(Date(27, 11, 2021, 14, 3));
+    dates.push_back(Date(27, 11, 2021, 0, 3));
+    dates.push_back(Date(27, 11, 2021, 23, 58));
+    dates.push_back(Date(27, 11, 2021, 4, 0));
+    dates.push_back(Date(27, 11, 2021, 1, 1));
+    dates.push_back(Date(27, 11, 2021, 2, 1));
+}
+
 TEST(Data, gettersAndSetters) {
 
     // Getters
@@ -45,6 +59,23 @@ TEST(Data, operators) {
     ASSERT_EQ(dates[5], d3);
 
     // Operator << and print style: 9-3-2018 -> 09-03-2018
+    cout << "Cout das datas, por ordem crescente:" << endl;
+    for (Date date : dates) {
+        cout << date;
+    }
+}
+
+TEST(Data, hoursAndMinutes) {
+
+    vector<Date> dates = {};
+    fillDates(dates);
+
+    // Operator <
+    ASSERT_EQ(dates[0], Date(27, 11, 2021, 0, 3));
+    ASSERT_EQ(dates[dates.size()-1], Date(27, 11, 2021, 23, 58));
+
+    // Operator << and print style: 9-3-2018 5:9 -> 09-03-2018 05:09
+    sort(dates.begin(), dates.end());
     cout << "Cout das datas, por ordem crescente:" << endl;
     for (Date date : dates) {
         cout << date;
