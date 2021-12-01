@@ -35,4 +35,4 @@ ostream & operator << (ostream & os, const Employee &employee) {
     return os;
 }
 
-#endif PROJECT_AED_EMPLOYEE_CPP
+#endif //PROJECT_AED_EMPLOYEE_CPP

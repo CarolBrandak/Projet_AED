@@ -8,6 +8,7 @@
 #include "Employee.h"
 #include "Luggage.h"
 #include "Date.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -16,6 +17,6 @@ using namespace std;
  */
 void Application() {
 
-    cout << "cmake-build-debug is ignored now!" << endl;
+
 
 }
