@@ -1,5 +1,5 @@
-#ifndef Date_CPP
-#define Date_CPP
+#ifndef PROJECT_AED_DATE_CPP
+#define PROJECT_AED_DATE_CPP
 
 #include "Date.h"
 
@@ -85,4 +85,4 @@ ostream & operator << (ostream & os, const Date &date) {
     return os;
 }
 
-#endif // Date_CPP
+#endif // PROJECT_AED_DATE_CPP

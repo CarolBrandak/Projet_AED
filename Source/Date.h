@@ -1,5 +1,5 @@
-#ifndef Date_H
-#define Date_H
+#ifndef PROJECT_AED_DATE_H
+#define PROJECT_AED_DATE_H
 
 #include <iostream>
 #include <iomanip>
@@ -149,4 +149,4 @@ class Date {
 */
 ostream & operator << (ostream & os, const Date &date);
 
-#endif // Date_H
+#endif // PROJECT_AED_DATE_H

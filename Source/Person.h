@@ -1,5 +1,5 @@
-#ifndef Person_H
-#define Person_H
+#ifndef PROJECT_AED_PERSON_H
+#define PROJECT_AED_PERSON_H
 
 #include <iostream>
 #include <string>
@@ -80,4 +80,4 @@ class Person {
         char getGender() const;
 };
 
-#endif // Person_H
+#endif // PROJECT_AED_PERSON_H

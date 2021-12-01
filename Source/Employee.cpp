@@ -1,12 +1,11 @@
-#ifndef Employee_CPP
-#define Employee_CPP
+#ifndef PROJECT_AED_EMPLOYEE_CPP
+#define PROJECT_AED_EMPLOYEE_CPP
 
 #include "Employee.h"
 
 Employee::Employee() {}
 
-Employee::Employee(string name, short int age, char gender, string ID) :
-    Person (name, age, gender) {
+Employee::Employee(string name, short int age, char gender, string ID) : Person (name, age, gender) {
     this->ID = ID;
 }
 
@@ -36,4 +35,4 @@ ostream & operator << (ostream & os, const Employee &employee) {
     return os;
 }
 
-#endif // Employee_CPP
+#endif PROJECT_AED_EMPLOYEE_CPP

@@ -1,5 +1,5 @@
-#ifndef Passenger_H
-#define Passenger_H
+#ifndef PROJECT_AED_PASSENGER_H
+#define PROJECT_AED_PASSENGER_H
 
 #include "Person.h"
 #include "Luggage.h"
@@ -124,4 +124,4 @@ class Passenger : public Person {
  */
 ostream & operator << (ostream & os, const Passenger &passenger);
 
-#endif // Passenger_H
+#endif //PROJECT_AED_PASSENGER_H

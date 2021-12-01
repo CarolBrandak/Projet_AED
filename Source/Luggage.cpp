@@ -1,5 +1,5 @@
-#ifndef Luggage_CPP
-#define Luggage_CPP
+#ifndef PROJECT_AED_LUGGAGE_CPP
+#define PROJECT_AED_LUGGAGE_CPP
 
 #include "Luggage.h"
 
@@ -47,4 +47,4 @@ ostream & operator << (ostream & os, const Luggage &luggage) {
     return os;
 }
 
-#endif // Luggage_CPP
+#endif // PROJECT_AED_LUGGAGE_CPP

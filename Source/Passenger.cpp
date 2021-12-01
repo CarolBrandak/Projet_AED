@@ -1,5 +1,5 @@
-#ifndef Passenger_CPP
-#define Passenger_CPP
+#ifndef PROJECT_AED_PASSENGER_CPP
+#define PROJECT_AED_PASSENGER_CPP
 
 #include "Person.h"
 #include "Passenger.h"
@@ -66,4 +66,4 @@ ostream & operator << (ostream & os, const Passenger &passenger) {
     return os;
 }
 
-#endif // Passenger_CPP
+#endif //PROJECT_AED_PASSENGER_CPP

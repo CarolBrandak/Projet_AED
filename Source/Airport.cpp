@@ -94,7 +94,7 @@ bool Airport::buyTicket(Flight flight, const vector<Passenger> &passengers) {
 
 bool Airport::operator == (const Airport &airport) const {
     return this->getName() == airport.getName() && this->getCity() == airport.getCity() &&
-                this->getPlanes().size() == airport.getPlanes().size();
+    this->getPlanes().size() == airport.getPlanes().size();
 }
 
 bool Airport::operator < (const Airport &airport) const {

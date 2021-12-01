@@ -22,7 +22,7 @@ class Airport {
         const string name;
 
         /**
-         * @var city - a constant string containing Airport's name
+         * @var city - a constant string containing the name of the city where the airport is
          */
         const string city;
 

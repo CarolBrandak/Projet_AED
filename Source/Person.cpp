@@ -1,5 +1,5 @@
-#ifndef Person_CPP
-#define Person_CPP
+#ifndef PROJECT_AED_PERSON_CPP
+#define PROJECT_AED_PERSON_CPP
 
 #include "Person.h"
 
@@ -35,4 +35,4 @@ char Person::getGender() const {
     return this->gender;
 }
 
-#endif // Person_CPP
+#endif // PROJECT_AED_PERSON_CPP

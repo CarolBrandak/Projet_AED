@@ -1,5 +1,5 @@
-#ifndef Luggage_H
-#define Luggage_H
+#ifndef PROJECT_AED_LUGGAGE_H
+#define PROJECT_AED_LUGGAGE_H
 
 #include <iostream>
 #include <string>
@@ -128,4 +128,4 @@ class Luggage {
  */
 ostream & operator << (ostream & os, const Luggage &luggage);
 
-#endif // Luggage_H
+#endif //PROJECT_AED_LUGGAGE_H

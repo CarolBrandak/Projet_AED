@@ -1,5 +1,5 @@
-#ifndef Employee_H
-#define Employee_H
+#ifndef PROJECT_AED_EMPLOYEE_H
+#define PROJECT_AED_EMPLOYEE_H
 
 #include "Person.h"
 
@@ -69,4 +69,4 @@ class Employee : public Person {
 */
 ostream & operator << (ostream & os, const Employee &employee);
 
-#endif // Employee_H
+#endif // PROJECT_AED_EMPLOYEE_H
