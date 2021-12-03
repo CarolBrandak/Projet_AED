@@ -4,10 +4,10 @@
 
 using testing::Eq;
 
-TEST(Service, gettersAndSetters) {
+TEST(Service, getters) {
 
-    Employee e1 = Employee(1, "Pedro", 20, 'M');
-    Employee e2 = Employee(2, "Carlos", 20 , 'm');
+    Employee e1 = Employee("1", "Pedro", 20, 'M');
+    Employee e2 = Employee("2", "Carlos", 20 , 'm');
     Service s1 = Service("Cleaning", Date(29, 11, 2021, 19, 47), e1);
 
     // Getters
@@ -16,17 +16,5 @@ TEST(Service, gettersAndSetters) {
     ASSERT_EQ(e1, s1.getResponsible());
     ASSERT_EQ("Pedro", s1.getResponsible().getName());
 
-    // Setters
-    s1.setResponsible(e2);
-
-    // Na realidade este comando não modifica o nome do funcionário, mas deveria :(
-    s1.getResponsible().setName("Joana");
-    cout << s1.getResponsible().getName();
-
-    ASSERT_EQ(e2, s1.getResponsible());
-    ASSERT_EQ("Joana", s1.getResponsible().getName());
-
     // Operator <<
-    cout << s1;
-    cout << s1.getResponsible();
-}
+    cout << s1;}

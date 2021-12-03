@@ -17,9 +17,9 @@ class Airport {
     private:
 
         /**
-         * @var id - a constant integer containing Airport's id
+         * @var id - a constant string containing Airport's id
          */
-        const int id;
+        const string id;
 
         /**
          * @var name - a constant string containing Airport's name
@@ -45,18 +45,18 @@ class Airport {
 
         /**
          * Main constructor
-         * @param id - a integer containing airport's id
+         * @param id - a string containing airport's id
          * @param name - a string containing airport's name
          * @param city - a string containing airport's city
          * @param planes - a vector that contains Plane type objects
          */
-        Airport(int id, string name, string city, vector<Plane> planes);
+        Airport(string id, string name, string city, vector<Plane> planes);
 
         /**
          * Returns the airport's id
-         * @return a integer value containing the airport's id
+         * @return a string containing the airport's id
          */
-        int getID() const;
+        string getID() const;
 
         /**
          * Returns the airport's name

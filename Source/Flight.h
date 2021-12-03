@@ -15,9 +15,9 @@ class Flight {
     private:
 
         /**
-         * @var FLIGHT_ID - a string constant variable that contains the ID of the flight
+         * @var id - a string constant variable that contains the ID of the flight
          */
-        const std::string FLIGHT_ID;
+        const string id;
 
         /**
          * @var flightDate - a Date type object that contains the date of the flight
@@ -54,7 +54,6 @@ class Flight {
          */
         std::vector<Passenger> passengers;
 
-
         /**
          * @var luggages - a Luggage type vector that contains all luggage in the flight
          */
@@ -69,8 +68,8 @@ class Flight {
 
         /**
          * Main constructor
+         * @param id - a string constant variable thar contains the ID of the flight
          * @param flightDate - a Date type object that contains the date of the flight
-         * @param FLIGHT_ID - a string constant variable thar contains the ID of the flight
          * @param FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
          * @param origin - a string that contains the origin of the flight
          * @param destination - a string that contains the destination of the flight
@@ -79,14 +78,14 @@ class Flight {
          * @param passengers - a Passenger type vector that contains all passengers in the flight
          * @param luggage - a Luggage type vector that contains all luggage in the flight
          */
-        Flight(Date flightDate, std::string flightID, short int flightDuration, string origin, string destination,
+        Flight(string id, Date flightDate, short int flightDuration, string origin, string destination,
                short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers, vector<Luggage> luggage);
 
         /**
          * Returns the flight id
          * @return a string type, containing the flight's ID
          */
-        std::string getFlightID() const;
+        string getID() const;
 
         /**
          * Returns the flight date

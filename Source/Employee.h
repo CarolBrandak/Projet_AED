@@ -11,9 +11,9 @@ class Employee : public Person {
     private:
 
         /**
-         * @var Employee's id, a integer value
+         * @var Employee's id, a string
          */
-        int id;
+        string id;
 
     public:
 
@@ -24,18 +24,18 @@ class Employee : public Person {
 
         /**
          * Main constructor
-         * @param id Employee's ID, an integer passed by value
+         * @param id Employee's ID, an string passed by value
          * @param name Employee's name, a string passed by value
          * @param age Employee's age, a short integer passed by value
          * @param gender Employee's gender, a char passed by value
          */
-        Employee(int id, string name, short int age, char gender);
+        Employee(string id, string name, short int age, char gender);
 
         /**
          * Returns Employee's ID
          * @return a integer, containing employee's ID
          */
-        int getID() const;
+        string getID() const;
 
         /**
          * @overload

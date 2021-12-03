@@ -3,12 +3,12 @@
 
 #include "Employee.h"
 
-Employee::Employee() {}
+Employee::Employee() : id(""), Person() {}
 
-Employee::Employee(int id, string name, short int age, char gender) : id(id), Person (name, age, gender) {}
+Employee::Employee(string id, string name, short int age, char gender) : id(id), Person (name, age, gender) {}
 
-int Employee::getID() const {
-    return this->id;
+string Employee::getID() const {
+    return id;
 }
 
 bool Employee::operator == (const Employee &employee) const {

@@ -3,21 +3,21 @@
 
 #include "Flight.h"
 
-Flight::Flight(Date flightDate,std::string flightID, short int flightDuration, string origin, string destination,
-                    short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers, vector<Luggage> luggage):
-               flightDate(flightDate),
-               FLIGHT_ID(flightID),
-               FLIGHT_DURATION(flightDuration),
-               origin(origin),
-               destination(destination) {
-    this->quantityOfPassengers = quantityOfPassengers;
-    this->quantityOfWeight = quantityOfWeight;
-    this->passengers = passengers;
-    this->luggage = luggage;
-}
+Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination,
+                    short int quantityOfPassengers, short int quantityOfWeight,
+                    vector<Passenger> passengers, vector<Luggage> luggage) :
+                    id(id),
+                    flightDate(flightDate),
+                    FLIGHT_DURATION(flightDuration),
+                    origin(origin),
+                    destination(destination),
+                    quantityOfPassengers(quantityOfPassengers),
+                    quantityOfWeight(quantityOfWeight),
+                    passengers(passengers),
+                    luggage(luggage) {}
 
-std::string Flight::getFlightID() const {
-    return FLIGHT_ID;
+string Flight::getID() const {
+    return id;
 }
 
 Date Flight::getFlightDate() const {
@@ -49,11 +49,11 @@ unsigned int Flight::getWeightQuantity() const {
 }
 
 bool Flight::operator==(const Flight &flight) const {
-    return FLIGHT_ID == flight.getFlightID();
+    return id == flight.getID();
 }
 
 bool Flight::operator < (const Flight &flight) const {
-    return this->getFlightID() < flight.getFlightID();
+    return id < flight.getID();
 }
 
 bool byNumberOfPassengers(const Flight &f1, const Flight &f2) {
@@ -116,7 +116,7 @@ void Flight::checkPassenger(const Passenger& passenger) const {
 }
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
-    os  << "Flight ID: " << flight.getFlightID()
+    os  << "Flight ID: " << flight.getID()
         << "\nFlight Date: " << flight.getFlightDate()
         << "\nFlight Duration: " << flight.getFlightDuration()
         << "\nOrigin: " << flight.getFlightOrigin()

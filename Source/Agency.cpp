@@ -5,15 +5,14 @@
 
 Agency::Agency() {}
 
-Agency::Agency(string name, vector<Airport> airports) : name(name),airports(airports) {
-}
+Agency::Agency(string name, vector<Airport> airports) : name(name), airports(airports) {}
 
 Airport Agency::getAirportByName(const string &airportName) {
     for (Airport airport : airports) {
         if (airport.getName() == airportName) return airport;
     }
     vector<Plane> planes = {};
-    return Airport(-1, "", "", planes);
+    return Airport("", "", "", planes);
 }
 
 void Agency::addAirport(const Airport &airport) {

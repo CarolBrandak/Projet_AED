@@ -19,7 +19,7 @@ class Service {
         /**
          * @var responsible - Employee type attribute that contains the information of the responsible for the service
          */
-        Employee responsible;
+        const Employee responsible;
 
     public:
         /**
@@ -44,12 +44,6 @@ class Service {
          * @return an Employee object, containing the employee responsible for the service
          */
         Employee getResponsible() const;
-
-        /**
-         * Sets the service's responsible
-         * @param employee an Employee object, containing the new employee responsible for the service
-         */
-        void setResponsible(const Employee &employee);
 };
 
 /**

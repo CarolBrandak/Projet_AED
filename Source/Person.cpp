@@ -5,11 +5,7 @@
 
 Person::Person() {}
 
-Person::Person(string name, short int age, char gender) {
-    this->name = name;
-    this->age = age;
-    this->gender = toupper(gender);
-}
+Person::Person(string name, short int age, char gender) : name(name), age(age), gender(toupper(gender)) {}
 
 void Person::setName(const string &name){
     this->name = name;
