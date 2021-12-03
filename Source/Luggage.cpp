@@ -5,12 +5,14 @@
 
 Luggage::Luggage() {}
 
-Luggage::Luggage(short int weight, Volume volume, bool planeHold) : WEIGHT(weight), VOLUME(volume) {
-    this->planeHold = planeHold;
-}
+Luggage::Luggage(string id, short int weight, Volume volume, bool planeHold) : id(id), WEIGHT(weight), VOLUME(volume), planeHold(planeHold) {}
 
 void Luggage::setPlaneHold(const bool &planeHold) {
     this->planeHold = planeHold;
+}
+
+string Luggage::getID() const {
+    return this->id;
 }
 
 short int Luggage::getWeight() const {

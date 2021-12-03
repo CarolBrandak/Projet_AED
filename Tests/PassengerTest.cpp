@@ -7,8 +7,8 @@ using testing::Eq;
 TEST(Passenger, gettersAndSetters) {
 
     Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
-    Luggage commonLuggage1 = Luggage(45, v1, true);
-    Luggage commonLuggage2 = Luggage(3, v1, false);
+    Luggage commonLuggage1 = Luggage("1",45, v1, true);
+    Luggage commonLuggage2 = Luggage("1",3, v1, false);
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
 
     // Getters
@@ -27,8 +27,8 @@ TEST(Passenger, gettersAndSetters) {
 TEST(Passenger, operators) {
 
     Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
-    Luggage commonLuggage1 = Luggage(45, v1, true);
-    Luggage commonLuggage2 = Luggage(3, v1, false);
+    Luggage commonLuggage1 = Luggage("1",45, v1, true);
+    Luggage commonLuggage2 = Luggage("1",3, v1, false);
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
 
     vector<Passenger> passengers = {};
@@ -60,8 +60,8 @@ TEST(Passenger, operators) {
 TEST(Passenger, totalLuggageVolume) {
 
     Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
-    Luggage commonLuggage1 = Luggage(45, v1, true);
-    Luggage commonLuggage2 = Luggage(3, v1, false);
+    Luggage commonLuggage1 = Luggage("1",45, v1, true);
+    Luggage commonLuggage2 = Luggage("1",3, v1, false);
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
     Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
 
@@ -72,8 +72,8 @@ TEST(Passenger, totalLuggageVolume) {
 TEST(Passenger, totalLuggageWeight) {
 
     Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
-    Luggage commonLuggage1 = Luggage(45, v1, true);
-    Luggage commonLuggage2 = Luggage(3, v1, false);
+    Luggage commonLuggage1 = Luggage("1",45, v1, true);
+    Luggage commonLuggage2 = Luggage("1",3, v1, false);
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
     Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
 

@@ -33,6 +33,11 @@ struct Volume {
 class Luggage {
 
     /**
+     * @var id, luggage's id, a string
+     */
+    string id;
+
+    /**
      * @var WEIGHT, luggage's weight, a short integer value
      */
     short int WEIGHT;
@@ -56,17 +61,24 @@ class Luggage {
 
         /**
          * Main constructor
+         * @param id, Luggage's id, a string passed by value
          * @param weight Luggage's weight, a short int passed by value
          * @param width Luggage's volume, a struct
          * @param planeHold Luggage's planeHold, a boolean passed by value
          */
-        Luggage(short int weight, Volume volume, bool planeHold);
+        Luggage(string id, short int weight, Volume volume, bool planeHold);
 
         /**
          * Set Luggage plane hold
          * @param planeHold Luggage's new plane hold, a boolean passed by reference
          */
         void setPlaneHold(const bool &planeHold);
+
+        /**
+         * Returns luggage's id
+         * @return a string, containing luggage's id
+         */
+        string getID() const;
 
         /**
          * Returns Luggage's weight
