@@ -5,21 +5,15 @@
 
 Employee::Employee() {}
 
-Employee::Employee(string name, short int age, char gender, string ID) : Person (name, age, gender) {
-    this->ID = ID;
-}
+Employee::Employee(int id, string name, short int age, char gender) : id(id), Person (name, age, gender) {}
 
-void Employee::setID(const string &ID) {
-    this->ID = ID;
-}
-
-string Employee::getID() const {
-    return this->ID;
+int Employee::getID() const {
+    return this->id;
 }
 
 bool Employee::operator == (const Employee &employee) const {
     return name == employee.getName() && age == employee.getAge() && gender == employee.getGender() &&
-        ID == employee.getID();
+        id == employee.getID();
 }
 
 bool Employee::operator < (const Employee &employee) const {

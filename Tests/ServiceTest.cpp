@@ -6,8 +6,8 @@ using testing::Eq;
 
 TEST(Service, gettersAndSetters) {
 
-    Employee e1 = Employee("Pedro", 20, 'M', "FEUP2021");
-    Employee e2 = Employee("Carlos", 20 , 'm', "ISCTE21");
+    Employee e1 = Employee(1, "Pedro", 20, 'M');
+    Employee e2 = Employee(2, "Carlos", 20 , 'm');
     Service s1 = Service("Cleaning", Date(29, 11, 2021, 19, 47), e1);
 
     // Getters
