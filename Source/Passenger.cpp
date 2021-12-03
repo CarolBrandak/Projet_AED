@@ -6,11 +6,8 @@
 
 Passenger::Passenger() {}
 
-Passenger::Passenger(string name, short int age, char gender, string passportNumber, vector<Luggage> luggage) :
-    Person (name, age, gender) {
-    this->passportNumber = passportNumber;
-    this->luggage = luggage;
-}
+Passenger::Passenger(string id, string name, short int age, char gender, string passportNumber, vector<Luggage> luggage) :
+    id(id), passportNumber(passportNumber), luggage(luggage), Person(name, age, gender) {}
 
 void Passenger::setPassportNumber(const string &passportNumber) {
     this->passportNumber = passportNumber;
@@ -18,6 +15,10 @@ void Passenger::setPassportNumber(const string &passportNumber) {
 
 void Passenger::setLuggage(const vector<Luggage> &luggage) {
     this->luggage = luggage;
+}
+
+string Passenger::getID() const {
+    return id;
 }
 
 string Passenger::getPassportNumber() const {

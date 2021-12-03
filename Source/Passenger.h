@@ -12,6 +12,11 @@ class Passenger : public Person {
     private:
 
         /**
+         * @var id, a string
+         */
+        string id;
+
+        /**
          * @var passportNumber, a string
          */
         string passportNumber;
@@ -30,13 +35,14 @@ class Passenger : public Person {
 
         /**
          * Main constructor
+         * @param id, Passengers id, a string passed by value
          * @param name Passenger's name, a string passed by value
          * @param age Passenger's age, a short integer passed by value
          * @param gender Passenger's gender, a char passed by value
          * @param passportNumber Passenger's passport number, a string passed by value
          * @param luggage Passenger's luggage, a vector of Luggage objects passed by value
          */
-        Passenger(string name, short int age, char gender, string passportNumber, vector<Luggage> luggage);
+        Passenger(string id, string name, short int age, char gender, string passportNumber, vector<Luggage> luggage);
 
         /**
          * Set Passenger passport number
@@ -49,6 +55,12 @@ class Passenger : public Person {
          * @param luggage Passenger's new luggage, a vector with Luggage objects passed reference
          */
         void setLuggage(const vector<Luggage> &luggage);
+
+        /**
+         * Returns Passenger's id
+         * @returns a string, containing passenger's id
+         */
+         string getID() const;
 
         /**
          * Returns Passenger's passport number

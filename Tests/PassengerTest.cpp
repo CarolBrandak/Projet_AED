@@ -12,7 +12,7 @@ TEST(Passenger, gettersAndSetters) {
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
 
     // Getters
-    Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
+    Passenger e1 = Passenger("1","Pedro", 20, 'M', "FEUP2021", commonLuggage);
     ASSERT_EQ("Pedro", e1.getName());
     ASSERT_EQ(20, e1.getAge());
     ASSERT_EQ('M', e1.getGender());
@@ -32,11 +32,11 @@ TEST(Passenger, operators) {
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
 
     vector<Passenger> passengers = {};
-    Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage); passengers.push_back(e1);
-    Passenger e2 = Passenger("Carlos", 20 , 'm', "ISCTE21", commonLuggage); passengers.push_back(e2);
-    Passenger e3 = Passenger("Gabriel", 20, 'M', "master21", commonLuggage); passengers.push_back(e3);
-    Passenger e4 = Passenger("Carolina", 20, 'f', "2points", commonLuggage); passengers.push_back(e4);
-    Passenger e5 = Passenger("Fabio", 19, 'm', "things1", commonLuggage); passengers.push_back(e5);
+    Passenger e1 = Passenger("1","Pedro", 20, 'M', "FEUP2021", commonLuggage); passengers.push_back(e1);
+    Passenger e2 = Passenger("1","Carlos", 20 , 'm', "ISCTE21", commonLuggage); passengers.push_back(e2);
+    Passenger e3 = Passenger("1","Gabriel", 20, 'M', "master21", commonLuggage); passengers.push_back(e3);
+    Passenger e4 = Passenger("1","Carolina", 20, 'f', "2points", commonLuggage); passengers.push_back(e4);
+    Passenger e5 = Passenger("1","Fabio", 19, 'm', "things1", commonLuggage); passengers.push_back(e5);
 
     // Equality, ==
     ASSERT_EQ(false, e1 == e4);
@@ -63,7 +63,7 @@ TEST(Passenger, totalLuggageVolume) {
     Luggage commonLuggage1 = Luggage("1",45, v1, true);
     Luggage commonLuggage2 = Luggage("1",3, v1, false);
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
-    Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
+    Passenger e1 = Passenger("1","Pedro", 20, 'M', "FEUP2021", commonLuggage);
 
     ASSERT_EQ(56, e1.getTotalVolume());
 
@@ -75,7 +75,7 @@ TEST(Passenger, totalLuggageWeight) {
     Luggage commonLuggage1 = Luggage("1",45, v1, true);
     Luggage commonLuggage2 = Luggage("1",3, v1, false);
     vector<Luggage> commonLuggage = {commonLuggage1, commonLuggage2};
-    Passenger e1 = Passenger("Pedro", 20, 'M', "FEUP2021", commonLuggage);
+    Passenger e1 = Passenger("1","Pedro", 20, 'M', "FEUP2021", commonLuggage);
 
     ASSERT_EQ(48, e1.getTotalWeight());
 }
