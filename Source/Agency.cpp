@@ -13,7 +13,7 @@ Airport Agency::getAirportByName(const string &airportName) {
         if (airport.getName() == airportName) return airport;
     }
     vector<Plane> planes = {};
-    return Airport("", "", planes);
+    return Airport(-1, "", "", planes);
 }
 
 void Agency::addAirport(const Airport &airport) {

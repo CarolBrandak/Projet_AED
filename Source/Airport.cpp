@@ -3,10 +3,14 @@
 
 #include "Airport.h"
 
-Airport::Airport() : name(""), city("") {}
+Airport::Airport() : id(-1), name(""), city("") {}
 
-Airport::Airport(string name, string city, vector<Plane> planes) :
-    name(name), city(city), planes(planes) {
+Airport::Airport(int id, string name, string city, vector<Plane> planes) :
+    id(id), name(name), city(city), planes(planes) {
+}
+
+int Airport::getID() const {
+    return id;
 }
 
 string Airport::getName() const {
