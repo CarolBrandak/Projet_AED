@@ -6,7 +6,8 @@
 Plane::Plane() : MAX_WEIGHT_CAPACITY(0), MAX_PASSENGERS_CAPACITY(0),
                         LICENSE_PLATE(""), TYPE("") {}
 
-Plane::Plane(std::list<Flight> flights,
+Plane::Plane(string id,
+             std::list<Flight> flights,
              std::queue<Service> servicesToBeMade,
              std::list<Service> madeServices,
              std::string LICENSE_PLATE,
@@ -14,13 +15,18 @@ Plane::Plane(std::list<Flight> flights,
              unsigned int MAX_WEIGHT_CAPACITY,
              unsigned int MAX_PASSENGERS_CAPACITY) :
 
-        LICENSE_PLATE(LICENSE_PLATE),
-        TYPE(TYPE),
-        MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
-        MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY),
-        flights(flights),
-        madeServices(madeServices),
-        servicesToBeMade(servicesToBeMade) {}
+             id(id),
+            LICENSE_PLATE(LICENSE_PLATE),
+            TYPE(TYPE),
+            MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
+            MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY),
+            flights(flights),
+            madeServices(madeServices),
+            servicesToBeMade(servicesToBeMade) {}
+
+string Plane::getID() const {
+    return id;
+}
 
 std::string Plane::getLicensePlate() const {
     return LICENSE_PLATE;

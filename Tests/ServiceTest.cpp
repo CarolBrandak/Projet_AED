@@ -8,7 +8,7 @@ TEST(Service, getters) {
 
     Employee e1 = Employee("1", "Pedro", 20, 'M');
     Employee e2 = Employee("2", "Carlos", 20 , 'm');
-    Service s1 = Service("Cleaning", Date(29, 11, 2021, 19, 47), e1);
+    Service s1 = Service("1", "Cleaning", Date(29, 11, 2021, 19, 47), e1);
 
     // Getters
     ASSERT_EQ("Cleaning", s1.getServiceType());

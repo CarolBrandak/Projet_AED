@@ -19,6 +19,11 @@ class Plane {
     private:
 
         /**
+         * @var id - string variable that contains the Plane's id
+         */
+         string id;
+
+        /**
          * @var licensePlate - string variable that contains the Plane's license plate in the form "XX-XXX"
          * where each X is a letter.
          */
@@ -63,14 +68,21 @@ class Plane {
 
         /**
          * Main constructor
+         * @param id, a Plane's id
          * @param flights - a list that contains Flight type objects
          * @param LICENSE_PLATE - a string containing license plate of the plane
          * @param TYPE - a string containing the type of the plane
          * @param MAX_WEIGHT_CAPACITY - a int constant containing the max weight capacity of the plane
          * @param MAX_PASSENGERS_CAPACITY - a int constant containing the max people capacity of the plane
          */
-        Plane(std::list<Flight> flights,std::queue<Service> servicesToBeMade,std::list<Service> madeServices,std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
+        Plane(string id, std::list<Flight> flights,std::queue<Service> servicesToBeMade,std::list<Service> madeServices,std::string LICENSE_PLATE, std::string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
 
+        /**
+         * Returns Plane's id
+         * @returns a string, containing plane's id
+         */
+         string getID() const;
+         
         /**
          * Returns the plane's license plate
          * @return a string, containing the plane's license plate

@@ -8,6 +8,11 @@
 class Service {
 
     private:
+
+        /**
+         * @var id - string type attribute that contains the service's id
+         */
+         string id;
         /**
          * @var serviceType - string type attribute that contains the type of service
          */
@@ -24,11 +29,19 @@ class Service {
     public:
         /**
          * Constructor that creates an service
+         * @param id - a string, containing service's id
          * @param serviceType - a string, containing the service type
          * @param serviceDate - a Date type object containing the Date of the service
          * @param responsible - a Employee type object, containing the Employee responsible for the service
          */
-        Service(std::string serviceType, Date serviceDate, Employee responsible);
+        Service(string id, std::string serviceType, Date serviceDate, Employee responsible);
+
+        /**
+         * Returns Service's id
+         * @return a string, containing service's id
+         */
+        string getID() const;
+
         /**
          * Returns the type of service
          * @return a string, containing the service type
