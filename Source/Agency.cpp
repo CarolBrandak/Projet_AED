@@ -2,7 +2,6 @@
 #define PROJECT_AED_AGENCY_CPP
 
 #include "Agency.h"
-#include <filesystem>
 
 Agency::Agency() : name("") {}
 
@@ -14,15 +13,15 @@ string Agency::getName() const {
     return name;
 }
 
-Airport Agency::getAirportByName(const string &airportName) {
-    for (Airport airport : airports) {
-        if (airport.getName() == airportName) return airport;
+Airport* Agency::getAirportByName(const string &airportName) {
+    for (Airport *airport : airports) {
+        if (airport->getName() == airportName) return airport;
     }
-    return Airport("", "", "");
+    return new Airport("", "", "");
 }
 
-void Agency::addAirport(const Airport &airport) {
-    airports.push_back(airport);
+void Agency::addAirport(Airport &airport) {
+    airports.push_back(&airport);
 }
 
 vector<Service*> getServices(string directory = "../Source/Files/Services.txt") {
@@ -166,6 +165,54 @@ vector<Plane*> getPlanes(string directory = "../Source/Files/Planes.txt") {
 
 }
 
+vector<Airport*> getAirports(string directory = "../Source/Files/Airports.txt") {
+
+    vector<Airport*> airports = {};
+    ifstream file(directory);
+
+    if (file.is_open()) {
+        while (!file.eof()) {
+
+            string id, name, city;
+
+            getline(file, id, ';');
+            getline(file, name, ';');
+            getline(file, city);
+
+            airports.push_back(new Airport(id, name, city));
+        }
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+    return airports;
+}
+
+void Agency::printData() {
+
+    for (Airport *airport : airports) {
+        cout << *airport << endl;
+        for (Plane *plane : airport->getPlanes()) {
+            cout << *plane << endl;
+            for (Flight *flight : plane->getFlights()) {
+                cout << *flight << endl;
+                cout << "Passageiros e suas bagagens: " << endl;
+                for (Passenger *passenger : flight->getPassengers()) {
+                    cout << *passenger << endl;
+                    for (Luggage *luggage : passenger->getLuggage()) {
+                        cout << *luggage << endl;
+                    }
+                }
+                cout << "Bagagem adicionada no voo: " << endl;
+                for (Luggage *luggage : flight->getLuggage()) {
+                    cout << *luggage << endl;
+                }
+            }
+        }
+    }
+
+}
+
 void Agency::getData() {
 
     vector<Passenger*> passengers = getPassengers();
@@ -188,11 +235,6 @@ void Agency::getData() {
     vector<Service*> services = getServices();
     vector<Plane*> planes = getPlanes();
 
-    /**
-    for (Plane *plane : planes) {
-        cout << *plane << endl;
-    }
-     */
 
     for (Plane *plane : planes) {
         for (Service *service : services) {
@@ -203,23 +245,15 @@ void Agency::getData() {
         }
     }
 
-    for (Plane *plane : planes) {
-        cout << *plane << endl;
-        for (Flight *flight : plane->getFlights()) {
-            cout << *flight << endl;
-            cout << "Passageiros e suas bagagens: " << endl;
-            for (Passenger *passenger : flight->getPassengers()) {
-                cout << *passenger << endl;
-                for (Luggage *luggage : passenger->getLuggage()) {
-                    cout << *luggage << endl;
-                }
-            }
-            cout << "Bagagem adicionada no voo: " << endl;
-            for (Luggage *luggage : flight->getLuggage()) {
-                cout << *luggage << endl;
-            }
+    vector<Airport*> airports = getAirports();
+
+    for (Airport *airport : airports) {
+        for (Plane *plane : planes) {
+            airport->addPlane(*plane);
         }
     }
+
+    this->airports = airports;
 
 }
 

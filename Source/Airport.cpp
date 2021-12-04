@@ -22,15 +22,15 @@ string Airport::getCity() const {
     return city;
 }
 
-vector<Plane> Airport::getPlanes() const {
+vector<Plane*> Airport::getPlanes() const {
     return planes;
 }
 
 vector<Flight> Airport::getPossibleFlights(const string &city, const Date &date) const {
 
     vector<Flight> possibleFlights = {};
-    for (Plane plane : planes) {
-        for (Flight *flight : plane.getFlights()) {
+    for (Plane *plane : planes) {
+        for (Flight *flight : plane->getFlights()) {
             if (flight->getFlightDestination() == city && flight->getFlightDate() == date) {
                 possibleFlights.push_back(*flight);
             }
@@ -40,19 +40,19 @@ vector<Flight> Airport::getPossibleFlights(const string &city, const Date &date)
 }
 
 void Airport::checkPlanes() {
-    for (Plane plane : planes) {
-        cout << plane;
+    for (Plane *plane : planes) {
+        cout << *plane;
     }
 }
 
-void Airport::addPlane(const Plane &plane) {
-    if (this->id[0] == plane.getID()[0]) planes.push_back(plane);
+void Airport::addPlane(Plane &plane) {
+    if (this->id[0] == plane.getID()[0]) planes.push_back(&plane);
 }
 
-void Airport::removePlane(const Plane &plane) {
+void Airport::removePlane(Plane &plane) {
 
     for (auto it = planes.begin() ; it != planes.end() ; it++) {
-        if (*it == plane) {
+        if (*it == &plane) {
             planes.erase(it);
             break;
         }
@@ -72,16 +72,16 @@ bool Airport::buyTicket(Flight flight, const vector<Passenger*> &passengers) {
 
     for (Passenger *passenger : passengers) totalPassengersWeight += passenger->getTotalWeight();
 
-    for (Plane plane : planes) {
+    for (Plane *plane : planes) {
 
-        bool found = plane.findFlight(flight);
+        bool found = plane->findFlight(flight);
         if (found) {
 
             int futureTotalPassengers = totalPassengers + flight.getPassengersQuantity();
             int futureTotalWeight = totalPassengersWeight + flight.getWeightQuantity();
 
-            if (futureTotalPassengers <= plane.getMaxPassengersCapacity() &&
-                futureTotalWeight <= plane.getMaxWeightCapacity() ) {
+            if (futureTotalPassengers <= plane->getMaxPassengersCapacity() &&
+                futureTotalWeight <= plane->getMaxWeightCapacity() ) {
 
                 flight.addPassengers(passengers);
                 if (passengers.size() == 1) cout << "Bilhete comprado com sucesso, ou algo do tipo" << endl;

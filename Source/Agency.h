@@ -18,7 +18,7 @@ private:
     /**
      * @var - a vector that contains all the airports that the city has access to
      */
-    vector<Airport> airports;
+    vector<Airport*> airports;
 
 public:
     /**
@@ -35,12 +35,12 @@ public:
      * @param airportName - name of the airport wanted
      * @return an Airport object that if empty means that there is no Airport by that name
      */
-    Airport getAirportByName(const std::string &airportName);
+    Airport* getAirportByName(const std::string &airportName);
     /**
      * Add current airport in agency vector
      * @param airport - an Airport object that will be added
      */
-    void addAirport(const Airport &airport);
+    void addAirport(Airport &airport);
     /**
      * Returns the agency's name
      * @return a string, containing the agency's name
@@ -51,6 +51,8 @@ public:
       * gets all data!
       */
      void getData();
+
+     void printData();
 };
 
 #endif // PROJECT_AED_AGENCY_H

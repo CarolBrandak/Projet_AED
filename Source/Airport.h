@@ -34,7 +34,7 @@ class Airport {
         /**
          * @var planes - vector with Plane objects
          */
-        vector<Plane> planes;
+        vector<Plane*> planes;
 
     public:
 
@@ -73,7 +73,7 @@ class Airport {
          * Returns all airport's planes
          * @return a vector with Plane objects
          */
-        vector<Plane> getPlanes() const;
+        vector<Plane*> getPlanes() const;
 
         /**
          * Returns all possible flights, filtered by destination city and arrival date
@@ -92,13 +92,13 @@ class Airport {
          * Void function that add a plane into vector planes
          * @param plane - a Plane object that will added in current airport
          */
-        void addPlane(const Plane &plane);
+        void addPlane(Plane &plane);
 
         /**
          * Void function that remove a plane from current airport
          * @param plane - a Plane object that will be removed
          */
-        void removePlane(const Plane &plane);
+        void removePlane(Plane &plane);
 
         /**
          * Prints out all the the possible Flights
