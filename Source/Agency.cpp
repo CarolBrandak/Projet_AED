@@ -355,6 +355,44 @@ void saveServices(vector<Service*> services, string directory = "../Source/Files
     file.close();
 }
 
+void savePlanes(vector<Plane*> planes, string directory = "../Source/Files/Planes.txt") {
+
+    ofstream file(directory);
+    if (file.is_open()) {
+
+        for (int i = 0 ; i < planes.size()-1 ; i++) {
+            Plane* p = planes[i];
+            file << p->getID() << ";" << p->getLicensePlate() << ";" << p->getType() << ";" << p->getMaxWeightCapacity()
+                << ";" << p->getMaxPassengersCapacity() << endl;
+        }
+        Plane* p = planes[planes.size()-1];
+        file << p->getID() << ";" << p->getLicensePlate() << ";" << p->getType() << ";" << p->getMaxWeightCapacity()
+             << ";" << p->getMaxPassengersCapacity();
+
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+}
+
+void saveAirports(vector<Airport*> airports, string directory = "../Source/Files/Airports.txt") {
+
+    ofstream file(directory);
+    if (file.is_open()) {
+
+        for (int i = 0 ; i < airports.size()-1 ; i++) {
+            Airport* a = airports[i];
+            file << a->getID() << ";" << a->getName() << ";" << a->getCity() << endl;
+        }
+        Airport* a = airports[airports.size()-1];
+        file << a->getID() << ";" << a->getName() << ";" << a->getCity();
+
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+}
+
 void Agency::saveData() {
 
     vector<Luggage*> allLuggage = {};
@@ -389,12 +427,16 @@ void Agency::saveData() {
     savePassengers(allPassengers);
     saveFlights(allFlights);
     saveServices(allServices);
+    savePlanes(allPlanes);
+    saveAirports(allAirports);
 
     // Libertar a memória usada -> mais eficiente
     allLuggage.clear();
     allPassengers.clear();
     allFlights.clear();
     allServices.clear();
+    allPlanes.clear();
+    allAirports.clear();
 }
 
 #endif // PROJECT_AED_AGENCY_CPP
