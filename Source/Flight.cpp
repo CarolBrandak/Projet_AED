@@ -71,23 +71,30 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
-void Flight::addPassengers(const vector<Passenger> &toPush) {
+void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
-    for (Passenger passenger : passengers) {
+    for (Passenger *passenger : passengers) {
         this->quantityOfPassengers++;
-        this->quantityOfWeight += passenger.getTotalWeight();
+        this->quantityOfWeight += passenger->getTotalWeight();
         passengers.push_back(passenger);
-        for (Luggage *l : passenger.getLuggage()) {
-            //luggage.push_back(l);
+        for (Luggage *l : passenger->getLuggage()) {
+            luggage.push_back(l);
         }
     }
 }
 
-void Flight::addPassenger(const Passenger& passenger) {
-    if (id[2] == passenger.getID()[2]) passengers.push_back(passenger);
+void Flight::addPassenger(Passenger& passenger) {
+    if (id == passenger.getID().substr(0, 3)) {
+        this->quantityOfWeight += passenger.getTotalWeight();
+        this->quantityOfPassengers++;
+        passengers.push_back(&passenger);
+        for (Luggage *l : passenger.getLuggage()) {
+            luggage.push_back(l);
+        }
+    }
 }
 
-void Flight::removePassenger(const Passenger &passenger) {
+void Flight::removePassenger(Passenger &passenger) {
 
     /**
     for (Luggage *l : passenger.getLuggage()) {

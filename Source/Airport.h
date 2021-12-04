@@ -112,7 +112,7 @@ class Airport {
          * @param passengers - vector of Passengers objects that will buy a ticket
          * @return if the purchase was successful
          */
-        bool buyTicket(Flight flight, const vector<Passenger> &passengers);
+        bool buyTicket(Flight flight, const vector<Passenger*> &passengers);
 
         /**
         * @overload

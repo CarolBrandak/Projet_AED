@@ -169,10 +169,24 @@ void Agency::getData() {
     vector<Service*> services = getServices();
     vector<Flight*> flights = getFlights();
 
+    // Antes de levar com os passageiros
+    /**
+     * for (Flight *flight : flights) {
+        cout << *flight << endl;
+    }
+     */
+
+    for (Flight *flight : flights) {
+        for (Passenger *passenger : passengers) {
+            flight->addPassenger(*passenger);
+        }
+    }
+
+    cout << "Depois:" << endl;
+    // Depois de levar com os passageiros
     for (Flight *flight : flights) {
         cout << *flight << endl;
     }
-
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

@@ -65,12 +65,12 @@ void Airport::showPossibleFlights(const vector<Flight> &possibleFlights) {
     }
 }
 
-bool Airport::buyTicket(Flight flight, const vector<Passenger> &passengers) {
+bool Airport::buyTicket(Flight flight, const vector<Passenger*> &passengers) {
 
     int totalPassengers = passengers.size();
     int totalPassengersWeight = 0;
 
-    for (Passenger passenger : passengers) totalPassengersWeight += passenger.getTotalWeight();
+    for (Passenger *passenger : passengers) totalPassengersWeight += passenger->getTotalWeight();
 
     for (Plane plane : planes) {
 
