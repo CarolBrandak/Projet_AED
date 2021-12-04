@@ -5,6 +5,8 @@
 
 Person::Person() {}
 
+Person::~Person() {}
+
 Person::Person(string name, short int age, char gender) : name(name), age(age), gender(toupper(gender)) {}
 
 void Person::setName(const string &name){

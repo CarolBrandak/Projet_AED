@@ -6,6 +6,12 @@
 Plane::Plane() : MAX_WEIGHT_CAPACITY(0), MAX_PASSENGERS_CAPACITY(0),
                         LICENSE_PLATE(""), TYPE("") {}
 
+Plane::~Plane() {
+    flights.clear();
+    while (!servicesToBeMade.empty()) servicesToBeMade.pop();
+    while (!madeServices.empty()) madeServices.pop_back();
+}
+
 Plane::Plane(string id,
              std::string LICENSE_PLATE,
              std::string TYPE,

@@ -5,6 +5,10 @@
 
 Agency::Agency() : name("") {}
 
+Agency::~Agency() {
+    airports.clear();
+}
+
 Agency::Agency(string name) : name(name) {
     this->airports = {};
 }

@@ -44,6 +44,11 @@ class Airport {
         Airport();
 
         /**
+         * A default destructor of class
+         */
+         ~Airport();
+
+        /**
          * Main constructor
          * @param id - a string containing airport's id
          * @param name - a string containing airport's name

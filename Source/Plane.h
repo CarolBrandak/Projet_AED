@@ -67,6 +67,11 @@ class Plane {
         Plane();
 
         /**
+         * A default destructor
+         */
+        ~Plane();
+
+        /**
          * Main constructor
          * @param id, a Plane's id
          * @param flights - a list that contains Flight type objects

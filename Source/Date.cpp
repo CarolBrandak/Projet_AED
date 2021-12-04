@@ -5,6 +5,8 @@
 
 Date::Date() {}
 
+Date::~Date() {}
+
 Date::Date(int day, int month, int year, int hour, int minute) {
     this -> day=day;
     this -> month=month;

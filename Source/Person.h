@@ -36,6 +36,11 @@ class Person {
         Person();
 
         /**
+         * A default destructor of class Person
+         */
+        ~Person();
+
+        /**
          * Main constructor
          * @param name Person's name, a string passed by value
          * @param age Person's age, a short integer passed by value

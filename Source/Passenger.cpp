@@ -6,6 +6,10 @@
 
 Passenger::Passenger() {}
 
+Passenger::~Passenger() {
+    luggages.clear();
+}
+
 Passenger::Passenger(string id, string name, short int age, char gender, string passportNumber) :
     id(id), passportNumber(passportNumber), Person(name, age, gender) {
     this->luggages = {};

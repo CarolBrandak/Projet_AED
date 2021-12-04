@@ -16,6 +16,11 @@ class Employee : public Person {
         Employee();
 
         /**
+         * A default desctructor of class Employee
+         */
+        ~Employee();
+
+        /**
          * Main constructor
          * @param name Employee's name, a string passed by value
          * @param age Employee's age, a short integer passed by value

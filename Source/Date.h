@@ -46,6 +46,11 @@ class Date {
         Date();
 
         /**
+         * A default destructor of class Date.
+         */
+        ~Date();
+
+        /**
          * Main constructor
          * @param day Date's day, a int passed by value
          * @param month Date's month, a int passed by value

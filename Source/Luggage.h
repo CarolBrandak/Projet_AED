@@ -59,6 +59,11 @@ class Luggage {
          */
          Luggage();
 
+         /**
+         * A default destructor of class Luggage
+         */
+         ~Luggage();
+
         /**
          * Main constructor
          * @param id, Luggage's id, a string passed by value

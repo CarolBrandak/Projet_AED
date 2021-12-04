@@ -34,6 +34,11 @@ class Passenger : public Person {
         Passenger();
 
         /**
+         * A default destructor of class Passenger
+         */
+        ~Passenger();
+
+        /**
          * Main constructor
          * @param id Passengers id, a string passed by value
          * @param name Passenger's name, a string passed by value

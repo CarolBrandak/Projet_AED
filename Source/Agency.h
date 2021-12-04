@@ -31,6 +31,11 @@ class Agency {
         Agency();
 
         /**
+         * Default destructor
+         */
+        ~Agency();
+
+        /**
          * Main constructor the Agency object
          * @param name - string that contains the agency's name
          */

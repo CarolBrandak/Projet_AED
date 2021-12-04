@@ -67,6 +67,11 @@ class Flight {
         Flight();
 
         /**
+         * A default destructor
+         */
+        ~Flight();
+
+        /**
          * Main constructor
          * @param id - a string constant variable thar contains the ID of the flight
          * @param flightDate - a Date type object that contains the date of the flight

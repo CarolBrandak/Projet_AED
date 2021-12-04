@@ -3,6 +3,13 @@
 
 #include "Flight.h"
 
+Flight::Flight() {}
+
+Flight::~Flight() {
+    luggage.clear();
+    passengers.clear();
+}
+
 Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination) :
                     id(id),
                     flightDate(flightDate),

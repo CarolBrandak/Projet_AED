@@ -27,6 +27,17 @@ class Service {
         Employee responsible;
 
     public:
+
+        /**
+         * A default constructor
+         */
+        Service();
+
+        /**
+         * A default destructor
+         */
+        ~Service();
+
         /**
          * Constructor that creates an service
          * @param id - a string, containing service's id

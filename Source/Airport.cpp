@@ -5,6 +5,10 @@
 
 Airport::Airport() : id(""), name(""), city("") {}
 
+Airport::~Airport() {
+    planes.clear();
+}
+
 Airport::Airport(string id, string name, string city) :
     id(id), name(name), city(city), planes(planes) {
     this->planes = {};

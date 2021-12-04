@@ -5,6 +5,8 @@
 
 Employee::Employee() : Person() {}
 
+Employee::~Employee() {}
+
 Employee::Employee(string name, short int age, char gender) : Person (name, age, gender) {}
 
 bool Employee::operator == (const Employee &employee) const {

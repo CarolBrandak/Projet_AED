@@ -3,11 +3,15 @@
 
 #include "Service.h"
 
+Service::Service() {}
+
 Service::Service(string id, string serviceType, Date serviceDate, Employee responsible) :
     id(id),
     serviceType(serviceType),
     serviceDate(serviceDate),
     responsible(responsible) {}
+
+Service::~Service() {}
 
 string Service::getID() const {
     return id;
