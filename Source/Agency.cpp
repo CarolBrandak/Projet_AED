@@ -25,9 +25,9 @@ void Agency::addAirport(const Airport &airport) {
     airports.push_back(airport);
 }
 
-vector<Service> getServices(string directory = "../Source/Files/Services.txt") {
+vector<Service*> getServices(string directory = "../Source/Files/Services.txt") {
 
-    vector<Service> services = {};
+    vector<Service*> services = {};
     ifstream file(directory);
 
     if (file.is_open()) {
@@ -46,7 +46,7 @@ vector<Service> getServices(string directory = "../Source/Files/Services.txt") {
             getline(file, age, ';');
             getline(file, gender);
 
-            services.push_back(Service(id, type, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), Employee(name, stoi(age), gender[0])));
+            services.push_back(new Service(id, type, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), Employee(name, stoi(age), gender[0])));
         }
     } else {
         cerr << "File " << directory << " not found" << endl;
@@ -111,25 +111,68 @@ vector<Luggage*> getLuggage(string directory = "../Source/Files/Luggages.txt") {
     return luggage;
 }
 
+vector<Flight*> getFlights(string directory = "../Source/Files/Flights.txt") {
+
+    vector<Flight*> flights = {};
+    ifstream file(directory);
+
+    if (file.is_open()) {
+        while (!file.eof()) {
+
+            string id, year, month, day, hour, minute, duration, origin, destination;
+
+            getline(file, id, ';');
+            getline(file, year, ';');
+            getline(file, month, ';');
+            getline(file, day, ';');
+            getline(file, hour, ';');
+            getline(file, minute, ';');
+            getline(file, duration, ';');
+            getline(file, origin, ';');
+            getline(file, destination);
+
+            flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, destination));
+        }
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+    return flights;
+}
+
 void Agency::getData() {
 
-    vector<Service> services = getServices();
     vector<Passenger*> passengers = getPassengers();
     vector<Luggage*> luggage = getLuggage();
 
+    /*
+     * Antes dos passageiros serem carregados com a bagagem do sistema.
     for (Passenger *passenger : passengers) {
         cout << *passenger << endl;
     }
+     */
 
+    // Adicionando a carga ao passageiro
     for (Passenger *passenger : passengers) {
         for (Luggage *l : luggage) {
             passenger->addLuggage(*l);
         }
     }
 
+    /**
+     * Depois dos passageiros serem carregados com a bagagem do sistema
     for (Passenger *passenger : passengers) {
         cout << *passenger << endl;
     }
+     */
+
+    vector<Service*> services = getServices();
+    vector<Flight*> flights = getFlights();
+
+    for (Flight *flight : flights) {
+        cout << *flight << endl;
+    }
+
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

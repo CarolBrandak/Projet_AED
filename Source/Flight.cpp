@@ -123,7 +123,7 @@ void Flight::checkPassenger(const Passenger& passenger) const {
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
     os  << "Flight ID: " << flight.getID()
         << "\nFlight Date: " << flight.getFlightDate()
-        << "\nFlight Duration: " << flight.getFlightDuration()
+        << "Flight Duration: " << flight.getFlightDuration()
         << "\nOrigin: " << flight.getFlightOrigin()
         << "\nDestination: "<< flight.getFlightDestination()
         << "\nQuantity of Weight: " << flight.getWeightQuantity()
