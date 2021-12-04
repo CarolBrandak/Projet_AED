@@ -13,9 +13,9 @@ string Agency::getName() const {
     return name;
 }
 
-Airport* Agency::getAirportByName(const string &airportName) {
+Airport* Agency::getAirportInCity(const string &city) {
     for (Airport *airport : airports) {
-        if (airport->getName() == airportName) return airport;
+        if (airport->getCity() == city) return airport;
     }
     return new Airport("", "", "");
 }
@@ -162,7 +162,6 @@ vector<Plane*> getPlanes(string directory = "../Source/Files/Planes.txt") {
     }
     file.close();
     return planes;
-
 }
 
 vector<Airport*> getAirports(string directory = "../Source/Files/Airports.txt") {
@@ -190,6 +189,8 @@ vector<Airport*> getAirports(string directory = "../Source/Files/Airports.txt") 
 
 void Agency::printData() {
 
+    // Aeroporto -> Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
+
     for (Airport *airport : airports) {
         cout << *airport << endl;
         for (Plane *plane : airport->getPlanes()) {
@@ -210,32 +211,30 @@ void Agency::printData() {
             }
         }
     }
-
 }
 
 void Agency::getData() {
 
-    vector<Passenger*> passengers = getPassengers();
+    // Carega as bagagens e os passageiros, coloca as bagagens nos passageiros
     vector<Luggage*> luggage = getLuggage();
-
+    vector<Passenger*> passengers = getPassengers();
     for (Passenger *passenger : passengers) {
         for (Luggage *l : luggage) {
             passenger->addLuggage(*l);
         }
     }
 
+    // Carrega os voos, coloca os passageiros nos voos
     vector<Flight*> flights = getFlights();
-
     for (Flight *flight : flights) {
         for (Passenger *passenger : passengers) {
             flight->addPassenger(*passenger);
         }
     }
 
+    // Carrega os aviões e os serviços, coloca os voos e os serviços nos aviões
     vector<Service*> services = getServices();
     vector<Plane*> planes = getPlanes();
-
-
     for (Plane *plane : planes) {
         for (Service *service : services) {
             plane->addService(*service);
@@ -245,16 +244,29 @@ void Agency::getData() {
         }
     }
 
+    // Carrega os aeroportos, coloca os aviões nos aeroportos
     vector<Airport*> airports = getAirports();
-
     for (Airport *airport : airports) {
         for (Plane *plane : planes) {
             airport->addPlane(*plane);
         }
     }
 
+    // A agência passa a conhecer TODA a informação carregada
     this->airports = airports;
 
+    // Liberta a memória gasta no processo -> mais eficiente
+    luggage.clear();
+    passengers.clear();
+    services.clear();
+    flights.clear();
+    planes.clear();
+    airports.clear();
+}
+
+void Agency::saveData() {
+
+    cout << "Nothing, por agora" << endl;
 }
 
 #endif // PROJECT_AED_AGENCY_CPP
