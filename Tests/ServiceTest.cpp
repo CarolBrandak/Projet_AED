@@ -17,4 +17,5 @@ TEST(Service, getters) {
     ASSERT_EQ("Pedro", s1.getResponsible().getName());
 
     // Operator <<
-    cout << s1;}
+    cout << s1;
+}

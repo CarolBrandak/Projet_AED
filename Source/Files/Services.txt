@@ -1,0 +1,9 @@
+1;cleaning;2022;1;3;11;34;Antonio Costa;34;M
+1;maintenance;2023;10;5;03;15;Cavaco Silva;90;M
+1;cleaning;2023;06;24;17;56;Jose Socrates;56;M
+2;cleaning;2022;1;3;11;34;Paulo Portas;78;M
+2;maintenance;2022;1;3;11;34;Fugitivo Rendeiro;36;M
+2;maintenance;2023;10;5;03;15;Joe Berardo;27;M
+3;cleaning;2023;10;5;03;15;Passos Coelho;62;M
+3;cleaning;2023;06;24;17;56;Ricardo Salgado;56;M
+3;maintenance;2022;1;3;11;34;Eduardo VrumVrum Cabrita;79;M
