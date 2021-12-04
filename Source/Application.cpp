@@ -11,14 +11,12 @@ void Application() {
 
     Agency agency = Agency("Maravilhosa agência de viagens!");
 
-    /**
-    Airport* a = new Airport("4", "Aeroporto Internacional de Pequim", "Pequim");
-    agency.addAirport(*a);
-    */
+    //Airport* a = new Airport("4", "Aeroporto Internacional de Pequim", "Pequim");
+    //agency.addAirport(*a);
 
-    //cout << "Size of airports: " << agency.getAirports().size() << endl;
+    cout << "Size of airports: " << agency.getAirports().size() << endl;
 
-    //agency.printData();
+    agency.printData();
     agency.saveData();
 
 }
