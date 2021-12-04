@@ -110,7 +110,7 @@ class Plane {
          * Returns the plane's Services
          * @return a vector of Service objects
          */
-        list<Service*> getServices() const;
+        vector<Service*> getServices() const;
 
         /**
         * Returns the plane's maximum weight capacity

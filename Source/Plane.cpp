@@ -45,8 +45,15 @@ list<Flight*> Plane::getFlights() const {
     return flights;
 }
 
-list<Service*> Plane::getServices() const {
-    return madeServices;
+vector<Service*> Plane::getServices() const {
+    vector<Service*> services = {};
+    queue<Service*> copy = this->servicesToBeMade;
+    while (!copy.empty()) {
+        Service* s = copy.front();
+        services.push_back(s);
+        copy.pop();
+    }
+    return services;
 }
 
 unsigned int Plane::getMaxWeightCapacity() const {
