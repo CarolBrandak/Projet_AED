@@ -207,14 +207,12 @@ void Agency::printData() {
             cout << *plane << endl;
             for (Flight *flight : plane->getFlights()) {
                 cout << *flight << endl;
-                cout << "Passageiros e suas bagagens: " << endl;
                 for (Passenger *passenger : flight->getPassengers()) {
                     cout << *passenger << endl;
                     for (Luggage *luggage : passenger->getLuggage()) {
                         cout << *luggage << endl;
                     }
                 }
-                cout << "Bagagem adicionada no voo: " << endl;
                 for (Luggage *luggage : flight->getLuggage()) {
                     cout << *luggage << endl;
                 }
@@ -274,9 +272,57 @@ void Agency::getData() {
     airports.clear();
 }
 
+void saveLuggage(vector<Luggage*> luggage, string directory = "../Source/Files/Luggages.txt") {
+
+    ofstream file(directory);
+    if (file.is_open()) {
+        for (int i = 0 ; i < luggage.size() - 1; i++) {
+            file << luggage[i]->getID() << ";" << luggage[i]->getWeight() << ";" << luggage[i]->getVolume().width
+                    << ";" << luggage[i]->getVolume().height << ";" << luggage[i]->getVolume().depth
+                    << ";" << luggage[i]->getPlaneHold() << endl;
+        }
+        Luggage * l = luggage[luggage.size()-1];
+        file << l->getID() << ";" << l->getWeight() << ";" << l->getVolume().width
+             << ";" << l->getVolume().height << ";" << l->getVolume().depth
+             << ";" << l->getPlaneHold();
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+}
+
 void Agency::saveData() {
 
-    cout << "Nothing, por agora" << endl;
+    vector<Luggage*> allLuggage = {};
+    vector<Passenger*> allPassengers = {};
+    vector<Flight*> allFlights = {};
+    vector<Service*> allServices = {};
+    vector<Plane*> allPlanes = {};
+    vector<Airport*> allAirports = {};
+
+    // Carrega os vectores com os dados alterados pelo utilizador
+    for (Airport *airport : airports) {
+        allAirports.push_back(airport);
+        for (Plane *plane : airport->getPlanes()) {
+            allPlanes.push_back(plane);
+            for (Flight *flight : plane->getFlights()) {
+                allFlights.push_back(flight);
+                for (Passenger *passenger : flight->getPassengers()) {
+                    allPassengers.push_back(passenger);
+                }
+                for (Luggage *luggage : flight->getLuggage()) {
+                    allLuggage.push_back(luggage);
+                }
+            }
+            for (Service *service : plane->getServices()) {
+                allServices.push_back(service);
+            }
+        }
+    }
+
+    // Reescreve os ficheiros com base na informação de cada vetor
+    saveLuggage(allLuggage);
+
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

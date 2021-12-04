@@ -107,6 +107,12 @@ class Plane {
         list<Flight*> getFlights() const;
 
         /**
+         * Returns the plane's Services
+         * @return a vector of Service objects
+         */
+        list<Service*> getServices() const;
+
+        /**
         * Returns the plane's maximum weight capacity
         * @return a unsigned int, containing the plane's maximum weight capacity
         */

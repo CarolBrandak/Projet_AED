@@ -45,6 +45,10 @@ list<Flight*> Plane::getFlights() const {
     return flights;
 }
 
+list<Service*> Plane::getServices() const {
+    return madeServices;
+}
+
 unsigned int Plane::getMaxWeightCapacity() const {
     return MAX_WEIGHT_CAPACITY;
 }

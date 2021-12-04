@@ -18,6 +18,6 @@ void Application() {
     Agency agency = Agency("Maravilhosa agência de viagens!");
     cout << endl << agency.getName() << endl << endl;
     agency.getData();
-    //agency.printData();
+    agency.printData();
 
 }

@@ -10,7 +10,7 @@ TEST(Luggage, gettersAndSetters) {
     Volume v1; v1.depth = 1; v1.height = 4; v1.width = 7;
     Luggage l1 = Luggage("1", 45, v1, true);
     ASSERT_EQ(45, l1.getWeight());
-    ASSERT_EQ(28, l1.getVolume());
+    ASSERT_EQ(28, l1.getTotalVolume());
     ASSERT_EQ(true, l1.getPlaneHold());
 
     // Setters

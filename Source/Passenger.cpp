@@ -43,7 +43,7 @@ int Passenger::getTotalWeight() const {
 
 int Passenger::getTotalVolume() const {
     int total = 0;
-    for (auto l : luggages) { total += l->getVolume(); }
+    for (auto l : luggages) { total += l->getTotalVolume(); }
     return total;
 }
 

@@ -95,7 +95,13 @@ class Luggage {
          * Returns Luggage's volume
          * @return an integer, representing luggage's volume
          */
-        int getVolume() const;
+        int getTotalVolume() const;
+
+        /**
+         * Returns Luggage's volume
+         * @return an struct, representing luggage's volume
+         */
+        Volume getVolume() const;
 
         /**
          * Returns Plane Hold
