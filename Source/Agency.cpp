@@ -9,9 +9,7 @@ Agency::~Agency() {
     airports.clear();
 }
 
-Agency::Agency(string name) : name(name) {
-    this->airports = getData();
-}
+Agency::Agency(string name) : name(name), airports(getData()) {}
 
 string Agency::getName() const {
     return name;
@@ -25,7 +23,7 @@ Airport* Agency::getAirportInCity(const string &city) {
 }
 
 void Agency::addAirport(Airport &airport) {
-    airports.push_back(&airport);
+    this->airports.push_back(&airport);
 }
 
 void Agency::checkAirports() {
@@ -180,7 +178,7 @@ vector<Plane*> Agency::getAllPlanes(string directory = "../Source/Files/Planes.t
 
 vector<Airport*> Agency::getAllAirports(string directory = "../Source/Files/Airports.txt") {
 
-    vector<Airport*> airports = {};
+    vector<Airport*> allAirports = {};
     ifstream file(directory);
 
     if (file.is_open()) {
@@ -192,13 +190,13 @@ vector<Airport*> Agency::getAllAirports(string directory = "../Source/Files/Airp
             getline(file, name, ';');
             getline(file, city);
 
-            airports.push_back(new Airport(id, name, city));
+            allAirports.push_back(new Airport(id, name, city));
         }
     } else {
         cerr << "File " << directory << " not found" << endl;
     }
     file.close();
-    return airports;
+    return allAirports;
 }
 
 void Agency::printData() {
@@ -403,11 +401,11 @@ void Agency::saveData() {
     vector<Flight*> allFlights = {};
     vector<Service*> allServices = {};
     vector<Plane*> allPlanes = {};
-    vector<Airport*> allAirports = {};
+    //vector<Airport*> allAirports = {};
 
     // Carrega os vectores com os dados alterados pelo utilizador
-    for (Airport *airport : airports) {
-        allAirports.push_back(airport);
+    for (Airport *airport : this->airports) {
+        //allAirports.push_back(airport);
         for (Plane *plane : airport->getPlanes()) {
             allPlanes.push_back(plane);
             for (Flight *flight : plane->getFlights()) {
@@ -431,7 +429,7 @@ void Agency::saveData() {
     saveFlights(allFlights);
     saveServices(allServices);
     savePlanes(allPlanes);
-    saveAirports(allAirports);
+    saveAirports(this->airports);
 
     // Libertar a memória usada -> mais eficiente
     allLuggage.clear();
@@ -439,7 +437,7 @@ void Agency::saveData() {
     allFlights.clear();
     allServices.clear();
     allPlanes.clear();
-    allAirports.clear();
+    //allAirports.clear();
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

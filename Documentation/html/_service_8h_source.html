@@ -78,27 +78,41 @@ $(function() {
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Employee.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_service.html">    8</a></span><span class="keyword">class </span><a class="code hl_class" href="class_service.html">Service</a> {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">const</span> std::string serviceType;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">const</span> <a class="code hl_class" href="class_date.html">Date</a> serviceDate;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">const</span> <a class="code hl_class" href="class_employee.html">Employee</a> responsible;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="class_service.html#a6e2d4062222b6b77f8d76203cdd39913">Service</a>(std::string serviceType, <a class="code hl_class" href="class_date.html">Date</a> serviceDate, <a class="code hl_class" href="class_employee.html">Employee</a> responsible);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::string <a class="code hl_function" href="class_service.html#a883558cccca84fab01129753b8c82db2">getServiceType</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_class" href="class_date.html">Date</a> <a class="code hl_function" href="class_service.html#ad6df9c0d69a9f8788f86fb998f18ddb7">getServiceDate</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_class" href="class_employee.html">Employee</a> <a class="code hl_function" href="class_service.html#a9e20e5045350323f5d3948a006904d2c">getResponsible</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>ostream &amp; operator &lt;&lt; (ostream &amp; os, <span class="keyword">const</span> <a class="code hl_class" href="class_service.html">Service</a> &amp;service);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordtype">string</span> id;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">string</span> serviceType;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="class_date.html">Date</a> serviceDate;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <a class="code hl_class" href="class_employee.html">Employee</a> responsible;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_function" href="class_service.html#acc246c9f7ed3c51e2d91d10fe257513f">Service</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_function" href="class_service.html#af6c3577b59652ac817d1d76aaccee904">~Service</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_function" href="class_service.html#acc246c9f7ed3c51e2d91d10fe257513f">Service</a>(<span class="keywordtype">string</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> serviceType, <a class="code hl_class" href="class_date.html">Date</a> serviceDate, <a class="code hl_class" href="class_employee.html">Employee</a> responsible);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_service.html#af44e86f3e8c23cbe397019821b84e092">getID</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif </span><span class="comment">// PROJECT_AED_SERVICE_H</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_service.html#a9c5141df52d1a775b7e31e744ac80834">getServiceType</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_class" href="class_date.html">Date</a> <a class="code hl_function" href="class_service.html#ad6df9c0d69a9f8788f86fb998f18ddb7">getServiceDate</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_class" href="class_employee.html">Employee</a> <a class="code hl_function" href="class_service.html#a9e20e5045350323f5d3948a006904d2c">getResponsible</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>ostream &amp; operator &lt;&lt; (ostream &amp; os, <span class="keyword">const</span> <a class="code hl_class" href="class_service.html">Service</a> &amp;service);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif </span><span class="comment">// PROJECT_AED_SERVICE_H</span></div>
 <div class="ttc" id="aclass_date_html"><div class="ttname"><a href="class_date.html">Date</a></div><div class="ttdef"><b>Definition:</b> Date.h:12</div></div>
 <div class="ttc" id="aclass_employee_html"><div class="ttname"><a href="class_employee.html">Employee</a></div><div class="ttdef"><b>Definition:</b> Employee.h:9</div></div>
 <div class="ttc" id="aclass_service_html"><div class="ttname"><a href="class_service.html">Service</a></div><div class="ttdef"><b>Definition:</b> Service.h:8</div></div>
-<div class="ttc" id="aclass_service_html_a6e2d4062222b6b77f8d76203cdd39913"><div class="ttname"><a href="class_service.html#a6e2d4062222b6b77f8d76203cdd39913">Service::Service</a></div><div class="ttdeci">Service(std::string serviceType, Date serviceDate, Employee responsible)</div><div class="ttdef"><b>Definition:</b> Service.cpp:6</div></div>
-<div class="ttc" id="aclass_service_html_a883558cccca84fab01129753b8c82db2"><div class="ttname"><a href="class_service.html#a883558cccca84fab01129753b8c82db2">Service::getServiceType</a></div><div class="ttdeci">std::string getServiceType() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:11</div></div>
-<div class="ttc" id="aclass_service_html_a9e20e5045350323f5d3948a006904d2c"><div class="ttname"><a href="class_service.html#a9e20e5045350323f5d3948a006904d2c">Service::getResponsible</a></div><div class="ttdeci">Employee getResponsible() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:15</div></div>
-<div class="ttc" id="aclass_service_html_ad6df9c0d69a9f8788f86fb998f18ddb7"><div class="ttname"><a href="class_service.html#ad6df9c0d69a9f8788f86fb998f18ddb7">Service::getServiceDate</a></div><div class="ttdeci">Date getServiceDate() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:19</div></div>
+<div class="ttc" id="aclass_service_html_a9c5141df52d1a775b7e31e744ac80834"><div class="ttname"><a href="class_service.html#a9c5141df52d1a775b7e31e744ac80834">Service::getServiceType</a></div><div class="ttdeci">string getServiceType() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:20</div></div>
+<div class="ttc" id="aclass_service_html_a9e20e5045350323f5d3948a006904d2c"><div class="ttname"><a href="class_service.html#a9e20e5045350323f5d3948a006904d2c">Service::getResponsible</a></div><div class="ttdeci">Employee getResponsible() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:24</div></div>
+<div class="ttc" id="aclass_service_html_acc246c9f7ed3c51e2d91d10fe257513f"><div class="ttname"><a href="class_service.html#acc246c9f7ed3c51e2d91d10fe257513f">Service::Service</a></div><div class="ttdeci">Service()</div><div class="ttdef"><b>Definition:</b> Service.cpp:6</div></div>
+<div class="ttc" id="aclass_service_html_ad6df9c0d69a9f8788f86fb998f18ddb7"><div class="ttname"><a href="class_service.html#ad6df9c0d69a9f8788f86fb998f18ddb7">Service::getServiceDate</a></div><div class="ttdeci">Date getServiceDate() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:28</div></div>
+<div class="ttc" id="aclass_service_html_af44e86f3e8c23cbe397019821b84e092"><div class="ttname"><a href="class_service.html#af44e86f3e8c23cbe397019821b84e092">Service::getID</a></div><div class="ttdeci">string getID() const</div><div class="ttdef"><b>Definition:</b> Service.cpp:16</div></div>
+<div class="ttc" id="aclass_service_html_af6c3577b59652ac817d1d76aaccee904"><div class="ttname"><a href="class_service.html#af6c3577b59652ac817d1d76aaccee904">Service::~Service</a></div><div class="ttdeci">~Service()</div><div class="ttdef"><b>Definition:</b> Service.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
