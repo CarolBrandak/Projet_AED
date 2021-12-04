@@ -7,22 +7,21 @@ Plane::Plane() : MAX_WEIGHT_CAPACITY(0), MAX_PASSENGERS_CAPACITY(0),
                         LICENSE_PLATE(""), TYPE("") {}
 
 Plane::Plane(string id,
-             std::list<Flight> flights,
-             std::queue<Service> servicesToBeMade,
-             std::list<Service> madeServices,
              std::string LICENSE_PLATE,
              std::string TYPE,
              unsigned int MAX_WEIGHT_CAPACITY,
              unsigned int MAX_PASSENGERS_CAPACITY) :
 
              id(id),
-            LICENSE_PLATE(LICENSE_PLATE),
-            TYPE(TYPE),
-            MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
-            MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY),
-            flights(flights),
-            madeServices(madeServices),
-            servicesToBeMade(servicesToBeMade) {}
+             LICENSE_PLATE(LICENSE_PLATE),
+             TYPE(TYPE),
+             MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
+             MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY) {
+
+            this->flights = {};
+            this->madeServices = {};
+            this->servicesToBeMade = {};
+}
 
 string Plane::getID() const {
     return id;
@@ -56,7 +55,7 @@ void Plane::checkFlights() {
 }
 
 void Plane::addFlight(const Flight &flight) {
-    flights.push_back(flight);
+    if (id[1] == flight.getID()[1]) flights.push_back(flight);
 }
 
 void Plane::removeFlight(const Flight &flight) {
@@ -77,7 +76,7 @@ bool Plane::findFlight(const Flight &flight) {
 }
 
 void Plane::addService(const Service &service) {
-    servicesToBeMade.push(service);
+    if (id[1] == service.getID()[1]) servicesToBeMade.push(service);
 }
 
 void Plane::setNextServiceAsDone() {
