@@ -57,12 +57,39 @@ vector<Service> getServices (string directory = "../Source/Files/Services.txt") 
     return services;
 }
 
+vector<Passenger> getPassengers(string directory = "../Source/Files/Passengers.txt") {
+
+    vector<Passenger> passengers = {};
+    ifstream file(directory);
+
+    if (file.is_open()) {
+        while (!file.eof()) {
+
+            string id, name, age, gender, passportNumber;
+
+            getline(file, id, ';');
+            getline(file, name, ';');
+            getline(file, age, ';');
+            getline(file, gender, ';');
+            getline(file, passportNumber);
+
+            passengers.push_back(Passenger(id, name, stoi(age), gender[0], passportNumber));
+
+        }
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+    return passengers;
+}
+
 void Agency::getData() {
 
     vector<Service> services = getServices();
+    vector<Passenger> passengers = getPassengers();
 
-    for (Service service : services) {
-        cout << service << endl;
+    for (Passenger passenger : passengers) {
+        cout << passenger << endl;
     }
 }
 
