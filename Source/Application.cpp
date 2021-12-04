@@ -18,7 +18,8 @@ using namespace std;
  */
 void Application() {
 
-    Agency test = Agency("Maravilhosa agência de viagens!");
-    test.getData();
+    Agency agency = Agency("Maravilhosa agência de viagens!");
+    cout << endl << agency.getName() << endl << endl;
+    agency.getData();
 
 }

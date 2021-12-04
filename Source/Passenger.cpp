@@ -65,7 +65,15 @@ bool byLuggage(const Passenger &p1, const Passenger &p2) {
 }
 
 ostream & operator << (ostream & os, const Passenger &passenger) {
-    os << passenger.getName() << " " << passenger.getAge() << " " << passenger.getGender() << " " << passenger.getPassportNumber() << endl;
+    os  << "Name: " << passenger.getName() <<
+        "\nAge: " << passenger.getAge() <<
+        "\nGender: " << passenger.getGender() <<
+        "\nPassport Number: " << passenger.getPassportNumber() <<
+        "\nLuggage:\n";
+        for (auto luggage : passenger.getLuggage()) {
+            cout << luggage;
+        }
+        cout << endl;
     return os;
 }
 
