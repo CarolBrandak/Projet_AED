@@ -124,6 +124,14 @@ class Flight {
          */
         unsigned int getPassengersQuantity() const;
 
+        vector<Passenger*> getPassengers() {
+            return passengers;
+        }
+
+        vector<Luggage*> getLuggage() {
+            return luggage;
+        }
+
         /**
          * Adds passengers to the flight
          * @param toPush - Passenger type vector that contains all passengers that will be added in flight

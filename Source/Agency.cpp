@@ -140,41 +140,44 @@ vector<Flight*> getFlights(string directory = "../Source/Files/Flights.txt") {
     return flights;
 }
 
+vector<Plane*> getPlanes(string directory = "../Source/Files/Planes.txt") {
+
+    vector<Plane*> planes = {};
+    ifstream file(directory);
+
+    if (file.is_open()) {
+        while (!file.eof()) {
+
+            string id, licencePlate, type, weightCapacity, passengerCapacity;
+
+            getline(file, id, ';');
+            getline(file, licencePlate, ';');
+            getline(file, type, ';');
+            getline(file, weightCapacity, ';');
+            getline(file, passengerCapacity);
+
+            planes.push_back(new Plane(id, licencePlate, type, stoi(weightCapacity), stoi(passengerCapacity)));
+        }
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+    return planes;
+
+}
+
 void Agency::getData() {
 
     vector<Passenger*> passengers = getPassengers();
     vector<Luggage*> luggage = getLuggage();
 
-    /*
-     * Antes dos passageiros serem carregados com a bagagem do sistema.
-    for (Passenger *passenger : passengers) {
-        cout << *passenger << endl;
-    }
-     */
-
-    // Adicionando a carga ao passageiro
     for (Passenger *passenger : passengers) {
         for (Luggage *l : luggage) {
             passenger->addLuggage(*l);
         }
     }
 
-    /**
-     * Depois dos passageiros serem carregados com a bagagem do sistema
-    for (Passenger *passenger : passengers) {
-        cout << *passenger << endl;
-    }
-     */
-
-    vector<Service*> services = getServices();
     vector<Flight*> flights = getFlights();
-
-    // Antes de levar com os passageiros
-    /**
-     * for (Flight *flight : flights) {
-        cout << *flight << endl;
-    }
-     */
 
     for (Flight *flight : flights) {
         for (Passenger *passenger : passengers) {
@@ -182,11 +185,42 @@ void Agency::getData() {
         }
     }
 
-    cout << "Depois:" << endl;
-    // Depois de levar com os passageiros
-    for (Flight *flight : flights) {
-        cout << *flight << endl;
+    vector<Service*> services = getServices();
+    vector<Plane*> planes = getPlanes();
+
+    /**
+    for (Plane *plane : planes) {
+        cout << *plane << endl;
     }
+     */
+
+    for (Plane *plane : planes) {
+        for (Service *service : services) {
+            plane->addService(*service);
+        }
+        for (Flight *flight : flights) {
+            plane->addFlight(*flight);
+        }
+    }
+
+    for (Plane *plane : planes) {
+        cout << *plane << endl;
+        for (Flight *flight : plane->getFlights()) {
+            cout << *flight << endl;
+            cout << "Passageiros e suas bagagens: " << endl;
+            for (Passenger *passenger : flight->getPassengers()) {
+                cout << *passenger << endl;
+                for (Luggage *luggage : passenger->getLuggage()) {
+                    cout << *luggage << endl;
+                }
+            }
+            cout << "Bagagem adicionada no voo: " << endl;
+            for (Luggage *luggage : flight->getLuggage()) {
+                cout << *luggage << endl;
+            }
+        }
+    }
+
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

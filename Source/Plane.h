@@ -47,17 +47,17 @@ class Plane {
         /**
          * @var flights - list that contains all the flights programmed for the specific plane.
          */
-        std::list<Flight> flights;
+        std::list<Flight*> flights;
 
         /**
          * @var servicesToBeMade - queue that contains all the services to be made to the plane
          */
-        std::queue<Service> servicesToBeMade;
+        std::queue<Service*> servicesToBeMade;
 
         /**
          * @var madeServices - list that contains all the services that were made to the plane
          */
-        std::list<Service> madeServices;
+        std::list<Service*> madeServices;
     
     public:
 
@@ -99,7 +99,7 @@ class Plane {
          * Returns the plane's list of flights
          * @return a list of flights to do
          */
-        list<Flight> getFlights() const;
+        list<Flight*> getFlights() const;
 
         /**
         * Returns the plane's maximum weight capacity
@@ -140,19 +140,19 @@ class Plane {
          * Function that add a flight into vector flights
          * @param flight - A Flight type object that will be added to vector flights
          */
-        void addFlight(const Flight &flight);
+        void addFlight(Flight &flight);
 
         /**
          * Functions that remove a flight from vector flights
          * @param flight - A Flight type object that will be removed to vector flights
          */
-        void removeFlight(const Flight &flight);
+        void removeFlight(Flight &flight);
 
         /**
          * Adds a service to the queue of services
          * @param service - a Service type object to be added to the queue of services
          */
-        void addService(const Service &service);
+        void addService(Service &service);
 
         /**
          * A bool function that returns if the flight passed by parameter exists in this plane

@@ -35,7 +35,7 @@ std::string Plane::getType() const {
     return TYPE;
 }
 
-list<Flight> Plane::getFlights() const {
+list<Flight*> Plane::getFlights() const {
     return flights;
 }
 
@@ -49,19 +49,19 @@ unsigned int Plane::getMaxPassengersCapacity() const {
 
 void Plane::checkFlights() {
 
-    for (auto flight : flights) {
-        cout << flight;
+    for (auto *flight : flights) {
+        cout << *flight << endl;
     }
 }
 
-void Plane::addFlight(const Flight &flight) {
-    if (id[1] == flight.getID()[1]) flights.push_back(flight);
+void Plane::addFlight(Flight &flight) {
+    if (id == flight.getID().substr(0, 2)) flights.push_back(&flight);
 }
 
-void Plane::removeFlight(const Flight &flight) {
+void Plane::removeFlight(Flight &flight) {
 
-    for(auto it = flights.begin() ; it != flights.end() ; it++) {
-        if((*it) == flight) {
+    for(list<Flight*>::iterator it = flights.begin() ; it != flights.end() ; it++) {
+        if(*it == &flight) {
             flights.erase(it);
             break;
         }
@@ -69,14 +69,14 @@ void Plane::removeFlight(const Flight &flight) {
 }
 
 bool Plane::findFlight(const Flight &flight) {
-    for (Flight f : flights) {
-        if (f == flight) return true;
+    for (Flight *f : flights) {
+        if (*f == flight) return true;
     }
     return false;
 }
 
-void Plane::addService(const Service &service) {
-    if (id[1] == service.getID()[1]) servicesToBeMade.push(service);
+void Plane::addService(Service &service) {
+    if (id == service.getID().substr(0, 2)) servicesToBeMade.push(&service);
 }
 
 void Plane::setNextServiceAsDone() {
@@ -85,7 +85,7 @@ void Plane::setNextServiceAsDone() {
 }
 
 void Plane::checkServicesToBeMade() {
-    queue<Service> copy = servicesToBeMade;
+    queue<Service*> copy = servicesToBeMade;
     while (!copy.empty()) {
         cout << copy.front();
         copy.pop();
@@ -135,13 +135,14 @@ bool byNumberOfServices(const Plane &p1, const Plane &p2) {
 }
 
 ostream & operator << (ostream & os, const Plane &plane) {
-    os << "License Plate: " << plane.getLicensePlate() <<
+    os << "ID: " << plane.getID() <<
+        "\nLicense Plate: " << plane.getLicensePlate() <<
         "\nType: " << plane.getType() <<
         "\nMax Weight Capacity: "  << plane.getMaxWeightCapacity() <<
         "\nMax Passengers Capacity: " << plane.getMaxPassengersCapacity() <<
         "\nQuantity of flights: " << plane.getQuantityOfFlights() <<
         "\nQuantity of services to be made: " << plane.getQuantityOfServicesToBeMade() <<
-        "\nQuantity of made services: " << plane.getQuantityOfMadeServices();
+        "\nQuantity of made services: " << plane.getQuantityOfMadeServices() << endl;
     return os;
 }
 

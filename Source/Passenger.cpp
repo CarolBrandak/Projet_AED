@@ -70,11 +70,7 @@ ostream & operator << (ostream & os, const Passenger &passenger) {
         "\nAge: " << passenger.getAge() <<
         "\nGender: " << passenger.getGender() <<
         "\nPassport Number: " << passenger.getPassportNumber() <<
-        "\nLuggage:\n";
-        for (auto *luggage : passenger.getLuggage()) {
-            cout << *luggage;
-        }
-        cout << endl;
+        "\nNumber of luggages: " << passenger.getLuggage().size() << endl;
     return os;
 }
 

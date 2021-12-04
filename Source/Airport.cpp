@@ -30,9 +30,9 @@ vector<Flight> Airport::getPossibleFlights(const string &city, const Date &date)
 
     vector<Flight> possibleFlights = {};
     for (Plane plane : planes) {
-        for (Flight flight : plane.getFlights()) {
-            if (flight.getFlightDestination() == city && flight.getFlightDate() == date) {
-                possibleFlights.push_back(flight);
+        for (Flight *flight : plane.getFlights()) {
+            if (flight->getFlightDestination() == city && flight->getFlightDate() == date) {
+                possibleFlights.push_back(*flight);
             }
         }
     }

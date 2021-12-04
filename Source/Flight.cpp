@@ -74,11 +74,13 @@ bool byDuration(const Flight &f1, const Flight &f2) {
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
     for (Passenger *passenger : passengers) {
-        this->quantityOfPassengers++;
-        this->quantityOfWeight += passenger->getTotalWeight();
-        passengers.push_back(passenger);
-        for (Luggage *l : passenger->getLuggage()) {
-            luggage.push_back(l);
+        if (id == passenger->getID().substr(0, 3)) {
+            this->quantityOfPassengers++;
+            this->quantityOfWeight += passenger->getTotalWeight();
+            passengers.push_back(passenger);
+            for (Luggage *l : passenger->getLuggage()) {
+                luggage.push_back(l);
+            }
         }
     }
 }
@@ -118,7 +120,7 @@ void Flight::removePassenger(Passenger &passenger) {
 }
 
 void Flight::checkPassengers() const {
-    for(size_t i = 0; i < passengers.size(); i++) {
+    for (size_t i = 0; i < passengers.size(); i++) {
         cout << passengers.at(i);
     }
 }
