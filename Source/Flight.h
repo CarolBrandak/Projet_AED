@@ -124,13 +124,17 @@ class Flight {
          */
         unsigned int getPassengersQuantity() const;
 
-        vector<Passenger*> getPassengers() {
-            return passengers;
-        }
+        /**
+         * Return all passengers in current flight
+         * @return a vector with pointers to Passenger objects
+         */
+        vector<Passenger*> getPassengers() const;
 
-        vector<Luggage*> getLuggage() {
-            return luggage;
-        }
+        /**
+         * Return all luggage in current flight
+         * @return a vector with pointers to Luggage objects
+         */
+        vector<Luggage*> getLuggage() const;
 
         /**
          * Adds passengers to the flight

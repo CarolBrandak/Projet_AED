@@ -98,7 +98,6 @@ void Flight::addPassenger(Passenger& passenger) {
 
 void Flight::removePassenger(Passenger &passenger) {
 
-    /**
     for (Luggage *l : passenger.getLuggage()) {
         for (vector<Luggage*>::iterator it = luggage.begin() ; it != luggage.end() ; it++) {
             if (l == *it) {
@@ -108,15 +107,14 @@ void Flight::removePassenger(Passenger &passenger) {
         }
     }
 
-    for (vector<Passenger>::iterator it = passengers.begin() ; it != passengers.end() ; it++) {
-        if (passenger == *it) {
+    for (vector<Passenger*>::iterator it = passengers.begin() ; it != passengers.end() ; it++) {
+        if (&passenger == *it) {
             this->quantityOfPassengers--;
             this->quantityOfWeight -= passenger.getTotalWeight();
             passengers.erase(it);
             break;
         }
     }
-     */
 }
 
 void Flight::checkPassengers() const {
@@ -127,6 +125,14 @@ void Flight::checkPassengers() const {
 
 void Flight::checkPassenger(const Passenger& passenger) const {
     cout << passenger;
+}
+
+vector<Passenger*> Flight::getPassengers() const {
+    return passengers;
+}
+
+vector<Luggage*> Flight::getLuggage() const {
+    return luggage;
 }
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {

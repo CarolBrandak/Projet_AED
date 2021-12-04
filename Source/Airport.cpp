@@ -26,13 +26,13 @@ vector<Plane*> Airport::getPlanes() const {
     return planes;
 }
 
-vector<Flight> Airport::getPossibleFlights(const string &city, const Date &date) const {
+vector<Flight*> Airport::getPossibleFlights(const string &city, const Date &date) const {
 
-    vector<Flight> possibleFlights = {};
+    vector<Flight*> possibleFlights = {};
     for (Plane *plane : planes) {
         for (Flight *flight : plane->getFlights()) {
             if (flight->getFlightDestination() == city && flight->getFlightDate() == date) {
-                possibleFlights.push_back(*flight);
+                possibleFlights.push_back(flight);
             }
         }
     }
@@ -41,7 +41,7 @@ vector<Flight> Airport::getPossibleFlights(const string &city, const Date &date)
 
 void Airport::checkPlanes() {
     for (Plane *plane : planes) {
-        cout << *plane;
+        cout << *plane << endl;
     }
 }
 
@@ -59,13 +59,13 @@ void Airport::removePlane(Plane &plane) {
     }
 }
 
-void Airport::showPossibleFlights(const vector<Flight> &possibleFlights) {
-    for (Flight flight : possibleFlights) {
-        cout << flight;
+void Airport::showPossibleFlights(const vector<Flight*> &possibleFlights) {
+    for (Flight *flight : possibleFlights) {
+        cout << *flight << endl;
     }
 }
 
-bool Airport::buyTicket(Flight flight, const vector<Passenger*> &passengers) {
+bool Airport::buyTicket(Flight &flight, const vector<Passenger*> &passengers) {
 
     int totalPassengers = passengers.size();
     int totalPassengersWeight = 0;

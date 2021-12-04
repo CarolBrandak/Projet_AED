@@ -24,6 +24,12 @@ void Agency::addAirport(Airport &airport) {
     airports.push_back(&airport);
 }
 
+void Agency::checkAirports() {
+    for (Airport *airport : airports) {
+        cout << *airport << endl;
+    }
+}
+
 vector<Service*> getServices(string directory = "../Source/Files/Services.txt") {
 
     vector<Service*> services = {};

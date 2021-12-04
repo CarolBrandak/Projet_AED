@@ -81,7 +81,7 @@ class Airport {
          * @param date - a Date object to search
          * @return a vector of Flight objects that matches the requirements
          */
-        vector<Flight> getPossibleFlights(const string &city, const Date &date) const;
+        vector<Flight*> getPossibleFlights(const string &city, const Date &date) const;
 
         /**
          * Prints all planes of the airport
@@ -90,13 +90,13 @@ class Airport {
 
         /**
          * Void function that add a plane into vector planes
-         * @param plane - a Plane object that will added in current airport
+         * @param plane - a Plane object that will added in current airport, passed by reference
          */
         void addPlane(Plane &plane);
 
         /**
          * Void function that remove a plane from current airport
-         * @param plane - a Plane object that will be removed
+         * @param plane - a Plane object that will be removed, passed by reference
          */
         void removePlane(Plane &plane);
 
@@ -104,7 +104,7 @@ class Airport {
          * Prints out all the the possible Flights
          * @param possibleFlights - a vector with Flights that will be printed
          */
-        void showPossibleFlights(const vector<Flight> &possibleFlights);
+        void showPossibleFlights(const vector<Flight*> &possibleFlights);
 
         /**
          * A boolean function that tries to buy a ticket
@@ -112,7 +112,7 @@ class Airport {
          * @param passengers - vector of Passengers objects that will buy a ticket
          * @return if the purchase was successful
          */
-        bool buyTicket(Flight flight, const vector<Passenger*> &passengers);
+        bool buyTicket(Flight &flight, const vector<Passenger*> &passengers);
 
         /**
         * @overload

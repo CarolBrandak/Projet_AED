@@ -55,6 +55,11 @@ class Agency {
          */
         string getName() const;
 
+        /**
+         * Prints all airports managed by Agency
+         */
+        void checkAirports();
+
          /**
           * Load all data contained in files directory
           */
