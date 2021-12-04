@@ -45,7 +45,10 @@ bool byVolume(const Luggage &l1, const Luggage &l2) {
 }
 
 ostream & operator << (ostream & os, const Luggage &luggage) {
-    os << luggage.getWeight() << " " << luggage.getVolume() << " " << luggage.getPlaneHold() << endl;
+    os   << "ID: " << luggage.getID() <<
+            "\nWeight: " << luggage.getWeight() <<
+            "\nVolume: " << luggage.getVolume() <<
+            "\nPlaneHold: " << luggage.getPlaneHold() << endl;
     return os;
 }
 

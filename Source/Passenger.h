@@ -24,7 +24,7 @@ class Passenger : public Person {
         /**
          * @var luggage, a vector with Luggage's objects
          */
-        vector<Luggage> luggages;
+        vector<Luggage*> luggages;
 
     public:
 
@@ -53,7 +53,7 @@ class Passenger : public Person {
          * Set Passenger luggage
          * @param luggages Passenger's new luggage, a vector with Luggage objects passed reference
          */
-        void addLuggage(const Luggage &luggage);
+        void addLuggage(Luggage &luggage);
 
         /**
          * Returns Passenger's id
@@ -71,7 +71,7 @@ class Passenger : public Person {
          * Returns Passenger's luggage
          * @return a vector, containing passenger's luggage objects
          */
-        vector<Luggage> getLuggage() const;
+        vector<Luggage*> getLuggage() const;
 
         /**
          * Returns total weight of Passenger's luggage

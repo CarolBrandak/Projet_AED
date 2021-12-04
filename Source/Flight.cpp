@@ -77,8 +77,8 @@ void Flight::addPassengers(const vector<Passenger> &toPush) {
         this->quantityOfPassengers++;
         this->quantityOfWeight += passenger.getTotalWeight();
         passengers.push_back(passenger);
-        for (Luggage l : passenger.getLuggage()) {
-            luggage.push_back(l);
+        for (Luggage *l : passenger.getLuggage()) {
+            //luggage.push_back(l);
         }
     }
 }
@@ -89,8 +89,9 @@ void Flight::addPassenger(const Passenger& passenger) {
 
 void Flight::removePassenger(const Passenger &passenger) {
 
-    for (Luggage l : passenger.getLuggage()) {
-        for (vector<Luggage>::iterator it = luggage.begin() ; it != luggage.end() ; it++) {
+    /**
+    for (Luggage *l : passenger.getLuggage()) {
+        for (vector<Luggage*>::iterator it = luggage.begin() ; it != luggage.end() ; it++) {
             if (l == *it) {
                 luggage.erase(it);
                 it--;
@@ -106,6 +107,7 @@ void Flight::removePassenger(const Passenger &passenger) {
             break;
         }
     }
+     */
 }
 
 void Flight::checkPassengers() const {

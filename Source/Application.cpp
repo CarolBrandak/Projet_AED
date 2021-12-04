@@ -13,9 +13,6 @@
 
 using namespace std;
 
-/**
- * Uma função muito simples que chama as classes
- */
 void Application() {
 
     Agency agency = Agency("Maravilhosa agência de viagens!");

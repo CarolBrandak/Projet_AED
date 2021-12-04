@@ -15,8 +15,8 @@ void Passenger::setPassportNumber(const string &passportNumber) {
     this->passportNumber = passportNumber;
 }
 
-void Passenger::addLuggage(const Luggage &luggage) {
-    if (id[3] == luggage.getID()[3]) luggages.push_back(luggage);
+void Passenger::addLuggage(Luggage &luggage) {
+    if (id == luggage.getID()) luggages.push_back(&luggage);
 }
 
 string Passenger::getID() const {
@@ -27,19 +27,19 @@ string Passenger::getPassportNumber() const {
     return this->passportNumber;
 }
 
-vector<Luggage> Passenger::getLuggage() const {
+vector<Luggage*> Passenger::getLuggage() const {
     return this->luggages;
 }
 
 int Passenger::getTotalWeight() const {
     int total = 0;
-    for (auto l : luggages) { total += l.getWeight(); }
+    for (auto l : luggages) { total += l->getWeight(); }
     return total;
 }
 
 int Passenger::getTotalVolume() const {
     int total = 0;
-    for (auto l : luggages) { total += l.getVolume(); }
+    for (auto l : luggages) { total += l->getVolume(); }
     return total;
 }
 
@@ -48,7 +48,7 @@ bool Passenger::operator < (const Passenger &passenger) const {
     return age < passenger.getAge();
 }
 
-bool Passenger::operator==(const Passenger &passenger) const {
+bool Passenger::operator == (const Passenger &passenger) const {
     return this->passportNumber == passenger.getPassportNumber();
 }
 
@@ -65,13 +65,14 @@ bool byLuggage(const Passenger &p1, const Passenger &p2) {
 }
 
 ostream & operator << (ostream & os, const Passenger &passenger) {
-    os  << "Name: " << passenger.getName() <<
+    os  << "ID: " << passenger.getID() <<
+        "\nName: " << passenger.getName() <<
         "\nAge: " << passenger.getAge() <<
         "\nGender: " << passenger.getGender() <<
         "\nPassport Number: " << passenger.getPassportNumber() <<
         "\nLuggage:\n";
-        for (auto luggage : passenger.getLuggage()) {
-            cout << luggage;
+        for (auto *luggage : passenger.getLuggage()) {
+            cout << *luggage;
         }
         cout << endl;
     return os;
