@@ -19,17 +19,17 @@ class Airport {
         /**
          * @var id - a constant string containing Airport's id
          */
-        const string id;
+        string id;
 
         /**
          * @var name - a constant string containing Airport's name
          */
-        const string name;
+        string name;
 
         /**
          * @var city - a constant string containing the name of the city where the airport is
          */
-        const string city;
+        string city;
 
         /**
          * @var planes - vector with Plane objects
@@ -48,9 +48,8 @@ class Airport {
          * @param id - a string containing airport's id
          * @param name - a string containing airport's name
          * @param city - a string containing airport's city
-         * @param planes - a vector that contains Plane type objects
          */
-        Airport(string id, string name, string city, vector<Plane> planes);
+        Airport(string id, string name, string city);
 
         /**
          * Returns the airport's id

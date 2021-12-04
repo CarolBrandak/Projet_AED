@@ -27,9 +27,8 @@ public:
     /**
      * Main constructor the Agency object
      * @param name - string that contains the agency's name
-     * @param airports - vector that contains all the airports it has access to
      */
-    Agency(std::string name, vector<Airport> airports);
+    Agency(string name);
     /**
      * Returns airport by city
      * @param airportName - name of the airport wanted
@@ -37,15 +36,15 @@ public:
      */
     Airport getAirportByName(const std::string &airportName);
     /**
-     *
-     * @param airport
+     * Add current airport in agency vector
+     * @param airport - an Airport object that will be added
      */
     void addAirport(const Airport &airport);
     /**
      * Returns the agency's name
      * @return a string, containing the agency's name
      */
-     std::string getAgencyName() const;
+     string getName() const;
 };
 
 #endif // PROJECT_AED_AGENCY_H

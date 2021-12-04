@@ -17,7 +17,7 @@ class Flight {
         /**
          * @var id - a string constant variable that contains the ID of the flight
          */
-        const string id;
+        string id;
 
         /**
          * @var flightDate - a Date type object that contains the date of the flight
@@ -27,17 +27,17 @@ class Flight {
         /**
          * @var FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
          */
-        const short int FLIGHT_DURATION;
+        short int FLIGHT_DURATION;
 
         /**
          * @var origin - a string that contains the origin of the flight
          */
-        const string origin;
+        string origin;
 
         /**
          * @var destination - a string that contains the destination of the flight
          */
-        const string destination;
+        string destination;
 
         /**
          * @var quantityOfPassengers - a short int variable that contains the current quantity of passengers in the flight
@@ -73,13 +73,8 @@ class Flight {
          * @param FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
          * @param origin - a string that contains the origin of the flight
          * @param destination - a string that contains the destination of the flight
-         * @param quantityOfPassengers - a short int variable that contains the quantity of passengers in the flight
-         * @param quantityOfWeight - a short int variable that contains the quantity of weight in the flight
-         * @param passengers - a Passenger type vector that contains all passengers in the flight
-         * @param luggage - a Luggage type vector that contains all luggage in the flight
          */
-        Flight(string id, Date flightDate, short int flightDuration, string origin, string destination,
-               short int quantityOfPassengers, short int quantityOfWeight, vector<Passenger> passengers, vector<Luggage> luggage);
+        Flight(string id, Date flightDate, short int flightDuration, string origin, string destination);
 
         /**
          * Returns the flight id
@@ -133,6 +128,12 @@ class Flight {
          * Adds passengers to the flight
          * @param toPush - Passenger type vector that contains all passengers that will be added in flight
          */
+        void addPassenger(const Passenger& passenger);
+
+        /**
+        * Adds passengers to the flight
+        * @param toPush - Passenger type vector that contains all passengers that will be added in flight
+        */
         void addPassengers(const vector<Passenger>& toPush);
 
         /**

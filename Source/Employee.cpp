@@ -3,17 +3,12 @@
 
 #include "Employee.h"
 
-Employee::Employee() : id(""), Person() {}
+Employee::Employee() : Person() {}
 
-Employee::Employee(string id, string name, short int age, char gender) : id(id), Person (name, age, gender) {}
-
-string Employee::getID() const {
-    return id;
-}
+Employee::Employee(string name, short int age, char gender) : Person (name, age, gender) {}
 
 bool Employee::operator == (const Employee &employee) const {
-    return name == employee.getName() && age == employee.getAge() && gender == employee.getGender() &&
-        id == employee.getID();
+    return name == employee.getName() && age == employee.getAge() && gender == employee.getGender();
 }
 
 bool Employee::operator < (const Employee &employee) const {
@@ -24,8 +19,7 @@ bool Employee::operator < (const Employee &employee) const {
 ostream & operator << (ostream & os, const Employee &employee) {
     os  << employee.getName()
         << " " << employee.getAge()
-        << " " << employee.getGender()
-        << " " << employee.getID() << endl;
+        << " " << employee.getGender() << endl;
     return os;
 }
 

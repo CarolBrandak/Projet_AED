@@ -8,13 +8,6 @@
  */
 class Employee : public Person {
 
-    private:
-
-        /**
-         * @var Employee's id, a string
-         */
-        string id;
-
     public:
 
         /**
@@ -24,18 +17,11 @@ class Employee : public Person {
 
         /**
          * Main constructor
-         * @param id Employee's ID, an string passed by value
          * @param name Employee's name, a string passed by value
          * @param age Employee's age, a short integer passed by value
          * @param gender Employee's gender, a char passed by value
          */
-        Employee(string id, string name, short int age, char gender);
-
-        /**
-         * Returns Employee's ID
-         * @return a integer, containing employee's ID
-         */
-        string getID() const;
+        Employee(string name, short int age, char gender);
 
         /**
          * @overload

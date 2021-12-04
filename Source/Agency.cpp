@@ -3,24 +3,25 @@
 
 #include "Agency.h"
 
-Agency::Agency() {}
+Agency::Agency() : name("") {}
 
-Agency::Agency(string name, vector<Airport> airports) : name(name), airports(airports) {}
+Agency::Agency(string name) : name(name) {
+    this->airports = {};
+}
+
+string Agency::getName() const {
+    return name;
+}
 
 Airport Agency::getAirportByName(const string &airportName) {
     for (Airport airport : airports) {
         if (airport.getName() == airportName) return airport;
     }
-    vector<Plane> planes = {};
-    return Airport("", "", "", planes);
+    return Airport("", "", "");
 }
 
 void Agency::addAirport(const Airport &airport) {
     airports.push_back(airport);
-}
-
-string Agency::getAgencyName() const {
-    return this->name;
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

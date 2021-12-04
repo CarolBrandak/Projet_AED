@@ -12,19 +12,19 @@ class Service {
         /**
          * @var id - string type attribute that contains the service's id
          */
-         string id;
+        string id;
         /**
          * @var serviceType - string type attribute that contains the type of service
          */
-        const std::string serviceType;
+        string serviceType;
         /**
          * @var serviceDate - Date type attribute that contains the date of the service
          */
-        const Date serviceDate;
+        Date serviceDate;
         /**
          * @var responsible - Employee type attribute that contains the information of the responsible for the service
          */
-        const Employee responsible;
+        Employee responsible;
 
     public:
         /**
@@ -34,7 +34,7 @@ class Service {
          * @param serviceDate - a Date type object containing the Date of the service
          * @param responsible - a Employee type object, containing the Employee responsible for the service
          */
-        Service(string id, std::string serviceType, Date serviceDate, Employee responsible);
+        Service(string id, string serviceType, Date serviceDate, Employee responsible);
 
         /**
          * Returns Service's id
@@ -46,7 +46,7 @@ class Service {
          * Returns the type of service
          * @return a string, containing the service type
          */
-        std::string getServiceType() const;
+        string getServiceType() const;
         /**
          * Returns the date of the service
          * @return a Date object, containing the date of the service

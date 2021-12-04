@@ -5,8 +5,9 @@
 
 Airport::Airport() : id(""), name(""), city("") {}
 
-Airport::Airport(string id, string name, string city, vector<Plane> planes) :
+Airport::Airport(string id, string name, string city) :
     id(id), name(name), city(city), planes(planes) {
+    this->planes = {};
 }
 
 string Airport::getID() const {
@@ -45,7 +46,7 @@ void Airport::checkPlanes() {
 }
 
 void Airport::addPlane(const Plane &plane) {
-    planes.push_back(plane);
+    if (this->id[0] == plane.getID()[0]) planes.push_back(plane);
 }
 
 void Airport::removePlane(const Plane &plane) {

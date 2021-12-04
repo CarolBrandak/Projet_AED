@@ -13,7 +13,7 @@ string Service::getID() const {
     return id;
 }
 
-std::string Service::getServiceType() const {
+string Service::getServiceType() const {
     return serviceType;
 }
 

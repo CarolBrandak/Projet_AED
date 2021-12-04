@@ -3,18 +3,17 @@
 
 #include "Flight.h"
 
-Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination,
-                    short int quantityOfPassengers, short int quantityOfWeight,
-                    vector<Passenger> passengers, vector<Luggage> luggage) :
+Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination) :
                     id(id),
                     flightDate(flightDate),
                     FLIGHT_DURATION(flightDuration),
                     origin(origin),
                     destination(destination),
-                    quantityOfPassengers(quantityOfPassengers),
-                    quantityOfWeight(quantityOfWeight),
-                    passengers(passengers),
-                    luggage(luggage) {}
+                    quantityOfPassengers(0),
+                    quantityOfWeight(0) {
+                    this->luggage = {};
+                    this->passengers = {};
+}
 
 string Flight::getID() const {
     return id;
@@ -48,7 +47,7 @@ unsigned int Flight::getWeightQuantity() const {
     return quantityOfWeight;
 }
 
-bool Flight::operator==(const Flight &flight) const {
+bool Flight::operator == (const Flight &flight) const {
     return id == flight.getID();
 }
 
