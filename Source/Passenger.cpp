@@ -6,15 +6,17 @@
 
 Passenger::Passenger() {}
 
-Passenger::Passenger(string id, string name, short int age, char gender, string passportNumber, vector<Luggage> luggage) :
-    id(id), passportNumber(passportNumber), luggage(luggage), Person(name, age, gender) {}
+Passenger::Passenger(string id, string name, short int age, char gender, string passportNumber) :
+    id(id), passportNumber(passportNumber), Person(name, age, gender) {
+    this->luggages = {};
+}
 
 void Passenger::setPassportNumber(const string &passportNumber) {
     this->passportNumber = passportNumber;
 }
 
-void Passenger::setLuggage(const vector<Luggage> &luggage) {
-    this->luggage = luggage;
+void Passenger::addLuggage(const Luggage &luggage) {
+    if (id[3] == luggage.getID()[3]) luggages.push_back(luggage);
 }
 
 string Passenger::getID() const {
@@ -26,18 +28,18 @@ string Passenger::getPassportNumber() const {
 }
 
 vector<Luggage> Passenger::getLuggage() const {
-    return this->luggage;
+    return this->luggages;
 }
 
 int Passenger::getTotalWeight() const {
     int total = 0;
-    for (auto l : luggage) { total += l.getWeight(); }
+    for (auto l : luggages) { total += l.getWeight(); }
     return total;
 }
 
 int Passenger::getTotalVolume() const {
     int total = 0;
-    for (auto l : luggage) { total += l.getVolume(); }
+    for (auto l : luggages) { total += l.getVolume(); }
     return total;
 }
 
@@ -59,7 +61,7 @@ bool byAge(const Passenger &p1, const Passenger &p2) {
 }
 
 bool byLuggage(const Passenger &p1, const Passenger &p2) {
-    return p1.luggage < p2.luggage;
+    return p1.luggages.size() < p2.luggages.size();
 }
 
 ostream & operator << (ostream & os, const Passenger &passenger) {

@@ -83,6 +83,10 @@ void Flight::addPassengers(const vector<Passenger> &toPush) {
     }
 }
 
+void Flight::addPassenger(const Passenger& passenger) {
+    if (id[2] == passenger.getID()[2]) passengers.push_back(passenger);
+}
+
 void Flight::removePassenger(const Passenger &passenger) {
 
     for (Luggage l : passenger.getLuggage()) {

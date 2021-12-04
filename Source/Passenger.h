@@ -24,7 +24,7 @@ class Passenger : public Person {
         /**
          * @var luggage, a vector with Luggage's objects
          */
-        vector<Luggage> luggage;
+        vector<Luggage> luggages;
 
     public:
 
@@ -35,14 +35,13 @@ class Passenger : public Person {
 
         /**
          * Main constructor
-         * @param id, Passengers id, a string passed by value
+         * @param id Passengers id, a string passed by value
          * @param name Passenger's name, a string passed by value
          * @param age Passenger's age, a short integer passed by value
          * @param gender Passenger's gender, a char passed by value
          * @param passportNumber Passenger's passport number, a string passed by value
-         * @param luggage Passenger's luggage, a vector of Luggage objects passed by value
          */
-        Passenger(string id, string name, short int age, char gender, string passportNumber, vector<Luggage> luggage);
+        Passenger(string id, string name, short int age, char gender, string passportNumber);
 
         /**
          * Set Passenger passport number
@@ -52,9 +51,9 @@ class Passenger : public Person {
 
         /**
          * Set Passenger luggage
-         * @param luggage Passenger's new luggage, a vector with Luggage objects passed reference
+         * @param luggages Passenger's new luggage, a vector with Luggage objects passed reference
          */
-        void setLuggage(const vector<Luggage> &luggage);
+        void addLuggage(const Luggage &luggage);
 
         /**
          * Returns Passenger's id
