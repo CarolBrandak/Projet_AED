@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "Person.h"
+#include "Agency.h"
 #include "Passenger.h"
 #include "Employee.h"
 #include "Luggage.h"
@@ -17,6 +18,7 @@ using namespace std;
  */
 void Application() {
 
-
+    Agency test = Agency("Maravilhosa agência de viagens!");
+    test.getData();
 
 }

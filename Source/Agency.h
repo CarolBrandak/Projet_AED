@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Airport.h"
 
 /**
@@ -45,6 +46,11 @@ public:
      * @return a string, containing the agency's name
      */
      string getName() const;
+
+     /**
+      * gets all data!
+      */
+     void getData();
 };
 
 #endif // PROJECT_AED_AGENCY_H

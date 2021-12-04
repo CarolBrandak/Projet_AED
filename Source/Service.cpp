@@ -28,7 +28,7 @@ Date Service::getServiceDate() const {
 ostream & operator << (ostream & os, const Service &service) {
     os << "Type: " << service.getServiceType() <<
         "\nDate: " << service.getServiceDate() <<
-        "\nResponsible: " << service.getResponsible() << std::endl;
+        "Responsible: " << service.getResponsible();
     return os;
 }
 
