@@ -1,3 +1,0 @@
-1;Francisco Sa Carneiro;Porto
-2;Cristiano Ronaldo;Madeira
-3;Humberto Delgado;Lisboa
