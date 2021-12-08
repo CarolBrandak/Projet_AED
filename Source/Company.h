@@ -7,9 +7,9 @@
 #include "Airport.h"
 
 /**
- A class to manage an Agency
+ A class to manage an Company
  */
-class Agency {
+class Company {
 
     private:
 
@@ -28,18 +28,18 @@ class Agency {
         /**
          * Default constructor
          */
-        Agency();
+        Company();
 
         /**
          * Default destructor
          */
-        ~Agency();
+        ~Company();
 
         /**
-         * Main constructor the Agency object
+         * Main constructor the Company object
          * @param name - string that contains the agency's name
          */
-        Agency(string name);
+        Company(string name);
 
         /**
          * Depois escrevo!
@@ -79,7 +79,7 @@ class Agency {
         string getName() const;
 
         /**
-         * Prints all airports managed by Agency
+         * Prints all airports managed by Company
          */
         void checkAirports();
 

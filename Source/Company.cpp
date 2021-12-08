@@ -1,42 +1,42 @@
 #ifndef PROJECT_AED_AGENCY_CPP
 #define PROJECT_AED_AGENCY_CPP
 
-#include "Agency.h"
+#include "Company.h"
 
-Agency::Agency() : name("") {}
+Company::Company() : name("") {}
 
-Agency::~Agency() {
+Company::~Company() {
     airports.clear();
 }
 
-Agency::Agency(string name) : name(name), airports(getData()) {}
+Company::Company(string name) : name(name), airports(getData()) {}
 
-string Agency::getName() const {
+string Company::getName() const {
     return name;
 }
 
-Airport* Agency::getAirportInCity(const string &city) {
+Airport* Company::getAirportInCity(const string &city) {
     for (Airport *airport : airports) {
         if (airport->getCity() == city) return airport;
     }
     return new Airport("", "", "");
 }
 
-void Agency::addAirport(Airport &airport) {
+void Company::addAirport(Airport &airport) {
     this->airports.push_back(&airport);
 }
 
-void Agency::checkAirports() {
+void Company::checkAirports() {
     for (Airport *airport : airports) {
         cout << *airport << endl;
     }
 }
 
-vector<Airport*> Agency::getAirports() {
+vector<Airport*> Company::getAirports() {
     return airports;
 }
 
-vector<Service*> Agency::getAllServices(string directory = "../Source/Files/Services.txt") {
+vector<Service*> Company::getAllServices(string directory = "../Source/Files/Services.txt") {
 
     vector<Service*> services = {};
     ifstream file(directory);
@@ -66,7 +66,7 @@ vector<Service*> Agency::getAllServices(string directory = "../Source/Files/Serv
     return services;
 }
 
-vector<Passenger*> Agency::getAllPassengers(string directory = "../Source/Files/Passengers.txt") {
+vector<Passenger*> Company::getAllPassengers(string directory = "../Source/Files/Passengers.txt") {
 
     vector<Passenger*> passengers = {};
     ifstream file(directory);
@@ -91,7 +91,7 @@ vector<Passenger*> Agency::getAllPassengers(string directory = "../Source/Files/
     return passengers;
 }
 
-vector<Luggage*> Agency::getAllLuggages(string directory = "../Source/Files/Luggages.txt") {
+vector<Luggage*> Company::getAllLuggages(string directory = "../Source/Files/Luggages.txt") {
 
     vector<Luggage*> luggage = {};
     ifstream file(directory);
@@ -122,7 +122,7 @@ vector<Luggage*> Agency::getAllLuggages(string directory = "../Source/Files/Lugg
     return luggage;
 }
 
-vector<Flight*> Agency::getAllFlights(string directory = "../Source/Files/Flights.txt") {
+vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Flights.txt") {
 
     vector<Flight*> flights = {};
     ifstream file(directory);
@@ -151,7 +151,7 @@ vector<Flight*> Agency::getAllFlights(string directory = "../Source/Files/Flight
     return flights;
 }
 
-vector<Plane*> Agency::getAllPlanes(string directory = "../Source/Files/Planes.txt") {
+vector<Plane*> Company::getAllPlanes(string directory = "../Source/Files/Planes.txt") {
 
     vector<Plane*> planes = {};
     ifstream file(directory);
@@ -176,7 +176,7 @@ vector<Plane*> Agency::getAllPlanes(string directory = "../Source/Files/Planes.t
     return planes;
 }
 
-vector<Airport*> Agency::getAllAirports(string directory = "../Source/Files/Airports.txt") {
+vector<Airport*> Company::getAllAirports(string directory = "../Source/Files/Airports.txt") {
 
     vector<Airport*> allAirports = {};
     ifstream file(directory);
@@ -199,7 +199,7 @@ vector<Airport*> Agency::getAllAirports(string directory = "../Source/Files/Airp
     return allAirports;
 }
 
-void Agency::printData() {
+void Company::printData() {
 
     // Aeroporto -> Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
 
@@ -223,7 +223,7 @@ void Agency::printData() {
     }
 }
 
-vector<Airport*> Agency::getData() {
+vector<Airport*> Company::getData() {
 
     // Carega as bagagens e os passageiros, coloca as bagagens nos passageiros
     vector<Luggage*> luggage = getAllLuggages();
@@ -394,7 +394,7 @@ void saveAirports(vector<Airport*> airports, string directory = "../Source/Files
 }
 
 
-void Agency::saveData() {
+void Company::saveData() {
 
     vector<Luggage*> allLuggage = {};
     vector<Passenger*> allPassengers = {};

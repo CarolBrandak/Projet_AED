@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "Agency.h"
+#include "Company.h"
 
 using namespace std;
 
@@ -28,7 +28,7 @@ void Application() {
      */
 
     // Criação do objecto principal, que é automaticamente carregado toda a informação dos ficheiros
-    Agency agency = Agency("Maravilhosa agência de viagens!");
+    Company agency = Company("Maravilhosa agência de viagens!");
 
     // Adiciona um novo Aeroporto
     Airport* a = new Airport("4", "Aeroporto Internacional de Pequim", "Pequim");
