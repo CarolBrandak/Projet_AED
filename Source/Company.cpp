@@ -15,7 +15,12 @@ string Company::getName() const {
     return name;
 }
 
-vector<Service*> Company::getAllServices(string directory = "../Source/Files/Services.txt") {
+vector<Plane*> Company::getPlanes() const {
+    return planes;
+}
+
+
+vector<Service*> Company::getAllServices(const string directory = "../Source/Files/Services.txt") {
 
     vector<Service*> services = {};
     ifstream file(directory);
@@ -219,7 +224,7 @@ vector<Plane*> Company::getData() {
 
 }
 
-void saveLuggage(vector<Luggage*> luggage, string directory = "../Source/Files/Luggages.txt") {
+void saveLuggage(vector<Luggage*> luggage, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -238,7 +243,7 @@ void saveLuggage(vector<Luggage*> luggage, string directory = "../Source/Files/L
     file.close();
 }
 
-void savePassengers(vector<Passenger*> passengers, string directory = "../Source/Files/Passengers.txt") {
+void savePassengers(vector<Passenger*> passengers, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -256,7 +261,7 @@ void savePassengers(vector<Passenger*> passengers, string directory = "../Source
     file.close();
 }
 
-void saveFlights(vector<Flight*> flights, string directory = "../Source/Files/Flights.txt") {
+void saveFlights(vector<Flight*> flights, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -278,7 +283,7 @@ void saveFlights(vector<Flight*> flights, string directory = "../Source/Files/Fl
     file.close();
 }
 
-void saveServices(vector<Service*> services, string directory = "../Source/Files/Services.txt") {
+void saveServices(vector<Service*> services, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -300,7 +305,7 @@ void saveServices(vector<Service*> services, string directory = "../Source/Files
     file.close();
 }
 
-void savePlanes(vector<Plane*> planes, string directory = "../Source/Files/Planes.txt") {
+void savePlanes(vector<Plane*> planes, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -320,7 +325,7 @@ void savePlanes(vector<Plane*> planes, string directory = "../Source/Files/Plane
     file.close();
 }
 
-void Company::saveData() {
+void Company::saveData(const string &folder) {
 
     vector<Luggage*> allLuggage = {};
     vector<Passenger*> allPassengers = {};
@@ -344,11 +349,11 @@ void Company::saveData() {
         }
     }
 
-    saveLuggage(allLuggage);
-    savePassengers(allPassengers);
-    saveFlights(allFlights);
-    saveServices(allServices);
-    savePlanes(allPlanes);
+    saveLuggage(allLuggage, folder + "Luggages.txt");
+    savePassengers(allPassengers, folder + "Passengers.txt");
+    saveFlights(allFlights, folder + "Flights.txt");
+    saveServices(allServices, folder + "Services.txt");
+    savePlanes(allPlanes, folder + "Planes.txt");
 
     allLuggage.clear();
     allPassengers.clear();

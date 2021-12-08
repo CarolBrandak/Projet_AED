@@ -47,7 +47,7 @@ class Company {
         vector<Luggage*> getAllLuggages(string directory);
         vector<Flight*> getAllFlights(string directory);
         vector<Plane*> getAllPlanes(string directory);
-        vector<Plane*> getPlanes();
+        vector<Plane*> getPlanes() const;
 
 
         void addAirport(Flight &flight);
@@ -70,8 +70,9 @@ class Company {
 
          /**
           * Writes all modified data in files directory
+          * @param folder - a string contains the folder of backup
           */
-         void saveData();
+         void saveData(const string &folder);
 };
 
 #endif // PROJECT_AED_AGENCY_H

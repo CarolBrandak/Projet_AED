@@ -3,6 +3,6 @@
 void Application() {
 
     Company company = Company("AirED");
-    company.saveData();
+    company.saveData("../Source/Files/");
 
 }
