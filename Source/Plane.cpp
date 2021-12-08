@@ -12,13 +12,13 @@ Plane::~Plane() {
     while (!madeServices.empty()) madeServices.pop_back();
 }
 
-Plane::Plane(string id,
-             std::string LICENSE_PLATE,
-             std::string TYPE,
+Plane::Plane(string ID,
+             string LICENSE_PLATE,
+             string TYPE,
              unsigned int MAX_WEIGHT_CAPACITY,
              unsigned int MAX_PASSENGERS_CAPACITY) :
 
-             id(id),
+             ID(ID),
              LICENSE_PLATE(LICENSE_PLATE),
              TYPE(TYPE),
              MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
@@ -30,7 +30,7 @@ Plane::Plane(string id,
 }
 
 string Plane::getID() const {
-    return id;
+    return ID;
 }
 
 std::string Plane::getLicensePlate() const {
@@ -65,35 +65,33 @@ unsigned int Plane::getMaxPassengersCapacity() const {
 }
 
 void Plane::checkFlights() {
-
     for (auto *flight : flights) {
         cout << *flight << endl;
     }
 }
 
 void Plane::addFlight(Flight &flight) {
-    if (id == flight.getID().substr(0, 2)) flights.push_back(&flight);
+    if (ID == flight.getID().substr(0, flight.getID().find('-'))) flights.push_back(&flight);
 }
 
 void Plane::removeFlight(Flight &flight) {
-
-    for(list<Flight*>::iterator it = flights.begin() ; it != flights.end() ; it++) {
+    for (auto it = flights.begin() ; it != flights.end() ; it++) {
         if(*it == &flight) {
             flights.erase(it);
-            break;
+            return;
         }
     }
 }
 
-bool Plane::findFlight(const Flight &flight) {
+Flight* Plane::findFlight(const string &origin, const string &destination) {
     for (Flight *f : flights) {
-        if (*f == flight) return true;
+        if ((*f).getFlightOrigin() == origin && (*f).getFlightDestination() == destination) return f;
     }
-    return false;
+    return nullptr;
 }
 
 void Plane::addService(Service &service) {
-    if (id == service.getID().substr(0, 2)) servicesToBeMade.push(&service);
+    if (ID == service.getID().substr(0, service.getID().find('-'))) servicesToBeMade.push(&service);
 }
 
 void Plane::setNextServiceAsDone() {
@@ -110,8 +108,8 @@ void Plane::checkServicesToBeMade() {
 }
 
 void Plane::checkMadeServices() {
-    for (auto const &service : madeServices)
-        cout << service;
+    for (auto const *service : madeServices)
+        cout << *service;
 }
 
 bool Plane::operator == (const Plane &plane) const {

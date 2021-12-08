@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <istream>
 #include "Date.h"
 #include "Passenger.h"
 
@@ -162,13 +163,7 @@ class Flight {
         /**
          * Prints out the information of all passengers
          */
-        void checkPassengers() const;
-
-        /**
-         * Prints out the information of one specific passenger
-         * @param passenger
-         */
-        void checkPassenger(const Passenger& passenger) const;
+        void checkPassengers();
 
         /**
          * @overload

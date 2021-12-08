@@ -6,34 +6,13 @@
 Company::Company() : name("") {}
 
 Company::~Company() {
-    airports.clear();
+    planes.clear();
 }
 
-Company::Company(string name) : name(name), airports(getData()) {}
+Company::Company(string name) : name(name), planes(getData()) {}
 
 string Company::getName() const {
     return name;
-}
-
-Airport* Company::getAirportInCity(const string &city) {
-    for (Airport *airport : airports) {
-        if (airport->getCity() == city) return airport;
-    }
-    return new Airport("", "", "");
-}
-
-void Company::addAirport(Airport &airport) {
-    this->airports.push_back(&airport);
-}
-
-void Company::checkAirports() {
-    for (Airport *airport : airports) {
-        cout << *airport << endl;
-    }
-}
-
-vector<Airport*> Company::getAirports() {
-    return airports;
 }
 
 vector<Service*> Company::getAllServices(string directory = "../Source/Files/Services.txt") {
@@ -176,54 +155,28 @@ vector<Plane*> Company::getAllPlanes(string directory = "../Source/Files/Planes.
     return planes;
 }
 
-vector<Airport*> Company::getAllAirports(string directory = "../Source/Files/Airports.txt") {
-
-    vector<Airport*> allAirports = {};
-    ifstream file(directory);
-
-    if (file.is_open()) {
-        while (!file.eof()) {
-
-            string id, name, city;
-
-            getline(file, id, ';');
-            getline(file, name, ';');
-            getline(file, city);
-
-            allAirports.push_back(new Airport(id, name, city));
-        }
-    } else {
-        cerr << "File " << directory << " not found" << endl;
-    }
-    file.close();
-    return allAirports;
-}
-
 void Company::printData() {
 
     // Aeroporto -> Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
 
-    for (Airport *airport : airports) {
-        cout << *airport << endl;
-        for (Plane *plane : airport->getPlanes()) {
-            cout << *plane << endl;
-            for (Flight *flight : plane->getFlights()) {
-                cout << *flight << endl;
-                for (Passenger *passenger : flight->getPassengers()) {
-                    cout << *passenger << endl;
-                    for (Luggage *luggage : passenger->getLuggage()) {
-                        cout << *luggage << endl;
-                    }
-                }
-                for (Luggage *luggage : flight->getLuggage()) {
+    for (Plane *plane : planes) {
+        cout << *plane << endl;
+        for (Flight *flight : plane->getFlights()) {
+            cout << *flight << endl;
+            for (Passenger *passenger : flight->getPassengers()) {
+                cout << *passenger << endl;
+                for (Luggage *luggage : passenger->getLuggage()) {
                     cout << *luggage << endl;
                 }
+            }
+            for (Luggage *luggage : flight->getLuggage()) {
+                cout << *luggage << endl;
             }
         }
     }
 }
 
-vector<Airport*> Company::getData() {
+vector<Plane*> Company::getData() {
 
     // Carega as bagagens e os passageiros, coloca as bagagens nos passageiros
     vector<Luggage*> luggage = getAllLuggages();
@@ -244,7 +197,7 @@ vector<Airport*> Company::getData() {
 
     // Carrega os aviões e os serviços, coloca os voos e os serviços nos aviões
     vector<Service*> services = getAllServices();
-    vector<Plane*> planes = getAllPlanes();
+    vector<Plane*> allPlanes = getAllPlanes();
     for (Plane *plane : planes) {
         for (Service *service : services) {
             plane->addService(*service);
@@ -254,23 +207,14 @@ vector<Airport*> Company::getData() {
         }
     }
 
-    // Carrega os aeroportos, coloca os aviões nos aeroportos
-    vector<Airport*> allAirports = getAllAirports();
-    for (Airport *airport : allAirports) {
-        for (Plane *plane : planes) {
-            airport->addPlane(*plane);
-        }
-    }
-
     // Liberta a memória gasta no processo -> mais eficiente
     luggage.clear();
     passengers.clear();
     services.clear();
     flights.clear();
-    planes.clear();
 
     // A agência passa a conhecer TODA a informação carregada
-    return allAirports;
+    return allPlanes;
 
 }
 
@@ -375,25 +319,6 @@ void savePlanes(vector<Plane*> planes, string directory = "../Source/Files/Plane
     file.close();
 }
 
-void saveAirports(vector<Airport*> airports, string directory = "../Source/Files/Airports.txt") {
-
-    ofstream file(directory);
-    if (file.is_open()) {
-
-        for (int i = 0 ; i < airports.size()-1 ; i++) {
-            Airport* a = airports[i];
-            file << a->getID() << ";" << a->getName() << ";" << a->getCity() << endl;
-        }
-        Airport* a = airports[airports.size()-1];
-        file << a->getID() << ";" << a->getName() << ";" << a->getCity();
-
-    } else {
-        cerr << "File " << directory << " not found" << endl;
-    }
-    file.close();
-}
-
-
 void Company::saveData() {
 
     vector<Luggage*> allLuggage = {};
@@ -401,43 +326,34 @@ void Company::saveData() {
     vector<Flight*> allFlights = {};
     vector<Service*> allServices = {};
     vector<Plane*> allPlanes = {};
-    //vector<Airport*> allAirports = {};
 
-    // Carrega os vectores com os dados alterados pelo utilizador
-    for (Airport *airport : this->airports) {
-        //allAirports.push_back(airport);
-        for (Plane *plane : airport->getPlanes()) {
-            allPlanes.push_back(plane);
-            for (Flight *flight : plane->getFlights()) {
-                allFlights.push_back(flight);
-                for (Passenger *passenger : flight->getPassengers()) {
-                    allPassengers.push_back(passenger);
-                }
-                for (Luggage *luggage : flight->getLuggage()) {
-                    allLuggage.push_back(luggage);
-                }
+    for (Plane *plane : planes) {
+        allPlanes.push_back(plane);
+        for (Flight *flight : plane->getFlights()) {
+            allFlights.push_back(flight);
+            for (Passenger *passenger : flight->getPassengers()) {
+                allPassengers.push_back(passenger);
             }
-            for (Service *service : plane->getServices()) {
-                allServices.push_back(service);
+            for (Luggage *luggage : flight->getLuggage()) {
+                allLuggage.push_back(luggage);
             }
+        }
+        for (Service *service : plane->getServices()) {
+            allServices.push_back(service);
         }
     }
 
-    // Reescreve os ficheiros com base na informação de cada vetor
     saveLuggage(allLuggage);
     savePassengers(allPassengers);
     saveFlights(allFlights);
     saveServices(allServices);
     savePlanes(allPlanes);
-    saveAirports(this->airports);
 
-    // Libertar a memória usada -> mais eficiente
     allLuggage.clear();
     allPassengers.clear();
     allFlights.clear();
     allServices.clear();
     allPlanes.clear();
-    //allAirports.clear();
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

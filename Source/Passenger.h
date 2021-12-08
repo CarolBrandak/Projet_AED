@@ -14,17 +14,17 @@ class Passenger : public Person {
         /**
          * @var id, a string
          */
-        string id;
+        const string ID;
 
         /**
-         * @var passportNumber, a string
+         * @var PASSPORT, a string
          */
-        string passportNumber;
+        string PASSPORT;
 
         /**
          * @var luggage, a vector with Luggage's objects
          */
-        vector<Luggage*> luggages;
+        vector<Luggage*> luggage;
 
     public:
 

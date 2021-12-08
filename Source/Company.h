@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "Airport.h"
+#include "Plane.h"
 
 /**
  A class to manage an Company
@@ -21,7 +21,7 @@ class Company {
         /**
          * @var - a vector that contains all the airports that the city has access to
          */
-        vector<Airport*> airports;
+        vector<Plane*> planes;
 
     public:
 
@@ -41,36 +41,16 @@ class Company {
          */
         Company(string name);
 
-        /**
-         * Depois escrevo!
-         */
 
         vector<Service*> getAllServices(string directory);
         vector<Passenger*> getAllPassengers(string directory);
         vector<Luggage*> getAllLuggages(string directory);
         vector<Flight*> getAllFlights(string directory);
         vector<Plane*> getAllPlanes(string directory);
-        vector<Airport*> getAllAirports(string directory);
-        vector<Airport*> getAirports();
+        vector<Plane*> getPlanes();
 
 
-        /**
-         * Returns airport by city
-         * @param city - name of city wanted
-         * @return an Airport pointer object that if empty means that there is no Airport by that city
-         */
-        Airport* getAirportInCity(const string &city);
-
-        /**
-         * Add current airport in agency vector
-         * @param airport - an Airport object that will be added, passed by reference
-         */
-        void addAirport(Airport &airport);
-
-        /**
-         * Return all Airports managed by agency
-         * @return a vector with all Airport objects managed by agency
-         */
+        void addAirport(Flight &flight);
 
         /**
          * Returns the agency's name
@@ -78,15 +58,10 @@ class Company {
          */
         string getName() const;
 
-        /**
-         * Prints all airports managed by Company
-         */
-        void checkAirports();
-
          /**
           * Load all data contained in files directory
           */
-         vector<Airport*> getData();
+         vector<Plane*> getData();
 
          /**
           * Show all data contained in files directory

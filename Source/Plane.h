@@ -21,43 +21,44 @@ class Plane {
         /**
          * @var id - string variable that contains the Plane's id
          */
-         string id;
+         const string ID;
 
         /**
          * @var licensePlate - string variable that contains the Plane's license plate in the form "XX-XXX"
          * where each X is a letter.
          */
-         std::string LICENSE_PLATE;
+         const string LICENSE_PLATE;
 
         /**
-         * @var type - string variable that contains the Plane's type in the form "AXXX" where each X is a number.
+         * @var type - string variable that contains the Plane's type in the form "LXXX" where each X is a number
+         * and L is a letter
          */
-         std::string TYPE;
+         const string TYPE;
 
         /**
          * @var MAX_WEIGHT_CAPACITY - constant that contains the plane's maximum weight capacity.
          */
-         unsigned int MAX_WEIGHT_CAPACITY;
+         const unsigned int MAX_WEIGHT_CAPACITY;
 
         /**
          * @var MAX_PASSENGERS_CAPACITY - constant that contains the plane's maximum passengers capacity.
          */
-         unsigned int MAX_PASSENGERS_CAPACITY;
+         const unsigned int MAX_PASSENGERS_CAPACITY;
 
         /**
          * @var flights - list that contains all the flights programmed for the specific plane.
          */
-        std::list<Flight*> flights;
+        list<Flight*> flights;
 
         /**
          * @var servicesToBeMade - queue that contains all the services to be made to the plane
          */
-        std::queue<Service*> servicesToBeMade;
+        queue<Service*> servicesToBeMade;
 
         /**
          * @var madeServices - list that contains all the services that were made to the plane
          */
-        std::list<Service*> madeServices;
+        list<Service*> madeServices;
     
     public:
 
@@ -73,17 +74,16 @@ class Plane {
 
         /**
          * Main constructor
-         * @param id, a Plane's id
-         * @param flights - a list that contains Flight type objects
+         * @param ID - a Plane's id
          * @param LICENSE_PLATE - a string containing license plate of the plane
          * @param TYPE - a string containing the type of the plane
          * @param MAX_WEIGHT_CAPACITY - a int constant containing the max weight capacity of the plane
          * @param MAX_PASSENGERS_CAPACITY - a int constant containing the max people capacity of the plane
          */
-        Plane (string id, string LICENSE_PLATE, string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
+        Plane (string ID, string LICENSE_PLATE, string TYPE, unsigned int MAX_WEIGHT_CAPACITY, unsigned int MAX_PASSENGERS_CAPACITY);
 
         /**
-         * Returns Plane's id
+         * Returns Plane's ID
          * @returns a string, containing plane's id
          */
          string getID() const;
@@ -92,13 +92,13 @@ class Plane {
          * Returns the plane's license plate
          * @return a string, containing the plane's license plate
          */
-        std::string getLicensePlate() const;
+        string getLicensePlate() const;
 
         /**
          * Returns the plane's type
          * @return a string, containing the plane's type
          */
-        std::string getType() const;
+        string getType() const;
 
         /**
          * Returns the plane's list of flights
@@ -108,7 +108,7 @@ class Plane {
 
         /**
          * Returns the plane's Services
-         * @return a vector of Service objects
+         * @return a queue of Service objects
          */
         vector<Service*> getServices() const;
 
@@ -170,7 +170,7 @@ class Plane {
          * @param flight - a Flight object that will be searched
          * @return if flight exists in current plane
          */
-        bool findFlight(const Flight &flight);
+        Flight* findFlight(const string &origin, const string &destination);
 
         /**
          * Sets a service as done by popping it from the servicesToBeMade queue and adding it

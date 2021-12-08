@@ -78,35 +78,37 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
+
+
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
     for (Passenger *passenger : passengers) {
-        if (id == passenger->getID().substr(0, 3)) {
+        if (id == passenger->getID().substr(0, passenger->getID().find_last_of('-'))) {
             this->quantityOfPassengers++;
             this->quantityOfWeight += passenger->getTotalWeight();
             passengers.push_back(passenger);
             for (Luggage *l : passenger->getLuggage()) {
                 luggage.push_back(l);
             }
-        }
+        } else continue;
     }
 }
 
 void Flight::addPassenger(Passenger& passenger) {
-    if (id == passenger.getID().substr(0, 3)) {
+    if (id == passenger.getID().substr(0, passenger.getID().find_last_of('-'))) {
         this->quantityOfWeight += passenger.getTotalWeight();
         this->quantityOfPassengers++;
         passengers.push_back(&passenger);
         for (Luggage *l : passenger.getLuggage()) {
             luggage.push_back(l);
         }
-    }
+    } else return;
 }
 
 void Flight::removePassenger(Passenger &passenger) {
 
     for (Luggage *l : passenger.getLuggage()) {
-        for (vector<Luggage*>::iterator it = luggage.begin() ; it != luggage.end() ; it++) {
+        for (auto it = luggage.begin() ; it != luggage.end() ; it++) {
             if (l == *it) {
                 luggage.erase(it);
                 it--;
@@ -114,7 +116,7 @@ void Flight::removePassenger(Passenger &passenger) {
         }
     }
 
-    for (vector<Passenger*>::iterator it = passengers.begin() ; it != passengers.end() ; it++) {
+    for (auto it = passengers.begin() ; it != passengers.end() ; it++) {
         if (&passenger == *it) {
             this->quantityOfPassengers--;
             this->quantityOfWeight -= passenger.getTotalWeight();
@@ -124,14 +126,10 @@ void Flight::removePassenger(Passenger &passenger) {
     }
 }
 
-void Flight::checkPassengers() const {
-    for (size_t i = 0; i < passengers.size(); i++) {
-        cout << passengers.at(i);
+void Flight::checkPassengers() {
+    for (auto *passenger : passengers) {
+        cout << *passenger << endl;
     }
-}
-
-void Flight::checkPassenger(const Passenger& passenger) const {
-    cout << passenger;
 }
 
 vector<Passenger*> Flight::getPassengers() const {
