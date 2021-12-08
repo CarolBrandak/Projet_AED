@@ -59,6 +59,8 @@ class Plane {
          * @var madeServices - list that contains all the services that were made to the plane
          */
         list<Service*> madeServices;
+
+        int nextFlightID;
     
     public:
 
@@ -187,6 +189,8 @@ class Plane {
          * Prints out all the made services
          */
         void checkMadeServices();
+
+        int getNextFlightID();
 
         /**
          * @overload

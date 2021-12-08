@@ -27,6 +27,7 @@ Plane::Plane(string ID,
             this->flights = {};
             this->madeServices = {};
             this->servicesToBeMade = {};
+            nextFlightID = 0;
 }
 
 string Plane::getID() const {
@@ -72,6 +73,12 @@ void Plane::checkFlights() {
 
 void Plane::addFlight(Flight &flight) {
     if (ID == flight.getID().substr(0, flight.getID().find('-'))) flights.push_back(&flight);
+    if (stoi(flight.getID().substr(flight.getID().find('-'), flight.getID().size() - flight.getID().find('-'))) > nextFlightID) nextFlightID++;
+}
+
+int Plane::getNextFlightID() {
+    nextFlightID++;
+    return nextFlightID--;
 }
 
 void Plane::removeFlight(Flight &flight) {
