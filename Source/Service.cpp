@@ -8,8 +8,9 @@ Service::Service() {}
 Service::Service(string id, string serviceType, Date serviceDate, Employee responsible) :
     id(id),
     serviceType(serviceType),
-    serviceDate(serviceDate),
-    responsible(responsible) {}
+    serviceDate(serviceDate) {
+    this->responsible = responsible;
+}
 
 Service::~Service() {}
 
@@ -27,6 +28,10 @@ Employee Service::getResponsible() const {
 
 Date Service::getServiceDate() const {
     return serviceDate;
+}
+
+void Service::setResponsible(const Employee &employee) {
+    this->responsible = employee;
 }
 
 ostream & operator << (ostream & os, const Service &service) {

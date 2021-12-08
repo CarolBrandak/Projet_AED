@@ -12,15 +12,15 @@ class Service {
         /**
          * @var id - string type attribute that contains the service's id
          */
-        string id;
+        const string id;
         /**
          * @var serviceType - string type attribute that contains the type of service
          */
-        string serviceType;
+        const string serviceType;
         /**
          * @var serviceDate - Date type attribute that contains the date of the service
          */
-        Date serviceDate;
+        const Date serviceDate;
         /**
          * @var responsible - Employee type attribute that contains the information of the responsible for the service
          */
@@ -58,16 +58,24 @@ class Service {
          * @return a string, containing the service type
          */
         string getServiceType() const;
+
         /**
          * Returns the date of the service
          * @return a Date object, containing the date of the service
          */
         Date getServiceDate() const;
+
         /**
          * Returns the responsible of the service
          * @return an Employee object, containing the employee responsible for the service
          */
         Employee getResponsible() const;
+
+        /**
+         * Sets the responsible of the service
+         * @param employee an Employee object, containing the new employee responsible for the service
+         */
+        void setResponsible(const Employee &employee);
 };
 
 /**
