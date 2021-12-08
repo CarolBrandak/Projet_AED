@@ -9,7 +9,9 @@ Company::~Company() {
     planes.clear();
 }
 
-Company::Company(string name) : name(name), planes(this->getData()) {}
+Company::Company(string name) : name(name), planes(this->getData()) {
+    nextPlaneID = planes.size();
+}
 
 string Company::getName() const {
     return name;
@@ -19,6 +21,15 @@ vector<Plane*> Company::getPlanes() const {
     return planes;
 }
 
+void Company::addPlane(Plane &plane) {
+    if (stoi(plane.getID()) > nextPlaneID) nextPlaneID++;
+    planes.push_back(&plane);
+}
+
+int Company::getNextPlaneID() {
+    nextPlaneID++;
+    return nextPlaneID--;
+}
 
 vector<Service*> Company::getAllServices(const string directory = "../Source/Files/Services.txt") {
 

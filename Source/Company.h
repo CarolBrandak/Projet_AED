@@ -24,6 +24,8 @@ class Company {
          */
         vector<Plane*> planes;
 
+        int nextPlaneID;
+
     public:
 
         /**
@@ -50,8 +52,9 @@ class Company {
         vector<Plane*> getAllPlanes(string directory);
         vector<Plane*> getPlanes() const;
 
+        int getNextPlaneID();
 
-        void addAirport(Flight &flight);
+        void addPlane(Plane &plane);
 
         /**
          * Returns the agency's name
