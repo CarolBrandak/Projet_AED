@@ -11,7 +11,7 @@ Passenger::~Passenger() {
 }
 
 Passenger::Passenger(string id, string name, short int age, char gender, string passportNumber) :
-    ID(ID), PASSPORT(passportNumber), Person(name, age, gender) {
+    ID(id), PASSPORT(passportNumber), Person(name, age, gender) {
     this->luggage = {};
 }
 

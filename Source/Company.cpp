@@ -9,7 +9,7 @@ Company::~Company() {
     planes.clear();
 }
 
-Company::Company(string name) : name(name), planes(getData()) {}
+Company::Company(string name) : name(name), planes(this->getData()) {}
 
 string Company::getName() const {
     return name;
@@ -185,6 +185,7 @@ vector<Plane*> Company::getData() {
         for (Luggage *l : luggage) {
             passenger->addLuggage(*l);
         }
+        cout << *passenger << endl;
     }
 
     // Carrega os voos, coloca os passageiros nos voos

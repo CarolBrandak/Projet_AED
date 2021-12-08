@@ -83,7 +83,7 @@ bool byDuration(const Flight &f1, const Flight &f2) {
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
     for (Passenger *passenger : passengers) {
-        if (id == passenger->getID().substr(0, passenger->getID().find_last_of('-'))) {
+        if (id == passenger->getID().substr(0, 3)) {
             this->quantityOfPassengers++;
             this->quantityOfWeight += passenger->getTotalWeight();
             passengers.push_back(passenger);
@@ -95,7 +95,7 @@ void Flight::addPassengers(const vector<Passenger*> &toPush) {
 }
 
 void Flight::addPassenger(Passenger& passenger) {
-    if (id == passenger.getID().substr(0, passenger.getID().find_last_of('-'))) {
+    if (id == passenger.getID().substr(0, 3)) {
         this->quantityOfWeight += passenger.getTotalWeight();
         this->quantityOfPassengers++;
         passengers.push_back(&passenger);
