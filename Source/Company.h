@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 #include "Plane.h"
 
 /**
@@ -73,6 +74,8 @@ class Company {
           * @param folder - a string contains the folder of backup
           */
          void saveData(const string &folder);
+
+         Flight* findFlight(const string &origin, const string &destination);
 };
 
 #endif // PROJECT_AED_AGENCY_H

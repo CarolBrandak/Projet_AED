@@ -60,6 +60,11 @@ class Flight {
          */
         vector<Luggage*> luggage;
 
+        /**
+         * @var nextID - an integer value
+         */
+         int nextID;
+
     public:
 
         /**
@@ -164,6 +169,8 @@ class Flight {
          * Prints out the information of all passengers
          */
         void checkPassengers();
+
+        int getNextPassengerID();
 
         /**
          * @overload

@@ -53,7 +53,8 @@ bool Passenger::operator < (const Passenger &passenger) const {
 }
 
 bool Passenger::operator == (const Passenger &passenger) const {
-    return this->PASSPORT == passenger.getPassportNumber();
+    return this->PASSPORT == passenger.getPassportNumber() &&
+            this->name == passenger.getName() && this->age == passenger.getAge() && this->gender == passenger.getGender();
 }
 
 bool byName(const Passenger &p1, const Passenger &p2) {

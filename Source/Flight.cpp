@@ -20,6 +20,12 @@ Flight::Flight(string id, Date flightDate, short int flightDuration, string orig
                     quantityOfWeight(0) {
                     this->luggage = {};
                     this->passengers = {};
+                    nextID = 0;
+}
+
+int Flight::getNextPassengerID() {
+    nextID++;
+    return nextID--;
 }
 
 string Flight::getID() const {
@@ -78,12 +84,11 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
-
-
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
     for (Passenger *passenger : passengers) {
         if (id == passenger->getID().substr(0, 3)) {
+            if (stoi(passenger->getID().substr(passenger->getID().find_last_of('-')+1, passenger->getID().size() - passenger->getID().find_last_of('-'))) > nextID) nextID++;
             this->quantityOfPassengers++;
             this->quantityOfWeight += passenger->getTotalWeight();
             passengers.push_back(passenger);
@@ -96,6 +101,8 @@ void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
 void Flight::addPassenger(Passenger& passenger) {
     if (id == passenger.getID().substr(0, 3)) {
+        if (stoi(passenger.getID().substr(passenger.getID().find_last_of('-')+1, passenger.getID().size() - passenger.getID().find_last_of('-'))) > nextID) nextID++;
+        //cout << "next ID = " << nextID << " and idP = " <<
         this->quantityOfWeight += passenger.getTotalWeight();
         this->quantityOfPassengers++;
         passengers.push_back(&passenger);
@@ -144,10 +151,10 @@ std::ostream & operator << (std::ostream & os, const Flight &flight) {
     os  << "Flight ID: " << flight.getID()
         << "\nFlight Date: " << flight.getFlightDate()
         << "Flight Duration: " << flight.getFlightDuration()
-        << "\nOrigin: " << flight.getFlightOrigin()
+        << " minutes\nOrigin: " << flight.getFlightOrigin()
         << "\nDestination: "<< flight.getFlightDestination()
         << "\nQuantity of Weight: " << flight.getWeightQuantity()
-        << "\nQuantity Of Passengers: " << flight.getPassengersQuantity() << endl;
+        << " Kgs\nQuantity Of Passengers: " << flight.getPassengersQuantity() << endl;
     return os;
 }
 

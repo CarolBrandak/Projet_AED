@@ -1,18 +1,12 @@
 var searchData=
 [
-  ['savedata_0',['saveData',['../class_agency.html#a67c29f4711b1596630ae970e6a9027ac',1,'Agency']]],
-  ['service_1',['Service',['../class_service.html#acc246c9f7ed3c51e2d91d10fe257513f',1,'Service::Service()'],['../class_service.html#ab35757fbaf3dbed692dca4fca941782f',1,'Service::Service(string id, string serviceType, Date serviceDate, Employee responsible)']]],
-  ['setage_2',['setAge',['../class_person.html#aabd5b71bb4270ee87a09229cc360bfd9',1,'Person']]],
-  ['setday_3',['setDay',['../class_date.html#ad241f3ea8455764b76c0d54a0adf7775',1,'Date']]],
-  ['setflightdate_4',['setFlightDate',['../class_flight.html#a7ad90d3b78248f3c3afea197c42d51d0',1,'Flight']]],
-  ['setgender_5',['setGender',['../class_person.html#aaa0dc4f09c879f7a9f806ec58a171c29',1,'Person']]],
-  ['sethour_6',['setHour',['../class_date.html#a111046f325840b4ab242f103b118004f',1,'Date']]],
-  ['setminute_7',['setMinute',['../class_date.html#ac483b13e7103cdec3adc1d8176391934',1,'Date']]],
-  ['setmonth_8',['setMonth',['../class_date.html#ac98120d84e11d47eb8cf407ee707cbc0',1,'Date']]],
-  ['setname_9',['setName',['../class_person.html#a4b39c1f5d600b1e41ef95c09f4b42935',1,'Person']]],
-  ['setnextserviceasdone_10',['setNextServiceAsDone',['../class_plane.html#a167e9f248817a26394bee61d810eb71e',1,'Plane']]],
-  ['setpassportnumber_11',['setPassportNumber',['../class_passenger.html#a3078aea6882c3567365144e7cd207417',1,'Passenger']]],
-  ['setplanehold_12',['setPlaneHold',['../class_luggage.html#a7509c1a9fc66d18806ccada8dfce1d29',1,'Luggage']]],
-  ['setyear_13',['setYear',['../class_date.html#a90b4e71027aef0a7e0af16c73bfe5b30',1,'Date']]],
-  ['showpossibleflights_14',['showPossibleFlights',['../class_airport.html#ac66a94d31b798c18b5747511a53cafc0',1,'Airport']]]
+  ['_7ecompany_0',['~Company',['../class_company.html#a61c2a9ec178e683310583ef15635b53c',1,'Company']]],
+  ['_7edate_1',['~Date',['../class_date.html#ade4b469433b7966cc034cbcc6799233b',1,'Date']]],
+  ['_7eemployee_2',['~Employee',['../class_employee.html#abed56e9c007fff2bfe27ca87251baaf2',1,'Employee']]],
+  ['_7eflight_3',['~Flight',['../class_flight.html#a6e9898949b83cfbc068b4d5820990782',1,'Flight']]],
+  ['_7eluggage_4',['~Luggage',['../class_luggage.html#ae62b0a60597d354547c32e6bb82413c2',1,'Luggage']]],
+  ['_7epassenger_5',['~Passenger',['../class_passenger.html#a6a6747cafd45d2c85db2ec4e873be3c7',1,'Passenger']]],
+  ['_7eperson_6',['~Person',['../class_person.html#a700ffd693321c5fe6880262acf43d4da',1,'Person']]],
+  ['_7eplane_7',['~Plane',['../class_plane.html#a69abd86051c880dcb44b249ad10c4436',1,'Plane']]],
+  ['_7eservice_8',['~Service',['../class_service.html#af6c3577b59652ac817d1d76aaccee904',1,'Service']]]
 ];

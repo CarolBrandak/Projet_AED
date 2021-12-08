@@ -87,18 +87,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad6df9c0d69a9f8788f86fb998f18ddb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e20e5045350323f5d3948a006904d2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_employee.html">Employee</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a9e20e5045350323f5d3948a006904d2c">getResponsible</a> () const</td></tr>
 <tr class="separator:a9e20e5045350323f5d3948a006904d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa95055b966c58604ba587681ee750786"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#aa95055b966c58604ba587681ee750786">setResponsible</a> (const <a class="el" href="class_employee.html">Employee</a> &amp;employee)</td></tr>
+<tr class="separator:aa95055b966c58604ba587681ee750786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:add56d4e89af3d09ed0f82096d58a295e"><td class="memItemLeft" align="right" valign="top"><a id="add56d4e89af3d09ed0f82096d58a295e" name="add56d4e89af3d09ed0f82096d58a295e"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
 <tr class="separator:add56d4e89af3d09ed0f82096d58a295e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d9179a56d413ca2ce97fe90132ed17d"><td class="memItemLeft" align="right" valign="top"><a id="a0d9179a56d413ca2ce97fe90132ed17d" name="a0d9179a56d413ca2ce97fe90132ed17d"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>serviceType</b></td></tr>
-<tr class="separator:a0d9179a56d413ca2ce97fe90132ed17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e3b23d2c271910d99678d3473ad074c"><td class="memItemLeft" align="right" valign="top"><a id="a9e3b23d2c271910d99678d3473ad074c" name="a9e3b23d2c271910d99678d3473ad074c"></a>
-<a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>serviceDate</b></td></tr>
-<tr class="separator:a9e3b23d2c271910d99678d3473ad074c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a7538f5737679f5ef5fb5502d366302"><td class="memItemLeft" align="right" valign="top"><a id="a6a7538f5737679f5ef5fb5502d366302" name="a6a7538f5737679f5ef5fb5502d366302"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>serviceType</b></td></tr>
+<tr class="separator:a6a7538f5737679f5ef5fb5502d366302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed0fa25cb76e9750e7a79ed8e8ecefae"><td class="memItemLeft" align="right" valign="top"><a id="aed0fa25cb76e9750e7a79ed8e8ecefae" name="aed0fa25cb76e9750e7a79ed8e8ecefae"></a>
+const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>serviceDate</b></td></tr>
+<tr class="separator:aed0fa25cb76e9750e7a79ed8e8ecefae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39317bcae807f2e594d4fb1ef7dfa19e"><td class="memItemLeft" align="right" valign="top"><a id="a39317bcae807f2e594d4fb1ef7dfa19e" name="a39317bcae807f2e594d4fb1ef7dfa19e"></a>
 <a class="el" href="class_employee.html">Employee</a>&#160;</td><td class="memItemRight" valign="bottom"><b>responsible</b></td></tr>
 <tr class="separator:a39317bcae807f2e594d4fb1ef7dfa19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,6 +261,30 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>serviceType</b></td
       </table>
 </div><div class="memdoc">
 <p >Returns the type of service </p><dl class="section return"><dt>Returns</dt><dd>a string, containing the service type </dd></dl>
+
+</div>
+</div>
+<a id="aa95055b966c58604ba587681ee750786" name="aa95055b966c58604ba587681ee750786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa95055b966c58604ba587681ee750786">&#9670;&nbsp;</a></span>setResponsible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Service::setResponsible </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_employee.html">Employee</a> &amp;&#160;</td>
+          <td class="paramname"><em>employee</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Sets the responsible of the service </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">employee</td><td>an <a class="el" href="class_employee.html">Employee</a> object, containing the new employee responsible for the service </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

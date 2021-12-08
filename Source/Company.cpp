@@ -190,7 +190,6 @@ vector<Plane*> Company::getData() {
         for (Luggage *l : luggage) {
             passenger->addLuggage(*l);
         }
-        cout << *passenger << endl;
     }
 
     // Carrega os voos, coloca os passageiros nos voos
@@ -225,6 +224,7 @@ vector<Plane*> Company::getData() {
 }
 
 void saveLuggage(vector<Luggage*> luggage, const string &directory) {
+
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -360,6 +360,14 @@ void Company::saveData(const string &folder) {
     allFlights.clear();
     allServices.clear();
     allPlanes.clear();
+}
+
+Flight* Company::findFlight(const string &origin, const string &destination) {
+    for (Plane *plane : planes) {
+        Flight* wanted = (*plane).findFlight(origin, destination);
+        if (wanted) return wanted;
+    }
+    return nullptr;
 }
 
 #endif // PROJECT_AED_AGENCY_CPP
