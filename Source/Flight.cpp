@@ -87,13 +87,13 @@ bool byDuration(const Flight &f1, const Flight &f2) {
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
     Cart cart = Cart();
-    vector<Luggage *> toInsert = {};
+    queue<Luggage *> treadmill = {};
 
     for (Passenger *passenger: toPush) {
 
         string passengerId = passenger->getID();
-        string idToEnter = passengerId.substr(0, passengerId.size() - passengerId.find_last_of('-'));
-        string singleId = passengerId.substr(passengerId.find_last_of('-') + 1,
+        string idToEnter = passengerId.substr(0, passengerId.size() - passengerId.find_last_of('-') + 1);
+        string singleId = passengerId.substr(passengerId.find_last_of('-'),
                                              passengerId.size() - passengerId.find_last_of('-'));
 
         if (id == idToEnter) {  // Se a pessoa for realmente deste voo
@@ -105,29 +105,32 @@ void Flight::addPassengers(const vector<Passenger*> &toPush) {
             vector<Luggage *> passengerLuggage = passenger->getLuggage();
 
             for (vector<Luggage *>::iterator it = passengerLuggage.begin(); it != passengerLuggage.end(); it++) {
-                if (!(*it)->getPlaneHold()) {              // Se planeHold == 0, significa que vai para o porão
+                if (!((*it)->getPlaneHold())) {              // Se planeHold == 0, significa que vai para o porão
                     passenger->removeLuggage(*it);         // Removida da pessoa e colocada no carrinho
-                    toInsert.push_back(*it);
+                    treadmill.push(*it);
                 }
             }
             passengers.push_back(passenger);
         }
 
-        cart.addLuggage(toInsert);
-        cart.putLuggage(this);
+        if (!treadmill.empty()) {                   // se o tapete rolante tiver alguma mala
+            cart.addLuggage(treadmill);             // essa mala passa para o carrinho
+            cart.putLuggage(this);                  // e o carrinho deposita-a no voo
+        }
     }
 }
 
 void Flight::addPassenger(Passenger& passenger) {
 
+    // passengerId.size() - passengerId.find_last_of('-') - 1
     string passengerId = passenger.getID();
-    string idToEnter = passengerId.substr(0, passengerId.size() - passengerId.find_last_of('-'));
+    string idToEnter = passengerId.substr(0, passengerId.size() - passengerId.find_last_of('-') + 1);
     string singleId = passengerId.substr(passengerId.find_last_of('-') + 1, passengerId.size() - passengerId.find_last_of('-'));
 
     if (id == idToEnter) {  // Se a pessoa for realmente deste voo
 
         Cart cart = Cart();
-        vector<Luggage *> toInsert = {};
+        queue<Luggage *> treadmill = {};
 
         if (stoi(singleId) > nextID) nextID++;                       // atualiza o próximo id automático
         this->quantityOfPassengers++;                                // aumenta o número de passageiros no voo
@@ -136,25 +139,24 @@ void Flight::addPassenger(Passenger& passenger) {
         vector<Luggage*> passengerLuggage = passenger.getLuggage();
 
         for (vector<Luggage*>::iterator it = passengerLuggage.begin() ; it != passengerLuggage.end() ; it++) {
-            if (!(*it)->getPlaneHold()) {              // Se planeHold == 0, significa que vai para o porão
+            if (!((*it)->getPlaneHold())) {              // Se planeHold == 0, significa que vai para o porão
                 passenger.removeLuggage(*it);         // Removida da pessoa e colocada no carrinho
-                toInsert.push_back(*it);
+                treadmill.push(*it);
             }
         }
         passengers.push_back(&passenger);
 
-        cout << passenger << endl;
-        cout << "neste momento o passageiro tem luggagesize = " << passenger.getLuggage().size() << endl;
-        cout << "neste momento, o cart tem luggagesize = " << toInsert.size() << endl;
-
-        cart.addLuggage(toInsert);
-        cart.putLuggage(this);
+        if (!treadmill.empty()) {                   // se o tapete rolante tiver alguma mala
+            cart.addLuggage(treadmill);             // essa mala passa para o carrinho
+            cart.putLuggage(this);                  // e o carrinho deposita-a no voo
+        }
 
     } else return;
 }
 
-
 void Flight::removePassenger(Passenger &passenger) {
+
+    // Remover um passageiro do voo é também remover a sua bagagem:
 
     for (Luggage *l : passenger.getLuggage()) {
         for (auto it = luggage.begin() ; it != luggage.end() ; it++) {
@@ -204,14 +206,15 @@ Cart::Cart() : STACK_SIZE(4), QUEUE_SIZE(3) {
     this->transport = {};
 }
 
-void Cart::addLuggage(const vector<Luggage *> &luggages) {
+void Cart::addLuggage(queue<Luggage *> treadmill) {
 
     queue<stack<Luggage*>> currentQueue = {};
     stack<Luggage*> currentStack = {};
 
-    cout << "Passou para colocar bagagem" << endl;
+    while (!treadmill.empty()) {
 
-    for (Luggage* currentLuggage : luggages) {
+        Luggage* currentLuggage = treadmill.front();
+        treadmill.pop();
 
         // Se tiver espaço na pilha, coloca na pilha
         if (currentStack.size() < STACK_SIZE) {
@@ -229,13 +232,12 @@ void Cart::addLuggage(const vector<Luggage *> &luggages) {
             }
         }
     }
-    // No final, o restante também é adicionado
+    // No final, o restante que sobra também é adicionado
+    currentQueue.push(currentStack);
     transport.push_back(currentQueue);
 }
 
 void Cart::putLuggage(Flight* flight) {
-
-    cout << "Passou para meter a bagagem no voo " << endl;
 
     for (queue<stack<Luggage*>> currentCarriage : transport) {
         stack<Luggage*> currentStack = currentCarriage.front();

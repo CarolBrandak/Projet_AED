@@ -250,7 +250,7 @@ class Cart {
           list<queue<stack<Luggage*>>> transport;
     public:
           Cart();
-          void addLuggage (const vector<Luggage*> &luggages);
+          void addLuggage(queue<Luggage *> treadmill);
           void putLuggage(Flight* flight);
 };
 
