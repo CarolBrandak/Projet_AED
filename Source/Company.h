@@ -55,7 +55,7 @@ class Company {
 
         int getNextPlaneID();
 
-        void addPlane(Plane &plane);
+        void addPlane(Plane* plane);
 
         /**
          * Returns the agency's name

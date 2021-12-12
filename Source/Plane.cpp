@@ -120,7 +120,8 @@ void Plane::checkMadeServices() {
 }
 
 bool Plane::operator == (const Plane &plane) const {
-    return true;
+    return this->ID == plane.ID && this->LICENSE_PLATE == plane.LICENSE_PLATE && this->TYPE == plane.TYPE &&
+                this->MAX_PASSENGERS_CAPACITY == plane.MAX_PASSENGERS_CAPACITY && this->MAX_WEIGHT_CAPACITY == plane.MAX_PASSENGERS_CAPACITY;
 }
 
 bool Plane::operator < (const Plane &plane) const {

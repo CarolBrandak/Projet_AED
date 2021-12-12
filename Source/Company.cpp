@@ -21,9 +21,11 @@ vector<Plane*> Company::getPlanes() const {
     return planes;
 }
 
-void Company::addPlane(Plane &plane) {
-    if (stoi(plane.getID()) > nextPlaneID) nextPlaneID++;
-    planes.push_back(&plane);
+void Company::addPlane(Plane *plane) {
+    if (stoi(plane->getID()) > nextPlaneID) nextPlaneID++;
+    cout << planes.size() << endl;
+    planes.push_back(plane);
+    cout << planes.size() << endl;
 }
 
 int Company::getNextPlaneID() {
@@ -173,7 +175,7 @@ vector<Plane*> Company::getAllPlanes(string directory = "../Source/Files/Planes.
 
 void Company::printData() {
 
-    // Aeroporto -> Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
+    // Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
 
     for (Plane *plane : planes) {
         cout << "Características do avião: " << endl;
@@ -340,14 +342,13 @@ void savePlanes(vector<Plane*> planes, const string &directory) {
 
 void Company::saveData(const string &folder) {
 
-    vector<Luggage*> allLuggage = {};
-    vector<Passenger*> allPassengers = {};
-    vector<Flight*> allFlights = {};
-    vector<Service*> allServices = {};
-    vector<Plane*> allPlanes = {};
+    //vector<Luggage*> allLuggage = {};
+    //vector<Passenger*> allPassengers = {};
+    //vector<Flight*> allFlights = {};
+    //vector<Service*> allServices = {};
 
+    /**
     for (Plane *plane : planes) {
-        allPlanes.push_back(plane);
         for (Flight *flight : plane->getFlights()) {
             allFlights.push_back(flight);
             for (Passenger *passenger : flight->getPassengers()) {
@@ -364,18 +365,21 @@ void Company::saveData(const string &folder) {
             allServices.push_back(service);
         }
     }
+     */
 
-    saveLuggage(allLuggage, folder + "Luggages.txt");
+    savePlanes(planes, folder + "Planes.txt");
+
+    /**
     savePassengers(allPassengers, folder + "Passengers.txt");
     saveFlights(allFlights, folder + "Flights.txt");
     saveServices(allServices, folder + "Services.txt");
-    savePlanes(allPlanes, folder + "Planes.txt");
+    saveLuggage(allLuggage, folder + "Luggages.txt");
 
     allLuggage.clear();
     allPassengers.clear();
     allFlights.clear();
     allServices.clear();
-    allPlanes.clear();
+     */
 }
 
 Flight* Company::findFlight(const string &origin, const string &destination) {
