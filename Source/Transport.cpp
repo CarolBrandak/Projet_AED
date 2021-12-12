@@ -21,7 +21,7 @@ Date Transport::getDate() const {
 
 bool Transport::operator == (const Transport &transport) const {
     return this->type == transport.type &&
-            this->distance == transport.distance && this->date == transport.date;
+            this->distance == transport.distance && this->date.getMinute() == transport.getDate().getMinute();
 }
 
 bool Transport::operator < (const Transport &transport) const {

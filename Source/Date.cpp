@@ -94,15 +94,15 @@ bool Date::operator < (const Date &date) const {
 ostream & operator << (ostream & os, const Date &date) {
 
     if (!date.getDay() && !date.getMonth() && !date.getYear()) {
-        os  << setfill('0') << setw(2) << date.getDay()
-            << "-" << setfill('0') << setw(2) << date.getMonth()
-            << "-" << setfill('0') << setw(4) << date.getYear() << endl;
-
+        os << " " << setfill('0') << setw(2) << date.getHour()
+           << ":" << setfill('0') << setw(2) << date.getMinute() << endl;
         return os;
 
     } else if (!date.getHour() && !date.getMinute()) {
-        os << " " << setfill('0') << setw(2) << date.getHour()
-           << ":" << setfill('0') << setw(2) << date.getMinute() << endl;
+
+        os  << setfill('0') << setw(2) << date.getDay()
+            << "-" << setfill('0') << setw(2) << date.getMonth()
+            << "-" << setfill('0') << setw(4) << date.getYear() << endl;
 
         return os;
     }

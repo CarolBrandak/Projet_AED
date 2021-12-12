@@ -14,13 +14,14 @@ Company::Company(string name) : name(name), planes(this->getData()) {
 }
 
 void Company::presentation() {
-    cout << "Welcome to " << name << " Company!" << endl;
+    cout << "=====================================" << endl;
+    cout << "==     Welcome to " << name << " Company!   ==" << endl;
+    cout << "=====================================" << endl;
 }
 
 string Company::getName() const {
     return name;
 }
-
 
 void Company::addPlane(Plane *plane) {
     if (stoi(plane->getID()) > nextPlaneID) nextPlaneID++;
@@ -163,7 +164,7 @@ vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Fligh
             getline(file, destination, ';');
             getline(file, airportName);
 
-            flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, destination, Airport(destination, airportName)));
+            flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, destination, Airport(airportName, destination)));
         }
     } else {
         cerr << "File " << directory << " not found" << endl;
@@ -218,6 +219,8 @@ void Company::printData() {
             for (Luggage *luggage : flight->getLuggage()) {
                 cout << *luggage << endl;
             }
+            cout << "Todos os transportes do aeroporto de Destino:" << endl;
+            (*flight).getAirport().showTransports();
         }
     }
 }
@@ -235,6 +238,7 @@ vector<Plane*> Company::getData() {
 
     // Carrega os voos, coloca os passageiros nos voos
     vector<Transport> transports = getAllTransports();
+
     vector<Flight*> flights = getAllFlights();
     for (Flight *flight : flights) {
         for (Passenger *passenger : passengers) {
@@ -313,12 +317,12 @@ void saveFlights(vector<Flight*> flights, const string &directory) {
             Flight* f = flights[i];
             file << f->getID() << ";" << f->getFlightDate().getYear() << ";" << f->getFlightDate().getMonth() << ";" << f->getFlightDate().getDay()
                  << ";" << f->getFlightDate().getHour() << ";" << f->getFlightDate().getMinute() << ";" << f->getFlightDuration()
-                 << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << endl;//<< ";" << f->getAirport().getName() << endl;
+                 << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << ";" << f->getAirport().getName() << endl;
         }
         Flight* f = flights[flights.size()-1];
         file << f->getID() << ";" << f->getFlightDate().getYear() << ";" << f->getFlightDate().getMonth() << ";" << f->getFlightDate().getDay()
              << ";" << f->getFlightDate().getHour() << ";" << f->getFlightDate().getMinute() << ";" << f->getFlightDuration()
-             << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << endl; //";" << f->getAirport().getName();
+             << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << ";" << f->getAirport().getName();
 
     } else {
         cerr << "File " << directory << " not found" << endl;
@@ -348,7 +352,7 @@ void saveServices(vector<Service*> services, const string &directory) {
     file.close();
 }
 
-void savePlanes(vector<Plane*> &planes, const string &directory) {
+void savePlanes(vector<Plane*> planes, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -368,14 +372,32 @@ void savePlanes(vector<Plane*> &planes, const string &directory) {
     file.close();
 }
 
+void saveTransports(vector<Transport> transports, const string &directory) {
+
+    ofstream file(directory);
+    if (file.is_open()) {
+
+        for (int i = 0 ; i < transports.size() - 1 ; i++) {
+            Transport t = transports[i];
+            file << t.getType() << ";" << t.getDistance() << ";" << t.getDate().getHour() << ";" << t.getDate().getMinute() << endl;
+        }
+        Transport t =  transports[transports.size()-1];
+        file << t.getType() << ";" << t.getDistance() << ";" << t.getDate().getHour() << ";" << t.getDate().getMinute();
+
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+}
+
 void Company::saveData(const string &folder) {
 
-    //vector<Luggage*> allLuggage = {};
-    //vector<Passenger*> allPassengers = {};
-    //vector<Flight*> allFlights = {};
-    //vector<Service*> allServices = {};
+    vector<Luggage*> allLuggage = {};
+    vector<Passenger*> allPassengers = {};
+    vector<Flight*> allFlights = {};
+    vector<Service*> allServices = {};
+    //vector<Transport> allTransports = {};
 
-    /**
     for (Plane *plane : planes) {
         for (Flight *flight : plane->getFlights()) {
             allFlights.push_back(flight);
@@ -393,21 +415,19 @@ void Company::saveData(const string &folder) {
             allServices.push_back(service);
         }
     }
-     */
 
     savePlanes(planes, folder + "Planes.txt");
-
-    /**
     savePassengers(allPassengers, folder + "Passengers.txt");
     saveFlights(allFlights, folder + "Flights.txt");
     saveServices(allServices, folder + "Services.txt");
     saveLuggage(allLuggage, folder + "Luggages.txt");
+    //saveTransports(allTransports, folder + "Transports.txt");
 
     allLuggage.clear();
     allPassengers.clear();
     allFlights.clear();
     allServices.clear();
-     */
+    //allTransports.clear();
 }
 
 Flight* Company::findFlight(const string &origin, const string &destination) {
