@@ -150,15 +150,15 @@ class Date {
          * @return if the current object is less than object passed by reference
          */
         bool operator < (const Date &date) const;
-};
 
-/**
-* @overload
-* Function that returns all characteristics of the Date being manipulated
-* @param os ostream object, passed by reference
-* @param date Date object, passed by reference
-* @return ostream object
-*/
-ostream & operator << (ostream & os, const Date &date);
+        /**
+        * @overload
+        * Function that returns all characteristics of the Date being manipulated
+        * @param os ostream object, passed by reference
+        * @param date Date object, passed by reference
+        * @return ostream object
+        */
+        ostream& operator << (const Date &date) const;
+};
 
 #endif // PROJECT_AED_DATE_H
