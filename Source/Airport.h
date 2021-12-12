@@ -23,7 +23,8 @@ class Airport {
         void showTransports() const;
         Transport searchTransport(const string &type) const;
         Transport searchTransport(const int &distance) const;
-        ostream & operator << (ostream &os, const Airport &airport) const;
 };
+
+ostream & operator << (ostream &os, const Airport &airport);
 
 #endif // PROJECT_AED_AIRPORT_H

@@ -7,6 +7,8 @@
 #include <algorithm>
 #include "Plane.h"
 #include "Luggage.h"
+#include "Airport.h"
+#include "Transport.h"
 
 /**
  A class to manage an Company

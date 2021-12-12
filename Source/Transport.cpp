@@ -5,11 +5,7 @@
 
 Transport::Transport() {}
 
-Transport::Transport(string id, string type, int distance, Date date) : id(id), type(type), distance(distance), date(date) {}
-
-string Transport::getID() const {
-    return id;
-}
+Transport::Transport(string type, int distance, Date date) : type(type), distance(distance), date(date) {}
 
 string Transport::getType() const {
     return type;
@@ -24,8 +20,8 @@ Date Transport::getDate() const {
 }
 
 bool Transport::operator == (const Transport &transport) const {
-    return this->id == transport.id && this->type == transport.type && this->distance == transport.distance &&
-            this->date == transport.date;
+    return this->type == transport.type &&
+            this->distance == transport.distance && this->date == transport.date;
 }
 
 bool Transport::operator < (const Transport &transport) const {
@@ -36,8 +32,8 @@ bool Transport::operator < (const Transport &transport) const {
     } return this->distance < transport.distance;
 }
 
-ostream& Transport::operator<<(ostream &os, const Transport &transport) const {
-    os << id << " " << type << " " << distance << " " << date << endl;
+ostream& operator<<(ostream &os, const Transport &transport) const {
+    os << transport.getType() << " " << transport.getDistance() << " " << transport.getDate() << endl;
     return os;
 }
 

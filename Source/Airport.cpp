@@ -66,8 +66,8 @@ Transport Airport::searchTransport(const int &distance) const {
     return nullptr;
 }
 
-ostream& Airport::operator << (ostream &os, const Airport &airport) const {
-    os << city << " " << name << endl;
+ostream& operator << (ostream &os, const Airport &airport) const {
+    os << airport.getCity() << " " << airport.getName() << endl;
     return os;
 }
 
