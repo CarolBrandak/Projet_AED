@@ -5,6 +5,9 @@
 #include <vector>
 #include <iostream>
 #include <istream>
+#include <stack>
+#include <queue>
+#include <list>
 #include "Date.h"
 #include "Passenger.h"
 
@@ -219,6 +222,8 @@ class Flight {
         * @return if f1 has less duration than f2
         */
         friend bool byDuration(const Flight &f1, const Flight &f2);
+
+        friend class Cart;
 };
 
 /**
@@ -229,5 +234,19 @@ class Flight {
 * @return ostream object
 */
 ostream & operator << (ostream & os, const Flight &flight);
+
+
+class Cart {
+
+    private:
+          const int STACK_SIZE; // n de malas em cada pilha
+          const int QUEUE_SIZE; // n de pilhas em cada carruagem
+          const int LIST_SIZE; // n de carruagem
+          list<queue<stack<Luggage*>>> transport;
+    public:
+          Cart();
+          void addLuggage (const vector<Luggage*> &luggages);
+          void putLuggage();
+};
 
 #endif // PROJECT_AED_FLIGHT_H

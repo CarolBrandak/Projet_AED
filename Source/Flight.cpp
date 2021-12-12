@@ -158,4 +158,16 @@ std::ostream & operator << (std::ostream & os, const Flight &flight) {
     return os;
 }
 
+Cart::Cart() : STACK_SIZE(4), QUEUE_SIZE(3), LIST_SIZE(2) {
+    this->transport = {};
+}
+
+void Cart::addLuggage(const vector<Luggage *> &luggages) {
+
+}
+
+void Cart::putLuggage() {
+
+}
+
 #endif // PROJECT_AED_FLIGHT_CPP
