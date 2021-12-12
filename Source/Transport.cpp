@@ -32,7 +32,7 @@ bool Transport::operator < (const Transport &transport) const {
     } return this->distance < transport.distance;
 }
 
-ostream& operator<<(ostream &os, const Transport &transport) const {
+ostream& operator<<(ostream &os, const Transport &transport) {
     os << transport.getType() << " " << transport.getDistance() << " " << transport.getDate() << endl;
     return os;
 }

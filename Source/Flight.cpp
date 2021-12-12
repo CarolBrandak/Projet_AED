@@ -3,19 +3,19 @@
 
 #include "Flight.h"
 
-Flight::Flight() {}
 
 Flight::~Flight() {
     luggage.clear();
     passengers.clear();
 }
 
-Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination) :
+Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination, Airport airport) :
                     id(id),
                     flightDate(flightDate),
                     FLIGHT_DURATION(flightDuration),
                     origin(origin),
                     destination(destination),
+                    airport(airport),
                     quantityOfPassengers(0),
                     quantityOfWeight(0) {
                     this->luggage = {};
@@ -82,6 +82,14 @@ bool byDate(const Flight &f1, const Flight &f2) {
 
 bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
+}
+
+Airport Flight::getAirport() {
+    return airport;
+}
+
+void Flight::addTransport(const Transport &transport) {
+    airport.addTransport(transport);
 }
 
 void Flight::addPassengers(const vector<Passenger*> &toPush) {

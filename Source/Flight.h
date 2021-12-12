@@ -8,8 +8,10 @@
 #include <stack>
 #include <queue>
 #include <list>
-#include "Date.h"
 #include "Passenger.h"
+#include "Airport.h"
+#include "Transport.h"
+#include "BST.h"
 
 /**
  * A class to manage flights
@@ -41,7 +43,8 @@ class Flight {
         /**
          * @var destination - a string that contains the destination of the flight
          */
-        string destination;
+         string destination;
+         Airport airport;
 
         /**
          * @var quantityOfPassengers - a short int variable that contains the current quantity of passengers in the flight
@@ -75,10 +78,6 @@ class Flight {
 
     public:
 
-        /**
-         * A default constructor
-         */
-        Flight();
 
         /**
          * A default destructor
@@ -93,7 +92,7 @@ class Flight {
          * @param origin - a string that contains the origin of the flight
          * @param destination - a string that contains the destination of the flight
          */
-        Flight(string id, Date flightDate, short int flightDuration, string origin, string destination);
+        Flight(string id, Date flightDate, short int flightDuration, string origin, string destination, Airport airport);
 
         /**
          * Returns the flight id
@@ -129,7 +128,10 @@ class Flight {
          * Returns the flight destination
          * @return a string, containing the flight destination
          */
-        string getFlightDestination() const;
+        string getFlightDestination() const ;
+        Airport getAirport();
+
+        void addTransport(const Transport &transport);
 
         /**
          * Returns the quantity of weight inside the plane

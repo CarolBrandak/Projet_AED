@@ -1,14 +1,13 @@
 #ifndef PROJECT_AED_AGENCY_H
 #define PROJECT_AED_AGENCY_H
 
-#include <string>
 #include <vector>
 #include <fstream>
 #include <algorithm>
 #include "Plane.h"
-#include "Luggage.h"
-#include "Airport.h"
+#include "Flight.h"
 #include "Transport.h"
+#include "BST.h"
 
 /**
  A class to manage an Company
@@ -53,7 +52,7 @@ class Company {
         vector<Luggage*> getAllLuggages(string directory);
         vector<Flight*> getAllFlights(string directory);
         vector<Plane*> getAllPlanes(string directory);
-        vector<Plane*> getPlanes() const;
+        vector<Transport> getAllTransports(string directory);
 
         int getNextPlaneID();
 

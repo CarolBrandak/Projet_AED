@@ -21,9 +21,6 @@ string Company::getName() const {
     return name;
 }
 
-vector<Plane*> Company::getPlanes() const {
-    return planes;
-}
 
 void Company::addPlane(Plane *plane) {
     if (stoi(plane->getID()) > nextPlaneID) nextPlaneID++;
@@ -33,6 +30,30 @@ void Company::addPlane(Plane *plane) {
 int Company::getNextPlaneID() {
     nextPlaneID++;
     return nextPlaneID;
+}
+
+vector<Transport> Company::getAllTransports(const string directory = "../Source/Files/Transports.txt") {
+
+    vector<Transport> transports = {};
+    ifstream file(directory);
+
+    if (file.is_open()) {
+        while (!file.eof()) {
+
+            string type, distance, hour, minute;
+
+            getline(file, type, ';');
+            getline(file, distance, ';');
+            getline(file, hour, ';');
+            getline(file, minute);
+
+            transports.push_back(Transport(type, stoi(distance), Date(stoi(hour), stoi(minute))));
+        }
+    } else {
+        cerr << "File " << directory << " not found" << endl;
+    }
+    file.close();
+    return transports;
 }
 
 vector<Service*> Company::getAllServices(const string directory = "../Source/Files/Services.txt") {
@@ -129,7 +150,7 @@ vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Fligh
     if (file.is_open()) {
         while (!file.eof()) {
 
-            string id, year, month, day, hour, minute, duration, origin, destination;
+            string id, year, month, day, hour, minute, duration, origin, destination, airportName;
 
             getline(file, id, ';');
             getline(file, year, ';');
@@ -139,9 +160,10 @@ vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Fligh
             getline(file, minute, ';');
             getline(file, duration, ';');
             getline(file, origin, ';');
-            getline(file, destination);
+            getline(file, destination, ';');
+            getline(file, airportName);
 
-            flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, destination));
+            flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, destination, Airport(destination, airportName)));
         }
     } else {
         cerr << "File " << directory << " not found" << endl;
@@ -212,10 +234,14 @@ vector<Plane*> Company::getData() {
     }
 
     // Carrega os voos, coloca os passageiros nos voos
+    vector<Transport> transports = getAllTransports();
     vector<Flight*> flights = getAllFlights();
     for (Flight *flight : flights) {
         for (Passenger *passenger : passengers) {
             flight->addPassenger(*passenger);
+        }
+        for (Transport transport : transports) {
+            flight->addTransport(transport);
         }
     }
 
@@ -287,12 +313,12 @@ void saveFlights(vector<Flight*> flights, const string &directory) {
             Flight* f = flights[i];
             file << f->getID() << ";" << f->getFlightDate().getYear() << ";" << f->getFlightDate().getMonth() << ";" << f->getFlightDate().getDay()
                  << ";" << f->getFlightDate().getHour() << ";" << f->getFlightDate().getMinute() << ";" << f->getFlightDuration()
-                 << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << endl;
+                 << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << endl;//<< ";" << f->getAirport().getName() << endl;
         }
         Flight* f = flights[flights.size()-1];
         file << f->getID() << ";" << f->getFlightDate().getYear() << ";" << f->getFlightDate().getMonth() << ";" << f->getFlightDate().getDay()
              << ";" << f->getFlightDate().getHour() << ";" << f->getFlightDate().getMinute() << ";" << f->getFlightDuration()
-             << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination();
+             << ";" << f->getFlightOrigin() << ";" << f->getFlightDestination() << endl; //";" << f->getAirport().getName();
 
     } else {
         cerr << "File " << directory << " not found" << endl;

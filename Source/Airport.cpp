@@ -3,9 +3,9 @@
 
 #include "Airport.h"
 
-Airport::Airport() : city(""), name(""), transports(Transport("", "", 0, Date(0, 0))) {}
+Airport::Airport() : city(""), name(""), transports(Transport("", 0, Date(0, 0))) {}
 
-Airport::Airport(string name, string city) : city(city), name(name), transports(Transport("", "", 0, Date(0, 0))) {}
+Airport::Airport(string name, string city) : name(name), city(city), transports(Transport("", 0, Date(0, 0))) {}
 
 string Airport::getName() const {
     return name;
@@ -22,7 +22,7 @@ BST<Transport> Airport::getTransports() const {
 void Airport::addTransport(const Transport &transport) {
 
     Transport found = transports.find(transport);
-    if (found == Transport("", "", 0, Date(0, 0))) {
+    if (found == Transport("", 0, Date(0, 0))) {
         transports.insert(transport);
     }
 }
@@ -30,7 +30,7 @@ void Airport::addTransport(const Transport &transport) {
 void Airport::removeTransport(const Transport &transport) {
 
     Transport found = transports.find(transport);
-    if (!(found == Transport("", "", 0, Date(0, 0)))) {
+    if (!(found == Transport("", 0, Date(0, 0)))) {
         transports.remove(transport);
     }
 }
@@ -52,7 +52,7 @@ Transport Airport::searchTransport(const string &type) const {
         }
         itr.advance();
     }
-    return nullptr;
+    return Transport("", 0, Date(0, 0));
 }
 
 Transport Airport::searchTransport(const int &distance) const {
@@ -63,10 +63,10 @@ Transport Airport::searchTransport(const int &distance) const {
         }
         itr.advance();
     }
-    return nullptr;
+    return Transport("", 0, Date(0, 0));
 }
 
-ostream& operator << (ostream &os, const Airport &airport) const {
+ostream& operator << (ostream &os, const Airport &airport) {
     os << airport.getCity() << " " << airport.getName() << endl;
     return os;
 }

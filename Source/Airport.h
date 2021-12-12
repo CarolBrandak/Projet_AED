@@ -8,8 +8,8 @@
 class Airport {
 
     private:
-        const string city;
-        const string name;
+        string city;
+        string name;
         BST<Transport> transports;
 
     public:

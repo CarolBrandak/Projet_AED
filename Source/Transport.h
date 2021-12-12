@@ -7,9 +7,9 @@
 class Transport {
 
     private:
-        const string type;
-        const int distance;
-        const Date date;
+        string type;
+        int distance;
+        Date date;
     public:
         Transport();
         Transport(string type, int distance, Date date);

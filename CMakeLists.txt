@@ -14,7 +14,10 @@ add_executable(     Projet_AED main.cpp
                     Source/Flight.h Source/Flight.cpp
                     Source/Service.h Source/Service.cpp
                     Source/Company.h Source/Company.cpp
+                    Source/Airport.cpp Source/Airport.cpp
+                    Source/Transport.cpp Source/Transport.cpp
                     Source/Menu.h Source/Menu.cpp
+                    Source/BST.h
                     Tests/DateTest.cpp
                     Tests/LuggageTest.cpp
                     Tests/EmployeeTest.cpp
