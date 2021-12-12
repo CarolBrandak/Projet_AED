@@ -235,11 +235,9 @@ vector<Plane*> Company::getData() {
 
     // A agência passa a conhecer TODA a informação carregada
     return allPlanes;
-
 }
 
 void saveLuggage(vector<Luggage*> luggage, const string &directory) {
-
 
     ofstream file(directory);
     if (file.is_open()) {
@@ -354,6 +352,9 @@ void Company::saveData(const string &folder) {
             allFlights.push_back(flight);
             for (Passenger *passenger : flight->getPassengers()) {
                 allPassengers.push_back(passenger);
+                for (Luggage *luggage : passenger->getLuggage()) {
+                    allLuggage.push_back(luggage);
+                }
             }
             for (Luggage *luggage : flight->getLuggage()) {
                 allLuggage.push_back(luggage);
