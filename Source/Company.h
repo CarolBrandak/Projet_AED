@@ -83,6 +83,7 @@ class Company {
          Flight* findFlight(const string &origin, const string &destination);
 
         void presentation();
+        void listing();
 };
 
 #endif // PROJECT_AED_AGENCY_H

@@ -438,4 +438,9 @@ Flight* Company::findFlight(const string &origin, const string &destination) {
     return nullptr;
 }
 
+void Company::listing() {
+
+
+}
+
 #endif // PROJECT_AED_AGENCY_CPP
