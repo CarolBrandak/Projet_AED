@@ -13,6 +13,10 @@ Company::Company(string name) : name(name), planes(this->getData()) {
     nextPlaneID = planes.size();
 }
 
+void Company::presentation() {
+    cout << "Welcome to " << name << " Company!" << endl;
+}
+
 string Company::getName() const {
     return name;
 }
@@ -23,14 +27,12 @@ vector<Plane*> Company::getPlanes() const {
 
 void Company::addPlane(Plane *plane) {
     if (stoi(plane->getID()) > nextPlaneID) nextPlaneID++;
-    cout << planes.size() << endl;
     planes.push_back(plane);
-    cout << planes.size() << endl;
 }
 
 int Company::getNextPlaneID() {
     nextPlaneID++;
-    return nextPlaneID--;
+    return nextPlaneID;
 }
 
 vector<Service*> Company::getAllServices(const string directory = "../Source/Files/Services.txt") {
@@ -320,7 +322,7 @@ void saveServices(vector<Service*> services, const string &directory) {
     file.close();
 }
 
-void savePlanes(vector<Plane*> planes, const string &directory) {
+void savePlanes(vector<Plane*> &planes, const string &directory) {
 
     ofstream file(directory);
     if (file.is_open()) {

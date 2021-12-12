@@ -69,6 +69,13 @@ class Date {
         Date(int day, int month, int year, int hour, int minute);
 
         /**
+         * new constructor --> para os transportes que precisam de horário apenas e não dia
+         * @param hour
+         * @param minute
+         */
+        Date(int hour, int minute);
+
+        /**
          * Return Date's day
          * @return a int, containing date's day
          */
