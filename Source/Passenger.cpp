@@ -57,6 +57,15 @@ bool Passenger::operator == (const Passenger &passenger) const {
             this->name == passenger.getName() && this->age == passenger.getAge() && this->gender == passenger.getGender();
 }
 
+void Passenger::removeLuggage(Luggage *l) {
+    for (vector<Luggage*>::iterator it = this->luggage.begin() ; it != this->luggage.end() ; it++) {
+        if (*it == l) {
+            luggage.erase(it);
+            return;
+        }
+    }
+}
+
 bool byName(const Passenger &p1, const Passenger &p2) {
     return p1.name < p2.name;
 }

@@ -6,6 +6,7 @@
 #include <fstream>
 #include <algorithm>
 #include "Plane.h"
+#include "Luggage.h"
 
 /**
  A class to manage an Company

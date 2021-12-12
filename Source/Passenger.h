@@ -90,6 +90,8 @@ class Passenger : public Person {
          */
         int getTotalVolume() const;
 
+        void removeLuggage(Luggage* l);
+
         /**
          * @overload
          * Boolean function that compares two objects of this class

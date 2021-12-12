@@ -88,27 +88,29 @@ vector<Passenger*> Company::getAllPassengers(string directory = "../Source/Files
 
 vector<Luggage*> Company::getAllLuggages(string directory = "../Source/Files/Luggages.txt") {
 
+    cout << "Começou a pesquisa" << endl;
     vector<Luggage*> luggage = {};
     ifstream file(directory);
 
     if (file.is_open()) {
         while (!file.eof()) {
 
-            string id, weight, width, height, depth, planeHold;
+            string id, weight, widtht, height, depth, planeHold;
 
             getline(file, id, ';');
             getline(file, weight, ';');
-            getline(file, width, ';');
+            getline(file, widtht, ';');
             getline(file, height, ';');
             getline(file, depth, ';');
             getline(file, planeHold);
 
             Volume v;
-            v.width = stoi(width);
+            v.width = stoi(widtht);
             v.height = stoi(height);
             v.depth = stoi(depth);
 
             luggage.push_back(new Luggage(id, stoi(weight), v, planeHold == "1"));
+
         }
     } else {
         cerr << "File " << directory << " not found" << endl;
@@ -194,14 +196,18 @@ void Company::printData() {
 
 vector<Plane*> Company::getData() {
 
+    cout << "Passou pela getadata 1" << endl;
     // Carega as bagagens e os passageiros, coloca as bagagens nos passageiros
     vector<Luggage*> luggage = getAllLuggages();
+    cout << "Ja meteu os luggages" << endl;
     vector<Passenger*> passengers = getAllPassengers();
     for (Passenger *passenger : passengers) {
         for (Luggage *l : luggage) {
             passenger->addLuggage(*l);
         }
     }
+
+    cout << "Passou pela getdata 2" << endl;
 
     // Carrega os voos, coloca os passageiros nos voos
     vector<Flight*> flights = getAllFlights();
@@ -211,6 +217,7 @@ vector<Plane*> Company::getData() {
         }
     }
 
+    cout << "Passou pela getadata 3" << endl;
     // Carrega os aviões e os serviços, coloca os voos e os serviços nos aviões
     vector<Service*> services = getAllServices();
     vector<Plane*> allPlanes = getAllPlanes();
