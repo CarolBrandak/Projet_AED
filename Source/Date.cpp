@@ -23,6 +23,14 @@ Date::Date(int day, int month, int year) {
     this -> minute = 0;
 }
 
+Date::Date(int hour, int minute) {
+    this->hour = hour;
+    this->minute = minute;
+    this->day = 0;
+    this->month = 0;
+    this->year = 0;
+}
+
 int Date::getDay() const {
     return day;
 }
