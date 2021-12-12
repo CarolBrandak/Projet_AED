@@ -13,7 +13,7 @@ class Airport {
         BST<Transport> transports;
 
     public:
-        Airport() : transports(Transport("", "", 0, Date(0,0,0,0,0)));
+        Airport();
         Airport(string name, string city);
         string getCity() const;
         string getName() const;
