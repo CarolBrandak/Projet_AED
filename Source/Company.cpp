@@ -176,15 +176,19 @@ void Company::printData() {
     // Aeroporto -> Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
 
     for (Plane *plane : planes) {
+        cout << "Características do avião: " << endl;
         cout << *plane << endl;
+        cout << "Caracterização de cada voo implementado: " << endl;
         for (Flight *flight : plane->getFlights()) {
             cout << *flight << endl;
             for (Passenger *passenger : flight->getPassengers()) {
                 cout << *passenger << endl;
+                cout << "Bagagem do passageiro, planeHold = 1" << endl;
                 for (Luggage *luggage : passenger->getLuggage()) {
                     cout << *luggage << endl;
                 }
             }
+            cout << "Bagagem do porão, planeHold = 0" << endl;
             for (Luggage *luggage : flight->getLuggage()) {
                 cout << *luggage << endl;
             }
@@ -203,13 +207,6 @@ vector<Plane*> Company::getData() {
         }
     }
 
-    cout << "Caraterização dos passageiros" << endl;
-    for (auto*p : passengers) {
-        cout << *p << endl;
-        for (auto *l : p->getLuggage()) cout << *l << endl;
-    }
-    cout << endl << endl;
-
     // Carrega os voos, coloca os passageiros nos voos
     vector<Flight*> flights = getAllFlights();
     for (Flight *flight : flights) {
@@ -217,27 +214,6 @@ vector<Plane*> Company::getData() {
             flight->addPassenger(*passenger);
         }
     }
-
-    cout << "=============================================================" << endl;
-    cout << "Voos, Passageiros e Bagagens: " << endl;
-    cout << "=============================================================" << endl;
-
-    for (auto *f : flights) {
-        cout << endl;
-        cout << *f << endl;
-        for (auto *p : f->getPassengers()) {
-            cout << *p << endl;
-            cout << "As malas que foram com o passageiro: " << endl;
-            for (Luggage *l : p->getLuggage())
-                cout << *l << endl;
-        }
-        cout << "As malas que foram com o voo: / PORAO: " << endl;
-        for (auto *l : f->getLuggage()) {
-            cout << *l << endl;
-        }
-    }
-
-    cout << "=============================================================" << endl;
 
     // Carrega os aviões e os serviços, coloca os voos e os serviços nos aviões
     vector<Service*> services = getAllServices();
