@@ -10,19 +10,19 @@ class Airport {
     private:
         string city;
         string name;
-        BST<Transport> transports;
+        BST<Transport*> transports;
 
     public:
         Airport();
         Airport(string name, string city);
         string getCity() const;
         string getName() const;
-        BST<Transport> getTransports() const;
-        void addTransport(const Transport &transport);
-        void removeTransport(const Transport &transport);
+        BST<Transport*> getTransports() const;
+        void addTransport(Transport *transport);
+        void removeTransport(Transport *transport);
         void showTransports() const;
-        Transport searchTransport(const string &type) const;
-        Transport searchTransport(const int &distance) const;
+        Transport* searchTransport(const string &type) const;
+        Transport* searchTransport(const int &distance) const;
 };
 
 ostream & operator << (ostream &os, const Airport &airport);

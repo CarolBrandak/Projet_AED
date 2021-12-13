@@ -7,12 +7,14 @@
 class Transport {
 
     private:
+        string id;
         string type;
         int distance;
         Date date;
     public:
         Transport();
-        Transport(string type, int distance, Date date);
+        Transport(string id, string type, int distance, Date date);
+        string getID() const;
         string getType() const;
         int getDistance() const;
         Date getDate() const;

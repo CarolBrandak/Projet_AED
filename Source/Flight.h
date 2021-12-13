@@ -43,7 +43,6 @@ class Flight {
         /**
          * @var destination - a string that contains the destination of the flight
          */
-         string destination;
          Airport airport;
 
         /**
@@ -92,7 +91,7 @@ class Flight {
          * @param origin - a string that contains the origin of the flight
          * @param destination - a string that contains the destination of the flight
          */
-        Flight(string id, Date flightDate, short int flightDuration, string origin, string destination, Airport airport);
+        Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport);
 
         /**
          * Returns the flight id
@@ -129,6 +128,7 @@ class Flight {
          * @return a string, containing the flight destination
          */
         string getFlightDestination() const ;
+
         Airport getAirport();
 
         void addTransport(const Transport &transport);
@@ -156,6 +156,9 @@ class Flight {
          * @return a vector with pointers to Luggage objects
          */
         vector<Luggage*> getLuggage() const;
+
+
+        void addTransport(Transport *transport);
 
         /**
          * Adds passengers to the flight

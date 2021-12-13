@@ -6,6 +6,9 @@ void Application() {
     Company company = Company("AirED");
     company.presentation();
 
+    company.save();
+
+    /**
     int choice = mainMenu();
     switch (choice) {
         case 1:
@@ -30,6 +33,6 @@ void Application() {
         default:
             return;
     }
+     */
 
-    return;
 }

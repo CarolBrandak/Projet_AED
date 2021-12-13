@@ -3,9 +3,9 @@
 
 #include "Airport.h"
 
-Airport::Airport() : city(""), name(""), transports(Transport("", 0, Date(0, 0))) {}
+Airport::Airport() : city(""), name(""), transports(new Transport("","", 0, Date(0, 0))) {}
 
-Airport::Airport(string name, string city) : name(name), city(city), transports(Transport("", 0, Date(0, 0))) {}
+Airport::Airport(string name, string city) : name(name), city(city), transports(new Transport("", "", 0, Date(0, 0))) {}
 
 string Airport::getName() const {
     return name;
@@ -15,55 +15,61 @@ string Airport::getCity() const {
     return city;
 }
 
-BST<Transport> Airport::getTransports() const {
+BST<Transport*> Airport::getTransports() const {
     return transports;
 }
 
-void Airport::addTransport(const Transport &transport) {
+void Airport::addTransport(Transport *transport) {
 
-    Transport found = transports.find(transport);
-    if (found == Transport("", 0, Date(0, 0))) {
+    Transport* notf = new Transport("", "", 0, Date(0, 0));
+
+    Transport* found = transports.find(transport);
+    if (*found == *notf) {
         transports.insert(transport);
     }
 }
 
-void Airport::removeTransport(const Transport &transport) {
+void Airport::removeTransport(Transport *transport) {
 
-    Transport found = transports.find(transport);
-    if (!(found == Transport("", 0, Date(0, 0)))) {
+    Transport* notf = new Transport("", "", 0, Date(0, 0));
+
+    Transport* found = transports.find(transport);
+    if (*found == *notf) {
         transports.remove(transport);
     }
 }
 
 void Airport::showTransports() const {
 
-    BSTItrIn<Transport> itr(transports);
+    BSTItrIn<Transport*> itr(transports);
     while (!itr.isAtEnd()) {
-        cout << itr.retrieve() << endl;
+        cout << *itr.retrieve() << endl;
         itr.advance();
     }
 }
 
-Transport Airport::searchTransport(const string &type) const {
-    BSTItrIn<Transport> itr(transports);
+Transport* Airport::searchTransport(const string &type) const {
+
+    BSTItrIn<Transport*> itr(transports);
     while (!itr.isAtEnd()) {
-        if (itr.retrieve().getType() == type) {
+        if (itr.retrieve()->getType() == type) {
             return itr.retrieve();
         }
         itr.advance();
     }
-    return Transport("", 0, Date(0, 0));
+    return new Transport("", "", 0, Date(0, 0));
 }
 
-Transport Airport::searchTransport(const int &distance) const {
-    BSTItrIn<Transport> itr(transports);
+Transport* Airport::searchTransport(const int &distance) const {
+
+    BSTItrIn<Transport*> itr(transports);
     while (!itr.isAtEnd()) {
-        if (itr.retrieve().getDistance() == distance) {
+        if (itr.retrieve()->getDistance() == distance) {
             return itr.retrieve();
         }
         itr.advance();
     }
-    return Transport("", 0, Date(0, 0));
+    return new Transport("", "", 0, Date(0, 0));
 }
 
 ostream& operator << (ostream &os, const Airport &airport) {

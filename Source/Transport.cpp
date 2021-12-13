@@ -5,7 +5,11 @@
 
 Transport::Transport() {}
 
-Transport::Transport(string type, int distance, Date date) : type(type), distance(distance), date(date) {}
+Transport::Transport(string id, string type, int distance, Date date) : id(id), type(type), distance(distance), date(date) {}
+
+string Transport::getID() const {
+    return id;
+}
 
 string Transport::getType() const {
     return type;

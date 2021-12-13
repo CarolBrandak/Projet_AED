@@ -26,6 +26,9 @@ class Company {
          */
         vector<Plane*> planes;
 
+        /**
+         * @var taltal
+         */
         int nextPlaneID;
 
     public:
@@ -46,28 +49,23 @@ class Company {
          */
         Company(string name);
 
-
-        vector<Service*> getAllServices(string directory);
-        vector<Passenger*> getAllPassengers(string directory);
-        vector<Luggage*> getAllLuggages(string directory);
-        vector<Flight*> getAllFlights(string directory);
-        vector<Plane*> getAllPlanes(string directory);
-        vector<Transport> getAllTransports(string directory);
-
-        int getNextPlaneID();
+        string getName() const;
 
         void addPlane(Plane* plane);
 
-        /**
-         * Returns the agency's name
-         * @return a string, containing the agency's name
-         */
-        string getName() const;
+        vector<Luggage*> getAllLuggages(string directory);
 
-         /**
-          * Load all data contained in files directory
-          */
-         vector<Plane*> getData();
+        vector<Passenger*> getAllPassengers(string directory);
+
+        vector<Service*> getAllServices(string directory);
+
+        vector<Transport*> getAllTransports(string directory);
+
+        vector<Flight*> getAllFlights(string directory);
+
+        vector<Plane*> getAllPlanes(string directory);
+
+        int getNextPlaneID();
 
          /**
           * Show all data contained in files directory
@@ -78,7 +76,7 @@ class Company {
           * Writes all modified data in files directory
           * @param folder - a string contains the folder of backup
           */
-         void saveData(const string &folder);
+         void save();
 
          Flight* findFlight(const string &origin, const string &destination);
 

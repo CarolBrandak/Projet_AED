@@ -9,12 +9,11 @@ Flight::~Flight() {
     passengers.clear();
 }
 
-Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, string destination, Airport airport) :
+Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport) :
                     id(id),
                     flightDate(flightDate),
                     FLIGHT_DURATION(flightDuration),
                     origin(origin),
-                    destination(destination),
                     airport(airport),
                     quantityOfPassengers(0),
                     quantityOfWeight(0) {
@@ -49,7 +48,7 @@ string Flight::getFlightOrigin() const {
 }
 
 string Flight::getFlightDestination() const {
-    return destination;
+    return airport.getCity();
 }
 
 unsigned int Flight::getPassengersQuantity() const {
@@ -88,8 +87,8 @@ Airport Flight::getAirport() {
     return airport;
 }
 
-void Flight::addTransport(const Transport &transport) {
-    airport.addTransport(transport);
+void Flight::addTransport(Transport *transport) {
+    if (id == transport->getID()) airport.addTransport(transport);
 }
 
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
