@@ -51,7 +51,7 @@ class Company {
 
         string getName() const;
 
-        void addPlane(Plane* plane);
+        void addPlane(Plane &plane);
 
         vector<Luggage*> getAllLuggages(string directory);
 

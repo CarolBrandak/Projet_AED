@@ -23,9 +23,9 @@ void Company::presentation() {
     cout << "=====================================" << endl;
 }
 
-void Company::addPlane(Plane *plane) {
-    if (stoi(plane->getID()) > nextPlaneID) nextPlaneID++;
-    planes.push_back(plane);
+void Company::addPlane(Plane &plane) {
+    if (stoi(plane.getID()) > nextPlaneID) nextPlaneID++;
+    planes.push_back(&plane);
 }
 
 int Company::getNextPlaneID() {
