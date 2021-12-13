@@ -18,6 +18,7 @@ class Airport {
         string getCity() const;
         string getName() const;
         BST<Transport*> getTransports() const;
+        vector<Transport*> getAllTransports() const;
         void addTransport(Transport *transport);
         void removeTransport(Transport *transport);
         void showTransports() const;

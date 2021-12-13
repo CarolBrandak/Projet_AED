@@ -19,6 +19,17 @@ BST<Transport*> Airport::getTransports() const {
     return transports;
 }
 
+vector<Transport*> Airport::getAllTransports() const {
+
+    vector<Transport*> allTransports = {};
+    BSTItrIn<Transport*> itr(this->transports);
+    while (!itr.isAtEnd()) {
+        allTransports.push_back(itr.retrieve());
+        itr.advance();
+    }
+    return allTransports;
+}
+
 void Airport::addTransport(Transport *transport) {
 
     Transport* notf = new Transport("", "", 0, Date(0, 0));

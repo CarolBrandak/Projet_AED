@@ -9,8 +9,8 @@ Company::~Company() {
     planes.clear();
 }
 
-Company::Company(string name) : name(name), planes(this->getAllPlanes("../Source/Files/PLanes.txt")) {
-    nextPlaneID = planes.size();
+Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
+    this->nextPlaneID = planes.size();
 }
 
 string Company::getName() const {
@@ -33,10 +33,10 @@ int Company::getNextPlaneID() {
     return nextPlaneID;
 }
 
-vector<Luggage*> Company::getAllLuggages(string directory = "../Source/Files/Luggages.txt") {
+vector<Luggage*> Company::getAllLuggages() {
 
     vector<Luggage*> luggage = {};
-    ifstream file(directory);
+    ifstream file(LUGGAGE_FILE);
 
     if (file.is_open()) {
         while (!file.eof()) {
@@ -58,16 +58,16 @@ vector<Luggage*> Company::getAllLuggages(string directory = "../Source/Files/Lug
             luggage.push_back(new Luggage(id, stoi(weight), v, planeHold == "1"));
         }
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << LUGGAGE_FILE << " not found" << endl;
     }
     file.close();
     return luggage;
 }
 
-vector<Passenger*> Company::getAllPassengers(string directory = "../Source/Files/Passengers.txt") {
+vector<Passenger*> Company::getAllPassengers() {
 
     vector<Passenger*> passengers = {};
-    ifstream file(directory);
+    ifstream file(PASSENGER_FILE);
 
     if (file.is_open()) {
         while (!file.eof()) {
@@ -83,7 +83,7 @@ vector<Passenger*> Company::getAllPassengers(string directory = "../Source/Files
             passengers.push_back(new Passenger(id, name, stoi(age), gender[0], passportNumber));
         }
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << PASSENGER_FILE << " not found" << endl;
     }
     file.close();
 
@@ -95,10 +95,10 @@ vector<Passenger*> Company::getAllPassengers(string directory = "../Source/Files
     return passengers;
 }
 
-vector<Service*> Company::getAllServices(string directory = "../Source/Files/Services.txt") {
+vector<Service*> Company::getAllServices() {
 
     vector<Service*> services = {};
-    ifstream file(directory);
+    ifstream file(SERVICE_FILE);
 
     if (file.is_open()) {
         while (!file.eof()) {
@@ -119,16 +119,16 @@ vector<Service*> Company::getAllServices(string directory = "../Source/Files/Ser
             services.push_back(new Service(id, type, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), Employee(name, stoi(age), gender[0])));
         }
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << SERVICE_FILE << " not found" << endl;
     }
     file.close();
     return services;
 }
 
-vector<Transport*> Company::getAllTransports(string directory = "../Source/Files/Transports.txt") {
+vector<Transport*> Company::getAllTransports() {
 
     vector<Transport*> transports = {};
-    ifstream file(directory);
+    ifstream file(TRANSPORT_FILE);
 
     if (file.is_open()) {
         while (!file.eof()) {
@@ -144,16 +144,16 @@ vector<Transport*> Company::getAllTransports(string directory = "../Source/Files
             transports.push_back(new Transport(id, type, stoi(distance), Date(stoi(hour), stoi(minute))));
         }
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << TRANSPORT_FILE << " not found" << endl;
     }
     file.close();
     return transports;
 }
 
-vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Flights.txt") {
+vector<Flight*> Company::getAllFlights() {
 
     vector<Flight*> flights = {};
-    ifstream file(directory);
+    ifstream file(FLIGHT_FILE);
 
     if (file.is_open()) {
         while (!file.eof()) {
@@ -174,7 +174,7 @@ vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Fligh
             flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, Airport(airportName, destination)));
         }
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << FLIGHT_FILE << " not found" << endl;
     }
     file.close();
 
@@ -189,10 +189,10 @@ vector<Flight*> Company::getAllFlights(string directory = "../Source/Files/Fligh
     return flights;
 }
 
-vector<Plane*> Company::getAllPlanes(string directory = "../Source/Files/Planes.txt") {
+vector<Plane*> Company::getAllPlanes() {
 
-    vector<Plane*> planes = {};
-    ifstream file(directory);
+    vector<Plane*> allPlanes = {};
+    ifstream file(PLANE_FILE);
 
     if (file.is_open()) {
         while (!file.eof()) {
@@ -205,52 +205,45 @@ vector<Plane*> Company::getAllPlanes(string directory = "../Source/Files/Planes.
             getline(file, weightCapacity, ';');
             getline(file, passengerCapacity);
 
-            planes.push_back(new Plane(id, licencePlate, type, stoi(weightCapacity), stoi(passengerCapacity)));
+            allPlanes.push_back(new Plane(id, licencePlate, type, stoi(weightCapacity), stoi(passengerCapacity)));
         }
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << PLANE_FILE << " not found" << endl;
     }
     file.close();
 
     vector<Service*> allServices = getAllServices();
     vector<Flight*> allFlights = getAllFlights();
-    for (Plane *plane : planes) {
+    for (Plane *plane : allPlanes) {
         for (Service *service: allServices) plane->addService(*service);
         for (Flight *flight: allFlights) plane->addFlight(*flight);
     }
-    return planes;
+    return allPlanes;
 }
 
 void Company::printData() {
 
-    // Aviões -> Voos -> ((Passageiros -> Bagagem) && Bagagem)
-
     for (Plane *plane : planes) {
-        cout << "Características do avião: " << endl;
         cout << *plane << endl;
-        cout << "Caracterização de cada voo implementado: " << endl;
         for (Flight *flight : plane->getFlights()) {
             cout << *flight << endl;
             for (Passenger *passenger : flight->getPassengers()) {
                 cout << *passenger << endl;
-                cout << "Bagagem do passageiro, planeHold = 1" << endl;
                 for (Luggage *luggage : passenger->getLuggage()) {
                     cout << *luggage << endl;
                 }
             }
-            cout << "Bagagem do porão, planeHold = 0" << endl;
             for (Luggage *luggage : flight->getLuggage()) {
                 cout << *luggage << endl;
             }
-            cout << "Todos os transportes do aeroporto de Destino:" << endl;
             (*flight).getAirport().showTransports();
         }
     }
 }
 
-void saveLuggage(vector<Luggage*> luggage, const string &directory) {
+void saveLuggage(vector<Luggage*> luggage) {
 
-    ofstream file(directory);
+    ofstream file(LUGGAGE_FILE);
     if (file.is_open()) {
 
         for (int i = 0 ; i < luggage.size(); i++) {
@@ -261,14 +254,14 @@ void saveLuggage(vector<Luggage*> luggage, const string &directory) {
         }
 
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << LUGGAGE_FILE << " not found" << endl;
     }
     file.close();
 }
 
-void savePassengers(vector<Passenger*> passengers, const string &directory) {
+void savePassengers(vector<Passenger*> passengers) {
 
-    ofstream file(directory);
+    ofstream file(PASSENGER_FILE);
     if (file.is_open()) {
 
         for (int i = 0 ; i < passengers.size(); i++) {
@@ -278,14 +271,14 @@ void savePassengers(vector<Passenger*> passengers, const string &directory) {
         }
 
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << PASSENGER_FILE << " not found" << endl;
     }
     file.close();
 }
 
-void saveFlights(vector<Flight*> flights, const string &directory) {
+void saveFlights(vector<Flight*> flights) {
 
-    ofstream file(directory);
+    ofstream file(FLIGHT_FILE);
     if (file.is_open()) {
 
         for (int i = 0 ; i < flights.size(); i++) {
@@ -297,14 +290,14 @@ void saveFlights(vector<Flight*> flights, const string &directory) {
         }
 
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << FLIGHT_FILE << " not found" << endl;
     }
     file.close();
 }
 
-void saveServices(vector<Service*> services, const string &directory) {
+void saveServices(vector<Service*> services) {
 
-    ofstream file(directory);
+    ofstream file(SERVICE_FILE);
     if (file.is_open()) {
 
         for (int i = 0 ; i < services.size(); i++) {
@@ -316,14 +309,14 @@ void saveServices(vector<Service*> services, const string &directory) {
         }
 
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << SERVICE_FILE << " not found" << endl;
     }
     file.close();
 }
 
-void savePlanes(vector<Plane*> planes, const string &directory) {
+void savePlanes(vector<Plane*> planes) {
 
-    ofstream file(directory);
+    ofstream file(PLANE_FILE);
     if (file.is_open()) {
 
         for (int i = 0 ; i < planes.size(); i++) {
@@ -334,14 +327,14 @@ void savePlanes(vector<Plane*> planes, const string &directory) {
         }
 
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << PLANE_FILE << " not found" << endl;
     }
     file.close();
 }
 
-void saveTransports(vector<Transport*> transports, const string &directory) {
+void saveTransports(vector<Transport*> transports) {
 
-    ofstream file(directory);
+    ofstream file(TRANSPORT_FILE);
     if (file.is_open()) {
 
         for (int i = 0 ; i < transports.size(); i++) {
@@ -351,7 +344,7 @@ void saveTransports(vector<Transport*> transports, const string &directory) {
         }
 
     } else {
-        cerr << "File " << directory << " not found" << endl;
+        cerr << "File in " << TRANSPORT_FILE << " not found" << endl;
     }
     file.close();
 }
@@ -362,7 +355,7 @@ void Company::save() {
     vector<Passenger*> allPassengers = {};
     vector<Flight*> allFlights = {};
     vector<Service*> allServices = {};
-    //vector<Transport> allTransports = {};
+    vector<Transport*> allTransports = {};
 
     for (Plane *plane : planes) {
         for (Flight *flight : plane->getFlights()) {
@@ -376,25 +369,27 @@ void Company::save() {
             for (Luggage *luggage : flight->getLuggage()) {
                 allLuggage.push_back(luggage);
             }
+            for (Transport *transport : flight->getAirport().getAllTransports()) {
+                allTransports.push_back(transport);
+            }
         }
         for (Service *service : plane->getServices()) {
             allServices.push_back(service);
         }
     }
 
-    string folder = "../Source/Files/";
-    savePlanes(planes, folder + "Planes.txt");
-    savePassengers(allPassengers, folder + "Passengers.txt");
-    saveFlights(allFlights, folder + "Flights.txt");
-    saveServices(allServices, folder + "Services.txt");
-    saveLuggage(allLuggage, folder + "Luggages.txt");
-    //saveTransports(allTransports, folder + "Transports.txt");
+    savePlanes(planes);
+    savePassengers(allPassengers);
+    saveFlights(allFlights);
+    saveServices(allServices);
+    saveLuggage(allLuggage);
+    saveTransports(allTransports);
 
     allLuggage.clear();
     allPassengers.clear();
     allFlights.clear();
     allServices.clear();
-    //allTransports.clear();
+    allTransports.clear();
 }
 
 Flight* Company::findFlight(const string &origin, const string &destination) {
@@ -407,7 +402,7 @@ Flight* Company::findFlight(const string &origin, const string &destination) {
 
 void Company::listing() {
 
-
+    // Aqui vai acontecer as listagens, tanto do admin como do passageiro. Estou a pensar na cena.
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

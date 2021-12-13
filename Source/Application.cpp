@@ -9,6 +9,10 @@ void Application() {
     Plane newPlane = Plane (to_string(company.getNextPlaneID()), "ABC-1234", "KDFMW", 89334, 234);
     company.addPlane(newPlane);
 
+    for (Plane *plane : company.getAllPlanes()) {
+        cout << *plane;
+    }
+
     company.save();
 
     /**
