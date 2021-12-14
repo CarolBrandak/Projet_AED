@@ -26,7 +26,10 @@ private:
     void flightsDataMenu();
 
 public:
+    Menu();
+    Menu(Company company);
     void mainMenu();
+    void simpleTest();
     // 1 - Employee Menu
     // 2 - Passenger Menu
     // 3 - Quit
