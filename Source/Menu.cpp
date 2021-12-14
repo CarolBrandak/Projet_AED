@@ -359,43 +359,140 @@ void Menu::employeeDataMenu() {
         }
         case 6: {
             //flight.removeService()
-        } break;
+            employeeDataMenu();
+            break;
+        }
         case 7: {
             //company.findWorker()
-        } break;
+            employeeDataMenu();
+            break;
+        }
         case 8: {
             //flight.findService()
-        } break;
+            employeeDataMenu();
+            break;
+        }
         case 9: companyMenu(); break;
     }
 }
 
 void Menu::transportDataMenu() {
-
-}
-
-void Menu::listPlanes() {
-    cout << "List Planes" << endl;
-}
-
-/**
-void Menu::passengerMenu() {
+    
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Listagem de coisas" << endl;
+        cout << "1 - Adicionar transporte" << endl;
+        cout << "2 - Remover transporte" << endl;
+        cout << "3 - Listar transportes" << endl;
+        cout << "4 - Find transporte" << endl;
+        cout << "5 - Quit" << endl;
+        cout << "Your choice: ";
+        cin >> option;
+        cout << "=====================================" << endl;
+        if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+    } while (option < 1 || option > 5);
+
+    switch (option) {
+        case 1: {
+            // perguntar qual é o flight, se existir, adicionar o transporte
+            transportDataMenu();
+            break;
+        }
+        case 2: {
+            // perguntar qual é o flight, se existir, remover o transporte
+            transportDataMenu();
+            break;
+        }
+        case 3: listTransports(); break;
+        case 4: {
+            // perguntar qual é o flight, se existir, mostrar o transporte
+            transportDataMenu();
+            break;
+        }
+        case 5: companyMenu(); break;
+    }
+}
+
+void Menu::passengerMenu() {
+
+    int option;
+    do {
+        cout << "=====================================" << endl;
+        cout << "1 - Listagens" << endl;
         cout << "2 - Comprar bilhete" << endl;
         cout << "3 - Cancelar bilhete" << endl;
         cout << "4 - Quit" << endl;
         cout << "Your choice: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
+
     } while (option < 1 || option > 4);
+
+    switch (option) {
+        case 1: allLists(); break;
+        case 2: {
+
+        }
+        case 3: {
+
+        }
+    }
 }
-*/
+
+void Menu::buyTicket() {
+
+
+}
+
+void Menu::cancelTicket() {
+
+
+}
+
+void Menu::allLists() {
+
+
+}
+
+void Menu::listPlanes() {
+
+
+}
+
+void Menu::listFlights() {
+
+
+}
+
+void Menu::listPassengers() {
+
+
+}
+
+void Menu::listLuggages() {
+
+
+}
+
+void Menu::listServices() {
+
+
+}
+
+void Menu::listEmployees() {
+
+
+}
+
+void Menu::listTransports() {
+
+    
+}
 
 #endif // PROJECT_AED_MENU_CPP
-

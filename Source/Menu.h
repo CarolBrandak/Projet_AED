@@ -13,6 +13,7 @@ class Menu {
         // Principais
         void companyMenu();
         void passengerMenu();
+        void allLists();
 
         // CompanyMenu
         void planeDataMenu();
@@ -23,7 +24,8 @@ class Menu {
         void transportDataMenu();
 
         // PassengerMenu
-
+        void buyTicket();
+        void cancelTicket();
 
         // Listagens
         void listPlanes();
