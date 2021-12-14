@@ -6,32 +6,18 @@
 class Menu {
 
 private:
-    Company company;
+    Company *company;
     void companyMenu();
-    // 1 - Listagem dos aeroportos
-    // 2 - Adicionar coisas
-    // 3 - Remover coisas
-    // 4 - Quit
-
     void passengerMenu();
-    // 1 - Comprar bilhete
-    // 2 - Quit
-
     void employeeDataMenu();
-
     void passengerDataMenu();
-
     void servicesDataMenu();
-
-    void flightsDataMenu();
+    void flightsDateMenu();
 
 public:
     Menu();
-    Menu(Company company);
     void mainMenu();
     void simpleTest();
-    // 1 - Employee Menu
-    // 2 - Passenger Menu
-    // 3 - Quit
+    void showPlanes();
 };
 #endif //PROJECT_AED_MENU_H

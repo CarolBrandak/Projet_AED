@@ -219,6 +219,7 @@ vector<Plane*> Company::getAllPlanes() {
         for (Service *service: allServices) plane->addService(*service);
         for (Flight *flight: allFlights) plane->addFlight(*flight);
     }
+    this->planes = allPlanes;
     return allPlanes;
 }
 
