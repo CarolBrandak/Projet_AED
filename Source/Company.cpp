@@ -7,6 +7,7 @@ Company::Company() : name("") {}
 
 Company::~Company() {
     planes.clear();
+    cout << "Destruiu a company " << endl;
 }
 
 Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
@@ -356,8 +357,10 @@ void Company::save() {
     vector<Flight*> allFlights = {};
     vector<Service*> allServices = {};
     vector<Transport*> allTransports = {};
+    vector<Plane*> allPlanes = {};
 
     for (Plane *plane : planes) {
+        allPlanes.push_back(plane);
         for (Flight *flight : plane->getFlights()) {
             allFlights.push_back(flight);
             for (Passenger *passenger : flight->getPassengers()) {
@@ -378,7 +381,9 @@ void Company::save() {
         }
     }
 
-    savePlanes(planes);
+    this->planes = allPlanes;
+
+    savePlanes(allPlanes);
     savePassengers(allPassengers);
     saveFlights(allFlights);
     saveServices(allServices);
@@ -390,6 +395,7 @@ void Company::save() {
     allFlights.clear();
     allServices.clear();
     allTransports.clear();
+    allPlanes.clear();
 }
 
 Flight* Company::findFlight(const string &origin, const string &destination) {

@@ -73,7 +73,7 @@ void Plane::checkFlights() {
 
 void Plane::addFlight(Flight &flight) {
     if (ID == flight.getID().substr(0, flight.getID().find('-'))) flights.push_back(&flight);
-    if (stoi(flight.getID().substr(flight.getID().find('-'), flight.getID().size() - flight.getID().find('-'))) > nextFlightID) nextFlightID++;
+    if (stoi(flight.getID().substr(flight.getID().find('-') + 1)) > nextFlightID) nextFlightID++;
 }
 
 int Plane::getNextFlightID() {

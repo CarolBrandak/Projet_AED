@@ -3,7 +3,6 @@
 
 #include "Flight.h"
 
-
 Flight::~Flight() {
     luggage.clear();
     passengers.clear();
@@ -24,7 +23,7 @@ Flight::Flight(string id, Date flightDate, short int flightDuration, string orig
 
 int Flight::getNextPassengerID() {
     nextID++;
-    return nextID--;
+    return nextID;
 }
 
 string Flight::getID() const {
@@ -99,9 +98,8 @@ void Flight::addPassengers(const vector<Passenger*> &toPush) {
     for (Passenger *passenger: toPush) {
 
         string passengerId = passenger->getID();
-        string idToEnter = passengerId.substr(0, passengerId.size() - passengerId.find_last_of('-') + 1);
-        string singleId = passengerId.substr(passengerId.find_last_of('-'),
-                                             passengerId.size() - passengerId.find_last_of('-'));
+        string idToEnter = passengerId.substr(0, passengerId.find_last_of('-'));
+        string singleId = passengerId.substr(passengerId.find_last_of('-') + 1);
 
         if (id == idToEnter) {  // Se a pessoa for realmente deste voo
 
@@ -129,10 +127,9 @@ void Flight::addPassengers(const vector<Passenger*> &toPush) {
 
 void Flight::addPassenger(Passenger& passenger) {
 
-    // passengerId.size() - passengerId.find_last_of('-') - 1
     string passengerId = passenger.getID();
-    string idToEnter = passengerId.substr(0, passengerId.size() - passengerId.find_last_of('-') + 1);
-    string singleId = passengerId.substr(passengerId.find_last_of('-') + 1, passengerId.size() - passengerId.find_last_of('-'));
+    string idToEnter = passengerId.substr(0, passengerId.find_last_of('-'));
+    string singleId = passengerId.substr(passengerId.find_last_of('-') + 1);
 
     if (id == idToEnter) {  // Se a pessoa for realmente deste voo
 
