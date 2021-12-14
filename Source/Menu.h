@@ -31,7 +31,17 @@ class Menu {
         void listPassengers();
         void listLuggages();
         void listServices();
+        void listEmployees();
         void listTransports();
+
+        // Inputs
+        // Empty... for now
+        /**
+         * Funções que vão servir essencialmente para limpar o código de repetições
+         * Em vez de estar sempre a pedir para dar um voo (destino, origem)
+         * ter um método que faz isso. Pensar e debater sobre isto.
+         * Por exemplo o "passengerDataMenu" tem muita repetição, isto aliviava
+         */
 
 
     public:

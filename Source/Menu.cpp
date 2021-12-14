@@ -70,18 +70,19 @@ void Menu::planeDataMenu() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Adicionar planes" << endl;
-        cout << "2 - Remover planes" << endl;
-        cout << "3 - Listar planes" << endl;
-        cout << "4 - Voltar para trás" << endl;
+        cout << "1 - Adicionar plane" << endl;
+        cout << "2 - Remover plane" << endl;
+        cout << "3 - Listar plane" << endl;
+        cout << "4 - Procurar plane" << endl;
+        cout << "5 - Voltar para trás" << endl;
         cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
 
-    } while (option < 1 || option > 4);
+    } while (option < 1 || option > 5);
 
     switch (option) {
         case 1: { // E sim, em casos em que se declara variáveis temos de colocar o case com chavetas :(
@@ -95,16 +96,20 @@ void Menu::planeDataMenu() {
             planeDataMenu();
             break;
         }
-
-        case 2:
-
+        case 2: {
             // Remove um plane --> fazer método para a Company, depois coloco-o aqui
-            cout << "Supostamente removeu o aviao tal" << endl;
+            cout << "Supostamente removeu o aviao tal ou n" << endl;
             planeDataMenu();
             break;
-
-        case 3: /**listPlanes()*/ break;
-        case 4: companyMenu(); break;
+        }
+        case 3: listPlanes(); break;
+        case 4: {
+            // Procurar e fazer cout de toda a informação do avião.
+            // A company terá uma função para fazer isso. Retornará NULL se não encontrar nada, ou retornará um avião. Depois coloco aqui.
+            // if (found) mostra, else mensagem de erro
+            planeDataMenu();
+        }
+        case 5: companyMenu(); break;
     }
 }
 
@@ -113,73 +118,92 @@ void Menu::flightDataMenu() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Listagem de Voos" << endl;
-        cout << "2 - Adicionar Voo(s)" << endl;
-        cout << "3 - Remover Voo(s)" << endl;
-        cout << "4 - Procurar Voo" << endl;
-        cout << "5 - Voltar para o menu da companhia" << endl;
-        cout << "Your choice: ";
+        cout << "1 - Adicionar voo" << endl;
+        cout << "2 - Remover voo" << endl;
+        cout << "3 - Listar voos" << endl;
+        cout << "4 - Procurar voo" << endl;
+        cout << "5 - Voltar para trás" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
         if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-        switch(option) {
-            case 1: company.getAllFlights(); break;
-            case 2: break;
-            case 3: break;
-            case 4: {
-                std::string origin,destination;
-                cout << "Por favor introduza o país de origem" << endl;
-                cin >> origin;
-                cout << "Por favor introduza o país de destino" << endl;
-                cin >> destination;
-                Flight* flight = company.findFlight(origin,destination);
-                cout << flight;
-            }
-            case 5: companyMenu();
-            default: break;
-        }
+
     } while (option < 1 || option > 5);
+
+    switch(option) {
+        case 1: {
+
+            // 1ª passo -> em que Plane é que vai ser colocado o novo voo: inputs e depois:
+            // Plane *plane = company->findPlane(id)
+            // if (plane) // se o avião existir, então inputs para a construção do voo
+            // else cout << Não há esse plane;
+
+            break;
+        }
+        case 2: {
+
+            // inputs do voo, por exemplo por id
+            // se existir, remove
+
+            break;
+        }
+        case 3: listFlights(); break;
+
+        case 4: {
+            std::string origin,destination;
+            cout << "Por favor introduza o país de origem: ";
+            cin >> origin;
+            cout << "Por favor introduza o país de destino: ";
+            cin >> destination;
+            Flight* flight = company->findFlight(origin,destination); // não esquecer que isto retorna null se não encontrar
+            if (flight) cout << *flight;                                 // verificação se é null
+            else cout << "Não encontrado ou alguma mensagem assim" << endl;
+            flightDataMenu();
+            break;
+        }
+        case 5: companyMenu(); break;
+    }
 }
 
 void Menu::passengerDataMenu() {
+
     int option;
-    std::string origin,destination;
-    string id,name,passportNumber;
-    short int age;
-    char gender;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Listagem de Passageiros" << endl;
-        cout << "2 - Listagem de Passageiros de um voo" << endl;
-        cout << "3 - Adicionar Passageiro(s) a um voo" << endl;
-        cout << "4 - Procurar Passageiro" << endl;
-        cout << "5 - Remover Passageiros" << endl;
-        cout << "6 - Voltar para o menu da companhia" << endl;
-        cout << "Your choice: ";
+        cout << "1 - Adicionar Passageiro" << endl;
+        cout << "2 - Remover Passageiro" << endl;
+        cout << "3 - Listar Passageiros" << endl;
+        cout << "4 - Procurar passageiro" << endl;
+        cout << "5 - Voltar para trás" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 6) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-        switch(option) {
-            case 1: company.getAllPassengers(); break;
-            case 2: {
-                cout << "Por favor introduza o país de origem" << endl;
-                cin >> origin;
-                cout << "Por favor introduza o país de destino" << endl;
-                cin >> destination;
-                Flight* flight = company.findFlight(origin,destination);
-                flight->checkPassengers();
-            }break;
-            case 3: {
-                cout << "Por favor introduza o país de origem" << endl;
-                cin >> origin;
-                cout << "Por favor introduza o país de destino" << endl;
-                cin >> destination;
-                Flight* flight = company.findFlight(origin,destination);
-                cout << "Enter the passenger's ID" << endl;
+
+    } while (option < 1 || option > 5);
+
+    string origin,destination,id,name,passportNumber;
+    short int age;
+    char gender;
+
+    switch(option) {
+        case 1: {
+
+            // Procurar o voo onde inserir o passageiro (inicio, destino)
+            // se existir, criar o passageiro com inputs e colocar
+            // else mensagem de erro
+
+            cout << "Por favor introduza o país de origem" << endl;
+            cin >> origin;
+            cout << "Por favor introduza o país de destino" << endl;
+            cin >> destination;
+            Flight* flight = company->findFlight(origin,destination);
+            if (flight) {
+                cout << "Enter the passenger's ID" << endl;                 // o id do passageiro é automático, basta chamar flight->getNextID ou algo do tipo
                 cin >> id;
                 cout << "Enter the passenger's name" << endl;
                 cin >> name;
@@ -191,14 +215,17 @@ void Menu::passengerDataMenu() {
                 cin >> passportNumber;
                 Passenger passenger(id,name,age,gender,passportNumber);
                 flight->addPassenger(passenger);
-            }break;
-            case 4: break;
-            case 5: {
-                cout << "Por favor introduza o país de origem" << endl;
-                cin >> origin;
-                cout << "Por favor introduza o país de destino" << endl;
-                cin >> destination;
-                Flight *flight = company.findFlight(origin, destination);
+            } else cout << "Mensagem de erro a dizer que o voo procurado não existe" << endl;
+            passengerDataMenu();
+            break;
+        }
+        case 2: {
+            cout << "Por favor introduza o país de origem" << endl;
+            cin >> origin;
+            cout << "Por favor introduza o país de destino" << endl;
+            cin >> destination;
+            Flight* flight = company->findFlight(origin,destination);
+            if (flight) {
                 cout << "Enter the passenger's ID" << endl;
                 cin >> id;
                 cout << "Enter the passenger's name" << endl;
@@ -209,21 +236,88 @@ void Menu::passengerDataMenu() {
                 cin >> gender;
                 cout << "Introduza o número do passaporte do passageiro" << endl;
                 cin >> passportNumber;
-                Passenger passenger(id, name, age, gender, passportNumber);
+                Passenger passenger(id,name,age,gender,passportNumber);
+                // primeiro procurar e se depois existir, remover, senão mensagem de erro
                 flight->removePassenger(passenger);
-            }break;
-            case 6: companyMenu(); break;
-            default: break;
+            } else cout << "Mensagem de erro a dizer que esse voo não existe" << endl;
+            passengerDataMenu();
+            break;
         }
-    } while (option < 1 || option > 6);
+        case 3: listPassengers(); break;
+        case 4: {
+            cout << "Por favor introduza o país de origem" << endl;
+            cin >> origin;
+            cout << "Por favor introduza o país de destino" << endl;
+            cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            cout << "Enter the passenger's ID" << endl;
+            cin >> id;
+            cout << "Enter the passenger's name" << endl;
+            cin >> name;
+            cout << "Enter the passenger's age" << endl;
+            cin >> age;
+            cout << "Enter the passenger's gender (M ou F)" << endl;
+            cin >> gender;
+            cout << "Introduza o número do passaporte do passageiro" << endl;
+            cin >> passportNumber;
+            Passenger passenger(id, name, age, gender, passportNumber);
+            // se existir, ok, senão mensagem a dizer que não existe.
+            passengerDataMenu();
+            break;
+        }
+        case 6: companyMenu(); break;
+    }
 }
 
 void Menu::luggageDataMenu() {
 
-    cout << "Something" << endl;
+    int option;
+    do {
+        cout << "=====================================" << endl;
+        cout << "1 - Adicionar Luggage" << endl;
+        cout << "2 - Remover Bagagem" << endl;
+        cout << "3 - Listar Bagagem" << endl;
+        cout << "4 - Procurar Bagagem" << endl;
+        cout << "5 - Voltar para trás" << endl;
+        cout << "Escolha: ";
+        cin >> option;
+        cout << "=====================================" << endl;
+        if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+    } while (option < 1 || option > 5);
+
+    switch (option) {
+        case 1: {
+            // perguntar para que voo
+            // se o voo existir, passar para a parte seguinte, senão mensagem a dizer que esse voo n existe ou algo do genero
+            // inputs para fazer a luggage nova
+            // inserir no voo
+            luggageDataMenu();
+            break;
+        }
+        case 2: {
+            // perguntar para que voo
+            // se o voo existir, passar para a parte seguinte, senão mensagem a dizer que esse voo n existe ou algo do genero
+            // input para determinar o id da luggage
+            // remover se existir
+            luggageDataMenu();
+            break;
+        }
+        case 3: listLuggages(); break;
+        case 4: {
+            // perguntar qual é o voo. Se o voo existir, procurar bagagem com base no id
+            // se existir essa bagagem nesse voo, remover, senão mensagem a dizer que ela n está lá
+            luggageDataMenu();
+            break;
+        }
+        case 5: companyMenu(); break;
+    }
 }
 
 void Menu::employeeDataMenu() {
+
     int option;
     do {
         cout << "=====================================" << endl;
@@ -239,34 +333,45 @@ void Menu::employeeDataMenu() {
         cout << "Your choice: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 9) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-        switch(option) {
-            case 1: company.getAllPassengers(); break;
-            case 2: company.getAllServices(); break;
-            case 3: {
-                //company.addWorker()
-            } break;
-            case 4: {
-                //flight.addService()
-            } break;
-            case 5: {
-                //company.removeWorker()
-            } break;
-            case 6: {
-                //flight.removeService()
-            } break;
-            case 7: {
-                //company.findWorker()
-            } break;
-            case 8: {
-                //flight.findService()
-            } break;
-            case 9: companyMenu(); break;
-            default: break;
-        }
+
     } while (option < 1 || option > 9);
+
+    switch(option) {
+        case 1: listEmployees(); break;
+        case 2: listServices(); break;
+        case 3: {
+            //company.addWorker()
+            employeeDataMenu();
+            break;
+        }
+        case 4: {
+            //flight.addService()
+            employeeDataMenu();
+            break;
+        }
+        case 5: {
+            //company.removeWorker()
+            employeeDataMenu();
+            break;
+        }
+        case 6: {
+            //flight.removeService()
+        } break;
+        case 7: {
+            //company.findWorker()
+        } break;
+        case 8: {
+            //flight.findService()
+        } break;
+        case 9: companyMenu(); break;
+    }
+}
+
+void Menu::transportDataMenu() {
+
 }
 
 void Menu::listPlanes() {
