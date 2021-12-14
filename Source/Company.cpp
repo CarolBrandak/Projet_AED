@@ -5,17 +5,22 @@
 
 Company::Company() : name("") {}
 
-Company::~Company() {
-    planes.clear();
-    cout << "Destruiu a company " << endl;
-}
-
 Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
     this->nextPlaneID = planes.size();
 }
 
+Company::~Company() {
+    planes.clear();
+    cout << "Destruiu a company " << endl; // ======================================================== Apagar este comentário depois
+}
+
 string Company::getName() const {
     return name;
+}
+
+int Company::getNextPlaneID() {
+    nextPlaneID++;
+    return nextPlaneID;
 }
 
 void Company::presentation() {
@@ -27,11 +32,6 @@ void Company::presentation() {
 void Company::addPlane(Plane &plane) {
     if (stoi(plane.getID()) > nextPlaneID) nextPlaneID++;
     planes.push_back(&plane);
-}
-
-int Company::getNextPlaneID() {
-    nextPlaneID++;
-    return nextPlaneID;
 }
 
 vector<Luggage*> Company::getAllLuggages() {
@@ -219,28 +219,9 @@ vector<Plane*> Company::getAllPlanes() {
         for (Service *service: allServices) plane->addService(*service);
         for (Flight *flight: allFlights) plane->addFlight(*flight);
     }
+
     this->planes = allPlanes;
     return allPlanes;
-}
-
-void Company::printData() {
-
-    for (Plane *plane : planes) {
-        cout << *plane << endl;
-        for (Flight *flight : plane->getFlights()) {
-            cout << *flight << endl;
-            for (Passenger *passenger : flight->getPassengers()) {
-                cout << *passenger << endl;
-                for (Luggage *luggage : passenger->getLuggage()) {
-                    cout << *luggage << endl;
-                }
-            }
-            for (Luggage *luggage : flight->getLuggage()) {
-                cout << *luggage << endl;
-            }
-            (*flight).getAirport().showTransports();
-        }
-    }
 }
 
 void saveLuggage(vector<Luggage*> luggage) {
@@ -351,6 +332,10 @@ void saveTransports(vector<Transport*> transports) {
     file.close();
 }
 
+void Company::refreshData() {
+    this->planes = getAllPlanes();
+}
+
 void Company::save() {
 
     vector<Luggage*> allLuggage = {};
@@ -358,10 +343,8 @@ void Company::save() {
     vector<Flight*> allFlights = {};
     vector<Service*> allServices = {};
     vector<Transport*> allTransports = {};
-    vector<Plane*> allPlanes = {};
 
     for (Plane *plane : planes) {
-        allPlanes.push_back(plane);
         for (Flight *flight : plane->getFlights()) {
             allFlights.push_back(flight);
             for (Passenger *passenger : flight->getPassengers()) {
@@ -382,9 +365,7 @@ void Company::save() {
         }
     }
 
-    this->planes = allPlanes;
-
-    savePlanes(allPlanes);
+    savePlanes(planes);
     savePassengers(allPassengers);
     saveFlights(allFlights);
     saveServices(allServices);
@@ -396,7 +377,8 @@ void Company::save() {
     allFlights.clear();
     allServices.clear();
     allTransports.clear();
-    allPlanes.clear();
+
+    refreshData();
 }
 
 Flight* Company::findFlight(const string &origin, const string &destination) {
@@ -405,11 +387,6 @@ Flight* Company::findFlight(const string &origin, const string &destination) {
         if (wanted) return wanted;
     }
     return nullptr;
-}
-
-void Company::listing() {
-
-    // Aqui vai acontecer as listagens, tanto do admin como do passageiro. Estou a pensar na cena.
 }
 
 #endif // PROJECT_AED_AGENCY_CPP

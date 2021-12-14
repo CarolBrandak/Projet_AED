@@ -21,73 +21,43 @@ class Company {
 
     private:
 
-        /**
-         * @var - a string attribute that defines the agency's name
-         */
         const string name;
-
-        /**
-         * @var - a vector that contains all the airports that the city has access to
-         */
         vector<Plane*> planes;
-
-        /**
-         * @var taltal
-         */
         int nextPlaneID;
 
     public:
 
-        /**
-         * Default constructor
-         */
+        // Construtores
         Company();
-
-        /**
-         * Default destructor
-         */
+        Company(string name);
         ~Company();
 
-        /**
-         * Main constructor the Company object
-         * @param name - string that contains the agency's name
-         */
-        Company(string name);
+        // Init
+        void presentation();
 
+        // Getters
         string getName() const;
-
-        void addPlane(Plane &plane);
-
+        int getNextPlaneID();
         vector<Luggage*> getAllLuggages();
-
         vector<Passenger*> getAllPassengers();
-
         vector<Service*> getAllServices();
-
         vector<Transport*> getAllTransports();
-
         vector<Flight*> getAllFlights();
-
         vector<Plane*> getAllPlanes();
 
-        int getNextPlaneID();
-
-         /**
-          * Show all data contained in files directory
-          */
-         void printData();
-
-         /**
-          * Writes all modified data in files directory
-          * @param folder - a string contains the folder of backup
-          */
-         void save();
+        // Add
+        void addPlane(Plane &plane);
 
 
-         Flight* findFlight(const string &origin, const string &destination);
+        // Remove
 
-        void presentation();
-        void listing();
+
+        // Search
+        Flight* findFlight(const string &origin, const string &destination);
+
+        // Save
+        void refreshData();
+        void save();
 };
 
 #endif // PROJECT_AED_AGENCY_H

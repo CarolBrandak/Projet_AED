@@ -5,12 +5,10 @@
 
 Menu::Menu() {
     this->company = new Company("AirED");
-    this->company->presentation();
+    company->presentation();
 
     simpleTest();
-    showPlanes();
     simpleTest();
-    showPlanes();
     simpleTest();
     showPlanes();
 }
@@ -19,13 +17,12 @@ void Menu::simpleTest() {
 
     Plane newPlane = Plane(to_string(company->getNextPlaneID()), "jknkjn", "lkjokm", 289, 23);
     company->addPlane(newPlane);
-    this->company->save();
+    company->save();
 }
 
 void Menu::showPlanes() {
 
     for (Plane *plane : company->getAllPlanes()) cout << *plane << endl;
-    //this->company->get();
 }
 
 /**
