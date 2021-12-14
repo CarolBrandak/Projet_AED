@@ -2,21 +2,33 @@
 #define PROJECT_AED_MENU_H
 
 #include <iostream>
-    using namespace std;
+#include "Company.h"
+class Menu {
 
-    int mainMenu();
-    // 1 - Employee Menu
-    // 2 - Passenger Menu
-    // 3 - Quit
-
-    int employeeMenu();
+private:
+    Company company;
+    void companyMenu();
     // 1 - Listagem dos aeroportos
     // 2 - Adicionar coisas
     // 3 - Remover coisas
     // 4 - Quit
 
-    int passengerMenu();
+    void passengerMenu();
     // 1 - Comprar bilhete
     // 2 - Quit
 
+    void employeeDataMenu();
+
+    void passengerDataMenu();
+
+    void servicesDataMenu();
+
+    void flightsDataMenu();
+
+public:
+    void mainMenu();
+    // 1 - Employee Menu
+    // 2 - Passenger Menu
+    // 3 - Quit
+};
 #endif //PROJECT_AED_MENU_H

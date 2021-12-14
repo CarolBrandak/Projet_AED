@@ -25,6 +25,9 @@ void simpleTest(Company &company) {
 
 void Application() {
 
+    Menu menu;
+    menu.mainMenu();
+
     Company company = Company("AirED");
     company.presentation();
 
@@ -42,7 +45,7 @@ void Application() {
     int choice = mainMenu();
     switch (choice) {
         case 1:
-            choice = employeeMenu();
+            choice = companyMenu();
             break;
         case 2:
             choice = passengerMenu();
