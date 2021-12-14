@@ -11,7 +11,7 @@ Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
 
 Company::~Company() {
     planes.clear();
-    cout << "Destruiu a company " << endl; // ======================================================== Apagar este comentário depois
+    cout << "Destruiu a company " << endl;
 }
 
 string Company::getName() const {

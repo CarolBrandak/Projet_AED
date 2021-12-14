@@ -6,30 +6,11 @@
 Menu::Menu() {
     this->company = new Company("AirED");
     company->presentation();
-
-    simpleTest();
-    simpleTest();
-    simpleTest();
-    showPlanes();
+    mainMenu();
 }
-
-void Menu::simpleTest() {
-
-    Plane newPlane = Plane(to_string(company->getNextPlaneID()), "jknkjn", "lkjokm", 289, 23);
-    company->addPlane(newPlane);
-    company->save();
-}
-
-void Menu::showPlanes() {
-
-    for (Plane *plane : company->getAllPlanes()) cout << *plane << endl;
-}
-
-/**
 
 void Menu::mainMenu() {
 
-    simpleTest();
     int option;
     do {
         cout << "=====================================" << endl;
@@ -43,43 +24,92 @@ void Menu::mainMenu() {
         cin.clear();
         cin.ignore(1000, '\n');
 
-        switch(option) {
-            case 1: companyMenu(); break;
-            case 2: passengerMenu(); break;
-            case 3: exit(0);
-            default: break;
-        }
     } while (option < 1 || option > 3);
 
+    switch (option) {
+        case 1: companyMenu(); break;
+        //case 2: passengerMenu(); break;
+        case 3: exit(0);
+    }
 }
 
 void Menu::companyMenu() {
+
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Menu dos Vôos" << endl;
-        cout << "2 - Menu dos Passageiros" << endl;
-        cout << "3 - Menu dos Funcionários" << endl;
-        cout << "4 - Listagem de Transportes" << endl;
-        cout << "5 - Voltar para o menu principal" << endl;
-        cout << "Your choice: ";
+        cout << "1 - Planes" << endl;
+        cout << "2 - Voos" << endl;
+        cout << "3 - Passageiros" << endl;
+        cout << "4 - Bagagem" << endl;
+        cout << "5 - Transportes" << endl;
+        cout << "6 - Funcionarios / Serviços" << endl;
+        cout << "7 - Voltar para o menu principal" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 7) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-        switch (option) {
-            case 1: flightsDataMenu();
-            case 2: passengerDataMenu();
-            case 3: employeeDataMenu();
-            case 4: company.getAllTransports();
-            case 5: mainMenu();
-            default: break;
-        }
-    } while (option < 1 || option > 5);
+
+    } while (option < 1 || option > 7);
+
+    switch (option) {
+        case 1: planeDataMenu(); break;
+        case 2: flightDataMenu(); break;
+        case 3: passengerDataMenu(); break;
+        case 4: luggageDataMenu(); break;
+        case 5: employeeDataMenu(); break;
+        case 6: transportDataMenu(); break;
+        case 7: mainMenu(); break;
+    }
 }
 
-void Menu::flightsDataMenu() {
+void Menu::planeDataMenu() {
+
+    int option;
+    do {
+        cout << "=====================================" << endl;
+        cout << "1 - Adicionar planes" << endl;
+        cout << "2 - Remover planes" << endl;
+        cout << "3 - Listar planes" << endl;
+        cout << "4 - Voltar para trás" << endl;
+        cout << "Escolha: ";
+        cin >> option;
+        cout << "=====================================" << endl;
+        if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+    } while (option < 1 || option > 4);
+
+    switch (option) {
+        case 1: { // E sim, em casos em que se declara variáveis temos de colocar o case com chavetas :(
+
+            // Adiciona um plane --> Perguntar e meter inputs
+            Plane newPlane = Plane(to_string(company->getNextPlaneID()), "mkmokim", "kmokmo", 98237, 23);
+            company->addPlane(newPlane);
+            company->save();
+
+            cout << "Adicionou o aviao " << newPlane << " com sucesso ou algo do tipo" << endl; // mensagem só para teste
+            planeDataMenu();
+            break;
+        }
+
+        case 2:
+
+            // Remove um plane --> fazer método para a Company, depois coloco-o aqui
+            cout << "Supostamente removeu o aviao tal" << endl;
+            planeDataMenu();
+            break;
+
+        case 3: /**listPlanes()*/ break;
+        case 4: companyMenu(); break;
+    }
+}
+
+void Menu::flightDataMenu() {
+
     int option;
     do {
         cout << "=====================================" << endl;
@@ -188,6 +218,11 @@ void Menu::passengerDataMenu() {
     } while (option < 1 || option > 6);
 }
 
+void Menu::luggageDataMenu() {
+
+    cout << "Something" << endl;
+}
+
 void Menu::employeeDataMenu() {
     int option;
     do {
@@ -234,6 +269,11 @@ void Menu::employeeDataMenu() {
     } while (option < 1 || option > 9);
 }
 
+void Menu::listPlanes() {
+    cout << "List Planes" << endl;
+}
+
+/**
 void Menu::passengerMenu() {
     int option;
     do {
@@ -250,7 +290,6 @@ void Menu::passengerMenu() {
         cin.ignore(1000, '\n');
     } while (option < 1 || option > 4);
 }
-
 */
 
 #endif // PROJECT_AED_MENU_CPP
