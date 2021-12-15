@@ -6,7 +6,24 @@
 Menu::Menu() {
     this->company = new Company("AirED");
     company->presentation();
-    mainMenu();
+    menuState.push(MAIN_MENU);
+    getMenu();
+}
+
+void Menu::getMenu() {
+    switch(menuState.top()) {
+        case 0: mainMenu(); break;
+        case 1: companyMenu(); break;
+        case 2: passengerMenu(); break;
+        case 3: planeDataMenu(); break;
+        case 4: flightDataMenu(); break;
+        case 5: passengerDataMenu(); break;
+        case 6: luggageDataMenu(); break;
+        case 7: employeeDataMenu(); break;
+        case 8: transportDataMenu(); break;
+        case 9: buyTicket(); break;
+        case 10: cancelTicket(); break;
+    }
 }
 
 void Menu::mainMenu() {
@@ -27,10 +44,13 @@ void Menu::mainMenu() {
     } while (option < 1 || option > 3);
 
     switch (option) {
-        case 1: companyMenu(); break;
-        case 2: passengerMenu(); break;
-        case 3: exit(0);
+        case 1: {
+            menuState.push(COMPANY_MENU);
+        } break;
+        case 2: menuState.push(PASSENGER_DATA_MENU); break;
+        case 3:exit(0); break;
     }
+    getMenu();
 }
 
 void Menu::companyMenu() {
@@ -55,14 +75,16 @@ void Menu::companyMenu() {
     } while (option < 1 || option > 7);
 
     switch (option) {
-        case 1: planeDataMenu(); break;
-        case 2: flightDataMenu(); break;
-        case 3: passengerDataMenu(); break;
-        case 4: luggageDataMenu(); break;
-        case 5: employeeDataMenu(); break;
-        case 6: transportDataMenu(); break;
-        case 7: mainMenu(); break;
+        case 1: menuState.push(PLANE_DATA_MENU); break;
+        case 2: menuState.push(FLIGHT_DATA_MENU); break;
+        case 3: menuState.push(PASSENGER_DATA_MENU); break;
+        case 4: menuState.push(LUGGAGE_DATA_MENU); break;
+        case 5: menuState.push(TRANSPORT_DATA_MENU); break;
+        case 6: menuState.push(EMPLOYEE_DATA_MENU); break;
+        case 7: menuState.pop(); break;
     }
+
+    getMenu();
 }
 
 void Menu::planeDataMenu() {
@@ -93,13 +115,13 @@ void Menu::planeDataMenu() {
             company->save();
 
             cout << "Adicionou o aviao " << newPlane << " com sucesso ou algo do tipo" << endl; // mensagem só para teste
-            planeDataMenu();
+            getMenu();
             break;
         }
         case 2: {
             // Remove um plane --> fazer método para a Company, depois coloco-o aqui
             cout << "Supostamente removeu o aviao tal ou n" << endl;
-            planeDataMenu();
+            getMenu();
             break;
         }
         case 3: listPlanes(); break;
@@ -107,9 +129,9 @@ void Menu::planeDataMenu() {
             // Procurar e fazer cout de toda a informação do avião.
             // A company terá uma função para fazer isso. Retornará NULL se não encontrar nada, ou retornará um avião. Depois coloco aqui.
             // if (found) mostra, else mensagem de erro
-            planeDataMenu();
+            getMenu();
         }
-        case 5: companyMenu(); break;
+        case 5: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -160,10 +182,10 @@ void Menu::flightDataMenu() {
             Flight* flight = company->findFlight(origin,destination); // não esquecer que isto retorna null se não encontrar
             if (flight) cout << *flight;                                 // verificação se é null
             else cout << "Não encontrado ou alguma mensagem assim" << endl;
-            flightDataMenu();
+            getMenu();
             break;
         }
-        case 5: companyMenu(); break;
+        case 5: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -216,7 +238,7 @@ void Menu::passengerDataMenu() {
                 Passenger passenger(id,name,age,gender,passportNumber);
                 flight->addPassenger(passenger);
             } else cout << "Mensagem de erro a dizer que o voo procurado não existe" << endl;
-            passengerDataMenu();
+            getMenu();
             break;
         }
         case 2: {
@@ -240,7 +262,7 @@ void Menu::passengerDataMenu() {
                 // primeiro procurar e se depois existir, remover, senão mensagem de erro
                 flight->removePassenger(passenger);
             } else cout << "Mensagem de erro a dizer que esse voo não existe" << endl;
-            passengerDataMenu();
+            getMenu();
             break;
         }
         case 3: listPassengers(); break;
@@ -262,10 +284,10 @@ void Menu::passengerDataMenu() {
             cin >> passportNumber;
             Passenger passenger(id, name, age, gender, passportNumber);
             // se existir, ok, senão mensagem a dizer que não existe.
-            passengerDataMenu();
+            getMenu();
             break;
         }
-        case 6: companyMenu(); break;
+        case 6: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -294,7 +316,7 @@ void Menu::luggageDataMenu() {
             // se o voo existir, passar para a parte seguinte, senão mensagem a dizer que esse voo n existe ou algo do genero
             // inputs para fazer a luggage nova
             // inserir no voo
-            luggageDataMenu();
+            getMenu();
             break;
         }
         case 2: {
@@ -302,17 +324,17 @@ void Menu::luggageDataMenu() {
             // se o voo existir, passar para a parte seguinte, senão mensagem a dizer que esse voo n existe ou algo do genero
             // input para determinar o id da luggage
             // remover se existir
-            luggageDataMenu();
+            getMenu();
             break;
         }
         case 3: listLuggages(); break;
         case 4: {
             // perguntar qual é o voo. Se o voo existir, procurar bagagem com base no id
             // se existir essa bagagem nesse voo, remover, senão mensagem a dizer que ela n está lá
-            luggageDataMenu();
+            getMenu();
             break;
         }
-        case 5: companyMenu(); break;
+        case 5: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -340,39 +362,39 @@ void Menu::employeeDataMenu() {
     } while (option < 1 || option > 9);
 
     switch(option) {
-        case 1: listEmployees(); break;
-        case 2: listServices(); break;
+        case 1: listEmployees(); getMenu(); break;
+        case 2: listServices(); getMenu(); break;
         case 3: {
             //company.addWorker()
-            employeeDataMenu();
+            getMenu();
             break;
         }
         case 4: {
             //flight.addService()
-            employeeDataMenu();
+            getMenu();
             break;
         }
         case 5: {
             //company.removeWorker()
-            employeeDataMenu();
+            getMenu();
             break;
         }
         case 6: {
             //flight.removeService()
-            employeeDataMenu();
+            getMenu();
             break;
         }
         case 7: {
             //company.findWorker()
-            employeeDataMenu();
+            getMenu();
             break;
         }
         case 8: {
             //flight.findService()
-            employeeDataMenu();
+            getMenu();
             break;
         }
-        case 9: companyMenu(); break;
+        case 9: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -398,21 +420,21 @@ void Menu::transportDataMenu() {
     switch (option) {
         case 1: {
             // perguntar qual é o flight, se existir, adicionar o transporte
-            transportDataMenu();
+            getMenu();
             break;
         }
         case 2: {
             // perguntar qual é o flight, se existir, remover o transporte
-            transportDataMenu();
+            getMenu();
             break;
         }
-        case 3: listTransports(); break;
+        case 3: listTransports(); getMenu(); break;
         case 4: {
             // perguntar qual é o flight, se existir, mostrar o transporte
-            transportDataMenu();
+            getMenu();
             break;
         }
-        case 5: companyMenu(); break;
+        case 5: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -440,14 +462,14 @@ void Menu::passengerMenu() {
             break;
         case 2:
             buyTicket();
-            passengerDataMenu();
+            getMenu();
             break;
         case 3:
             cancelTicket();
-            passengerDataMenu();
+            getMenu();
             break;
         case 4:
-            mainMenu();
+            menuState.pop(); getMenu();
     }
 }
 
@@ -491,7 +513,7 @@ void Menu::allLists() {
         case 5: listServices(); break;
         case 6: listEmployees(); break;
         case 7: listTransports(); break;
-        case 8: passengerDataMenu(); break;
+        case 8: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -503,24 +525,11 @@ void Menu::listPlanes() {
     cout << "Lista total ou parcial? T/P: "; cin >> option;
     if (toupper(option) == 'T') {
         planes = company->getAllPlanes();
+        cout << &planes;
     } else {
         // se é parcial, saber qual é o número máximo de aviões a listar
         cout << "Number maximum of planes to show: "; cin >> numMax;
     }
-
-    do {
-        cout << "=====================================" << endl;
-        cout << "1 - Menu gestor da companhia" << endl;
-        cout << "2 - Menu passageiro" << endl;
-        cout << "3 - Sair" << endl;
-        cout << "A sua escolha: ";
-        cin >> option;
-        cout << "=====================================" << endl;
-        if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
-        cin.clear();
-        cin.ignore(1000, '\n');
-
-    } while (option < 1 || option > 3);
 
 
 }
