@@ -7,7 +7,10 @@
 #define FLIGHT_DATA_MENU 4
 #define PASSENGER_DATA_MENU 5
 #define LUGGAGE_DATA_MENU 6
-
+#define EMPLOYEE_DATA_MENU 7
+#define TRANSPORT_DATA_MENU 8
+#define BUY_TICKET_MENU 9
+#define CANCEL_TICKET_MENU 10
 
 #include "Company.h"
 
@@ -35,19 +38,12 @@ class Menu {
         void luggageDataMenu();
         void employeeDataMenu();
         void transportDataMenu();
-        const short int PLANE_DATA_MENU = 3;
-        const short int FLIGHT_DATA_MENU = 4;
-        const short int PASSENGER_DATA_MENU = 5;
-        const short int LUGGAGE_DATA_MENU = 6;
-        const short int EMPLOYEE_DATA_MENU = 7;
-        const short int TRANSPORT_DATA_MENU = 8;
 
 
         // PassengerMenu
         void buyTicket();
-        const short int BUY_TICKET_MENU = 9;
+
         void cancelTicket();
-        const short int CANCEL_TICKET_MENU = 10;
 
         // Listagens
         void listPlanes();

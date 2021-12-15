@@ -1,6 +1,3 @@
-//
-// Created by Fábio Sá on 15/12/2021.
-//
 
 #include "Cart.h"
 

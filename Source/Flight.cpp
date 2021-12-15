@@ -68,16 +68,37 @@ string Flight::getNextPassengerID() {
     return this->getID() + "-" + to_string(nextID);
 }
 
+vector<Transport*> Flight::getAllTransports() {
+    return airport.getAllTransports();
+}
+
 void Flight::checkPassengers() {
     for (auto *passenger : passengers) {
         cout << *passenger << endl;
     }
 }
 
+void Flight::addTransport(Transport *transport) {
+    if (ID == transport->getID()) airport.addTransport(transport);
+    else cout << "O transporte não pertence a este voo" << endl;
+}
 
+void Flight::removeTransport(Transport *transport) {
+    if (ID == transport->getID()) airport.removeTransport(transport);
+    else cout << "O transporte não pertence a este voo" << endl;
+}
 
+Transport* Flight::searchTransport(const int &hour, const int &minute) {
+    return airport.searchTransport(hour, minute);
+}
 
+vector<Transport*> Flight::searchTransport(const string &type) {
+    return airport.searchTransport(type);
+}
 
+Transport* Flight::searchTransport(const int &distance) {
+    return airport.searchTransport(distance);
+}
 
 
 bool Flight::operator == (const Flight &flight) const {
@@ -104,15 +125,7 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
-void Flight::addTransport(Transport *transport) {
-    if (ID == transport->getID()) airport.addTransport(transport);
-    else cout << "O transporte não pertence a este voo" << endl;
-}
 
-void Flight::removeTransport(Transport *transport) {
-    if (ID == transport->getID()) airport.removeTransport(transport);
-    else cout << "O transporte não pertence a este voo" << endl;
-}
 
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
 

@@ -47,7 +47,7 @@ void Menu::mainMenu() {
         case 1: {
             menuState.push(COMPANY_MENU);
         } break;
-        case 2: menuState.push(PASSENGER_DATA_MENU); break;
+        case 2: menuState.push(PASSENGER_MENU); break;
         case 3:exit(0); break;
     }
     getMenu();
@@ -443,7 +443,7 @@ void Menu::passengerMenu() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Listagens" << endl;
+        cout << "1 - Os meus bilhetes" << endl;
         cout << "2 - Comprar bilhete" << endl;
         cout << "3 - Cancelar bilhete" << endl;
         cout << "4 - Quit" << endl;
@@ -461,11 +461,11 @@ void Menu::passengerMenu() {
             allLists();
             break;
         case 2:
-            buyTicket();
+            menuState.push(BUY_TICKET_MENU);
             getMenu();
             break;
         case 3:
-            cancelTicket();
+            menuState.push(CANCEL_TICKET_MENU);
             getMenu();
             break;
         case 4:
@@ -474,7 +474,6 @@ void Menu::passengerMenu() {
 }
 
 void Menu::buyTicket() {
-
 
 }
 

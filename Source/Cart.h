@@ -4,7 +4,6 @@
 
 #ifndef PROJET_AED_CART_H
 #define PROJET_AED_CART_H
-
 #include "Luggage.h"
 #include "Flight.h"
 

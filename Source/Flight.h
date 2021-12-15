@@ -165,19 +165,29 @@ class Flight {
         string getNextPassengerID();
 
         /**
+         * Return all transports in current flight
+         * @return a vector with pointers to Transport objects
+         */
+         vector<Transport*> getAllTransports();
+
+        /**
          * Prints out the information of all passengers
          */
         void checkPassengers();
 
         /**
-         *
+         * 
          * @param transport
          */
         void addTransport(Transport* transport);
 
         void removeTransport(Transport* transport);
 
-        void addTransport(Transport *transport);
+        Transport* searchTransport(const int &hour, const int &minute);
+
+        vector<Transport*> searchTransport(const string &type);
+
+        Transport* searchTransport(const int &distance);
 
         /**
          * Adds passengers to the flight
