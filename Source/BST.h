@@ -1,5 +1,5 @@
-#ifndef _BST_H_
-#define _BST_H_
+#ifndef PROJECT_AED_BST_H
+#define PROJECT_AED_BST_H
 
 #include <iostream>
 #include <stack>
@@ -473,4 +473,4 @@ int BST<Comparable>::size(const Comparable& el) const {
     }
 }
 
-#endif
+#endif // PROJECT_AED_BST_H

@@ -5,6 +5,10 @@
 
 Airport::Airport() : city(""), name(""), transports(new Transport("","", 0, Date(0, 0))) {}
 
+Airport::~Airport() {
+    transports.makeEmpty();
+}
+
 Airport::Airport(string name, string city) : name(name), city(city), transports(new Transport("", "", 0, Date(0, 0))) {}
 
 string Airport::getName() const {
@@ -32,22 +36,18 @@ vector<Transport*> Airport::getAllTransports() const {
 
 void Airport::addTransport(Transport *transport) {
 
-    Transport* notf = new Transport("", "", 0, Date(0, 0));
-
     Transport* found = transports.find(transport);
-    if (*found == *notf) {
+    if (*found == Transport("", "", 0, Date(0, 0))) {
         transports.insert(transport);
-    }
+    } else throw TransportAlreadyExist(transport);
 }
 
 void Airport::removeTransport(Transport *transport) {
 
-    Transport* notf = new Transport("", "", 0, Date(0, 0));
-
     Transport* found = transports.find(transport);
-    if (*found == *notf) {
+    if (!(*found == Transport("", "", 0, Date(0, 0)))) {
         transports.remove(transport);
-    }
+    } else throw TransportDoesNotExist(transport);
 }
 
 void Airport::showTransports() const {
@@ -59,16 +59,17 @@ void Airport::showTransports() const {
     }
 }
 
-Transport* Airport::searchTransport(const string &type) const {
+vector<Transport*> Airport::searchTransport(const string &type) const {
 
+    vector<Transport*> result = {};
     BSTItrIn<Transport*> itr(transports);
     while (!itr.isAtEnd()) {
         if (itr.retrieve()->getType() == type) {
-            return itr.retrieve();
+            result.push_back(itr.retrieve());
         }
         itr.advance();
     }
-    return new Transport("", "", 0, Date(0, 0));
+    return result;
 }
 
 Transport* Airport::searchTransport(const int &distance) const {
@@ -80,11 +81,23 @@ Transport* Airport::searchTransport(const int &distance) const {
         }
         itr.advance();
     }
-    return new Transport("", "", 0, Date(0, 0));
+    return nullptr;
+}
+
+Transport* Airport::searchTransport(const int &hour, const int &minute) const {
+
+    BSTItrIn<Transport*> itr(transports);
+    while (!itr.isAtEnd()) {
+        if (itr.retrieve()->getDate().getHour() == hour && itr.retrieve()->getDate().getMinute() == minute) {
+            return itr.retrieve();
+        }
+        itr.advance();
+    }
+    return nullptr;
 }
 
 ostream& operator << (ostream &os, const Airport &airport) {
-    os << airport.getCity() << " " << airport.getName() << endl;
+    os << "Airport's name: " << airport.name << "\nAirport's city: " << airport.city << endl;
     return os;
 }
 
