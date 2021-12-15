@@ -16,7 +16,7 @@ class Employee : public Person {
         Employee();
 
         /**
-         * A default desctructor of class Employee
+         * A default destructor of class Employee
          */
         ~Employee();
 
@@ -43,15 +43,15 @@ class Employee : public Person {
          * @return if the current object is less than object passed by reference
         */
         bool operator < (const Employee &employee) const;
-};
 
-/**
-* @overload
-* Function that returns all characteristics of the Employee being manipulated
-* @param os ostream object, passed by reference
-* @param Employee Employee object, passed by reference
-* @return ostream object
-*/
-ostream & operator << (ostream & os, const Employee &employee);
+        /**
+        * @overload
+        * Function that returns all characteristics of the Employee being manipulated
+        * @param os ostream object, passed by reference
+        * @param Employee Employee object, passed by reference
+        * @return ostream object
+        */
+        friend ostream & operator << (ostream & os, const Employee &employee);
+};
 
 #endif // PROJECT_AED_EMPLOYEE_H

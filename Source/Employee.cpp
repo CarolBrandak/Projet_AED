@@ -10,18 +10,18 @@ Employee::~Employee() {}
 Employee::Employee(string name, short int age, char gender) : Person (name, age, gender) {}
 
 bool Employee::operator == (const Employee &employee) const {
-    return name == employee.getName() && age == employee.getAge() && gender == employee.getGender();
+    return name == employee.name && age == employee.age && gender == employee.gender;
 }
 
 bool Employee::operator < (const Employee &employee) const {
-    if (age == employee.getAge()) return name < employee.getName();
-    return age < employee.getAge();
+    if (age == employee.age) return name < employee.name;
+    return age < employee.age;
 }
 
 ostream & operator << (ostream & os, const Employee &employee) {
-    os  << employee.getName()
-        << " " << employee.getAge()
-        << " " << employee.getGender() << endl;
+    os  << "Name: " << employee.name
+        << "\nAge: " << employee.age
+        << "\nGender: " << employee.gender << endl;
     return os;
 }
 
