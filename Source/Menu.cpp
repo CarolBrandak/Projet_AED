@@ -28,7 +28,7 @@ void Menu::mainMenu() {
 
     switch (option) {
         case 1: companyMenu(); break;
-        //case 2: passengerMenu(); break;
+        case 2: passengerMenu(); break;
         case 3: exit(0);
     }
 }
@@ -435,13 +435,19 @@ void Menu::passengerMenu() {
     } while (option < 1 || option > 4);
 
     switch (option) {
-        case 1: allLists(); break;
-        case 2: {
-
-        }
-        case 3: {
-
-        }
+        case 1:
+            allLists();
+            break;
+        case 2:
+            buyTicket();
+            passengerDataMenu();
+            break;
+        case 3:
+            cancelTicket();
+            passengerDataMenu();
+            break;
+        case 4:
+            mainMenu();
     }
 }
 
@@ -457,10 +463,64 @@ void Menu::cancelTicket() {
 
 void Menu::allLists() {
 
+    int option;
+    do {
+        cout << "=====================================" << endl;
+        cout << "1 - Listar Avioes" << endl;
+        cout << "2 - Listar Voos" << endl;
+        cout << "3 - Listar Passengers" << endl;
+        cout << "4 - Listar Luggages" << endl;
+        cout << "5 - Listar Services" << endl;
+        cout << "6 - Listar Employessss" << endl;
+        cout << "7 - Listar Transportes" << endl;
+        cout << "8 - Quit" << endl;
+        cout << "Your choice: ";
+        cin >> option;
+        cout << "=====================================" << endl;
+        if (option < 1 || option > 8) cout << "Erro, por favor tente novamente!" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
 
+    } while (option < 1 || option > 8);
+
+    switch (option) {
+        case 1: listPlanes(); break;
+        case 2: listFlights(); break;
+        case 3: listPassengers(); break;
+        case 4: listLuggages(); break;
+        case 5: listServices(); break;
+        case 6: listEmployees(); break;
+        case 7: listTransports(); break;
+        case 8: passengerDataMenu(); break;
+    }
 }
 
 void Menu::listPlanes() {
+
+    char option;
+    int numMax;
+    vector<Plane*> planes;
+    cout << "Lista total ou parcial? T/P: "; cin >> option;
+    if (toupper(option) == 'T') {
+        planes = company->getAllPlanes();
+    } else {
+        // se é parcial, saber qual é o número máximo de aviões a listar
+        cout << "Number maximum of planes to show: "; cin >> numMax;
+    }
+
+    do {
+        cout << "=====================================" << endl;
+        cout << "1 - Menu gestor da companhia" << endl;
+        cout << "2 - Menu passageiro" << endl;
+        cout << "3 - Sair" << endl;
+        cout << "A sua escolha: ";
+        cin >> option;
+        cout << "=====================================" << endl;
+        if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+    } while (option < 1 || option > 3);
 
 
 }
@@ -492,7 +552,7 @@ void Menu::listEmployees() {
 
 void Menu::listTransports() {
 
-    
+
 }
 
 #endif // PROJECT_AED_MENU_CPP
