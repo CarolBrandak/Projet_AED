@@ -73,7 +73,7 @@ void Date::setMinute(const int &minute) {
 
 bool Date::operator == (const Date &date) const {
     if (!day && !month && !year) {
-        return hour == date.getHour() && minute == date.minute;
+        return hour == date.hour && minute == date.minute;
     } else if (!hour && !minute) {
         return day == date.day && month == date.month && year == date.year;
     }
@@ -82,13 +82,13 @@ bool Date::operator == (const Date &date) const {
 }
 
 bool Date::operator < (const Date &date) const {
-    if (year == date.getYear()) {
-        if (month == date.getMonth()) {
-            if (hour == date.getHour()) {
-                return minute < date.getMinute();
-            } else return hour < date.getHour();
-        } else return month < date.getMonth();
-    } else return year < date.getYear();
+    if (year == date.year) {
+        if (month == date.month) {
+            if (hour == date.hour) {
+                return minute < date.minute;
+            } else return hour < date.hour;
+        } else return month < date.hour;
+    } else return year < date.year;
 }
 
 ostream & operator << (ostream & os, const Date &date) {
