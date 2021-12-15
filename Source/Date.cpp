@@ -93,25 +93,24 @@ bool Date::operator < (const Date &date) const {
 
 ostream & operator << (ostream & os, const Date &date) {
 
-    if (!date.getDay() && !date.getMonth() && !date.getYear()) {
-        os << " " << setfill('0') << setw(2) << date.getHour()
-           << ":" << setfill('0') << setw(2) << date.getMinute() << endl;
-        return os;
+    if (!date.day && !date.month && !date.year) {
+        os << " " << setfill('0') << setw(2) << date.hour
+           << ":" << setfill('0') << setw(2) << date.minute << endl;
 
-    } else if (!date.getHour() && !date.getMinute()) {
+    } else if (!date.hour && !date.minute) {
 
-        os  << setfill('0') << setw(2) << date.getDay()
-            << "-" << setfill('0') << setw(2) << date.getMonth()
-            << "-" << setfill('0') << setw(4) << date.getYear() << endl;
+        os  << setfill('0') << setw(2) << date.day
+            << "-" << setfill('0') << setw(2) << date.month
+            << "-" << setfill('0') << setw(4) << date.year << endl;
 
-        return os;
+    } else {
+        os << setfill('0') << setw(2) << date.day
+           << "-" << setfill('0') << setw(2) << date.month
+           << "-" << setfill('0') << setw(4) << date.year
+           << " " << setfill('0') << setw(2) << date.hour
+           << ":" << setfill('0') << setw(2) << date.minute
+           << endl;
     }
-    os  << setfill('0') << setw(2) << date.getDay()
-        << "-" << setfill('0') << setw(2) << date.getMonth()
-        << "-" << setfill('0') << setw(4) << date.getYear()
-        << " " << setfill('0') << setw(2) << date.getHour()
-        << ":" << setfill('0') << setw(2) << date.getMinute()
-        << endl;
     return os;
 }
 

@@ -51,7 +51,7 @@ class Date {
         ~Date();
 
         /**
-         * Main constructor
+         * Main constructor of the class: day, month, year
          * @param day Date's day, a int passed by value
          * @param month Date's month, a int passed by value
          * @param year Date's year, a int passed by value
@@ -59,7 +59,7 @@ class Date {
         Date(int day, int month, int year);
 
         /**
-        * Another constructor
+        * Constructor of the class: day, month, year, hour and minute
         * @param day Date's day, a int passed by value
         * @param month Date's month, a int passed by value
         * @param year Date's year, a int passed by value
@@ -69,9 +69,9 @@ class Date {
         Date(int day, int month, int year, int hour, int minute);
 
         /**
-         * new constructor --> para os transportes que precisam de horário apenas e não dia
-         * @param hour
-         * @param minute
+         * Constructor of the class: hour and minute
+         * @param hour, Date's hour, a integer passed by value
+         * @param minute, Date's minute, a integer passed by value
          */
         Date(int hour, int minute);
 
@@ -150,15 +150,15 @@ class Date {
          * @return if the current object is less than object passed by reference
          */
         bool operator < (const Date &date) const;
-};
 
-/**
-* @overload
-* Function that returns all characteristics of the Date being manipulated
-* @param os ostream object, passed by reference
-* @param date Date object, passed by reference
-* @return ostream object
-*/
-ostream & operator << (ostream & os, const Date &date);
+        /**
+        * @overload
+        * Function that returns all characteristics of the Date being manipulated
+        * @param os ostream object, passed by reference
+        * @param date Date object, passed by reference
+        * @return ostream object
+        */
+        friend ostream & operator << (ostream & os, const Date &date);
+};
 
 #endif // PROJECT_AED_DATE_H
