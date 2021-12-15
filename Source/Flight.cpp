@@ -3,16 +3,18 @@
 
 #include "Flight.h"
 
+Flight::Flight() : FLIGHT_DATE(Date(0, 0)), FLIGHT_DURATION(-1), ORIGIN("") {}
+
 Flight::~Flight() {
     luggage.clear();
     passengers.clear();
 }
 
 Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport) :
-                    id(id),
-                    flightDate(flightDate),
+                    ID(id),
+                    FLIGHT_DATE(flightDate),
                     FLIGHT_DURATION(flightDuration),
-                    origin(origin),
+                    ORIGIN(origin),
                     airport(airport),
                     quantityOfPassengers(0),
                     quantityOfWeight(0) {
@@ -21,21 +23,12 @@ Flight::Flight(string id, Date flightDate, short int flightDuration, string orig
                     nextID = 0;
 }
 
-int Flight::getNextPassengerID() {
-    nextID++;
-    return nextID;
-}
-
 string Flight::getID() const {
-    return id;
+    return ID;
 }
 
 Date Flight::getFlightDate() const {
-    return flightDate;
-}
-
-void Flight::setFlightDate(const Date &newDate) {
-    this->flightDate = newDate;
+    return FLIGHT_DATE;
 }
 
 short int Flight::getFlightDuration() const {
@@ -43,11 +36,15 @@ short int Flight::getFlightDuration() const {
 }
 
 string Flight::getFlightOrigin() const {
-    return origin;
+    return ORIGIN;
 }
 
 string Flight::getFlightDestination() const {
     return airport.getCity();
+}
+
+Airport Flight::getAirport() {
+    return airport;
 }
 
 unsigned int Flight::getPassengersQuantity() const {
@@ -57,6 +54,31 @@ unsigned int Flight::getPassengersQuantity() const {
 unsigned int Flight::getWeightQuantity() const {
     return quantityOfWeight;
 }
+
+vector<Passenger*> Flight::getPassengers() const {
+    return passengers;
+}
+
+vector<Luggage*> Flight::getLuggage() const {
+    return luggage;
+}
+
+string Flight::getNextPassengerID() {
+    nextID++;
+    return this->getID() + "-" + to_string(nextID);
+}
+
+void Flight::checkPassengers() {
+    for (auto *passenger : passengers) {
+        cout << *passenger << endl;
+    }
+}
+
+
+
+
+
+
 
 bool Flight::operator == (const Flight &flight) const {
     return id == flight.getID();
@@ -82,12 +104,14 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
-Airport Flight::getAirport() {
-    return airport;
+void Flight::addTransport(Transport *transport) {
+    if (ID == transport->getID()) airport.addTransport(transport);
+    else cout << "O transporte não pertence a este voo" << endl;
 }
 
-void Flight::addTransport(Transport *transport) {
-    if (id == transport->getID()) airport.addTransport(transport);
+void Flight::removeTransport(Transport *transport) {
+    if (ID == transport->getID()) airport.removeTransport(transport);
+    else cout << "O transporte não pertence a este voo" << endl;
 }
 
 void Flight::addPassengers(const vector<Passenger*> &toPush) {
@@ -181,19 +205,7 @@ void Flight::removePassenger(Passenger &passenger) {
     }
 }
 
-void Flight::checkPassengers() {
-    for (auto *passenger : passengers) {
-        cout << *passenger << endl;
-    }
-}
 
-vector<Passenger*> Flight::getPassengers() const {
-    return passengers;
-}
-
-vector<Luggage*> Flight::getLuggage() const {
-    return luggage;
-}
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
     os  << "Flight ID: " << flight.getID()
@@ -204,54 +216,6 @@ std::ostream & operator << (std::ostream & os, const Flight &flight) {
         << "\nQuantity of Weight: " << flight.getWeightQuantity()
         << " Kgs\nQuantity Of Passengers: " << flight.getPassengersQuantity() << endl;
     return os;
-}
-
-Cart::Cart() : STACK_SIZE(4), QUEUE_SIZE(3) {
-    this->transport = {};
-}
-
-void Cart::addLuggage(queue<Luggage *> treadmill) {
-
-    queue<stack<Luggage*>> currentQueue = {};
-    stack<Luggage*> currentStack = {};
-
-    while (!treadmill.empty()) {
-
-        Luggage* currentLuggage = treadmill.front();
-        treadmill.pop();
-
-        // Se tiver espaço na pilha, coloca na pilha
-        if (currentStack.size() < STACK_SIZE) {
-            currentStack.push(currentLuggage);
-        } else {
-            // Se tiver ainda espaço na fila, coloca na fila e esvazia a stack para a próxima iteração
-            if (currentQueue.size() < QUEUE_SIZE) {
-                currentQueue.push(currentStack);
-                while (!currentStack.empty()) currentStack.pop();
-            } else {
-                // Senão, coloca no transporte o carrinho, esvazia a stack e a fila para a próxima iteração
-                transport.push_back(currentQueue);
-                while (!currentStack.empty()) currentStack.pop();
-                while (!currentQueue.empty()) currentQueue.pop();
-            }
-        }
-    }
-    // No final, o restante que sobra também é adicionado
-    currentQueue.push(currentStack);
-    transport.push_back(currentQueue);
-}
-
-void Cart::putLuggage(Flight* flight) {
-
-    for (queue<stack<Luggage*>> currentCarriage : transport) {
-        stack<Luggage*> currentStack = currentCarriage.front();
-        while (!currentStack.empty()) {
-            flight->luggage.push_back(currentStack.top());
-            currentStack.pop();
-        }
-        currentCarriage.pop();
-    }
-    transport.clear();
 }
 
 #endif // PROJECT_AED_FLIGHT_CPP

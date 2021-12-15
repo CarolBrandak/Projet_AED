@@ -1,5 +1,13 @@
 #ifndef PROJECT_AED_MENU_H
 #define PROJECT_AED_MENU_H
+#define MAIN_MENU 0
+#define COMPANY_MENU 1
+#define PASSENGER_MENU 2
+#define PLANE_DATA_MENU 3
+#define FLIGHT_DATA_MENU 4
+#define PASSENGER_DATA_MENU 5
+#define LUGGAGE_DATA_MENU 6
+
 
 #include "Company.h"
 
@@ -18,9 +26,7 @@ class Menu {
         void companyMenu();
         void passengerMenu();
         void allLists();
-        const short int MAIN_MENU = 0;
-        const short int COMPANY_MENU = 1;
-        const short int PASSENGER_MENU = 2;
+
 
         // CompanyMenu
         void planeDataMenu();

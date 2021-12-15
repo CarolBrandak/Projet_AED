@@ -11,6 +11,7 @@
 #include "Passenger.h"
 #include "Airport.h"
 #include "Transport.h"
+#include "Cart.h"
 #include "BST.h"
 
 /**
@@ -21,27 +22,27 @@ class Flight {
     private:
 
         /**
-         * @var id - a string constant variable that contains the ID of the flight
+         * @var ID - a string constant variable that contains the ID of the flight
          */
-        string id;
+        const string ID;
 
         /**
-         * @var flightDate - a Date type object that contains the date of the flight
+         * @var FLIGHT_DATE - a const Date type object that contains the date of the flight
          */
-        Date flightDate;
+        const Date FLIGHT_DATE;
 
         /**
          * @var FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
          */
-        short int FLIGHT_DURATION;
+        const short int FLIGHT_DURATION;
 
         /**
-         * @var origin - a string that contains the origin of the flight
+         * @var origin - a const string that contains the origin of the flight
          */
-        string origin;
+        const string ORIGIN;
 
         /**
-         * @var destination - a string that contains the destination of the flight
+         * @var airport - a Airport object that contains the destination ans transports of the flight
          */
          Airport airport;
 
@@ -61,22 +62,26 @@ class Flight {
         vector<Passenger*> passengers;
 
         /**
-         * @var luggages - a Luggage type vector that contains all luggage in the flight
+         * @var luggage - a Luggage type vector that contains all luggage in the flight
          */
         vector<Luggage*> luggage;
 
         /**
-         * @var nextID - an integer value
+         * @var nextID - an integer value that contains the next Passenger ID in the flight
          */
-         int nextID;
+        int nextID;
 
          /**
-          * Friend class Cart -> comentario meter em condicoes
+          * A friend useful class for moving passengers' luggage
           */
         friend class Cart;
 
     public:
 
+        /**
+         * A default constructor
+         */
+         Flight();
 
         /**
          * A default destructor
@@ -85,11 +90,11 @@ class Flight {
 
         /**
          * Main constructor
-         * @param id - a string constant variable thar contains the ID of the flight
-         * @param flightDate - a Date type object that contains the date of the flight
+         * @param ID - a string constant variable thar contains the ID of the flight
+         * @param FLIGHT_DATE - a Date type object that contains the date of the flight
          * @param FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
-         * @param origin - a string that contains the origin of the flight
-         * @param destination - a string that contains the destination of the flight
+         * @param ORIGIN - a string that contains the origin of the flight
+         * @param airport - an Airport object that contains the destination of the flight and all transports
          */
         Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport);
 
@@ -104,12 +109,6 @@ class Flight {
          * @return an Date type object, containing the flight date
          */
         Date getFlightDate() const;
-
-        /**
-         * Sets the new date of the flight
-         * @param newDate - a Date type object that contains the new date of the flight
-         */
-        void setFlightDate(const Date &newDate);
 
         /**
          * Returns the flight duration in minutes
@@ -129,9 +128,11 @@ class Flight {
          */
         string getFlightDestination() const ;
 
+        /**
+         * Returns the flight' destination Airport object
+         * @return an Airport object, containing destination city and all transports
+         */
         Airport getAirport();
-
-        void addTransport(const Transport &transport);
 
         /**
          * Returns the quantity of weight inside the plane
@@ -146,9 +147,9 @@ class Flight {
         unsigned int getPassengersQuantity() const;
 
         /**
-         * Return all passengers in current flight
-         * @return a vector with pointers to Passenger objects
-         */
+        * Return all passengers in current flight
+        * @return a vector with pointers to Passenger objects
+        */
         vector<Passenger*> getPassengers() const;
 
         /**
@@ -157,6 +158,24 @@ class Flight {
          */
         vector<Luggage*> getLuggage() const;
 
+        /**
+         * Generate and returns the next Passenger's ID based on last Passengers
+         * @return a string, containing the next id
+         */
+        string getNextPassengerID();
+
+        /**
+         * Prints out the information of all passengers
+         */
+        void checkPassengers();
+
+        /**
+         *
+         * @param transport
+         */
+        void addTransport(Transport* transport);
+
+        void removeTransport(Transport* transport);
 
         void addTransport(Transport *transport);
 
@@ -178,16 +197,8 @@ class Flight {
          */
         void removePassenger(Passenger &passenger);
 
-        /**
-         * Prints out the information of all passengers
-         */
-        void checkPassengers();
 
-        /**
-         * mais tarde fazer isto!
-         * @return coisas
-         */
-        int getNextPassengerID();
+
 
         /**
          * @overload
@@ -246,17 +257,5 @@ class Flight {
 * @return ostream object
 */
 ostream & operator << (ostream & os, const Flight &flight);
-
-class Cart {
-
-    private:
-          const int STACK_SIZE; // n de malas em cada pilha
-          const int QUEUE_SIZE; // n de pilhas em cada carruagem
-          list<queue<stack<Luggage*>>> transport;
-    public:
-          Cart();
-          void addLuggage(queue<Luggage *> treadmill);
-          void putLuggage(Flight* flight);
-};
 
 #endif // PROJECT_AED_FLIGHT_H
