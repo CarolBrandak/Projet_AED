@@ -1,18 +1,14 @@
-#ifndef PROJECT_AED_UTILITIES_H
-#define PROJECT_AED_UTILITIES_H
+#ifndef PROJECT_AED_UTILITIES_CPP
+#define PROJECT_AED_UTILITIES_CPP
 
 #include "Utilities.h"
-
-// Para os voos
-
-/**
 
 bool byNumberOfPassengers(const Flight &f1, const Flight &f2) {
     return f1.getPassengersQuantity() < f2.getPassengersQuantity();
 }
 
 bool byTotalWeight(const Flight &f1, const Flight &f2) {
-    return f1.quantityOfWeight < f2.quantityOfWeight;
+    return f1.getWeightQuantity() < f2.getWeightQuantity();
 }
 
 bool byDate(const Flight &f1, const Flight &f2) {
@@ -64,4 +60,4 @@ bool byNumberOfServices(const Plane &p1, const Plane &p2) {
 
 // Outras coisas
 
-#endif // PROJECT_AED_UTILITIES_H
+#endif // PROJECT_AED_UTILITIES_CPP
