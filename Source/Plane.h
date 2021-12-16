@@ -200,22 +200,22 @@ class Plane {
         void addService(Service &service);
 
         /**
-         * 
-         * @param date
-         * @return
+         * A function that try to find a Service based on its date
+         * @param date - a Date object passed by reference containing the date of wanted service
+         * @return a Service pointer object
          */
         Service* findService(Date &date);
 
         /**
-         *
-         * @param name
-         * @return
+         * A function that try to find a Employee based on its name
+         * @param name - a string passed by reference containing the name of wanted Employee
+         * @return a Employee pointer object
          */
         Employee* findEmployee(const string &name);
 
         /**
-         *
-         * @return
+         * A function that returns all Employees of current Plane
+         * @return a vector with Employees pointer objects
          */
         vector<Employee*> getEmployees();
 

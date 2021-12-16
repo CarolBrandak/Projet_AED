@@ -138,13 +138,38 @@ void Plane::addService(Service &service) {
     if (ID == service.getID().substr(0, service.getID().find('-'))) servicesToBeMade.push(&service);
 }
 
+Service* Plane::findService(Date &date) {
+    queue<Service*> copy = this->servicesToBeMade;
+    while (!copy.empty()) {
+        if (copy.front()->getServiceDate() == date) return copy.front();
+        copy.pop();
+    }
+    return nullptr;
+}
 
+Employee* Plane::findEmployee(const string &name) {
+    queue<Service*> copy = this->servicesToBeMade;
+    while (!copy.empty()) {
+        if (copy.front()->getResponsible().getName() == name) {
+            Employee employee =  copy.front()->getResponsible();
+            return &employee;
+        }
+        copy.pop();
+    }
+    return nullptr;
+}
 
-
-
-
-
-
+vector<Employee*> Plane::getEmployees() {
+    vector<Employee*> allEmployees = {};
+    queue<Service*> copy = this->servicesToBeMade;
+    while(!copy.empty()) {
+        Employee currentEmployee = copy.front()->getResponsible();
+        Employee* reference = &currentEmployee;
+        allEmployees.push_back(reference);
+        copy.pop();
+    }
+    return allEmployees;
+}
 
 bool Plane::operator == (const Plane &plane) const {
     return this->ID == plane.ID && this->LICENSE_PLATE == plane.LICENSE_PLATE && this->TYPE == plane.TYPE &&
