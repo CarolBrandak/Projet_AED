@@ -146,12 +146,15 @@ class Company {
         void saveTransports(vector<Transport*> transports);
 
         /**
-         * 
-         * @param plane
+         *
+         * @param plane - a Plane object that will be added in current Company
          */
         void addPlane(Plane &plane);
 
-        // Remove
+        /**
+         * 
+         * @param id - a string corresponding the Plane id that will be removed from current Company
+         */
         void removePlane(const string &id);
 
         // Search

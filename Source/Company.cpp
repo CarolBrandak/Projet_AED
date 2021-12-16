@@ -337,6 +337,13 @@ void Company::addPlane(Plane &plane) {
     planes.push_back(&plane);
 }
 
+void Company::removePlane(const string &id) {
+    for (vector<Plane*>::iterator it = planes.begin() ; it != planes.end() ; it++) {
+        if ((*it)->getID() == id) planes.erase(it);
+    }
+    cout << "Não existe avião com id = " << id << " nesta companhia aérea" << endl;
+}
+
 Flight* Company::findFlight(const string &origin, const string &destination) {
     for (Plane *plane : planes) {
         Flight* wanted = (*plane).findFlight(origin, destination);
