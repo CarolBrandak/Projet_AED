@@ -33,17 +33,17 @@ struct Volume {
 class Luggage {
 
     /**
-     * @var id, luggage's id, a string
+     * @var ID, luggage's id, a constant string
      */
-    string id;
+    const string ID;
 
     /**
-     * @var WEIGHT, luggage's weight, a short integer value
+     * @var WEIGHT, luggage's weight, a short integer constant value
      */
     short int WEIGHT;
 
     /**
-     * @var VOLUME, luggage's volume, a struct
+     * @var VOLUME, luggage's volume, a constant struct
      */
     Volume VOLUME;
 
@@ -66,12 +66,12 @@ class Luggage {
 
         /**
          * Main constructor
-         * @param id, Luggage's id, a string passed by value
-         * @param weight Luggage's weight, a short int passed by value
-         * @param width Luggage's volume, a struct
+         * @param ID Luggage's id, a string passed by value
+         * @param WEIGHT Luggage's weight, a short int passed by value
+         * @param VOLUME Luggage's volume, a struct
          * @param planeHold Luggage's planeHold, a boolean passed by value
          */
-        Luggage(string id, short int weight, Volume volume, bool planeHold);
+        Luggage(string ID, short int WEIGHT, Volume VOLUME, bool planeHold);
 
         /**
          * Set Luggage plane hold
@@ -126,29 +126,13 @@ class Luggage {
         bool operator < (const Luggage &luggage) const;
 
         /**
-         * Boolean function thar compares to objects of this class, based on their weight
-         * @param l1 first luggage that will be compared
-         * @param l2 second luggage object that will be compared
-         * @return if l1 has less weight than l2
-         */
-        friend bool byWeight(const Luggage &l1, const Luggage &l2);
-
-        /**
-         * Boolean function thar compares to objects of this class, based on their volume
-         * @param l1 first luggage that will be compared
-         * @param l2 second luggage object that will be compared
-         * @return if l1 has less volume than l2
-         */
-        friend bool byVolume(const Luggage &l1, const Luggage &l2);
+         * @overload
+         * Function that returns all characteristics of the Luggage being manipulated
+         * @param ostream object, passed by reference
+         * @param luggage Luggage object, passed by reference
+         * @return ostream object
+        */
+        friend ostream & operator << (ostream & os, const Luggage &luggage);
 };
-
-/**
- * @overload
- * Function that returns all characteristics of the Luggage being manipulated
- * @param ostream object, passed by reference
- * @param luggage Luggage object, passed by reference
- * @return ostream object
- */
-ostream & operator << (ostream & os, const Luggage &luggage);
 
 #endif //PROJECT_AED_LUGGAGE_H

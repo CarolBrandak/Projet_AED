@@ -7,14 +7,14 @@ Luggage::Luggage() {}
 
 Luggage::~Luggage() {}
 
-Luggage::Luggage(string id, short int weight, Volume volume, bool planeHold) : id(id), WEIGHT(weight), VOLUME(volume), planeHold(planeHold) {}
+Luggage::Luggage(string id, short int weight, Volume volume, bool planeHold) : ID(id), WEIGHT(weight), VOLUME(volume), planeHold(planeHold) {}
 
 void Luggage::setPlaneHold(const bool &planeHold) {
     this->planeHold = planeHold;
 }
 
 string Luggage::getID() const {
-    return this->id;
+    return this->ID;
 }
 
 short int Luggage::getWeight() const {
@@ -34,27 +34,19 @@ bool Luggage::getPlaneHold() const {
 }
 
 bool Luggage::operator == (const Luggage &luggage) const {
-    return WEIGHT == luggage.getWeight() && getTotalVolume() == luggage.getTotalVolume() && planeHold == luggage.getPlaneHold();
+    return WEIGHT == luggage.WEIGHT && getTotalVolume() == luggage.getTotalVolume() && planeHold == luggage.planeHold;
 }
 
 bool Luggage::operator < (const Luggage &luggage) const {
-    if (WEIGHT == luggage.getWeight()) return getTotalVolume() < luggage.getTotalVolume();
-    return WEIGHT < luggage.getWeight();
-}
-
-bool byWeight(const Luggage &l1, const Luggage &l2) {
-    return l1.getWeight() < l2.getWeight();
-}
-
-bool byVolume(const Luggage &l1, const Luggage &l2) {
-    return l1.getTotalVolume() < l2.getTotalVolume();
+    if (WEIGHT == luggage.WEIGHT) return getTotalVolume() < luggage.getTotalVolume();
+    return WEIGHT < luggage.WEIGHT;
 }
 
 ostream & operator << (ostream & os, const Luggage &luggage) {
-    os   << "ID: " << luggage.getID() <<
-            "\nWeight: " << luggage.getWeight() <<
+    os   << "ID: " << luggage.ID <<
+            "\nWeight: " << luggage.WEIGHT <<
             "\nVolume: " << luggage.getTotalVolume() <<
-            "\nPlaneHold: " << luggage.getPlaneHold() << endl;
+            "\nPlaneHold: " << luggage.planeHold<< endl;
     return os;
 }
 

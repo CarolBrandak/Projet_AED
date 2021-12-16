@@ -5,6 +5,8 @@
 
 // Para os voos
 
+/**
+
 bool byNumberOfPassengers(const Flight &f1, const Flight &f2) {
     return f1.getPassengersQuantity() < f2.getPassengersQuantity();
 }
@@ -21,6 +23,15 @@ bool byDuration(const Flight &f1, const Flight &f2) {
     return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
 }
 
+ bool byWeight(const Luggage &l1, const Luggage &l2) {
+    return l1.getWeight() < l2.getWeight();
+}
+
+bool byVolume(const Luggage &l1, const Luggage &l2) {
+    return l1.getTotalVolume() < l2.getTotalVolume();
+}
+
+**/
 
 // Outras coisas
 

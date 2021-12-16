@@ -1,7 +1,6 @@
 #ifndef PROJECT_AED_AGENCY_H
 #define PROJECT_AED_AGENCY_H
 
-#define FOLDER "../Source/Files/"
 #define FLIGHT_FILE "../Source/Files/Flights.txt"
 #define LUGGAGE_FILE "../Source/Files/Luggages.txt"
 #define PASSENGER_FILE "../Source/Files/Passengers.txt"

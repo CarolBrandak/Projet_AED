@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PROJECT_AED_FLIGHT_H
 #define PROJECT_AED_FLIGHT_H
 
@@ -8,11 +9,14 @@
 #include <stack>
 #include <queue>
 #include <list>
+
 #include "Passenger.h"
 #include "Airport.h"
 #include "Transport.h"
 #include "Cart.h"
 #include "BST.h"
+
+class Cart;
 
 /**
  * A class to manage flights
@@ -72,7 +76,7 @@ class Flight {
         int nextID;
 
          /**
-          * A friend useful class for moving passengers' luggage
+          * @var cart - A useful class for moving passengers' luggage
           */
         friend class Cart;
 

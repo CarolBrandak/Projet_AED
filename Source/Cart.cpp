@@ -1,5 +1,4 @@
 #ifndef PROJECT_AED_CART_CPP
-#define PROJECT_AED_CART_CPP
 
 #include "Cart.h"
 
@@ -34,7 +33,7 @@ void Cart::addLuggage(queue<Luggage *> treadmill) {
     transport.push_back(currentQueue);
 }
 
-void Cart::putLuggage(Flight* flight) {
+void Cart::putLuggage(Flight *flight) {
 
     for (queue<stack<Luggage*>> currentCarriage : transport) {
         stack<Luggage*> currentStack = currentCarriage.front();

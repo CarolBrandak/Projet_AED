@@ -1,10 +1,14 @@
+#pragma once
 #ifndef PROJECT_AED_CART_H
 #define PROJECT_AED_CART_H
 
 #define STACK_SIZE 4
 #define QUEUE_SIZE 3
 
-#include "Luggage.h"
+#include <list>
+#include <queue>
+#include <stack>
+
 #include "Flight.h"
 
 /**
@@ -34,9 +38,8 @@ class Cart {
 
         /**
          * A function that adds luggage in current flight
-         * @param flight - Flight object where the luggage will be dropped off
          */
-        void putLuggage(Flight* flight);
+        void putLuggage(Flight *flight);
 };
 
 #endif // PROJECT_AED_CART_H
