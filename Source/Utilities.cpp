@@ -12,11 +12,11 @@ bool byTotalWeight(const Flight &f1, const Flight &f2) {
 }
 
 bool byDate(const Flight &f1, const Flight &f2) {
-    return f1.FLIGHT_DATE < f2.FLIGHT_DATE;
+    return f1.getFlightDate() < f2.getFlightDate();
 }
 
 bool byDuration(const Flight &f1, const Flight &f2) {
-    return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
+    return f1.getFlightDuration() < f2.getFlightDuration();
 }
 
  bool byWeight(const Luggage &l1, const Luggage &l2) {
@@ -27,25 +27,24 @@ bool byVolume(const Luggage &l1, const Luggage &l2) {
     return l1.getTotalVolume() < l2.getTotalVolume();
 }
 
-
 bool byName(const Passenger &p1, const Passenger &p2) {
-    return p1.name < p2.name;
+    return p1.getName() < p2.getName();
 }
 
 bool byAge(const Passenger &p1, const Passenger &p2) {
-    return p1.age < p2.age;
+    return p1.getAge() < p2.getAge();
 }
 
 bool byLuggage(const Passenger &p1, const Passenger &p2) {
-    return p1.luggage.size() < p2.luggage.size();
+    return p1.getLuggage().size() < p2.getLuggage().size();
 }
 
  bool byMaximumWeight(const Plane &p1, const Plane &p2) {
-    return p1.MAX_WEIGHT_CAPACITY < p2.MAX_WEIGHT_CAPACITY;
+    return p1.getMaxWeightCapacity() < p2.getMaxWeightCapacity();
 }
 
 bool byMaximumCapacity(const Plane &p1, const Plane &p2) {
-    return p1.MAX_PASSENGERS_CAPACITY < p2.MAX_PASSENGERS_CAPACITY;
+    return p1.getMaxPassengersCapacity() < p2.getMaxPassengersCapacity();
 }
 
 bool byNumberOfFlights(const Plane &p1, const Plane &p2) {
@@ -55,9 +54,5 @@ bool byNumberOfFlights(const Plane &p1, const Plane &p2) {
 bool byNumberOfServices(const Plane &p1, const Plane &p2) {
     return (p1.getQuantityOfMadeServices() + p1.getQuantityOfServicesToBeMade()) < (p2.getQuantityOfMadeServices() + p2.getQuantityOfServicesToBeMade());
 }
-
-**/
-
-// Outras coisas
 
 #endif // PROJECT_AED_UTILITIES_CPP
