@@ -845,7 +845,51 @@ void Menu::listServices() {
 
 void Menu::listEmployees() {
 
-    char option = totalOrPartial();
+    char type = totalOrPartial();
+    vector<Employee> employees = {};
+
+    if (type == 'T')
+        for (Service *service : company->getAllServices())
+            employees.push_back(service->getResponsible());
+    else {
+        string id;
+        cout << "ID do aviao: "; cin >> id;
+        Plane *plane = company->findPlane(id);
+        if (plane)
+            for (Service *service : plane->getServices())
+                employees.push_back(service->getResponsible());
+        else {
+            cout << "Aviao nao encontrado" << endl;
+            getMenu();
+        }
+    }
+
+    if (!employees.empty()) {
+        int option;
+        do {
+            cout << "=====================================" << endl;
+            cout << "1 - Ordenar por nome" << endl;
+            cout << "2 - Ordenar por idade" << endl;
+            cout << "Your choice: ";
+            cin >> option;
+            cout << "=====================================" << endl;
+            if (option < 1 || option > 2) cout << "Erro, por favor tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+        } while (option < 1 || option > 2);
+
+        switch (option) {
+            case 1: sort(employees.begin(), employees.end(), byEmployeeName); break;
+            case 2: sort(employees.begin(), employees.end(), byEmployeeAge); break;
+        }
+
+        for (const Employee &employee : employees) cout << employee << endl;
+
+    } else {
+        cout << "O aviao selecionado nao possui qualquer funcionario" << endl;
+    }
+    getMenu();
 }
 
 void Menu::listTransports() {

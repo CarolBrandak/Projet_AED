@@ -7,6 +7,10 @@ bool byEmployeeName(const Employee &e1, const Employee &e2) {
     return e1.getName() < e2.getName();
 }
 
+bool byEmployeeAge(const Employee &e1, const Employee &e2) {
+    return e1.getAge() < e2.getAge();
+}
+
 bool byNumberOfPassengers(const Flight *f1, const Flight *f2) {
     return f1->getPassengersQuantity() < f2->getPassengersQuantity();
 }

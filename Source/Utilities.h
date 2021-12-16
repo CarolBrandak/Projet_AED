@@ -12,6 +12,14 @@
 bool byEmployeeName(const Employee &e1, const Employee &e2);
 
 /**
+* Boolean function thar compares to Employees based on their names
+* @param e1 first Employee object that will be compared
+* @param e2 second Employee object that will be compared
+* @return if c1 has less than c2
+*/
+bool byEmployeeAge(const Employee &e1, const Employee &e2);
+
+/**
 * Boolean function thar compares to Flights, based on their number of passengers
 * @param f1 first flight that will be compared
 * @param f2 second flight object that will be compared
