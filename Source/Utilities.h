@@ -49,7 +49,7 @@ bool byDuration(const Flight *f1, const Flight *f2);
 * @param l2 second luggage object that will be compared
 * @return if l1 has less weight than l2
 */
-bool byWeight(const Luggage &l1, const Luggage &l2);
+bool byWeight(const Luggage *l1, const Luggage *l2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their volume
@@ -57,7 +57,7 @@ bool byWeight(const Luggage &l1, const Luggage &l2);
 * @param l2 second luggage object that will be compared
 * @return if l1 has less volume than l2
 */
-bool byVolume(const Luggage &l1, const Luggage &l2);
+bool byVolume(const Luggage *l1, const Luggage *l2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their Name

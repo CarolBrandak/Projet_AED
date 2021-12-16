@@ -770,32 +770,30 @@ void Menu::listLuggages() {
         }
     }
 
-    if (!passengers.empty()) {
+    if (!luggage.empty()) {
         int option;
         do {
             cout << "=====================================" << endl;
-            cout << "1 - Ordenar por nome" << endl;
-            cout << "2 - Ordenar por idade" << endl;
-            cout << "3 - Ordenar por quantidade de malas" << endl;
+            cout << "1 - Ordenar por peso" << endl;
+            cout << "2 - Ordenar por volume" << endl;
             cout << "Your choice: ";
             cin >> option;
             cout << "=====================================" << endl;
-            if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+            if (option < 1 || option > 2) cout << "Erro, por favor tente novamente!" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
 
-        } while (option < 1 || option > 3);
+        } while (option < 1 || option > 2);
 
         switch (option) {
-            case 1: sort(passengers.begin(), passengers.end(), byPassengerName); break;
-            case 2: sort(passengers.begin(), passengers.end(), byAge); break;
-            case 3: sort(passengers.begin(), passengers.end(), byLuggage); break;
+            case 1: sort(luggage.begin(), luggage.end(), byWeight); break;
+            case 2: sort(luggage.begin(), luggage.end(), byVolume); break;
         }
 
-        for (Passenger *passenger : passengers) cout << *passenger << endl;
+        for (Luggage *l : luggage) cout << *l << endl;
 
     } else {
-        cout << "O voo selecionado nao possui qualquer passageiro" << endl;
+        cout << "O voo selecionado nao possui qualquer bagagem" << endl;
     }
     getMenu();
 }

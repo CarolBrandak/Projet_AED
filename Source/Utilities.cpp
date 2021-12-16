@@ -23,12 +23,12 @@ bool byDuration(const Flight *f1, const Flight *f2) {
     return f1->getFlightDuration() < f2->getFlightDuration();
 }
 
- bool byWeight(const Luggage &l1, const Luggage &l2) {
-    return l1.getWeight() < l2.getWeight();
+ bool byWeight(const Luggage *l1, const Luggage *l2) {
+    return l1->getWeight() < l2->getWeight();
 }
 
-bool byVolume(const Luggage &l1, const Luggage &l2) {
-    return l1.getTotalVolume() < l2.getTotalVolume();
+bool byVolume(const Luggage *l1, const Luggage *l2) {
+    return l1->getTotalVolume() < l2->getTotalVolume();
 }
 
 bool byPassengerName(const Passenger *p1, const Passenger *p2) {
