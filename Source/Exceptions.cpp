@@ -63,7 +63,36 @@ void InvalidDate::showError() const {
     cerr << "A data " << date << " é inválida" << endl;
 }
 
+InvalidEmployee::InvalidEmployee(Employee employee) {
+    this->employee = employee;
+}
 
+void InvalidEmployee::showError() const {
+    cerr << "O funcionário " << employee << " é inválido" << endl;
+}
 
+InvalidLuggage::InvalidLuggage(Luggage *luggage) {
+    this->luggage = luggage;
+}
+
+void InvalidLuggage::showError() const {
+    cerr << "A bagagem " << luggage << " é inválida" << endl;
+}
+
+InvalidPassenger::InvalidPassenger(Passenger *passenger) {
+    this->passenger = passenger;
+}
+
+void InvalidPassenger::showError() const {
+    cerr << "O passageiro " << passenger << " é inválido" << endl;
+}
+
+InvalidService::InvalidService(Service *service) {
+    this->service = service;
+}
+
+void InvalidService::showError() const {
+    cerr << "O serviço " << service << " é inválido" << endl;
+}
 
 #endif // PROJECT_AED_EXCEPTIONS_CPP
