@@ -208,6 +208,8 @@ void Menu::passengerDataMenu() {
 
     } while (option < 1 || option > 5);
 
+
+    string id,name,age,gender,passportNumber,origin, destination;
     switch(option) {
         case 1: {
 
@@ -231,8 +233,8 @@ void Menu::passengerDataMenu() {
                 cin >> gender;
                 cout << "Introduza o número do passaporte do passageiro" << endl;
                 cin >> passportNumber;
-                Passenger passenger(id,name,age,gender,passportNumber);
-                flight->addPassenger(passenger);
+                //Passenger passenger(id,name,age,gender,passportNumber);
+                //flight->addPassenger(passenger);
             } else cout << "Mensagem de erro a dizer que o voo procurado não existe" << endl;
             getMenu();
             break;
@@ -254,9 +256,9 @@ void Menu::passengerDataMenu() {
                 cin >> gender;
                 cout << "Introduza o número do passaporte do passageiro" << endl;
                 cin >> passportNumber;
-                Passenger passenger(id,name,age,gender,passportNumber);
+               // Passenger passenger(id,name,age,gender,passportNumber);
                 // primeiro procurar e se depois existir, remover, senão mensagem de erro
-                flight->removePassenger(passenger);
+                //flight->removePassenger(passenger);
             } else cout << "Mensagem de erro a dizer que esse voo não existe" << endl;
             getMenu();
             break;
@@ -487,9 +489,9 @@ void Menu::buyTicket() {
         cout << "Where do you want to travel to?" << endl;
         cin >> destinantion;
         flight = company->findFlight(origin,destinantion);
-        if(!nullptr) {
+        //if(!nullptr) {
             
-        }
+        //}
     }
 }
 

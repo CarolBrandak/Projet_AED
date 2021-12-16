@@ -40,7 +40,7 @@ class Cart {
         /**
          * A function that adds luggage in current flight
          */
-        void putLuggage(Flight *flight);
+        void putLuggage(vector<Luggage*> &luggage);
 };
 
 #endif // PROJECT_AED_CART_H

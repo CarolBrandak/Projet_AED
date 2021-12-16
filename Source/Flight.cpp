@@ -130,7 +130,7 @@ void Flight::addPassenger(const vector<Passenger*> &allPassengers) {
 
         if (!treadmill.empty()) {
             cart.addLuggage(treadmill);
-            cart.putLuggage(this);
+            cart.putLuggage(this->luggage);
         }
     }
 }
@@ -162,7 +162,7 @@ void Flight::addPassenger(Passenger& passenger) {
 
         if (!treadmill.empty()) {
             cart.addLuggage(treadmill);
-            cart.putLuggage(this);
+            cart.putLuggage(this->luggage);
         }
 
     } else return;

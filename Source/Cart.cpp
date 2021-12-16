@@ -33,12 +33,12 @@ void Cart::addLuggage(queue<Luggage *> treadmill) {
     transport.push_back(currentQueue);
 }
 
-void Cart::putLuggage(Flight *flight) {
+void Cart::putLuggage(vector<Luggage*> &luggage) {
 
     for (queue<stack<Luggage*>> currentCarriage : transport) {
         stack<Luggage*> currentStack = currentCarriage.front();
         while (!currentStack.empty()) {
-            (*flight).addLuggage(currentStack.top());
+            luggage.push_back(currentStack.top());
             currentStack.pop();
         }
         currentCarriage.pop();

@@ -18,11 +18,6 @@ add_executable(     Projet_AED main.cpp
                     Source/Transport.cpp Source/Transport.cpp
                     Source/Menu.h Source/Menu.cpp
                     Source/BST.h
-                    Tests/DateTest.cpp
-                    Tests/LuggageTest.cpp
-                    Tests/EmployeeTest.cpp
-                    Tests/PassengerTest.cpp
-                    Tests/ServiceTest.cpp
                     Source/Exceptions.cpp Source/Exceptions.h
                     Source/Utilities.cpp Source/Utilities.h
                     Source/Cart.cpp Source/Cart.h)
