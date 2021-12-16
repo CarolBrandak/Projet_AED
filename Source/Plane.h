@@ -193,25 +193,31 @@ class Plane {
          */
         Flight* findFlight(const string &origin, const string &destination);
 
-
-
-        //==============================================
-
-
-
         /**
          * Adds a service to the queue of services
          * @param service - a Service type object to be added to the queue of services
          */
         void addService(Service &service);
 
+        /**
+         * 
+         * @param date
+         * @return
+         */
+        Service* findService(Date &date);
 
+        /**
+         *
+         * @param name
+         * @return
+         */
+        Employee* findEmployee(const string &name);
 
-
-
-
-
-
+        /**
+         *
+         * @return
+         */
+        vector<Employee*> getEmployees();
 
         /**
          * @overload
