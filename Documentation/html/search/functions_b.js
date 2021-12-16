@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['_7ecompany_0',['~Company',['../class_company.html#a61c2a9ec178e683310583ef15635b53c',1,'Company']]],
-  ['_7edate_1',['~Date',['../class_date.html#ade4b469433b7966cc034cbcc6799233b',1,'Date']]],
-  ['_7eemployee_2',['~Employee',['../class_employee.html#abed56e9c007fff2bfe27ca87251baaf2',1,'Employee']]],
-  ['_7eflight_3',['~Flight',['../class_flight.html#a6e9898949b83cfbc068b4d5820990782',1,'Flight']]],
-  ['_7eluggage_4',['~Luggage',['../class_luggage.html#ae62b0a60597d354547c32e6bb82413c2',1,'Luggage']]],
-  ['_7epassenger_5',['~Passenger',['../class_passenger.html#a6a6747cafd45d2c85db2ec4e873be3c7',1,'Passenger']]],
-  ['_7eperson_6',['~Person',['../class_person.html#a700ffd693321c5fe6880262acf43d4da',1,'Person']]],
-  ['_7eplane_7',['~Plane',['../class_plane.html#a69abd86051c880dcb44b249ad10c4436',1,'Plane']]],
-  ['_7eservice_8',['~Service',['../class_service.html#af6c3577b59652ac817d1d76aaccee904',1,'Service']]]
+  ['refreshdata_0',['refreshData',['../class_company.html#a7136d57fa0e5f8d9dfcc43d44e677f41',1,'Company']]],
+  ['removeflight_1',['removeFlight',['../class_plane.html#a3f5e1a277bdf58ce53b4cc614194b0fe',1,'Plane']]],
+  ['removeluggage_2',['removeLuggage',['../class_flight.html#a9073d5c468bbf2717b241c35f20cdd00',1,'Flight::removeLuggage()'],['../class_passenger.html#aa6b7188898a38ff8cc734488af08c676',1,'Passenger::removeLuggage()']]],
+  ['removepassenger_3',['removePassenger',['../class_flight.html#a3db3934e4542d9a20d15a491d3c82429',1,'Flight']]],
+  ['removeplane_4',['removePlane',['../class_company.html#ace42b87d21f81fc7a9593aa540bb4b7d',1,'Company']]],
+  ['removetransport_5',['removeTransport',['../class_airport.html#a4a9be44d2d87c4f5410a388d1b25f86e',1,'Airport::removeTransport()'],['../class_flight.html#a95f78fb95ffcbb2f16067f0cf0aab2af',1,'Flight::removeTransport()']]]
 ];

@@ -66,6 +66,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_date-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Date Class Reference</div></div>
 </div><!--header-->
@@ -83,6 +84,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab1ad19969fa570605a6b0cd32b0da822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34800c7de8bf90ac7d39e28505def182"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a34800c7de8bf90ac7d39e28505def182">Date</a> (int day, int month, int year, int hour, int minute)</td></tr>
 <tr class="separator:a34800c7de8bf90ac7d39e28505def182"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16d965c3faed1ad91a2570c32cf7f949"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a16d965c3faed1ad91a2570c32cf7f949">Date</a> (int hour, int minute)</td></tr>
+<tr class="separator:a16d965c3faed1ad91a2570c32cf7f949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f253815240e70f4c39cb93cc68bd3f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a0f253815240e70f4c39cb93cc68bd3f4">getDay</a> () const</td></tr>
 <tr class="separator:a0f253815240e70f4c39cb93cc68bd3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a332f6e3a2f6a40d73742b6dab7be0f64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#a332f6e3a2f6a40d73742b6dab7be0f64">getMonth</a> () const</td></tr>
@@ -125,12 +128,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hour</b></td></tr>
 <tr class="memitem:a0c4d2495e3da7ac1e7d3e19ecda210a2"><td class="memItemLeft" align="right" valign="top"><a id="a0c4d2495e3da7ac1e7d3e19ecda210a2" name="a0c4d2495e3da7ac1e7d3e19ecda210a2"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>minute</b></td></tr>
 <tr class="separator:a0c4d2495e3da7ac1e7d3e19ecda210a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ac0f695447b7c2af099d0744865300c03"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_date.html#ac0f695447b7c2af099d0744865300c03">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_date.html">Date</a> &amp;date)</td></tr>
+<tr class="separator:ac0f695447b7c2af099d0744865300c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class that represents a <a class="el" href="class_date.html">Date</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4e59ed4ba66eec61c27460c5d09fa1bd" name="a4e59ed4ba66eec61c27460c5d09fa1bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e59ed4ba66eec61c27460c5d09fa1bd">&#9670;&nbsp;</a></span>Date() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e59ed4ba66eec61c27460c5d09fa1bd">&#9670;&nbsp;</a></span>Date() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +174,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>minute</b></td></tr>
 </div>
 </div>
 <a id="ab1ad19969fa570605a6b0cd32b0da822" name="ab1ad19969fa570605a6b0cd32b0da822"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1ad19969fa570605a6b0cd32b0da822">&#9670;&nbsp;</a></span>Date() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1ad19969fa570605a6b0cd32b0da822">&#9670;&nbsp;</a></span>Date() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,7 +204,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>minute</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Main constructor </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Main constructor of the class: day, month, year </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">day</td><td><a class="el" href="class_date.html">Date</a>'s day, a int passed by value </td></tr>
     <tr><td class="paramname">month</td><td><a class="el" href="class_date.html">Date</a>'s month, a int passed by value </td></tr>
@@ -208,7 +216,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>minute</b></td></tr>
 </div>
 </div>
 <a id="a34800c7de8bf90ac7d39e28505def182" name="a34800c7de8bf90ac7d39e28505def182"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34800c7de8bf90ac7d39e28505def182">&#9670;&nbsp;</a></span>Date() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a34800c7de8bf90ac7d39e28505def182">&#9670;&nbsp;</a></span>Date() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,11 +258,46 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>minute</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Another constructor </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Constructor of the class: day, month, year, hour and minute </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">day</td><td><a class="el" href="class_date.html">Date</a>'s day, a int passed by value </td></tr>
     <tr><td class="paramname">month</td><td><a class="el" href="class_date.html">Date</a>'s month, a int passed by value </td></tr>
     <tr><td class="paramname">year</td><td><a class="el" href="class_date.html">Date</a>'s year, a int passed by value </td></tr>
+    <tr><td class="paramname">hour,Date's</td><td>hour, a integer passed by value </td></tr>
+    <tr><td class="paramname">minute,Date's</td><td>minute, a integer passed by value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a16d965c3faed1ad91a2570c32cf7f949" name="a16d965c3faed1ad91a2570c32cf7f949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16d965c3faed1ad91a2570c32cf7f949">&#9670;&nbsp;</a></span>Date() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Date::Date </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>minute</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Constructor of the class: hour and minute </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramname">hour,Date's</td><td>hour, a integer passed by value </td></tr>
     <tr><td class="paramname">minute,Date's</td><td>minute, a integer passed by value </td></tr>
   </table>
@@ -521,6 +564,51 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>minute</b></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ac0f695447b7c2af099d0744865300c03" name="ac0f695447b7c2af099d0744865300c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0f695447b7c2af099d0744865300c03">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_date.html">Date</a> &amp;&#160;</td>
+          <td class="paramname"><em>date</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Function that returns all characteristics of the <a class="el" href="class_date.html">Date</a> being manipulated </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>ostream object, passed by reference </td></tr>
+    <tr><td class="paramname">date</td><td><a class="el" href="class_date.html">Date</a> object, passed by reference </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ostream object </dd></dl>
 
 </div>
 </div>

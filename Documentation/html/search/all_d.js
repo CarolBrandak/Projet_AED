@@ -1,18 +1,9 @@
 var searchData=
 [
-  ['savedata_0',['saveData',['../class_company.html#af7141ede6dba782b8c187d5db704e8e2',1,'Company']]],
-  ['service_1',['Service',['../class_service.html',1,'Service'],['../class_service.html#acc246c9f7ed3c51e2d91d10fe257513f',1,'Service::Service()'],['../class_service.html#ab35757fbaf3dbed692dca4fca941782f',1,'Service::Service(string id, string serviceType, Date serviceDate, Employee responsible)']]],
-  ['setage_2',['setAge',['../class_person.html#aabd5b71bb4270ee87a09229cc360bfd9',1,'Person']]],
-  ['setday_3',['setDay',['../class_date.html#ad241f3ea8455764b76c0d54a0adf7775',1,'Date']]],
-  ['setflightdate_4',['setFlightDate',['../class_flight.html#a7ad90d3b78248f3c3afea197c42d51d0',1,'Flight']]],
-  ['setgender_5',['setGender',['../class_person.html#aaa0dc4f09c879f7a9f806ec58a171c29',1,'Person']]],
-  ['sethour_6',['setHour',['../class_date.html#a111046f325840b4ab242f103b118004f',1,'Date']]],
-  ['setminute_7',['setMinute',['../class_date.html#ac483b13e7103cdec3adc1d8176391934',1,'Date']]],
-  ['setmonth_8',['setMonth',['../class_date.html#ac98120d84e11d47eb8cf407ee707cbc0',1,'Date']]],
-  ['setname_9',['setName',['../class_person.html#a4b39c1f5d600b1e41ef95c09f4b42935',1,'Person']]],
-  ['setnextserviceasdone_10',['setNextServiceAsDone',['../class_plane.html#a167e9f248817a26394bee61d810eb71e',1,'Plane']]],
-  ['setpassportnumber_11',['setPassportNumber',['../class_passenger.html#a3078aea6882c3567365144e7cd207417',1,'Passenger']]],
-  ['setplanehold_12',['setPlaneHold',['../class_luggage.html#a7509c1a9fc66d18806ccada8dfce1d29',1,'Luggage']]],
-  ['setresponsible_13',['setResponsible',['../class_service.html#aa95055b966c58604ba587681ee750786',1,'Service']]],
-  ['setyear_14',['setYear',['../class_date.html#a90b4e71027aef0a7e0af16c73bfe5b30',1,'Date']]]
+  ['refreshdata_0',['refreshData',['../class_company.html#a7136d57fa0e5f8d9dfcc43d44e677f41',1,'Company']]],
+  ['removeflight_1',['removeFlight',['../class_plane.html#a3f5e1a277bdf58ce53b4cc614194b0fe',1,'Plane']]],
+  ['removeluggage_2',['removeLuggage',['../class_flight.html#a9073d5c468bbf2717b241c35f20cdd00',1,'Flight::removeLuggage()'],['../class_passenger.html#aa6b7188898a38ff8cc734488af08c676',1,'Passenger::removeLuggage()']]],
+  ['removepassenger_3',['removePassenger',['../class_flight.html#a3db3934e4542d9a20d15a491d3c82429',1,'Flight']]],
+  ['removeplane_4',['removePlane',['../class_company.html#ace42b87d21f81fc7a9593aa540bb4b7d',1,'Company']]],
+  ['removetransport_5',['removeTransport',['../class_airport.html#a4a9be44d2d87c4f5410a388d1b25f86e',1,'Airport::removeTransport()'],['../class_flight.html#a95f78fb95ffcbb2f16067f0cf0aab2af',1,'Flight::removeTransport()']]]
 ];

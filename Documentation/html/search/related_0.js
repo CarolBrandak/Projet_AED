@@ -1,16 +1,4 @@
 var searchData=
 [
-  ['byage_0',['byAge',['../class_passenger.html#a1ccafb0fd71cd0c7fedd2947f5723dfd',1,'Passenger']]],
-  ['bydate_1',['byDate',['../class_flight.html#ad96e1dcbd996ea0dae06f4693211bf4c',1,'Flight']]],
-  ['byduration_2',['byDuration',['../class_flight.html#a2ba7387ef7cb51eecbc38861c233ffce',1,'Flight']]],
-  ['byluggage_3',['byLuggage',['../class_passenger.html#a0bc545f1af0f279cd81283b8ca3af6eb',1,'Passenger']]],
-  ['bymaximumcapacity_4',['byMaximumCapacity',['../class_plane.html#ac7564c7d9d1d8b050fedfefd378922eb',1,'Plane']]],
-  ['bymaximumweight_5',['byMaximumWeight',['../class_plane.html#a75a823689f8360f88d42381747d3f1bc',1,'Plane']]],
-  ['byname_6',['byName',['../class_passenger.html#a5caf990c45654e2f1c01105a4e494ee2',1,'Passenger']]],
-  ['bynumberofflights_7',['byNumberOfFlights',['../class_plane.html#ab1c8cbb3b158a9170c385243539c1e5f',1,'Plane']]],
-  ['bynumberofpassengers_8',['byNumberOfPassengers',['../class_flight.html#adbfd34adcc3e87e28f9c98ebb2353246',1,'Flight']]],
-  ['bynumberofservices_9',['byNumberOfServices',['../class_plane.html#aef34706a005ef41e6de6b042c87f3365',1,'Plane']]],
-  ['bytotalweight_10',['byTotalWeight',['../class_flight.html#ae3d6ed384265d064b13dff988e9c1250',1,'Flight']]],
-  ['byvolume_11',['byVolume',['../class_luggage.html#a2c4323e7bb0d0f151b26ac2906b95713',1,'Luggage']]],
-  ['byweight_12',['byWeight',['../class_luggage.html#a3c6efdef2f0535404dcb44589b9a4d7c',1,'Luggage']]]
+  ['operator_3c_3c_0',['operator&lt;&lt;',['../class_airport.html#afa39906186781198ccd7ead10daa3d07',1,'Airport::operator&lt;&lt;()'],['../class_date.html#ac0f695447b7c2af099d0744865300c03',1,'Date::operator&lt;&lt;()'],['../class_employee.html#a49bdee4ead894824493ac1153813f4ab',1,'Employee::operator&lt;&lt;()'],['../class_flight.html#a4d88bde26f419c282b821b291275c536',1,'Flight::operator&lt;&lt;()'],['../class_luggage.html#a6ef87bfdb64285a2858b5419ce489036',1,'Luggage::operator&lt;&lt;()'],['../class_passenger.html#a3e269d426a2e411041a0bda3cb56ef82',1,'Passenger::operator&lt;&lt;()'],['../class_plane.html#a8a0e4b644736a495f9bc4b0e74285d4b',1,'Plane::operator&lt;&lt;()'],['../class_service.html#a2540caec67247d2831488ce247f038f8',1,'Service::operator&lt;&lt;()'],['../class_transport.html#ac3c4b2fc9c2d4b7d7259ade35fb4ba36',1,'Transport::operator&lt;&lt;()']]]
 ];

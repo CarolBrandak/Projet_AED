@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['menu_0',['Menu',['../class_menu.html',1,'']]]
+  ['filenotfound_0',['FileNotFound',['../class_file_not_found.html',1,'']]],
+  ['flight_1',['Flight',['../class_flight.html',1,'']]]
 ];

@@ -91,8 +91,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6a6747cafd45d2c85db2ec4e873be3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e40f9ee396fb74f6be082c62f4be70b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a2e40f9ee396fb74f6be082c62f4be70b">Passenger</a> (string id, string name, short int age, char gender, string passportNumber)</td></tr>
 <tr class="separator:a2e40f9ee396fb74f6be082c62f4be70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3078aea6882c3567365144e7cd207417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a3078aea6882c3567365144e7cd207417">setPassportNumber</a> (const string &amp;passportNumber)</td></tr>
-<tr class="separator:a3078aea6882c3567365144e7cd207417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a371ad61c989a46e9b8c7edc4b4b8aedd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a371ad61c989a46e9b8c7edc4b4b8aedd">addLuggage</a> (<a class="el" href="class_luggage.html">Luggage</a> &amp;luggage)</td></tr>
 <tr class="separator:a371ad61c989a46e9b8c7edc4b4b8aedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04ad69af95dc87e9fc7d4bcce39f8698"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a04ad69af95dc87e9fc7d4bcce39f8698">getID</a> () const</td></tr>
@@ -105,6 +103,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0837be2813e5bb34344ea4d22a75e07e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac87853081869a7f8d8301ed827e82ebd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#ac87853081869a7f8d8301ed827e82ebd">getTotalVolume</a> () const</td></tr>
 <tr class="separator:ac87853081869a7f8d8301ed827e82ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b7188898a38ff8cc734488af08c676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#aa6b7188898a38ff8cc734488af08c676">removeLuggage</a> (<a class="el" href="class_luggage.html">Luggage</a> *l)</td></tr>
+<tr class="separator:aa6b7188898a38ff8cc734488af08c676"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d151edf0db8b9c38f8f20be19e8ff9c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a1d151edf0db8b9c38f8f20be19e8ff9c">operator==</a> (const <a class="el" href="class_passenger.html">Passenger</a> &amp;passenger) const</td></tr>
 <tr class="separator:a1d151edf0db8b9c38f8f20be19e8ff9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4046f3ec43403ec98d27e2c2d58776b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#ac4046f3ec43403ec98d27e2c2d58776b">operator&lt;</a> (const <a class="el" href="class_passenger.html">Passenger</a> &amp;passenger) const</td></tr>
@@ -134,21 +134,17 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a076960a4b5557381378967f237d9224d"><td class="memItemLeft" align="right" valign="top"><a id="a076960a4b5557381378967f237d9224d" name="a076960a4b5557381378967f237d9224d"></a>
 const string&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
 <tr class="separator:a076960a4b5557381378967f237d9224d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad4d65f96559dfdef678647e199df68b"><td class="memItemLeft" align="right" valign="top"><a id="aad4d65f96559dfdef678647e199df68b" name="aad4d65f96559dfdef678647e199df68b"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>PASSPORT</b></td></tr>
-<tr class="separator:aad4d65f96559dfdef678647e199df68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a308d403762ef1a90c1ec59709df39e98"><td class="memItemLeft" align="right" valign="top"><a id="a308d403762ef1a90c1ec59709df39e98" name="a308d403762ef1a90c1ec59709df39e98"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>PASSPORT</b></td></tr>
+<tr class="separator:a308d403762ef1a90c1ec59709df39e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a084a4e656d12b37533780d8fd6ee3802"><td class="memItemLeft" align="right" valign="top"><a id="a084a4e656d12b37533780d8fd6ee3802" name="a084a4e656d12b37533780d8fd6ee3802"></a>
 vector&lt; <a class="el" href="class_luggage.html">Luggage</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>luggage</b></td></tr>
 <tr class="separator:a084a4e656d12b37533780d8fd6ee3802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a5caf990c45654e2f1c01105a4e494ee2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a5caf990c45654e2f1c01105a4e494ee2">byName</a> (const <a class="el" href="class_passenger.html">Passenger</a> &amp;p1, const <a class="el" href="class_passenger.html">Passenger</a> &amp;p2)</td></tr>
-<tr class="separator:a5caf990c45654e2f1c01105a4e494ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ccafb0fd71cd0c7fedd2947f5723dfd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a1ccafb0fd71cd0c7fedd2947f5723dfd">byAge</a> (const <a class="el" href="class_passenger.html">Passenger</a> &amp;p1, const <a class="el" href="class_passenger.html">Passenger</a> &amp;p2)</td></tr>
-<tr class="separator:a1ccafb0fd71cd0c7fedd2947f5723dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bc545f1af0f279cd81283b8ca3af6eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a0bc545f1af0f279cd81283b8ca3af6eb">byLuggage</a> (const <a class="el" href="class_passenger.html">Passenger</a> &amp;p1, const <a class="el" href="class_passenger.html">Passenger</a> &amp;p2)</td></tr>
-<tr class="separator:a0bc545f1af0f279cd81283b8ca3af6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e269d426a2e411041a0bda3cb56ef82"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_passenger.html#a3e269d426a2e411041a0bda3cb56ef82">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_passenger.html">Passenger</a> &amp;passenger)</td></tr>
+<tr class="separator:a3e269d426a2e411041a0bda3cb56ef82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -423,24 +419,24 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>gender</b></td></tr>
 
 </div>
 </div>
-<a id="a3078aea6882c3567365144e7cd207417" name="a3078aea6882c3567365144e7cd207417"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3078aea6882c3567365144e7cd207417">&#9670;&nbsp;</a></span>setPassportNumber()</h2>
+<a id="aa6b7188898a38ff8cc734488af08c676" name="aa6b7188898a38ff8cc734488af08c676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6b7188898a38ff8cc734488af08c676">&#9670;&nbsp;</a></span>removeLuggage()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Passenger::setPassportNumber </td>
+          <td class="memname">void Passenger::removeLuggage </td>
           <td>(</td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>passportNumber</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_luggage.html">Luggage</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Set <a class="el" href="class_passenger.html">Passenger</a> passport number </p><dl class="params"><dt>Parameters</dt><dd>
+<p >A function that removes luggage from the current <a class="el" href="class_passenger.html">Passenger</a> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">passportNumber</td><td><a class="el" href="class_passenger.html">Passenger</a>'s new passport number, a string passed by reference </td></tr>
+    <tr><td class="paramname">l</td><td>- <a class="el" href="class_luggage.html">Luggage</a> object that will be removed </td></tr>
   </table>
   </dd>
 </dl>
@@ -448,8 +444,8 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>gender</b></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a1ccafb0fd71cd0c7fedd2947f5723dfd" name="a1ccafb0fd71cd0c7fedd2947f5723dfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ccafb0fd71cd0c7fedd2947f5723dfd">&#9670;&nbsp;</a></span>byAge</h2>
+<a id="a3e269d426a2e411041a0bda3cb56ef82" name="a3e269d426a2e411041a0bda3cb56ef82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e269d426a2e411041a0bda3cb56ef82">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,16 +454,16 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>gender</b></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool byAge </td>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_passenger.html">Passenger</a> &amp;&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="class_passenger.html">Passenger</a> &amp;&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
+          <td class="paramname"><em>passenger</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -481,102 +477,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>gender</b></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Boolean function thar compares to objects of this class, based on their age </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Function that returns all characteristics of the <a class="el" href="class_passenger.html">Passenger</a> being manipulated </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p1</td><td>first person that will be compared </td></tr>
-    <tr><td class="paramname">p2</td><td>second person that will be compared </td></tr>
+    <tr><td class="paramname">os</td><td>ostream object, passed by reference </td></tr>
+    <tr><td class="paramname">passenger</td><td><a class="el" href="class_passenger.html">Passenger</a> object, passed by reference </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>if p1 has less age than p2 </dd></dl>
-
-</div>
-</div>
-<a id="a0bc545f1af0f279cd81283b8ca3af6eb" name="a0bc545f1af0f279cd81283b8ca3af6eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bc545f1af0f279cd81283b8ca3af6eb">&#9670;&nbsp;</a></span>byLuggage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool byLuggage </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_passenger.html">Passenger</a> &amp;&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_passenger.html">Passenger</a> &amp;&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Boolean function thar compares to objects of this class, based on their total luggage's weight </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p1</td><td>first person that will be compared </td></tr>
-    <tr><td class="paramname">p2</td><td>second person that will be compared </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>if p1 has less luggage weight than p2 </dd></dl>
-
-</div>
-</div>
-<a id="a5caf990c45654e2f1c01105a4e494ee2" name="a5caf990c45654e2f1c01105a4e494ee2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5caf990c45654e2f1c01105a4e494ee2">&#9670;&nbsp;</a></span>byName</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool byName </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_passenger.html">Passenger</a> &amp;&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_passenger.html">Passenger</a> &amp;&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Boolean function thar compares to objects of this class, based on their Name </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p1</td><td>first person that will be compared </td></tr>
-    <tr><td class="paramname">p2</td><td>second person that will be compared </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>if p1 has less name than p2, based on alphabetic order </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>ostream object </dd></dl>
 
 </div>
 </div>

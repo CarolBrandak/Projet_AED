@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['volume_0',['Volume',['../struct_volume.html',1,'']]]
+  ['menu_0',['Menu',['../class_menu.html',1,'']]]
 ];

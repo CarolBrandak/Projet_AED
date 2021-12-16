@@ -66,6 +66,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_service-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Service Class Reference</div></div>
 </div><!--header-->
@@ -77,8 +78,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acc246c9f7ed3c51e2d91d10fe257513f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6c3577b59652ac817d1d76aaccee904"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#af6c3577b59652ac817d1d76aaccee904">~Service</a> ()</td></tr>
 <tr class="separator:af6c3577b59652ac817d1d76aaccee904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab35757fbaf3dbed692dca4fca941782f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#ab35757fbaf3dbed692dca4fca941782f">Service</a> (string id, string serviceType, <a class="el" href="class_date.html">Date</a> serviceDate, <a class="el" href="class_employee.html">Employee</a> responsible)</td></tr>
-<tr class="separator:ab35757fbaf3dbed692dca4fca941782f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8962a06863a968ca0da32537ec0a315"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#ae8962a06863a968ca0da32537ec0a315">Service</a> (string ID, string TYPE, <a class="el" href="class_date.html">Date</a> DATE, <a class="el" href="class_employee.html">Employee</a> responsible)</td></tr>
+<tr class="separator:ae8962a06863a968ca0da32537ec0a315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af44e86f3e8c23cbe397019821b84e092"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#af44e86f3e8c23cbe397019821b84e092">getID</a> () const</td></tr>
 <tr class="separator:af44e86f3e8c23cbe397019821b84e092"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c5141df52d1a775b7e31e744ac80834"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a9c5141df52d1a775b7e31e744ac80834">getServiceType</a> () const</td></tr>
@@ -89,21 +90,30 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9e20e5045350323f5d3948a006904d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa95055b966c58604ba587681ee750786"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#aa95055b966c58604ba587681ee750786">setResponsible</a> (const <a class="el" href="class_employee.html">Employee</a> &amp;employee)</td></tr>
 <tr class="separator:aa95055b966c58604ba587681ee750786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6630b724a9ae7d1dff650e1635043afa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a6630b724a9ae7d1dff650e1635043afa">operator==</a> (const <a class="el" href="class_service.html">Service</a> &amp;service) const</td></tr>
+<tr class="separator:a6630b724a9ae7d1dff650e1635043afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e5d0c89ca0c5137a7fae639bb57b64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a79e5d0c89ca0c5137a7fae639bb57b64">operator&lt;</a> (const <a class="el" href="class_service.html">Service</a> &amp;service) const</td></tr>
+<tr class="separator:a79e5d0c89ca0c5137a7fae639bb57b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:add56d4e89af3d09ed0f82096d58a295e"><td class="memItemLeft" align="right" valign="top"><a id="add56d4e89af3d09ed0f82096d58a295e" name="add56d4e89af3d09ed0f82096d58a295e"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
-<tr class="separator:add56d4e89af3d09ed0f82096d58a295e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a7538f5737679f5ef5fb5502d366302"><td class="memItemLeft" align="right" valign="top"><a id="a6a7538f5737679f5ef5fb5502d366302" name="a6a7538f5737679f5ef5fb5502d366302"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>serviceType</b></td></tr>
-<tr class="separator:a6a7538f5737679f5ef5fb5502d366302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed0fa25cb76e9750e7a79ed8e8ecefae"><td class="memItemLeft" align="right" valign="top"><a id="aed0fa25cb76e9750e7a79ed8e8ecefae" name="aed0fa25cb76e9750e7a79ed8e8ecefae"></a>
-const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>serviceDate</b></td></tr>
-<tr class="separator:aed0fa25cb76e9750e7a79ed8e8ecefae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6de9e7fb8effc5f1df8f80b5a300e6"><td class="memItemLeft" align="right" valign="top"><a id="a3b6de9e7fb8effc5f1df8f80b5a300e6" name="a3b6de9e7fb8effc5f1df8f80b5a300e6"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b></td></tr>
+<tr class="separator:a3b6de9e7fb8effc5f1df8f80b5a300e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559252b1fe210c7ac79ef6459484f07a"><td class="memItemLeft" align="right" valign="top"><a id="a559252b1fe210c7ac79ef6459484f07a" name="a559252b1fe210c7ac79ef6459484f07a"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>TYPE</b></td></tr>
+<tr class="separator:a559252b1fe210c7ac79ef6459484f07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb4be808329b433b375bad6c0e915ce"><td class="memItemLeft" align="right" valign="top"><a id="a7bb4be808329b433b375bad6c0e915ce" name="a7bb4be808329b433b375bad6c0e915ce"></a>
+const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DATE</b></td></tr>
+<tr class="separator:a7bb4be808329b433b375bad6c0e915ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39317bcae807f2e594d4fb1ef7dfa19e"><td class="memItemLeft" align="right" valign="top"><a id="a39317bcae807f2e594d4fb1ef7dfa19e" name="a39317bcae807f2e594d4fb1ef7dfa19e"></a>
 <a class="el" href="class_employee.html">Employee</a>&#160;</td><td class="memItemRight" valign="bottom"><b>responsible</b></td></tr>
 <tr class="separator:a39317bcae807f2e594d4fb1ef7dfa19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a2540caec67247d2831488ce247f038f8"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_service.html#a2540caec67247d2831488ce247f038f8">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_service.html">Service</a> &amp;service)</td></tr>
+<tr class="separator:a2540caec67247d2831488ce247f038f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acc246c9f7ed3c51e2d91d10fe257513f" name="acc246c9f7ed3c51e2d91d10fe257513f"></a>
@@ -142,8 +152,8 @@ const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItem
 
 </div>
 </div>
-<a id="ab35757fbaf3dbed692dca4fca941782f" name="ab35757fbaf3dbed692dca4fca941782f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab35757fbaf3dbed692dca4fca941782f">&#9670;&nbsp;</a></span>Service() <span class="overload">[2/2]</span></h2>
+<a id="ae8962a06863a968ca0da32537ec0a315" name="ae8962a06863a968ca0da32537ec0a315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8962a06863a968ca0da32537ec0a315">&#9670;&nbsp;</a></span>Service() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -152,19 +162,19 @@ const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItem
           <td class="memname">Service::Service </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>id</em>, </td>
+          <td class="paramname"><em>ID</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>serviceType</em>, </td>
+          <td class="paramname"><em>TYPE</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_date.html">Date</a>&#160;</td>
-          <td class="paramname"><em>serviceDate</em>, </td>
+          <td class="paramname"><em>DATE</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -181,9 +191,9 @@ const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItem
 </div><div class="memdoc">
 <p >Constructor that creates an service </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>- a string, containing service's id </td></tr>
-    <tr><td class="paramname">serviceType</td><td>- a string, containing the service type </td></tr>
-    <tr><td class="paramname">serviceDate</td><td>- a <a class="el" href="class_date.html">Date</a> type object containing the <a class="el" href="class_date.html">Date</a> of the service </td></tr>
+    <tr><td class="paramname">ID</td><td>- a string, containing service's id </td></tr>
+    <tr><td class="paramname">TYPE</td><td>- a string, containing the service type </td></tr>
+    <tr><td class="paramname">DATE</td><td>- a <a class="el" href="class_date.html">Date</a> type object containing the <a class="el" href="class_date.html">Date</a> of the service </td></tr>
     <tr><td class="paramname">responsible</td><td>- a <a class="el" href="class_employee.html">Employee</a> type object, containing the <a class="el" href="class_employee.html">Employee</a> responsible for the service </td></tr>
   </table>
   </dd>
@@ -264,6 +274,56 @@ const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItem
 
 </div>
 </div>
+<a id="a79e5d0c89ca0c5137a7fae639bb57b64" name="a79e5d0c89ca0c5137a7fae639bb57b64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e5d0c89ca0c5137a7fae639bb57b64">&#9670;&nbsp;</a></span>operator&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Service::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_service.html">Service</a> &amp;&#160;</td>
+          <td class="paramname"><em>service</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Boolean function that compares two objects of this class </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">service</td><td>another object that will be compared </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if the current object is less than the object passed by reference </dd></dl>
+
+</div>
+</div>
+<a id="a6630b724a9ae7d1dff650e1635043afa" name="a6630b724a9ae7d1dff650e1635043afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6630b724a9ae7d1dff650e1635043afa">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Service::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_service.html">Service</a> &amp;&#160;</td>
+          <td class="paramname"><em>service</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Boolean function that compares two objects of this class </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">service</td><td>another object that will be compared </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if the current object is the same object passed by reference </dd></dl>
+
+</div>
+</div>
 <a id="aa95055b966c58604ba587681ee750786" name="aa95055b966c58604ba587681ee750786"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa95055b966c58604ba587681ee750786">&#9670;&nbsp;</a></span>setResponsible()</h2>
 
@@ -285,6 +345,51 @@ const <a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItem
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a2540caec67247d2831488ce247f038f8" name="a2540caec67247d2831488ce247f038f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2540caec67247d2831488ce247f038f8">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_service.html">Service</a> &amp;&#160;</td>
+          <td class="paramname"><em>service</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Function that returns all characteristics of the <a class="el" href="class_service.html">Service</a> being manipulated </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ostream</td><td>object, passed by reference </td></tr>
+    <tr><td class="paramname">service</td><td>object, passed by reference </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ostream object </dd></dl>
 
 </div>
 </div>
