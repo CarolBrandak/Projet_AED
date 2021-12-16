@@ -72,11 +72,6 @@ void Date::setMinute(const int &minute) {
 }
 
 bool Date::operator == (const Date &date) const {
-    if (!day && !month && !year) {
-        return hour == date.hour && minute == date.minute;
-    } else if (!hour && !minute) {
-        return day == date.day && month == date.month && year == date.year;
-    }
     return day == date.day && month == date.month && year == date.year &&
             hour == date.hour && minute == date.minute;
 }
@@ -84,10 +79,12 @@ bool Date::operator == (const Date &date) const {
 bool Date::operator < (const Date &date) const {
     if (year == date.year) {
         if (month == date.month) {
-            if (hour == date.hour) {
-                return minute < date.minute;
-            } else return hour < date.hour;
-        } else return month < date.hour;
+            if (day == date.day) {
+                if (hour == date.hour) {
+                    return minute < date.minute;
+                } else return hour < date.hour;
+            } else return day < date.day;
+        } else return month < date.month;
     } else return year < date.year;
 }
 
