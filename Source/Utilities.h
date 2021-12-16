@@ -145,7 +145,7 @@ bool byServiceType(const Service *s1, const Service *s2);
 * @param s2 second person that will be compared
 * @return if p1 has less services than p2
 */
-bool byDistance(const Transport &t1, const Transport &t2);
+bool byDistance(const Transport *t1, const Transport *t2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of services
@@ -153,7 +153,7 @@ bool byDistance(const Transport &t1, const Transport &t2);
 * @param s2 second person that will be compared
 * @return if p1 has less services than p2
 */
-bool byTransportType(const Transport &t1, const Transport &t2);
+bool byTransportType(const Transport *t1, const Transport *t2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of services
@@ -161,6 +161,6 @@ bool byTransportType(const Transport &t1, const Transport &t2);
 * @param s2 second person that will be compared
 * @return if p1 has less services than p2
 */
-bool byTransportTime(const Transport &t1, const Transport &t2);
+bool byTransportTime(const Transport *t1, const Transport *t2);
 
 #endif // PROJECT_AED_UTILITIES_H

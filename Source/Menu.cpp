@@ -894,7 +894,50 @@ void Menu::listEmployees() {
 
 void Menu::listTransports() {
 
-    char option = totalOrPartial();
+    char type = totalOrPartial();
+    vector<Transport*> transports = {};
+
+    if (type == 'T') transports = company->getAllTransports();
+    else {
+        string origin, destination;
+        cout << "Origem do voo: "; cin >> origin;
+        cout << "Destino do voo: "; cin >> destination;
+        Flight *flight = company->findFlight(origin, destination);
+        if (flight) transports = flight->getAllTransports();
+        else {
+            cout << "Voo nao encontrado" << endl;
+            getMenu();
+        }
+    }
+
+    if (!transports.empty()) {
+        int option;
+        do {
+            cout << "=====================================" << endl;
+            cout << "1 - Ordenar por distancia ao aeroporto" << endl;
+            cout << "2 - Ordenar por tipo" << endl;
+            cout << "3 - Ordenar por horario" << endl;
+            cout << "Your choice: ";
+            cin >> option;
+            cout << "=====================================" << endl;
+            if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+        } while (option < 1 || option > 3);
+
+        switch (option) {
+            case 1: sort(transports.begin(), transports.end(), byDistance); break;
+            case 2: sort(transports.begin(), transports.end(), byTransportType); break;
+            case 3: sort(transports.begin(), transports.end(), byTransportTime); break;
+        }
+
+        for (Transport *transport : transports) cout << *transport << endl;
+
+    } else {
+        cout << "O voo selecionado nao possui qualquer transporte" << endl;
+    }
+    getMenu();
 }
 
 #endif // PROJECT_AED_MENU_CPP

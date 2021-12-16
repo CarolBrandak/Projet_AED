@@ -71,16 +71,16 @@ bool byServiceType(const Service *s1, const Service *s2) {
     return s1->getServiceType() < s2->getServiceType();
 }
 
-bool byDistance(const Transport &t1, const Transport &t2) {
-    return t1.getDistance() < t2.getDistance();
+bool byDistance(const Transport *t1, const Transport *t2) {
+    return t1->getDistance() < t2->getDistance();
 }
 
-bool byTransportType(const Transport &t1, const Transport &t2) {
-    return t1.getType() < t2.getType();
+bool byTransportType(const Transport *t1, const Transport *t2) {
+    return t1->getType() < t2->getType();
 }
 
-bool byTransportTime(const Transport &t1, const Transport &t2) {
-    return t1.getDate() < t2.getDate();
+bool byTransportTime(const Transport *t1, const Transport *t2) {
+    return t1->getDate() < t2->getDate();
 }
 
 #endif // PROJECT_AED_UTILITIES_CPP
