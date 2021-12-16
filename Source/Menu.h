@@ -29,6 +29,7 @@ class Menu {
         void companyMenu();
         void passengerMenu();
         void allLists();
+        char totalOrPartial();
 
         // CompanyMenu
         void planeDataMenu();
@@ -56,7 +57,7 @@ class Menu {
         Flight fillFlightData(const string &id);
         Passenger fillPassengerData(const string &id);
         Luggage fillLuggageData(const string &id);
-        Employee fillEmployeeData(const string &id);
+        Employee fillEmployeeData();
         Transport fillTransportData(const string &id);
 
     public:

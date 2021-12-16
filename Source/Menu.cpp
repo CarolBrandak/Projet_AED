@@ -116,8 +116,10 @@ void Menu::planeDataMenu() {
             break;
         }
         case 2: {
-            // Remove um plane --> fazer método para a Company, depois coloco-o aqui
-            cout << "Supostamente removeu o aviao tal ou n" << endl;
+            string id;
+            cout << "Id do avião a remover: "; cin >> id;
+            company->removePlane(id);
+            company->save();
             getMenu();
             break;
         }
@@ -545,71 +547,118 @@ Plane Menu::fillPlaneData(const string &id) {
 
 Flight Menu::fillFlightData(const string &id) {
 
+    string origin, destination, airportName;
+    int year, month, day, hour, minute, duration;
+    cout << "Flight date:\nYear: "; cin >> year;
+    cout << "Month: "; cin >> month;
+    cout << "Day: "; cin >> day;
+    cout << "Hour: "; cin >> hour;
+    cout << "Minute: "; cin >> minute;
+    cout << "Duration: "; cin >> duration;
+    cout << "Origin: "; cin >> origin;
+    cout << "Airport name: "; cin >> airportName;
+    cout << "Airport city: "; cin >> destination;
+    return Flight(id, Date(day, month, year, hour, minute), duration, origin, Airport(airportName, destination));
 }
 
 Passenger Menu::fillPassengerData(const string &id) {
 
+    string name, passport;
+    short int age;
+    char gender;
+    cout << "Name: "; cin >> name;
+    cout << "Age: "; cin >> age;
+    cout << "Gender: "; cin >> gender;
+    cout << "Passport: "; cin >> passport;
+    return Passenger(id, name, age, gender, passport);
 }
 
 Luggage Menu::fillLuggageData(const string &id) {
 
+    short int weight, width, height, depth;
+    char planeHold;
+    cout << "Weight: "; cin >> weight;
+    cout << "Width: "; cin >> width;
+    cout << "Height: "; cin >> height;
+    cout << "Depth: "; cin >> depth;
+    cout << "Bagagem de mão? S/N"; cin >> planeHold;
+    Volume v = {width, height, depth};
+    return Luggage(id, weight, v, toupper(planeHold) == 'S');
 }
 
-Employee Menu::fillEmployeeData(const string &id) {
+Employee Menu::fillEmployeeData() {
 
+    string name;
+    short int age;
+    char gender;
+    cout << "Name: "; cin >> name;
+    cout << "Age: "; cin >> age;
+    cout << "Gender: "; cin >> gender;
+    return Employee(name, age, gender);
 }
 
 Transport Menu::fillTransportData(const string &id) {
 
+    string type;
+    int distance, hour, minute;
+    cout << "Type: "; cin >> type;
+    cout << "Distance: "; cin >> distance;
+    cout << "Hour: "; cin >> hour;
+    cout << "Minute: "; cin >> minute;
+    return Transport(id, type, distance, Date(hour, minute));
 }
 
+char Menu::totalOrPartial() {
 
+    char option;
+    do {
+        cout << "Listagem total ou parcial? T/C: ";
+        cin >> option;
+        if (toupper(option) != 'T' && toupper(option) != 'C')
+        cin.clear();
+        cin.ignore(1000, '\n');
+    } while (toupper(option) != 'T' && toupper(option) != 'C');
+
+    return toupper(option);
+}
 
 void Menu::listPlanes() {
 
-    char option;
-    int numMax;
+    char option = totalOrPartial();
     vector<Plane*> planes;
-    cout << "Lista total ou parcial? T/P: "; cin >> option;
-    if (toupper(option) == 'T') {
-        planes = company->getAllPlanes();
-        cout << &planes;
-    } else {
-        // se é parcial, saber qual é o número máximo de aviões a listar
-        cout << "Number maximum of planes to show: "; cin >> numMax;
-    }
+
 
 
 }
 
 void Menu::listFlights() {
 
-
+    char option = totalOrPartial();
 }
 
 void Menu::listPassengers() {
 
-
+    char option = totalOrPartial();
 }
 
 void Menu::listLuggages() {
 
-
+    char option = totalOrPartial();
 }
 
 void Menu::listServices() {
-
+    char option = totalOrPartial();
 
 }
 
 void Menu::listEmployees() {
 
-
+    char option = totalOrPartial();
 }
 
 void Menu::listTransports() {
 
-
+    char option = totalOrPartial();
 }
 
 #endif // PROJECT_AED_MENU_CPP
