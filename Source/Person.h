@@ -1,9 +1,7 @@
 #ifndef PROJECT_AED_PERSON_H
 #define PROJECT_AED_PERSON_H
 
-#include <iostream>
 #include <string>
-#include <vector>
 using namespace std;
 
 /**
