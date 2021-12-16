@@ -659,10 +659,10 @@ void Menu::listPlanes() {
 
 void Menu::listFlights() {
 
-    char option = totalOrPartial();
+    char type = totalOrPartial();
     vector<Flight*> flights = {};
 
-    if (option == 'T') flights = company->getAllFlights();
+    if (type == 'T') flights = company->getAllFlights();
     else {
         string id;
         cout << "ID do aviao: "; cin >> id;
@@ -675,6 +675,7 @@ void Menu::listFlights() {
     }
 
     if (!flights.empty()) {
+        int option;
         do {
             cout << "=====================================" << endl;
             cout << "1 - Ordenar por carga" << endl;
