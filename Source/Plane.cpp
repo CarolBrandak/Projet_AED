@@ -24,10 +24,10 @@ Plane::Plane(string ID,
              MAX_WEIGHT_CAPACITY(MAX_WEIGHT_CAPACITY),
              MAX_PASSENGERS_CAPACITY(MAX_PASSENGERS_CAPACITY) {
 
-            this->flights = {};
-            this->madeServices = {};
-            this->servicesToBeMade = {};
-            nextFlightID = 0;
+             this->flights = {};
+             this->madeServices = {};
+             this->servicesToBeMade = {};
+             nextFlightID = 0;
 }
 
 string Plane::getID() const {
@@ -65,21 +65,59 @@ unsigned int Plane::getMaxPassengersCapacity() const {
     return MAX_PASSENGERS_CAPACITY;
 }
 
+unsigned int Plane::getQuantityOfFlights() const {
+    return flights.size();
+}
+
+unsigned int Plane::getQuantityOfServicesToBeMade() const {
+    return servicesToBeMade.size();
+}
+
+unsigned int Plane::getQuantityOfMadeServices() const {
+    return madeServices.size();
+}
+
+string Plane::getNextFlightID() {
+    nextFlightID++;
+    return this->ID + "-" + to_string(nextFlightID);
+}
+
+void Plane::setNextServiceAsDone() {
+    if (!servicesToBeMade.empty()) {
+        madeServices.push_back(servicesToBeMade.front());
+        cout << "Realizado o serviço " << servicesToBeMade.front() << endl;
+        servicesToBeMade.pop();
+    } else {
+        cout << "Não há mais serviços para efetuar" << endl;
+    }
+}
+
+void Plane::checkServicesToBeMade() {
+    queue<Service*> copy = servicesToBeMade;
+    while (!copy.empty()) {
+        cout << copy.front();
+        copy.pop();
+    }
+}
+
+void Plane::checkMadeServices() {
+    for (auto const *service : madeServices)
+        cout << *service;
+}
+
 void Plane::checkFlights() {
     for (auto *flight : flights) {
         cout << *flight << endl;
     }
 }
 
+//==========================
+
 void Plane::addFlight(Flight &flight) {
     if (ID == flight.getID().substr(0, flight.getID().find('-'))) flights.push_back(&flight);
     if (stoi(flight.getID().substr(flight.getID().find('-') + 1)) > nextFlightID) nextFlightID++;
 }
 
-int Plane::getNextFlightID() {
-    nextFlightID++;
-    return nextFlightID--;
-}
 
 void Plane::removeFlight(Flight &flight) {
     for (auto it = flights.begin() ; it != flights.end() ; it++) {
@@ -101,23 +139,6 @@ void Plane::addService(Service &service) {
     if (ID == service.getID().substr(0, service.getID().find('-'))) servicesToBeMade.push(&service);
 }
 
-void Plane::setNextServiceAsDone() {
-    madeServices.push_back(servicesToBeMade.front());
-    servicesToBeMade.pop();
-}
-
-void Plane::checkServicesToBeMade() {
-    queue<Service*> copy = servicesToBeMade;
-    while (!copy.empty()) {
-        cout << copy.front();
-        copy.pop();
-    }
-}
-
-void Plane::checkMadeServices() {
-    for (auto const *service : madeServices)
-        cout << *service;
-}
 
 bool Plane::operator == (const Plane &plane) const {
     return this->ID == plane.ID && this->LICENSE_PLATE == plane.LICENSE_PLATE && this->TYPE == plane.TYPE &&
@@ -127,18 +148,6 @@ bool Plane::operator == (const Plane &plane) const {
 bool Plane::operator < (const Plane &plane) const {
     if (MAX_PASSENGERS_CAPACITY == plane.getMaxPassengersCapacity()) return MAX_WEIGHT_CAPACITY < plane.getMaxWeightCapacity();
     return MAX_PASSENGERS_CAPACITY < plane.getMaxPassengersCapacity();
-}
-
-unsigned int Plane::getQuantityOfFlights() const {
-    return flights.size();
-}
-
-unsigned int Plane::getQuantityOfServicesToBeMade() const {
-    return servicesToBeMade.size();
-}
-
-unsigned int Plane::getQuantityOfMadeServices() const {
-    return madeServices.size();
 }
 
 bool byMaximumWeight(const Plane &p1, const Plane &p2) {

@@ -19,47 +19,50 @@ class Plane {
     private:
 
         /**
-         * @var id - string variable that contains the Plane's id
+         * @var ID - a constant string that contains the Plane's id
          */
          const string ID;
 
         /**
-         * @var licensePlate - string variable that contains the Plane's license plate in the form "XX-XXX"
+         * @var LICENCE_PLATE a constant string that contains the Plane's license plate in the form "XX-XXX"
          * where each X is a letter.
          */
          const string LICENSE_PLATE;
 
         /**
-         * @var type - string variable that contains the Plane's type in the form "LXXX" where each X is a number
+         * @var TYPE - a string constant that contains the Plane's type in the form "LXXX" where each X is a number
          * and L is a letter
          */
          const string TYPE;
 
         /**
-         * @var MAX_WEIGHT_CAPACITY - constant that contains the plane's maximum weight capacity.
+         * @var MAX_WEIGHT_CAPACITY - an unsigned integer constant that contains the plane's maximum weight capacity.
          */
          const unsigned int MAX_WEIGHT_CAPACITY;
 
         /**
-         * @var MAX_PASSENGERS_CAPACITY - constant that contains the plane's maximum passengers capacity.
+         * @var MAX_PASSENGERS_CAPACITY - an unsigned integer constant that contains the plane's maximum passengers capacity.
          */
          const unsigned int MAX_PASSENGERS_CAPACITY;
 
         /**
-         * @var flights - list that contains all the flights programmed for the specific plane.
+         * @var flights - a list that contains all the flights programmed for the specific plane.
          */
         list<Flight*> flights;
 
         /**
-         * @var servicesToBeMade - queue that contains all the services to be made to the plane
+         * @var servicesToBeMade - a queue that contains all the services to be made to the plane
          */
         queue<Service*> servicesToBeMade;
 
         /**
-         * @var madeServices - list that contains all the services that were made to the plane
+         * @var madeServices - a list that contains all the services that were made to the plane
          */
         list<Service*> madeServices;
 
+        /**
+         * @var nextFlightID - an integer containing the next Flight ID, based on past included Flight
+         */
         int nextFlightID;
     
     public:
@@ -110,7 +113,7 @@ class Plane {
 
         /**
          * Returns the plane's Services
-         * @return a queue of Service objects
+         * @return a vector of Service objects
          */
         vector<Service*> getServices() const;
 
@@ -145,9 +148,33 @@ class Plane {
         unsigned int getQuantityOfMadeServices() const;
 
         /**
+         * A function to generate and get the next Flight id of the sequence based on previous inclusions
+         * @return a string containing the next
+         */
+        string getNextFlightID();
+
+        /**
+         * Sets a service as done by popping it from the servicesToBeMade queue and adding it
+         * to the madeServices list.
+        */
+        void setNextServiceAsDone();
+
+        /**
+         * Prints out all the services to be made
+        */
+        void checkServicesToBeMade();
+
+        /**
+         * Prints out all the made services
+         */
+        void checkMadeServices();
+
+        /**
          * Prints all flights of the plane
          */
         void checkFlights();
+
+        //==============================================
 
         /**
          * Function that add a flight into vector flights
@@ -174,23 +201,6 @@ class Plane {
          */
         Flight* findFlight(const string &origin, const string &destination);
 
-        /**
-         * Sets a service as done by popping it from the servicesToBeMade queue and adding it
-         * to the madeServices list.
-         */
-        void setNextServiceAsDone();
-
-        /**
-         * Prints out all the services to be made
-         */
-        void checkServicesToBeMade();
-
-        /**
-         * Prints out all the made services
-         */
-        void checkMadeServices();
-
-        int getNextFlightID();
 
         /**
          * @overload
