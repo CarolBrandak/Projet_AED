@@ -237,7 +237,7 @@ void Company::saveLuggage(vector<Luggage*> luggage) {
         }
 
     } else {
-        cerr << "File in " << LUGGAGE_FILE << " not found" << endl;
+        throw FileNotFound(LUGGAGE_FILE);
     }
     file.close();
 }
@@ -254,7 +254,7 @@ void Company::savePassengers(vector<Passenger*> passengers) {
         }
 
     } else {
-        cerr << "File in " << PASSENGER_FILE << " not found" << endl;
+        throw FileNotFound(PASSENGER_FILE);
     }
     file.close();
 }
@@ -273,7 +273,7 @@ void Company::saveFlights(vector<Flight*> flights) {
         }
 
     } else {
-        cerr << "File in " << FLIGHT_FILE << " not found" << endl;
+        throw FileNotFound(FLIGHT_FILE);
     }
     file.close();
 }
@@ -292,7 +292,7 @@ void Company::saveServices(vector<Service*> services) {
         }
 
     } else {
-        cerr << "File in " << SERVICE_FILE << " not found" << endl;
+        throw FileNotFound(SERVICE_FILE);
     }
     file.close();
 }
@@ -310,7 +310,7 @@ void Company::savePlanes(vector<Plane*> planes) {
         }
 
     } else {
-        cerr << "File in " << PLANE_FILE << " not found" << endl;
+        throw FileNotFound(PLANE_FILE);
     }
     file.close();
 }
@@ -327,7 +327,7 @@ void Company::saveTransports(vector<Transport*> transports) {
         }
 
     } else {
-        cerr << "File in " << TRANSPORT_FILE << " not found" << endl;
+        throw FileNotFound(TRANSPORT_FILE);
     }
     file.close();
 }
@@ -344,6 +344,8 @@ Flight* Company::findFlight(const string &origin, const string &destination) {
     }
     return nullptr;
 }
+
+
 
 void Company::refreshData() {
     this->planes = getAllPlanes();

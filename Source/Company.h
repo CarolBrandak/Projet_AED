@@ -109,17 +109,46 @@ class Company {
         */
         vector<Plane*> getAllPlanes();
 
-
-        // save data
-
+        /**
+         * A function that saves in correspondent file all Luggage data
+         * @param luggage - a vector with Luggage pointer object that will be saved
+         */
         void saveLuggage(vector<Luggage*> luggage);
+
+        /**
+         * A function that saves in correspondent file all Passengers data
+         * @param passengers - a vector with Passengers pointer object that will be saved
+         */
         void savePassengers(vector<Passenger*> passengers);
+
+        /**
+         * A function that saves in correspondent file all Flights data
+         * @param flights - a vector with Flights pointer object that will be saved
+         */
         void saveFlights(vector<Flight*> flights);
+
+        /**
+         * A function that saves in correspondent file all Services data
+         * @param services - a vector with Services pointer object that will be saved
+         */
         void saveServices(vector<Service*> services);
+
+        /**
+         * A function that saves in correspondent file all Planes data
+         * @param planes - a vector with Planes pointer object that will be saved
+         */
         void savePlanes(vector<Plane*> planes);
+
+        /**
+         * A function that saves in correspondent file all Transports data
+         * @param transports - a vector with Transports pointer object that will be saved
+         */
         void saveTransports(vector<Transport*> transports);
 
-        // Add
+        /**
+         * 
+         * @param plane
+         */
         void addPlane(Plane &plane);
 
         // Remove
