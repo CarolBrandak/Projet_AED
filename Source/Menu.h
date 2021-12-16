@@ -1,5 +1,6 @@
 #ifndef PROJECT_AED_MENU_H
 #define PROJECT_AED_MENU_H
+
 #define MAIN_MENU 0
 #define COMPANY_MENU 1
 #define PASSENGER_MENU 2
@@ -42,7 +43,6 @@ class Menu {
 
         // PassengerMenu
         void buyTicket();
-
         void cancelTicket();
 
         // Listagens
@@ -54,21 +54,12 @@ class Menu {
         void listEmployees();
         void listTransports();
 
-        Passenger fillPassengerData();
-
         // Inputs
-        // Empty... for now
-        /**
-         * Funções que vão servir essencialmente para limpar o código de repetições
-         * Em vez de estar sempre a pedir para dar um voo (destino, origem)
-         * ter um método que faz isso. Pensar e debater sobre isto.
-         * Por exemplo o "passengerDataMenu" tem muita repetição, isto aliviava
-         */
-
+        Passenger fillPassengerData();
 
     public:
         Menu();
         void mainMenu();
 };
 
-#endif //PROJECT_AED_MENU_H
+#endif // PROJECT_AED_MENU_H

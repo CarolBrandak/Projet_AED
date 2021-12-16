@@ -38,7 +38,7 @@ void Cart::putLuggage(Flight *flight) {
     for (queue<stack<Luggage*>> currentCarriage : transport) {
         stack<Luggage*> currentStack = currentCarriage.front();
         while (!currentStack.empty()) {
-            flight->luggage.push_back(currentStack.top());
+            (*flight).addLuggage(currentStack.top());
             currentStack.pop();
         }
         currentCarriage.pop();

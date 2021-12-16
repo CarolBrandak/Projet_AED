@@ -8,8 +8,9 @@
 #include <list>
 #include <queue>
 #include <stack>
+#include "Luggage.h"
 
-#include "Flight.h"
+class Flight;
 
 /**
  * A class to manage Luggage Cart

@@ -110,7 +110,7 @@ void Menu::planeDataMenu() {
         case 1: { // E sim, em casos em que se declara variáveis temos de colocar o case com chavetas :(
 
             // Adiciona um plane --> Perguntar e meter inputs
-            Plane newPlane = Plane(to_string(company->getNextPlaneID()), "mkmokim", "kmokmo", 98237, 23);
+            Plane newPlane = Plane(company->getNextPlaneID(), "mkmokim", "kmokmo", 98237, 23);
             company->addPlane(newPlane);
             company->save();
 

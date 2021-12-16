@@ -151,8 +151,9 @@ Employee* Plane::findEmployee(const string &name) {
     queue<Service*> copy = this->servicesToBeMade;
     while (!copy.empty()) {
         if (copy.front()->getResponsible().getName() == name) {
-            Employee employee =  copy.front()->getResponsible();
-            return &employee;
+            Employee *employee = new Employee();
+            *employee = copy.front()->getResponsible();
+            return employee;
         }
         copy.pop();
     }
