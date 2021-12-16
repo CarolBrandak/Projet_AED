@@ -100,64 +100,37 @@ Transport* Flight::searchTransport(const int &distance) {
     return airport.searchTransport(distance);
 }
 
-
-bool Flight::operator == (const Flight &flight) const {
-    return id == flight.getID();
-}
-
-bool Flight::operator < (const Flight &flight) const {
-    return id < flight.getID();
-}
-
-bool byNumberOfPassengers(const Flight &f1, const Flight &f2) {
-    return f1.quantityOfPassengers < f2.quantityOfPassengers;
-}
-
-bool byTotalWeight(const Flight &f1, const Flight &f2) {
-    return f1.quantityOfWeight < f2.quantityOfWeight;
-}
-
-bool byDate(const Flight &f1, const Flight &f2) {
-    return f1.flightDate < f2.flightDate;
-}
-
-bool byDuration(const Flight &f1, const Flight &f2) {
-    return f1.FLIGHT_DURATION < f2.FLIGHT_DURATION;
-}
-
-
-
-void Flight::addPassengers(const vector<Passenger*> &toPush) {
+void Flight::addPassenger(const vector<Passenger*> &allPassengers) {
 
     Cart cart = Cart();
     queue<Luggage *> treadmill = {};
 
-    for (Passenger *passenger: toPush) {
+    for (Passenger *passenger: allPassengers) {
 
         string passengerId = passenger->getID();
         string idToEnter = passengerId.substr(0, passengerId.find_last_of('-'));
         string singleId = passengerId.substr(passengerId.find_last_of('-') + 1);
 
-        if (id == idToEnter) {  // Se a pessoa for realmente deste voo
+        if (ID == idToEnter) {
 
-            if (stoi(singleId) > nextID) nextID++;                       // atualiza o próximo id automático
-            this->quantityOfPassengers++;                                // aumenta o número de passageiros no voo
-            this->quantityOfWeight += passenger->getTotalWeight();       // aumenta a carga levada com base na bagagem levada pelo passageiro
+            if (stoi(singleId) > nextID) nextID++;
+            this->quantityOfPassengers++;
+            this->quantityOfWeight += passenger->getTotalWeight();
 
             vector<Luggage *> passengerLuggage = passenger->getLuggage();
 
             for (vector<Luggage *>::iterator it = passengerLuggage.begin(); it != passengerLuggage.end(); it++) {
-                if (!((*it)->getPlaneHold())) {              // Se planeHold == 0, significa que vai para o porão
-                    passenger->removeLuggage(*it);         // Removida da pessoa e colocada no carrinho
+                if (!((*it)->getPlaneHold())) {
+                    passenger->removeLuggage(*it);
                     treadmill.push(*it);
                 }
             }
             passengers.push_back(passenger);
         }
 
-        if (!treadmill.empty()) {                   // se o tapete rolante tiver alguma mala
-            cart.addLuggage(treadmill);             // essa mala passa para o carrinho
-            cart.putLuggage(this);                  // e o carrinho deposita-a no voo
+        if (!treadmill.empty()) {
+            cart.addLuggage(treadmill);
+            cart.putLuggage(this);
         }
     }
 }
@@ -168,36 +141,34 @@ void Flight::addPassenger(Passenger& passenger) {
     string idToEnter = passengerId.substr(0, passengerId.find_last_of('-'));
     string singleId = passengerId.substr(passengerId.find_last_of('-') + 1);
 
-    if (id == idToEnter) {  // Se a pessoa for realmente deste voo
+    if (ID == idToEnter) {
 
         Cart cart = Cart();
         queue<Luggage *> treadmill = {};
 
-        if (stoi(singleId) > nextID) nextID++;                       // atualiza o próximo id automático
-        this->quantityOfPassengers++;                                // aumenta o número de passageiros no voo
-        this->quantityOfWeight += passenger.getTotalWeight();       // aumenta a carga levada com base na bagagem levada pelo passageiro
+        if (stoi(singleId) > nextID) nextID++;
+        this->quantityOfPassengers++;
+        this->quantityOfWeight += passenger.getTotalWeight();
 
         vector<Luggage*> passengerLuggage = passenger.getLuggage();
 
         for (vector<Luggage*>::iterator it = passengerLuggage.begin() ; it != passengerLuggage.end() ; it++) {
-            if (!((*it)->getPlaneHold())) {              // Se planeHold == 0, significa que vai para o porão
-                passenger.removeLuggage(*it);         // Removida da pessoa e colocada no carrinho
+            if (!((*it)->getPlaneHold())) {
+                passenger.removeLuggage(*it);
                 treadmill.push(*it);
             }
         }
         passengers.push_back(&passenger);
 
-        if (!treadmill.empty()) {                   // se o tapete rolante tiver alguma mala
-            cart.addLuggage(treadmill);             // essa mala passa para o carrinho
-            cart.putLuggage(this);                  // e o carrinho deposita-a no voo
+        if (!treadmill.empty()) {
+            cart.addLuggage(treadmill);
+            cart.putLuggage(this);
         }
 
     } else return;
 }
 
 void Flight::removePassenger(Passenger &passenger) {
-
-    // Remover um passageiro do voo é também remover a sua bagagem:
 
     for (Luggage *l : passenger.getLuggage()) {
         for (auto it = luggage.begin() ; it != luggage.end() ; it++) {
@@ -218,7 +189,24 @@ void Flight::removePassenger(Passenger &passenger) {
     }
 }
 
+Passenger* Flight::findPassenger(const string &passport) {
 
+    for (Passenger *p : passengers) {
+        if (p->getPassportNumber() == passport) return p;
+    }
+    return nullptr;
+}
+
+
+
+
+bool Flight::operator == (const Flight &flight) const {
+    return ID == flight.ID;
+}
+
+bool Flight::operator < (const Flight &flight) const {
+    return ID < flight.ID;
+}
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
     os  << "Flight ID: " << flight.getID()

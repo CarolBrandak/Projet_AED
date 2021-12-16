@@ -176,30 +176,55 @@ class Flight {
         void checkPassengers();
 
         /**
-         * 
-         * @param transport
+         * A function that add a new transport in destination's airport
+         * @param transport - a Transport object passed by pointer
          */
         void addTransport(Transport* transport);
 
+        /**
+         * A function that remove a transport in destination's airport
+         * @param transport - a Transport object passed by pointer
+         */
         void removeTransport(Transport* transport);
 
+        /**
+         * @overload
+         * A functions that returns the transport with wanted time
+         * @param hour - a integer value passed by reference containing the wanted hour
+         * @param minute - a integer value passed by reference containing the wanted minute
+         * @return a Transport pointer object
+         */
         Transport* searchTransport(const int &hour, const int &minute);
 
+        /**
+         * @overload
+         * A function that returns all the transports with wanted type
+         * @param type - a string value passed by reference containing the wanted type
+         * @return a vector with Transport pointer objects
+         */
         vector<Transport*> searchTransport(const string &type);
 
+        /**
+         * @overload
+         * A function that returns all the transports with wanted distance
+         * @param distance - an integer value passed by reference containing the wanted distance
+         * @return a Transport pointer object
+         */
         Transport* searchTransport(const int &distance);
 
         /**
+         * @overload
          * Adds passengers to the flight
-         * @param toPush - Passenger type vector that contains all passengers that will be added in flight
+         * @param passenger - Passenger object that will be added in the current flight
          */
         void addPassenger(Passenger& passenger);
 
         /**
-        * Adds passengers to the flight
-        * @param toPush - Passenger type vector that contains all passengers that will be added in flight
-        */
-        void addPassengers(const vector<Passenger*>& toPush);
+         * @overload
+         * Adds passengers to the flight
+         * @param passengers - Passenger type vector that contains all passengers that will be added in flight
+         */
+        void addPassenger(const vector<Passenger*>& allPassengers);
 
         /**
          * Removes a passenger to the flight
@@ -207,7 +232,22 @@ class Flight {
          */
         void removePassenger(Passenger &passenger);
 
+        /**
+         * A function that finds a passenger based in its passport
+         * @param passport - a string passed by reference that contains the passenger's passport
+         * @return a Passenger pointer object
+         */
+        Passenger* findPassenger(const string &passport);
 
+        /**
+         *
+         * @param luggage
+         */
+        void addLuggage(const Luggage &luggage);
+
+        void removeLuggage(const string &id);
+
+        Luggage* findLuggage(const string &id);
 
 
         /**
@@ -227,45 +267,13 @@ class Flight {
         bool operator < (const Flight &flight) const;
 
         /**
-        * Boolean function thar compares to objects of this class, based on their number of passengers
-        * @param f1 first flight that will be compared
-        * @param f2 second flight object that will be compared
-        * @return if f1 has less number of passengers than f2
+        * @overload
+        * Function that returns all characteristics of the Flight being manipulated
+        * @param os ostream object, passed by reference
+        * @param flight object, passed by reference
+        * @return ostream object
         */
-        friend bool byNumberOfPassengers(const Flight &f1, const Flight &f2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their total weight
-        * @param f1 first flight that will be compared
-        * @param f2 second flight object that will be compared
-        * @return if f1 has less total weight than f2
-        */
-        friend bool byTotalWeight(const Flight &f1, const Flight &f2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their date
-        * @param f1 first flight that will be compared
-        * @param f2 second flight object that will be compared
-        * @return if f1 occurs before f2
-        */
-        friend bool byDate(const Flight &f1, const Flight &f2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their duration
-        * @param f1 first flight that will be compared
-        * @param f2 second flight object that will be compared
-        * @return if f1 has less duration than f2
-        */
-        friend bool byDuration(const Flight &f1, const Flight &f2);
+        friend ostream & operator << (ostream & os, const Flight &flight);
 };
-
-/**
-* @overload
-* Function that returns all characteristics of the Flight being manipulated
-* @param os ostream object, passed by reference
-* @param flight object, passed by reference
-* @return ostream object
-*/
-ostream & operator << (ostream & os, const Flight &flight);
 
 #endif // PROJECT_AED_FLIGHT_H

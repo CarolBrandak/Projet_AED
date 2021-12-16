@@ -54,6 +54,8 @@ class Menu {
         void listEmployees();
         void listTransports();
 
+        Passenger fillPassengerData();
+
         // Inputs
         // Empty... for now
         /**

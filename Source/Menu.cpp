@@ -208,10 +208,6 @@ void Menu::passengerDataMenu() {
 
     } while (option < 1 || option > 5);
 
-    string origin,destination,id,name,passportNumber;
-    short int age;
-    char gender;
-
     switch(option) {
         case 1: {
 
@@ -272,17 +268,6 @@ void Menu::passengerDataMenu() {
             cout << "Por favor introduza o país de destino" << endl;
             cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
-            cout << "Enter the passenger's ID" << endl;
-            cin >> id;
-            cout << "Enter the passenger's name" << endl;
-            cin >> name;
-            cout << "Enter the passenger's age" << endl;
-            cin >> age;
-            cout << "Enter the passenger's gender (M ou F)" << endl;
-            cin >> gender;
-            cout << "Introduza o número do passaporte do passageiro" << endl;
-            cin >> passportNumber;
-            Passenger passenger(id, name, age, gender, passportNumber);
             // se existir, ok, senão mensagem a dizer que não existe.
             getMenu();
             break;
@@ -473,8 +458,39 @@ void Menu::passengerMenu() {
     }
 }
 
-void Menu::buyTicket() {
+Passenger Menu::fillPassengerData() {
 
+    string origin,destination,id,name,passportNumber;
+    short int age;
+    char gender;
+    cout << "Enter the passenger's ID" << endl;
+    cin >> id;
+    cout << "Enter the passenger's name" << endl;
+    cin >> name;
+    cout << "Enter the passenger's age" << endl;
+    cin >> age;
+    cout << "Enter the passenger's gender (M ou F)" << endl;
+    cin >> gender;
+    cout << "Introduza o número do passaporte do passageiro" << endl;
+    cin >> passportNumber;
+    return {id, name, age, gender, passportNumber};
+
+}
+
+void Menu::buyTicket() {
+    short int quantityOfPassengers;
+    string origin, destinantion;
+    Flight* flight;
+    while(true) {
+        cout << "Where do you want to travel from?" << endl;
+        cin >> origin;
+        cout << "Where do you want to travel to?" << endl;
+        cin >> destinantion;
+        flight = company->findFlight(origin,destinantion);
+        if(!nullptr) {
+            
+        }
+    }
 }
 
 void Menu::cancelTicket() {
