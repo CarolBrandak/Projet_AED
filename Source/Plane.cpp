@@ -46,6 +46,14 @@ list<Flight*> Plane::getFlights() const {
     return flights;
 }
 
+vector<Flight*> Plane::getVectorFlights() const {
+    vector<Flight*> result = {};
+    for (auto i = flights.begin() ; i != flights.end() ; i++) {
+        result.push_back(*i);
+    }
+    return result;
+}
+
 vector<Service*> Plane::getServices() const {
     vector<Service*> services = {};
     queue<Service*> copy = this->servicesToBeMade;

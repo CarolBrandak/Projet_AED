@@ -7,20 +7,20 @@ bool byEmployeeName(const Employee &e1, const Employee &e2) {
     return e1.getName() < e2.getName();
 }
 
-bool byNumberOfPassengers(const Flight &f1, const Flight &f2) {
-    return f1.getPassengersQuantity() < f2.getPassengersQuantity();
+bool byNumberOfPassengers(const Flight *f1, const Flight *f2) {
+    return f1->getPassengersQuantity() < f2->getPassengersQuantity();
 }
 
-bool byTotalWeight(const Flight &f1, const Flight &f2) {
-    return f1.getWeightQuantity() < f2.getWeightQuantity();
+bool byTotalWeight(const Flight *f1, const Flight *f2) {
+    return f1->getWeightQuantity() < f2->getWeightQuantity();
 }
 
-bool byDate(const Flight &f1, const Flight &f2) {
-    return f1.getFlightDate() < f2.getFlightDate();
+bool byDate(const Flight *f1, const Flight *f2) {
+    return f1->getFlightDate() < f2->getFlightDate();
 }
 
-bool byDuration(const Flight &f1, const Flight &f2) {
-    return f1.getFlightDuration() < f2.getFlightDuration();
+bool byDuration(const Flight *f1, const Flight *f2) {
+    return f1->getFlightDuration() < f2->getFlightDuration();
 }
 
  bool byWeight(const Luggage &l1, const Luggage &l2) {

@@ -17,7 +17,7 @@ bool byEmployeeName(const Employee &e1, const Employee &e2);
 * @param f2 second flight object that will be compared
 * @return if f1 has less number of passengers than f2
 */
-bool byNumberOfPassengers(const Flight &f1, const Flight &f2);
+bool byNumberOfPassengers(const Flight *f1, const Flight *f2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total weight
@@ -25,7 +25,7 @@ bool byNumberOfPassengers(const Flight &f1, const Flight &f2);
 * @param f2 second flight object that will be compared
 * @return if f1 has less total weight than f2
 */
-bool byTotalWeight(const Flight &f1, const Flight &f2);
+bool byTotalWeight(const Flight *f1, const Flight *f2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their date
@@ -33,7 +33,7 @@ bool byTotalWeight(const Flight &f1, const Flight &f2);
 * @param f2 second flight object that will be compared
 * @return if f1 occurs before f2
 */
-bool byDate(const Flight &f1, const Flight &f2);
+bool byDate(const Flight *f1, const Flight *f2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their duration
@@ -41,7 +41,7 @@ bool byDate(const Flight &f1, const Flight &f2);
 * @param f2 second flight object that will be compared
 * @return if f1 has less duration than f2
 */
-bool byDuration(const Flight &f1, const Flight &f2);
+bool byDuration(const Flight *f1, const Flight *f2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their weight

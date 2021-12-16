@@ -612,12 +612,12 @@ char Menu::totalOrPartial() {
 
     char option;
     do {
-        cout << "Listagem total ou parcial? T/C: ";
+        cout << "Listagem total ou parcial? T/P: ";
         cin >> option;
-        if (toupper(option) != 'T' && toupper(option) != 'C') cout << "Input inválido, por favor tente novamente" << endl;
+        if (toupper(option) != 'T' && toupper(option) != 'P') cout << "Input inválido, por favor tente novamente" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-    } while (toupper(option) != 'T' && toupper(option) != 'C');
+    } while (toupper(option) != 'T' && toupper(option) != 'P');
 
     return toupper(option);
 }
@@ -652,14 +652,59 @@ void Menu::listPlanes() {
         }
 
         for (Plane *plane : planes) cout << *plane << endl;
-        getMenu();
 
     } else cout << "Nao existem avioes a mostrar" << endl;
+    getMenu();
 }
 
 void Menu::listFlights() {
 
     char option = totalOrPartial();
+    vector<Flight*> flights = {};
+
+    if (option == 'T') flights = company->getAllFlights();
+    else {
+        string id;
+        cout << "ID do aviao: "; cin >> id;
+        Plane *p = company->findPlane(id);
+        if (p) flights = p->getVectorFlights();
+        else {
+            cout << "Aviao não encontrado" << endl;
+            getMenu();
+        }
+    }
+
+    if (!flights.empty()) {
+        do {
+            cout << "=====================================" << endl;
+            cout << "1 - Ordenar por carga" << endl;
+            cout << "2 - Ordenar por lotacao" << endl;
+            cout << "3 - Ordenar por data de partida" << endl;
+            cout << "4 - Ordenar por duracao" << endl;
+            cout << "5 - Voltar para tras" << endl;
+            cout << "Your choice: ";
+            cin >> option;
+            cout << "=====================================" << endl;
+            if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+        } while (option < 1 || option > 5);
+
+        switch (option) {
+            case 1: sort(flights.begin(), flights.end(), byTotalWeight); break;
+            case 2: sort(flights.begin(), flights.end(), byNumberOfPassengers); break;
+            case 3: sort(flights.begin(), flights.end(), byDate); break;
+            case 4: sort(flights.begin(), flights.end(), byDuration); break;
+            case 5: getMenu(); break;
+        }
+
+        for (Flight *flight : flights) cout << *flight << endl;
+
+    } else {
+        cout << "O aviao selecionado nao possui qualquer voo" << endl;
+    }
+    getMenu();
 }
 
 void Menu::listPassengers() {

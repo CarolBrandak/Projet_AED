@@ -112,6 +112,12 @@ class Plane {
         list<Flight*> getFlights() const;
 
         /**
+         * Returns the plane's vector of flights
+         * @return a list of flights to do
+        */
+        vector<Flight*> getVectorFlights() const;
+
+        /**
          * Returns the plane's Services
          * @return a vector of Service objects
          */
