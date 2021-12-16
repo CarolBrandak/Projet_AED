@@ -18,9 +18,8 @@
 class Menu {
 
     private:
-        // na company sempre que é modificada, dar company->save();
-        Company *company;
 
+        Company *company;
         std::stack<short int> menuState;
 
         //Menu Caller
@@ -31,7 +30,6 @@ class Menu {
         void passengerMenu();
         void allLists();
 
-
         // CompanyMenu
         void planeDataMenu();
         void flightDataMenu();
@@ -39,7 +37,6 @@ class Menu {
         void luggageDataMenu();
         void employeeDataMenu();
         void transportDataMenu();
-
 
         // PassengerMenu
         void buyTicket();
@@ -55,7 +52,12 @@ class Menu {
         void listTransports();
 
         // Inputs
-        Passenger fillPassengerData();
+        Plane fillPlaneData(const string &id);
+        Flight fillFlightData(const string &id);
+        Passenger fillPassengerData(const string &id);
+        Luggage fillLuggageData(const string &id);
+        Employee fillEmployeeData(const string &id);
+        Transport fillTransportData(const string &id);
 
     public:
         Menu();

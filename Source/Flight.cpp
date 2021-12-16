@@ -80,7 +80,6 @@ void Flight::checkPassengers() {
 
 void Flight::addTransport(Transport *transport) {
     if (ID == transport->getID()) airport.addTransport(transport);
-    else cout << "O transporte não pertence a este voo" << endl;
 }
 
 void Flight::removeTransport(Transport *transport) {
@@ -202,7 +201,6 @@ void Flight::addLuggage(Luggage *l) {
         luggage.push_back(l);
         quantityOfWeight += l->getWeight();
     }
-    else cout << "A bagagem não pertence a este voo" << endl;
 }
 
 void Flight::removeLuggage(const string &id) {
@@ -213,7 +211,6 @@ void Flight::removeLuggage(const string &id) {
             return;
         }
     }
-    cout << "A bagagem não está neste voo" << endl;
 }
 
 Luggage* Flight::findLuggage(const string &id) {

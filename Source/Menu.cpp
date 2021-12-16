@@ -5,25 +5,28 @@
 
 Menu::Menu() {
     this->company = new Company("AirED");
+    this->menuState.push(MAIN_MENU);
     company->presentation();
-    menuState.push(MAIN_MENU);
     getMenu();
 }
 
 void Menu::getMenu() {
-    switch(menuState.top()) {
-        case 0: mainMenu(); break;
-        case 1: companyMenu(); break;
-        case 2: passengerMenu(); break;
-        case 3: planeDataMenu(); break;
-        case 4: flightDataMenu(); break;
-        case 5: passengerDataMenu(); break;
-        case 6: luggageDataMenu(); break;
-        case 7: employeeDataMenu(); break;
-        case 8: transportDataMenu(); break;
-        case 9: buyTicket(); break;
-        case 10: cancelTicket(); break;
-    }
+
+    if (!menuState.empty()) {
+        switch(menuState.top()) {
+            case 0: mainMenu(); break;
+            case 1: companyMenu(); break;
+            case 2: passengerMenu(); break;
+            case 3: planeDataMenu(); break;
+            case 4: flightDataMenu(); break;
+            case 5: passengerDataMenu(); break;
+            case 6: luggageDataMenu(); break;
+            case 7: employeeDataMenu(); break;
+            case 8: transportDataMenu(); break;
+            case 9: buyTicket(); break;
+            case 10: cancelTicket(); break;
+        }
+    } else exit(0);
 }
 
 void Menu::mainMenu() {
@@ -44,11 +47,9 @@ void Menu::mainMenu() {
     } while (option < 1 || option > 3);
 
     switch (option) {
-        case 1: {
-            menuState.push(COMPANY_MENU);
-        } break;
+        case 1: menuState.push(COMPANY_MENU); break;
         case 2: menuState.push(PASSENGER_MENU); break;
-        case 3:exit(0); break;
+        case 3: menuState.pop();
     }
     getMenu();
 }
@@ -83,7 +84,6 @@ void Menu::companyMenu() {
         case 6: menuState.push(EMPLOYEE_DATA_MENU); break;
         case 7: menuState.pop(); break;
     }
-
     getMenu();
 }
 
@@ -107,14 +107,11 @@ void Menu::planeDataMenu() {
     } while (option < 1 || option > 5);
 
     switch (option) {
-        case 1: { // E sim, em casos em que se declara variáveis temos de colocar o case com chavetas :(
-
-            // Adiciona um plane --> Perguntar e meter inputs
-            Plane newPlane = Plane(company->getNextPlaneID(), "mkmokim", "kmokmo", 98237, 23);
+        case 1: {
+            Plane newPlane = fillPlaneData(company->getNextPlaneID());
             company->addPlane(newPlane);
             company->save();
-
-            cout << "Adicionou o aviao " << newPlane << " com sucesso ou algo do tipo" << endl; // mensagem só para teste
+            cout << "Adicionou o aviao:\n" << newPlane << endl;
             getMenu();
             break;
         }
@@ -459,7 +456,7 @@ void Menu::passengerMenu() {
             menuState.pop(); getMenu();
     }
 }
-
+/**
 Passenger Menu::fillPassengerData() {
 
     string origin,destination,id,name,passportNumber;
@@ -478,6 +475,7 @@ Passenger Menu::fillPassengerData() {
     return {id, name, age, gender, passportNumber};
 
 }
+ */
 
 void Menu::buyTicket() {
     short int quantityOfPassengers;
@@ -533,6 +531,39 @@ void Menu::allLists() {
         case 8: menuState.pop(); getMenu(); break;
     }
 }
+
+Plane Menu::fillPlaneData(const string &id) {
+
+    string licencePlate, type;
+    int weightCapacity, passengerCapacity;
+    cout << "Licence Plate: "; cin >> licencePlate;
+    cout << "Type: "; cin >> type;
+    cout << "Weight capaticy: "; cin >> weightCapacity;
+    cout << "Passenger capacity: "; cin >> passengerCapacity;
+    return Plane(id, licencePlate, type, weightCapacity, passengerCapacity);
+}
+
+Flight Menu::fillFlightData(const string &id) {
+
+}
+
+Passenger Menu::fillPassengerData(const string &id) {
+
+}
+
+Luggage Menu::fillLuggageData(const string &id) {
+
+}
+
+Employee Menu::fillEmployeeData(const string &id) {
+
+}
+
+Transport Menu::fillTransportData(const string &id) {
+
+}
+
+
 
 void Menu::listPlanes() {
 
