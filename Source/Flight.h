@@ -240,15 +240,23 @@ class Flight {
         Passenger* findPassenger(const string &passport);
 
         /**
-         *
-         * @param luggage
+         * Adds luggage to the flight
+         * @param l - a Luggage object passed by pointer that will be added
          */
-        void addLuggage(const Luggage &luggage);
+        void addLuggage(Luggage *l);
 
+        /**
+         * Removes luggage from the flight
+         * @param id - a string passed by reference that contains a luggage's id
+         */
         void removeLuggage(const string &id);
 
+        /**
+         * Find luggage in the flight based on its id
+         * @param id - a string passed by reference that contains a luggage's id
+         * @return a Luggage pointer object
+         */
         Luggage* findLuggage(const string &id);
-
 
         /**
          * @overload
@@ -267,11 +275,11 @@ class Flight {
         bool operator < (const Flight &flight) const;
 
         /**
-        * @overload
-        * Function that returns all characteristics of the Flight being manipulated
-        * @param os ostream object, passed by reference
-        * @param flight object, passed by reference
-        * @return ostream object
+         * @overload
+         * Function that returns all characteristics of the Flight being manipulated
+         * @param os ostream object, passed by reference
+         * @param flight object, passed by reference
+         * @return ostream object
         */
         friend ostream & operator << (ostream & os, const Flight &flight);
 };

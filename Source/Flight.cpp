@@ -197,25 +197,51 @@ Passenger* Flight::findPassenger(const string &passport) {
     return nullptr;
 }
 
+void Flight::addLuggage(Luggage *l) {
+    if (ID == l->getID().substr(0, l->getID().find_last_of('-'))) {
+        luggage.push_back(l);
+        quantityOfWeight += l->getWeight();
+    }
+    else cout << "A bagagem não pertence a este voo" << endl;
+}
 
+void Flight::removeLuggage(const string &id) {
+    for (vector<Luggage*>::iterator it = luggage.begin() ; it != luggage.end() ; it++) {
+        if ((*it)->getID() == id) {
+            luggage.erase(it);
+            quantityOfWeight -= (*it)->getWeight();
+            return;
+        }
+    }
+    cout << "A bagagem não está neste voo" << endl;
+}
 
+Luggage* Flight::findLuggage(const string &id) {
+    for (Luggage* l : luggage) {
+        if (l->getID() == ID) return l;
+    }
+    return nullptr;
+}
 
 bool Flight::operator == (const Flight &flight) const {
-    return ID == flight.ID;
+    return ID == flight.ID && FLIGHT_DURATION == flight.FLIGHT_DURATION && FLIGHT_DATE == flight.FLIGHT_DATE &&
+            ORIGIN == flight.ORIGIN;
 }
 
 bool Flight::operator < (const Flight &flight) const {
-    return ID < flight.ID;
+    if (FLIGHT_DATE == flight.FLIGHT_DATE) {
+        return ID < flight.ID;
+    } return FLIGHT_DATE < flight.FLIGHT_DATE;
 }
 
 std::ostream & operator << (std::ostream & os, const Flight &flight) {
-    os  << "Flight ID: " << flight.getID()
-        << "\nFlight Date: " << flight.getFlightDate()
-        << "Flight Duration: " << flight.getFlightDuration()
-        << " minutes\nOrigin: " << flight.getFlightOrigin()
-        << "\nDestination: "<< flight.getFlightDestination()
-        << "\nQuantity of Weight: " << flight.getWeightQuantity()
-        << " Kgs\nQuantity Of Passengers: " << flight.getPassengersQuantity() << endl;
+    os  << "Flight ID: " << flight.ID
+        << "\nFlight Date: " << flight.FLIGHT_DATE
+        << "Flight Duration: " << flight.FLIGHT_DURATION
+        << " minutes\nOrigin: " << flight.ORIGIN
+        << "\nDestination: "<< flight.airport.getCity()
+        << "\nQuantity of Weight: " << flight.quantityOfWeight
+        << " Kgs\nQuantity Of Passengers: " << flight.quantityOfPassengers << endl;
     return os;
 }
 
