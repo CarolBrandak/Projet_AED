@@ -52,6 +52,31 @@ friend bool byWeight(const Luggage &l1, const Luggage &l2);
 
 friend bool byVolume(const Luggage &l1, const Luggage &l2);
 
+
+
+         * Boolean function thar compares to objects of this class, based on their Name
+         * @param p1 first person that will be compared
+         * @param p2 second person that will be compared
+         * @return if p1 has less name than p2, based on alphabetic order
+
+friend bool byName(const Passenger &p1, const Passenger &p2);
+
+
+* Boolean function thar compares to objects of this class, based on their age
+* @param p1 first person that will be compared
+* @param p2 second person that will be compared
+* @return if p1 has less age than p2
+
+friend bool byAge(const Passenger &p1, const Passenger &p2);
+
+
+* Boolean function thar compares to objects of this class, based on their total luggage's weight
+* @param p1 first person that will be compared
+* @param p2 second person that will be compared
+* @return if p1 has less luggage weight than p2
+
+friend bool byLuggage(const Passenger &p1, const Passenger &p2);
+
 */
 
 

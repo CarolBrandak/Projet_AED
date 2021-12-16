@@ -19,7 +19,7 @@ class Passenger : public Person {
         /**
          * @var PASSPORT, a string
          */
-        string PASSPORT;
+        const string PASSPORT;
 
         /**
          * @var luggage, a vector with Luggage's objects
@@ -47,12 +47,6 @@ class Passenger : public Person {
          * @param passportNumber Passenger's passport number, a string passed by value
          */
         Passenger(string id, string name, short int age, char gender, string passportNumber);
-
-        /**
-         * Set Passenger passport number
-         * @param passportNumber Passenger's new passport number, a string passed by reference
-         */
-        void setPassportNumber(const string &passportNumber);
 
         /**
          * Set Passenger luggage
@@ -90,6 +84,10 @@ class Passenger : public Person {
          */
         int getTotalVolume() const;
 
+        /**
+         * A function that removes luggage from the current Passenger
+         * @param l - Luggage object that will be removed
+         */
         void removeLuggage(Luggage* l);
 
         /**
@@ -102,44 +100,20 @@ class Passenger : public Person {
 
         /**
          * @overload
-        * Boolean function that compares two objects of this class
-        * @param passenger another object that will be compared
-        * @return if the current object is less than object passed by reference
+         * Boolean function that compares two objects of this class
+         * @param passenger another object that will be compared
+         * @return if the current object is less than object passed by reference
         */
         bool operator < (const Passenger &passenger) const;
 
         /**
-         * Boolean function thar compares to objects of this class, based on their Name
-         * @param p1 first person that will be compared
-         * @param p2 second person that will be compared
-         * @return if p1 has less name than p2, based on alphabetic order
-         */
-        friend bool byName(const Passenger &p1, const Passenger &p2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their age
-        * @param p1 first person that will be compared
-        * @param p2 second person that will be compared
-        * @return if p1 has less age than p2
+         * @overload
+         * Function that returns all characteristics of the Passenger being manipulated
+         * @param os ostream object, passed by reference
+         * @param passenger Passenger object, passed by reference
+         * @return ostream object
         */
-        friend bool byAge(const Passenger &p1, const Passenger &p2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their total luggage's weight
-        * @param p1 first person that will be compared
-        * @param p2 second person that will be compared
-        * @return if p1 has less luggage weight than p2
-        */
-        friend bool byLuggage(const Passenger &p1, const Passenger &p2);
+        friend ostream & operator << (ostream & os, const Passenger &passenger);
 };
-
-/**
- * @overload
- * Function that returns all characteristics of the Passenger being manipulated
- * @param os ostream object, passed by reference
- * @param passenger Passenger object, passed by reference
- * @return ostream object
- */
-ostream & operator << (ostream & os, const Passenger &passenger);
 
 #endif //PROJECT_AED_PASSENGER_H

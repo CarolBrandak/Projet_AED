@@ -1,7 +1,6 @@
 #ifndef PROJECT_AED_PASSENGER_CPP
 #define PROJECT_AED_PASSENGER_CPP
 
-#include "Person.h"
 #include "Passenger.h"
 
 Passenger::Passenger() {}
@@ -13,10 +12,6 @@ Passenger::~Passenger() {
 Passenger::Passenger(string id, string name, short int age, char gender, string passportNumber) :
     ID(id), PASSPORT(passportNumber), Person(name, age, gender) {
     this->luggage = {};
-}
-
-void Passenger::setPassportNumber(const string &passportNumber) {
-    this->PASSPORT = passportNumber;
 }
 
 void Passenger::addLuggage(Luggage &newLuggage) {
@@ -48,13 +43,13 @@ int Passenger::getTotalVolume() const {
 }
 
 bool Passenger::operator < (const Passenger &passenger) const {
-    if (age == passenger.getAge()) return name < passenger.getName();
-    return age < passenger.getAge();
+    if (age == passenger.age) return name < passenger.name;
+    return age < passenger.age;
 }
 
 bool Passenger::operator == (const Passenger &passenger) const {
-    return this->PASSPORT == passenger.getPassportNumber() &&
-            this->name == passenger.getName() && this->age == passenger.getAge() && this->gender == passenger.getGender();
+    return this->PASSPORT == passenger.PASSPORT &&
+            this->name == passenger.name && this->age == passenger.age && this->gender == passenger.gender;
 }
 
 void Passenger::removeLuggage(Luggage *l) {
@@ -66,24 +61,12 @@ void Passenger::removeLuggage(Luggage *l) {
     }
 }
 
-bool byName(const Passenger &p1, const Passenger &p2) {
-    return p1.name < p2.name;
-}
-
-bool byAge(const Passenger &p1, const Passenger &p2) {
-    return p1.age < p2.age;
-}
-
-bool byLuggage(const Passenger &p1, const Passenger &p2) {
-    return p1.luggage.size() < p2.luggage.size();
-}
-
 ostream & operator << (ostream & os, const Passenger &passenger) {
-    os  << "ID: " << passenger.getID() <<
-        "\nName: " << passenger.getName() <<
-        "\nAge: " << passenger.getAge() <<
-        "\nGender: " << passenger.getGender() <<
-        "\nPassport Number: " << passenger.getPassportNumber() <<
+    os  << "ID: " << passenger.ID <<
+        "\nName: " << passenger.name <<
+        "\nAge: " << passenger.age <<
+        "\nGender: " << passenger.gender <<
+        "\nPassport Number: " << passenger.PASSPORT <<
         "\nNumber of luggages: " << passenger.getLuggage().size() << endl;
     return os;
 }

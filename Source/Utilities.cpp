@@ -31,6 +31,19 @@ bool byVolume(const Luggage &l1, const Luggage &l2) {
     return l1.getTotalVolume() < l2.getTotalVolume();
 }
 
+
+bool byName(const Passenger &p1, const Passenger &p2) {
+    return p1.name < p2.name;
+}
+
+bool byAge(const Passenger &p1, const Passenger &p2) {
+    return p1.age < p2.age;
+}
+
+bool byLuggage(const Passenger &p1, const Passenger &p2) {
+    return p1.luggage.size() < p2.luggage.size();
+}
+
 **/
 
 // Outras coisas
