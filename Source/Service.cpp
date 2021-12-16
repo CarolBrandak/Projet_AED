@@ -3,23 +3,23 @@
 
 #include "Service.h"
 
-Service::Service() {}
-
-Service::Service(string id, string serviceType, Date serviceDate, Employee responsible) :
-    id(id),
-    serviceType(serviceType),
-    serviceDate(serviceDate) {
-    this->responsible = responsible;
-}
+Service::Service() : ID(""), TYPE(""), DATE(0, 0) {}
 
 Service::~Service() {}
 
+Service::Service(string id, string serviceType, Date serviceDate, Employee responsible) :
+    ID(id),
+    TYPE(serviceType),
+    DATE(serviceDate) {
+    this->responsible = responsible;
+}
+
 string Service::getID() const {
-    return id;
+    return ID;
 }
 
 string Service::getServiceType() const {
-    return serviceType;
+    return TYPE;
 }
 
 Employee Service::getResponsible() const {
@@ -27,17 +27,28 @@ Employee Service::getResponsible() const {
 }
 
 Date Service::getServiceDate() const {
-    return serviceDate;
+    return DATE;
 }
 
 void Service::setResponsible(const Employee &employee) {
     this->responsible = employee;
 }
 
+bool Service::operator == (const Service &service) const {
+    return ID == service.ID && TYPE == service.TYPE && DATE == service.DATE &&
+            responsible == service.responsible;
+}
+
+bool Service::operator < (const Service &service) const {
+    if (DATE == service.DATE) {
+        return TYPE < service.TYPE;
+    } return DATE < service.DATE;
+}
+
 ostream & operator << (ostream & os, const Service &service) {
-    os << "Type: " << service.getServiceType() <<
-        "\nDate: " << service.getServiceDate() <<
-        "Responsible: " << service.getResponsible();
+    os << "Type: " << service.TYPE <<
+        "\nDate: " << service.DATE <<
+        "Responsible: " << service.responsible;
     return os;
 }
 

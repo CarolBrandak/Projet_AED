@@ -10,17 +10,17 @@ class Service {
     private:
 
         /**
-         * @var id - string type attribute that contains the service's id
+         * @var ID - a constant string type attribute that contains the service's id
          */
-        const string id;
+        const string ID;
         /**
-         * @var serviceType - string type attribute that contains the type of service
+         * @var TYPE - a constant string type attribute that contains the type of service
          */
-        const string serviceType;
+        const string TYPE;
         /**
-         * @var serviceDate - Date type attribute that contains the date of the service
+         * @var DATE - a constant Date object that contains the date of the service
          */
-        const Date serviceDate;
+        const Date DATE;
         /**
          * @var responsible - Employee type attribute that contains the information of the responsible for the service
          */
@@ -40,12 +40,12 @@ class Service {
 
         /**
          * Constructor that creates an service
-         * @param id - a string, containing service's id
-         * @param serviceType - a string, containing the service type
-         * @param serviceDate - a Date type object containing the Date of the service
+         * @param ID - a string, containing service's id
+         * @param TYPE - a string, containing the service type
+         * @param DATE - a Date type object containing the Date of the service
          * @param responsible - a Employee type object, containing the Employee responsible for the service
          */
-        Service(string id, string serviceType, Date serviceDate, Employee responsible);
+        Service(string ID, string TYPE, Date DATE, Employee responsible);
 
         /**
          * Returns Service's id
@@ -76,15 +76,31 @@ class Service {
          * @param employee an Employee object, containing the new employee responsible for the service
          */
         void setResponsible(const Employee &employee);
-};
 
-/**
- * @overload
- * Function that returns all characteristics of the Service being manipulated
- * @param ostream object, passed by reference
- * @param service object, passed by reference
- * @return ostream object
- */
-ostream & operator << (ostream & os, const Service &service);
+        /**
+         * @overload
+         * Boolean function that compares two objects of this class
+         * @param service another object that will be compared
+         * @return if the current object is the same object passed by reference
+         */
+        bool operator == (const Service &service) const;
+
+        /**
+         * @overload
+         * Boolean function that compares two objects of this class
+         * @param service another object that will be compared
+         * @return if the current object is less than the object passed by reference
+         */
+        bool operator < (const Service &service) const;
+
+        /**
+        * @overload
+        * Function that returns all characteristics of the Service being manipulated
+        * @param ostream object, passed by reference
+        * @param service object, passed by reference
+        * @return ostream object
+        */
+        friend ostream & operator << (ostream & os, const Service &service);
+};
 
 #endif // PROJECT_AED_SERVICE_H
