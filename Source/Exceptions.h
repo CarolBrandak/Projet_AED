@@ -8,6 +8,16 @@
 #include "Date.h"
 using namespace std;
 
+// Files
+
+class FileNotFound : public exception {
+    string directory;
+public:
+    FileNotFound(const string &directory);
+    string getDirectory() const;
+    void showError() const;
+};
+
 // Transportes
 
 class TransportDoesNotExist : public exception {
@@ -24,6 +34,10 @@ public:
     TransportAlreadyExist(Transport *transport);
     Transport getTransport() const;
     void showError() const;
+};
+
+class InvalidTransport : public exception {
+
 };
 
 // Datas

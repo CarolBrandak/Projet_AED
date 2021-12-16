@@ -5,28 +5,27 @@
 
 Company::Company() : name("") {}
 
-Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
-    this->nextPlaneID = planes.size();
-}
-
 Company::~Company() {
     planes.clear();
-    cout << "Destruiu a company " << endl;
 }
 
-string Company::getName() const {
-    return name;
-}
-
-int Company::getNextPlaneID() {
-    nextPlaneID++;
-    return nextPlaneID;
+Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
+    this->nextPlaneID = planes.size();
 }
 
 void Company::presentation() {
     cout << "=====================================" << endl;
     cout << "==     Welcome to " << name << " Company!   ==" << endl;
     cout << "=====================================" << endl;
+}
+
+string Company::getName() const {
+    return name;
+}
+
+string Company::getNextPlaneID() {
+    nextPlaneID++;
+    return to_string(nextPlaneID);
 }
 
 void Company::addPlane(Plane &plane) {
@@ -59,7 +58,7 @@ vector<Luggage*> Company::getAllLuggages() {
             luggage.push_back(new Luggage(id, stoi(weight), v, planeHold == "1"));
         }
     } else {
-        cerr << "File in " << LUGGAGE_FILE << " not found" << endl;
+        
     }
     file.close();
     return luggage;

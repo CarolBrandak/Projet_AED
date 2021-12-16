@@ -3,6 +3,20 @@
 
 #include "Exceptions.h"
 
+// Files
+
+FileNotFound::FileNotFound(const string &directory) {
+    this->directory = directory;
+}
+
+string FileNotFound::getDirectory() const {
+    return this->directory;
+}
+
+void FileNotFound::showError() const {
+    cerr << "File " << directory << " not found" << endl;
+}
+
 // Transportes
 
 TransportAlreadyExist::TransportAlreadyExist (Transport *transport) {
@@ -14,7 +28,7 @@ Transport TransportAlreadyExist::getTransport() const {
 }
 
 void TransportAlreadyExist::showError() const {
-    cout << "O transporte " << this->transport << " já existe no aeroporto" << endl;
+    cerr << "O transporte " << this->transport << " já existe no aeroporto" << endl;
 }
 
 TransportDoesNotExist::TransportDoesNotExist(Transport *transport) {
@@ -26,7 +40,7 @@ Transport TransportDoesNotExist::getTransport() const {
 }
 
 void TransportDoesNotExist::showError() const {
-    cout << "O transporte " << this->transport << " não existe no aeroporto" << endl;
+    cerr << "O transporte " << this->transport << " não existe no aeroporto" << endl;
 }
 
 // Datas
@@ -40,7 +54,7 @@ Date InvalidDate::getInvalidDate() const {
 }
 
 void InvalidDate::showError() const {
-    cout << "A data " << date << " é inválida" << endl;
+    cerr << "A data " << date << " é inválida" << endl;
 }
 
 
