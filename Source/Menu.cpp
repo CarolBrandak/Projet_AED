@@ -633,22 +633,20 @@ void Menu::listPlanes() {
             cout << "2 - Ordenar por lotaçao maxima" << endl;
             cout << "3 - Ordenar por numero de voos" << endl;
             cout << "4 - Ordenar por numero de servicos" << endl;
-            cout << "5 - Voltar para tras" << endl;
             cout << "Your choice: ";
             cin >> option;
             cout << "=====================================" << endl;
-            if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
+            if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
 
-        } while (option < 1 || option > 5);
+        } while (option < 1 || option > 4);
 
         switch (option) {
             case 1: sort(planes.begin(), planes.end(), byMaximumWeight); break;
             case 2: sort(planes.begin(), planes.end(), byMaximumCapacity); break;
             case 3: sort(planes.begin(), planes.end(), byNumberOfFlights); break;
             case 4: sort(planes.begin(), planes.end(), byNumberOfServices); break;
-            case 5: getMenu(); break;
         }
 
         for (Plane *plane : planes) cout << *plane << endl;
@@ -682,22 +680,20 @@ void Menu::listFlights() {
             cout << "2 - Ordenar por lotacao" << endl;
             cout << "3 - Ordenar por data de partida" << endl;
             cout << "4 - Ordenar por duracao" << endl;
-            cout << "5 - Voltar para tras" << endl;
             cout << "Your choice: ";
             cin >> option;
             cout << "=====================================" << endl;
-            if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
+            if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
 
-        } while (option < 1 || option > 5);
+        } while (option < 1 || option > 4);
 
         switch (option) {
             case 1: sort(flights.begin(), flights.end(), byTotalWeight); break;
             case 2: sort(flights.begin(), flights.end(), byNumberOfPassengers); break;
             case 3: sort(flights.begin(), flights.end(), byDate); break;
             case 4: sort(flights.begin(), flights.end(), byDuration); break;
-            case 5: getMenu(); break;
         }
 
         for (Flight *flight : flights) cout << *flight << endl;
@@ -710,12 +706,98 @@ void Menu::listFlights() {
 
 void Menu::listPassengers() {
 
-    char option = totalOrPartial();
+    char type = totalOrPartial();
+    vector<Passenger*> passengers = {};
+
+    if (type == 'T') passengers = company->getAllPassengers();
+    else {
+        string origin, destination;
+        cout << "Origem do voo: "; cin >> origin;
+        cout << "Destino do voo: "; cin >> destination;
+        Flight *flight = company->findFlight(origin, destination);
+        if (flight) passengers = flight->getPassengers();
+        else {
+            cout << "Voo nao encontrado" << endl;
+            getMenu();
+        }
+    }
+
+    if (!passengers.empty()) {
+        int option;
+        do {
+            cout << "=====================================" << endl;
+            cout << "1 - Ordenar por nome" << endl;
+            cout << "2 - Ordenar por idade" << endl;
+            cout << "3 - Ordenar por quantidade de malas" << endl;
+            cout << "Your choice: ";
+            cin >> option;
+            cout << "=====================================" << endl;
+            if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+        } while (option < 1 || option > 3);
+
+        switch (option) {
+            case 1: sort(passengers.begin(), passengers.end(), byPassengerName); break;
+            case 2: sort(passengers.begin(), passengers.end(), byAge); break;
+            case 3: sort(passengers.begin(), passengers.end(), byLuggage); break;
+        }
+
+        for (Passenger *passenger : passengers) cout << *passenger << endl;
+
+    } else {
+        cout << "O voo selecionado nao possui qualquer passageiro" << endl;
+    }
+    getMenu();
 }
 
 void Menu::listLuggages() {
 
-    char option = totalOrPartial();
+    char type = totalOrPartial();
+    vector<Luggage*> luggage = {};
+
+    if (type == 'T') luggage = company->getAllLuggages();
+    else {
+        string origin, destination;
+        cout << "Origem do voo: "; cin >> origin;
+        cout << "Destino do voo: "; cin >> destination;
+        Flight *flight = company->findFlight(origin, destination);
+        if (flight) luggage = flight->getLuggage();
+        else {
+            cout << "Voo nao encontrado" << endl;
+            getMenu();
+        }
+    }
+
+    if (!passengers.empty()) {
+        int option;
+        do {
+            cout << "=====================================" << endl;
+            cout << "1 - Ordenar por nome" << endl;
+            cout << "2 - Ordenar por idade" << endl;
+            cout << "3 - Ordenar por quantidade de malas" << endl;
+            cout << "Your choice: ";
+            cin >> option;
+            cout << "=====================================" << endl;
+            if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+
+        } while (option < 1 || option > 3);
+
+        switch (option) {
+            case 1: sort(passengers.begin(), passengers.end(), byPassengerName); break;
+            case 2: sort(passengers.begin(), passengers.end(), byAge); break;
+            case 3: sort(passengers.begin(), passengers.end(), byLuggage); break;
+        }
+
+        for (Passenger *passenger : passengers) cout << *passenger << endl;
+
+    } else {
+        cout << "O voo selecionado nao possui qualquer passageiro" << endl;
+    }
+    getMenu();
 }
 
 void Menu::listServices() {

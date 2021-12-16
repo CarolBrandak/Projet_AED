@@ -31,16 +31,16 @@ bool byVolume(const Luggage &l1, const Luggage &l2) {
     return l1.getTotalVolume() < l2.getTotalVolume();
 }
 
-bool byPassengerName(const Passenger &p1, const Passenger &p2) {
-    return p1.getName() < p2.getName();
+bool byPassengerName(const Passenger *p1, const Passenger *p2) {
+    return p1->getName() < p2->getName();
 }
 
-bool byAge(const Passenger &p1, const Passenger &p2) {
-    return p1.getAge() < p2.getAge();
+bool byAge(const Passenger *p1, const Passenger *p2) {
+    return p1->getAge() < p2->getAge();
 }
 
-bool byLuggage(const Passenger &p1, const Passenger &p2) {
-    return p1.getLuggage().size() < p2.getLuggage().size();
+bool byLuggage(const Passenger *p1, const Passenger *p2) {
+    return p1->getLuggage().size() < p2->getLuggage().size();
 }
 
  bool byMaximumWeight(const Plane *p1, const Plane *p2) {
