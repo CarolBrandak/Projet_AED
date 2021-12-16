@@ -121,7 +121,7 @@ bool byNumberOfServices(const Plane *p1, const Plane *p2) ;
 * @param s2 second person that will be compared
 * @return if p1 has less services than p2
 */
-bool byServiceDate(const Service &s1, const Service &s2);
+bool byServiceDate(const Service *s1, const Service *s2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of services
@@ -129,7 +129,7 @@ bool byServiceDate(const Service &s1, const Service &s2);
 * @param s2 second person that will be compared
 * @return if p1 has less services than p2
 */
-bool byServiceType(const Service &s1, const Service &s2);
+bool byServiceType(const Service *s1, const Service *s2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of services

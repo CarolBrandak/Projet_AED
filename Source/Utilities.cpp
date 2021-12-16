@@ -59,12 +59,12 @@ bool byNumberOfServices(const Plane *p1, const Plane *p2) {
     return (p1->getQuantityOfMadeServices() + p1->getQuantityOfServicesToBeMade()) < (p2->getQuantityOfMadeServices() + p2->getQuantityOfServicesToBeMade());
 }
 
-bool byServiceDate(const Service &s1, const Service &s2) {
-    return s1.getServiceDate() < s2.getServiceDate();
+bool byServiceDate(const Service *s1, const Service *s2) {
+    return s1->getServiceDate() < s2->getServiceDate();
 }
 
-bool byServiceType(const Service &s1, const Service &s2) {
-    return s1.getServiceType() < s2.getServiceType();
+bool byServiceType(const Service *s1, const Service *s2) {
+    return s1->getServiceType() < s2->getServiceType();
 }
 
 bool byDistance(const Transport &t1, const Transport &t2) {
