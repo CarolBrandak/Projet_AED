@@ -2,6 +2,8 @@
 #define PROJECT_AED_EMPLOYEE_H
 
 #include "Person.h"
+#include <iostream>
+using namespace std;
 
 /**
  * Person's derived class

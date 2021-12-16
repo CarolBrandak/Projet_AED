@@ -1,6 +1,7 @@
 #ifndef PROJECT_AED_PASSENGER_H
 #define PROJECT_AED_PASSENGER_H
 
+#include <vector>
 #include "Person.h"
 #include "Luggage.h"
 

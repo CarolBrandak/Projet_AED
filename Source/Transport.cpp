@@ -3,43 +3,43 @@
 
 #include "Transport.h"
 
-Transport::Transport() {}
+Transport::Transport() : ID(""), TYPE(""), DISTANCE(0), DATE(Date(0, 0)) {}
 
 Transport::~Transport() {}
 
-Transport::Transport(string id, string type, int distance, Date date) : id(id), type(type), distance(distance), date(date) {}
+Transport::Transport(string id, string type, int distance, Date date) : ID(id), TYPE(type), DISTANCE(distance), DATE(date) {}
 
 string Transport::getID() const {
-    return id;
+    return ID;
 }
 
 string Transport::getType() const {
-    return type;
+    return TYPE;
 }
 
 int Transport::getDistance() const {
-    return distance;
+    return DISTANCE;
 }
 
 Date Transport::getDate() const {
-    return date;
+    return DATE;
 }
 
 bool Transport::operator == (const Transport &transport) const {
-    return this->type == transport.type &&
-            this->distance == transport.distance && this->date.getMinute() == transport.getDate().getMinute();
+    return this->TYPE == transport.TYPE &&
+            this->DISTANCE == transport.DISTANCE && this->DATE == transport.DATE;
 }
 
 bool Transport::operator < (const Transport &transport) const {
-    if (this->distance == transport.distance) {
-        if (this->date == transport.date) {
-            return this->type < transport.type;
-        } return this->date < transport.date;
-    } return this->distance < transport.distance;
+    if (this->DISTANCE == transport.DISTANCE) {
+        if (this->DATE == transport.DATE) {
+            return this->TYPE < transport.TYPE;
+        } return this->DATE < transport.DATE;
+    } return this->DISTANCE < transport.DISTANCE;
 }
 
 ostream& operator<<(ostream &os, const Transport &transport) {
-    os << transport.getType() << " " << transport.getDistance() << " " << transport.getDate() << endl;
+    os << transport.TYPE << " " << transport.DISTANCE << " " << transport.DATE << endl;
     return os;
 }
 
