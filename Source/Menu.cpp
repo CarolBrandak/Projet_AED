@@ -629,22 +629,31 @@ void Menu::listPlanes() {
         int option;
         do {
             cout << "=====================================" << endl;
-            cout << "1 - Ordenar por capacidade maxima" << endl;
-            cout << "2 - Ordenar por " << endl;
-            cout << "3 - Listar Passengers" << endl;
-            cout << "4 - Listar Luggages" << endl;
-            cout << "5 - Listar Services" << endl;
-            cout << "6 - Listar Employessss" << endl;
-            cout << "7 - Listar Transportes" << endl;
-            cout << "8 - Quit" << endl;
+            cout << "1 - Ordenar por capacidade maxima de carga" << endl;
+            cout << "2 - Ordenar por lotaçao maxima" << endl;
+            cout << "3 - Ordenar por numero de voos" << endl;
+            cout << "4 - Ordenar por numero de servicos" << endl;
+            cout << "5 - Voltar para tras" << endl;
             cout << "Your choice: ";
             cin >> option;
             cout << "=====================================" << endl;
-            if (option < 1 || option > 8) cout << "Erro, por favor tente novamente!" << endl;
+            if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
             cin.clear();
             cin.ignore(1000, '\n');
 
-        } while (option < 1 || option > 8);
+        } while (option < 1 || option > 5);
+
+        switch (option) {
+            case 1: sort(planes.begin(), planes.end(), byMaximumWeight); break;
+            case 2: sort(planes.begin(), planes.end(), byMaximumCapacity); break;
+            case 3: sort(planes.begin(), planes.end(), byNumberOfFlights); break;
+            case 4: sort(planes.begin(), planes.end(), byNumberOfServices); break;
+            case 5: getMenu(); break;
+        }
+
+        for (Plane *plane : planes) cout << *plane << endl;
+        getMenu();
+
     } else cout << "Nao existem avioes a mostrar" << endl;
 }
 

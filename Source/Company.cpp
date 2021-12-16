@@ -23,6 +23,10 @@ string Company::getName() const {
     return name;
 }
 
+vector<Plane*> Company::getPlanes() {
+    return planes;
+}
+
 string Company::getNextPlaneID() {
     nextPlaneID++;
     return to_string(nextPlaneID);

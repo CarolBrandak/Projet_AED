@@ -43,20 +43,20 @@ bool byLuggage(const Passenger &p1, const Passenger &p2) {
     return p1.getLuggage().size() < p2.getLuggage().size();
 }
 
- bool byMaximumWeight(const Plane &p1, const Plane &p2) {
-    return p1.getMaxWeightCapacity() < p2.getMaxWeightCapacity();
+ bool byMaximumWeight(const Plane *p1, const Plane *p2) {
+    return p1->getMaxWeightCapacity() < p2->getMaxWeightCapacity();
 }
 
-bool byMaximumCapacity(const Plane &p1, const Plane &p2) {
-    return p1.getMaxPassengersCapacity() < p2.getMaxPassengersCapacity();
+bool byMaximumCapacity(const Plane *p1, const Plane *p2) {
+    return p1->getMaxPassengersCapacity() < p2->getMaxPassengersCapacity();
 }
 
-bool byNumberOfFlights(const Plane &p1, const Plane &p2) {
-    return p1.getQuantityOfFlights() < p2.getQuantityOfFlights();
+bool byNumberOfFlights(const Plane *p1, const Plane *p2) {
+    return p1->getQuantityOfFlights() < p2->getQuantityOfFlights();
 }
 
-bool byNumberOfServices(const Plane &p1, const Plane &p2) {
-    return (p1.getQuantityOfMadeServices() + p1.getQuantityOfServicesToBeMade()) < (p2.getQuantityOfMadeServices() + p2.getQuantityOfServicesToBeMade());
+bool byNumberOfServices(const Plane *p1, const Plane *p2) {
+    return (p1->getQuantityOfMadeServices() + p1->getQuantityOfServicesToBeMade()) < (p2->getQuantityOfMadeServices() + p2->getQuantityOfServicesToBeMade());
 }
 
 bool byServiceDate(const Service &s1, const Service &s2) {

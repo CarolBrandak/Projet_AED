@@ -89,7 +89,7 @@ bool byLuggage(const Passenger &p1, const Passenger &p2);
 * @param p2 second person that will be compared
 * @return if p1 has less weight capacity than p2
 */
-bool byMaximumWeight(const Plane &p1, const Plane &p2);
+bool byMaximumWeight(const Plane *p1, const Plane *p2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total capacity
@@ -97,7 +97,7 @@ bool byMaximumWeight(const Plane &p1, const Plane &p2);
 * @param p2 second person that will be compared
 * @return if p1 has less capacity than p2
 */
-bool byMaximumCapacity(const Plane &p1, const Plane &p2);
+bool byMaximumCapacity(const Plane *p1, const Plane *p2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of flights
@@ -105,7 +105,7 @@ bool byMaximumCapacity(const Plane &p1, const Plane &p2);
 * @param p2 second person that will be compared
 * @return if p1 has less flights than p2
 */
-bool byNumberOfFlights(const Plane &p1, const Plane &p2);
+bool byNumberOfFlights(const Plane *p1, const Plane *p2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of services
@@ -113,7 +113,7 @@ bool byNumberOfFlights(const Plane &p1, const Plane &p2);
 * @param p2 second person that will be compared
 * @return if p1 has less services than p2
 */
-bool byNumberOfServices(const Plane &p1, const Plane &p2);
+bool byNumberOfServices(const Plane *p1, const Plane *p2) ;
 
 /**
 * Boolean function thar compares to objects of this class, based on their total number of services

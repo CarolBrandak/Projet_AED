@@ -13,6 +13,8 @@
 #define BUY_TICKET_MENU 9
 #define CANCEL_TICKET_MENU 10
 
+#include <algorithm>
+#include "Utilities.h"
 #include "Company.h"
 
 class Menu {
