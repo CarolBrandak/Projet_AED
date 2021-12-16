@@ -146,23 +146,40 @@ class Company {
         void saveTransports(vector<Transport*> transports);
 
         /**
-         *
+         * A function that added a new plane in current Company
          * @param plane - a Plane object that will be added in current Company
          */
         void addPlane(Plane &plane);
 
         /**
-         * 
-         * @param id - a string corresponding the Plane id that will be removed from current Company
+         * A function that remove a plane from the current Company, based on its id
+         * @param id - a string corresponding to the Plane id that will be removed from current Company
          */
         void removePlane(const string &id);
 
-        // Search
+        /**
+         * Finds a plane in current Company based on its id
+         * @param id - a string passed by reference containing the wanted Plane's id
+         * @return a Plane pointer object
+         */
         Plane* findPlane(const string &id);
+
+        /**
+         * Finds a flight in Company based on its origin and destination
+         * @param origin - a string passed by reference containing the origin of the wanted flight
+         * @param destination - a string passed by reference containing the destination of the wanted flight
+         * @return a Flight pointer object
+         */
         Flight* findFlight(const string &origin, const string &destination);
 
-        // Save
+        /**
+         * A function that refreshes all data in database, based on reading files
+         */
         void refreshData();
+
+        /**
+         * A function that saves all manipulated data in corresponding files
+         */
         void save();
 };
 

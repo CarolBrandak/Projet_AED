@@ -352,7 +352,12 @@ Flight* Company::findFlight(const string &origin, const string &destination) {
     return nullptr;
 }
 
-
+Plane* Company::findPlane(const string &id) {
+    for (Plane *plane : planes) {
+        if (plane->getID() == id) return plane;
+    }
+    return nullptr;
+}
 
 void Company::refreshData() {
     this->planes = getAllPlanes();
