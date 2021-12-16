@@ -174,8 +174,6 @@ class Plane {
          */
         void checkFlights();
 
-        //==============================================
-
         /**
          * Function that add a flight into vector flights
          * @param flight - A Flight type object that will be added to vector flights
@@ -184,15 +182,9 @@ class Plane {
 
         /**
          * Functions that remove a flight from vector flights
-         * @param flight - A Flight type object that will be removed to vector flights
+         * @param id - a string passed by reference used to locate a certain Flight object
          */
-        void removeFlight(Flight &flight);
-
-        /**
-         * Adds a service to the queue of services
-         * @param service - a Service type object to be added to the queue of services
-         */
-        void addService(Service &service);
+        void removeFlight(const string &id);
 
         /**
          * A bool function that returns if the flight passed by parameter exists in this plane
@@ -200,6 +192,25 @@ class Plane {
          * @return if flight exists in current plane
          */
         Flight* findFlight(const string &origin, const string &destination);
+
+
+
+        //==============================================
+
+
+
+        /**
+         * Adds a service to the queue of services
+         * @param service - a Service type object to be added to the queue of services
+         */
+        void addService(Service &service);
+
+
+
+
+
+
+
 
 
         /**
@@ -219,45 +230,13 @@ class Plane {
         bool operator < (const Plane &plane) const ;
 
         /**
-        * Boolean function thar compares to objects of this class, based on their total weight capacity
-        * @param p1 first person that will be compared
-        * @param p2 second person that will be compared
-        * @return if p1 has less weight capacity than p2
+         * @overload
+         * Function that returns all characteristics of the Plane being manipulated
+         * @param os ostream object, passed by reference
+         * @param plane Plane object, passed by reference
+         * @return ostream object
         */
-        friend bool byMaximumWeight(const Plane &p1, const Plane &p2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their total capacity
-        * @param p1 first person that will be compared
-        * @param p2 second person that will be compared
-        * @return if p1 has less capacity than p2
-        */
-        friend bool byMaximumCapacity(const Plane &p1, const Plane &p2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their total number of flights
-        * @param p1 first person that will be compared
-        * @param p2 second person that will be compared
-        * @return if p1 has less flights than p2
-        */
-        friend bool byNumberOfFlights(const Plane &p1, const Plane &p2);
-
-        /**
-        * Boolean function thar compares to objects of this class, based on their total number of services
-        * @param p1 first person that will be compared
-        * @param p2 second person that will be compared
-        * @return if p1 has less services than p2
-        */
-        friend bool byNumberOfServices(const Plane &p1, const Plane &p2);
+        friend ostream & operator << (ostream & os, const Plane &plane);
 };
-
-/**
- * @overload
- * Function that returns all characteristics of the Plane being manipulated
- * @param os ostream object, passed by reference
- * @param plane Plane object, passed by reference
- * @return ostream object
- */
-ostream & operator << (ostream & os, const Plane &plane);
 
 #endif // PROJECT_AED_PLANE_H

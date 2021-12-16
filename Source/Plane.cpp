@@ -111,21 +111,20 @@ void Plane::checkFlights() {
     }
 }
 
-//==========================
-
 void Plane::addFlight(Flight &flight) {
     if (ID == flight.getID().substr(0, flight.getID().find('-'))) flights.push_back(&flight);
     if (stoi(flight.getID().substr(flight.getID().find('-') + 1)) > nextFlightID) nextFlightID++;
 }
 
-
-void Plane::removeFlight(Flight &flight) {
+void Plane::removeFlight(const string &id) {
     for (auto it = flights.begin() ; it != flights.end() ; it++) {
-        if(*it == &flight) {
+        if((*it)->getID() == id) {
             flights.erase(it);
+            cout << "Voo removido com sucesso" << endl;
             return;
         }
     }
+    cout << "Voo não encontrado" << endl;
 }
 
 Flight* Plane::findFlight(const string &origin, const string &destination) {
@@ -140,38 +139,35 @@ void Plane::addService(Service &service) {
 }
 
 
+
+
+//==========================
+
+
+
+
+
+
+
+
+
+
 bool Plane::operator == (const Plane &plane) const {
     return this->ID == plane.ID && this->LICENSE_PLATE == plane.LICENSE_PLATE && this->TYPE == plane.TYPE &&
                 this->MAX_PASSENGERS_CAPACITY == plane.MAX_PASSENGERS_CAPACITY && this->MAX_WEIGHT_CAPACITY == plane.MAX_PASSENGERS_CAPACITY;
 }
 
 bool Plane::operator < (const Plane &plane) const {
-    if (MAX_PASSENGERS_CAPACITY == plane.getMaxPassengersCapacity()) return MAX_WEIGHT_CAPACITY < plane.getMaxWeightCapacity();
-    return MAX_PASSENGERS_CAPACITY < plane.getMaxPassengersCapacity();
-}
-
-bool byMaximumWeight(const Plane &p1, const Plane &p2) {
-    return p1.MAX_WEIGHT_CAPACITY < p2.MAX_WEIGHT_CAPACITY;
-}
-
-bool byMaximumCapacity(const Plane &p1, const Plane &p2) {
-    return p1.MAX_PASSENGERS_CAPACITY < p2.MAX_PASSENGERS_CAPACITY;
-}
-
-bool byNumberOfFlights(const Plane &p1, const Plane &p2) {
-    return p1.getQuantityOfFlights() < p2.getQuantityOfFlights();
-}
-
-bool byNumberOfServices(const Plane &p1, const Plane &p2) {
-    return (p1.getQuantityOfMadeServices() + p1.getQuantityOfServicesToBeMade()) < (p2.getQuantityOfMadeServices() + p2.getQuantityOfServicesToBeMade());
+    if (MAX_PASSENGERS_CAPACITY == plane.MAX_PASSENGERS_CAPACITY) return MAX_WEIGHT_CAPACITY < plane.MAX_WEIGHT_CAPACITY;
+    return MAX_PASSENGERS_CAPACITY < plane.MAX_PASSENGERS_CAPACITY;
 }
 
 ostream & operator << (ostream & os, const Plane &plane) {
-    os << "ID: " << plane.getID() <<
-        "\nLicense Plate: " << plane.getLicensePlate() <<
-        "\nType: " << plane.getType() <<
-        "\nMax Weight Capacity: "  << plane.getMaxWeightCapacity() <<
-        "\nMax Passengers Capacity: " << plane.getMaxPassengersCapacity() <<
+    os << "ID: " << plane.ID <<
+        "\nLicense Plate: " << plane.LICENSE_PLATE <<
+        "\nType: " << plane.TYPE <<
+        "\nMax Weight Capacity: "  << plane.MAX_WEIGHT_CAPACITY <<
+        "\nMax Passengers Capacity: " << plane.MAX_PASSENGERS_CAPACITY <<
         "\nQuantity of flights: " << plane.getQuantityOfFlights() <<
         "\nQuantity of services to be made: " << plane.getQuantityOfServicesToBeMade() <<
         "\nQuantity of made services: " << plane.getQuantityOfMadeServices() << endl;

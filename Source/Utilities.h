@@ -77,6 +77,38 @@ friend bool byAge(const Passenger &p1, const Passenger &p2);
 
 friend bool byLuggage(const Passenger &p1, const Passenger &p2);
 
+
+        * Boolean function thar compares to objects of this class, based on their total weight capacity
+        * @param p1 first person that will be compared
+        * @param p2 second person that will be compared
+        * @return if p1 has less weight capacity than p2
+
+friend bool byMaximumWeight(const Plane &p1, const Plane &p2);
+
+
+* Boolean function thar compares to objects of this class, based on their total capacity
+* @param p1 first person that will be compared
+* @param p2 second person that will be compared
+* @return if p1 has less capacity than p2
+
+friend bool byMaximumCapacity(const Plane &p1, const Plane &p2);
+
+
+* Boolean function thar compares to objects of this class, based on their total number of flights
+* @param p1 first person that will be compared
+* @param p2 second person that will be compared
+* @return if p1 has less flights than p2
+
+friend bool byNumberOfFlights(const Plane &p1, const Plane &p2);
+
+
+* Boolean function thar compares to objects of this class, based on their total number of services
+* @param p1 first person that will be compared
+* @param p2 second person that will be compared
+* @return if p1 has less services than p2
+
+friend bool byNumberOfServices(const Plane &p1, const Plane &p2);
+
 */
 
 
