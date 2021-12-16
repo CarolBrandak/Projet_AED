@@ -74,6 +74,12 @@ class Company {
         string getNextPlaneID();
 
         /**
+         * Returns all Planes of the system
+         * @return a vector containing Plane pointer objects
+        */
+        vector<Plane*> getPlanes();
+
+        /**
          * Returns all Luggages of the system, by reading files
          * @return a vector containing Luggage pointer objects
          */

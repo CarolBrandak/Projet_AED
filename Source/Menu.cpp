@@ -614,7 +614,7 @@ char Menu::totalOrPartial() {
     do {
         cout << "Listagem total ou parcial? T/C: ";
         cin >> option;
-        if (toupper(option) != 'T' && toupper(option) != 'C')
+        if (toupper(option) != 'T' && toupper(option) != 'C') cout << "Input inválido, por favor tente novamente" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
     } while (toupper(option) != 'T' && toupper(option) != 'C');
@@ -624,11 +624,28 @@ char Menu::totalOrPartial() {
 
 void Menu::listPlanes() {
 
-    char option = totalOrPartial();
-    vector<Plane*> planes;
+    vector<Plane*> planes = company->getPlanes();
+    if (!planes.empty()) {
+        int option;
+        do {
+            cout << "=====================================" << endl;
+            cout << "1 - Ordenar por capacidade maxima" << endl;
+            cout << "2 - Ordenar por " << endl;
+            cout << "3 - Listar Passengers" << endl;
+            cout << "4 - Listar Luggages" << endl;
+            cout << "5 - Listar Services" << endl;
+            cout << "6 - Listar Employessss" << endl;
+            cout << "7 - Listar Transportes" << endl;
+            cout << "8 - Quit" << endl;
+            cout << "Your choice: ";
+            cin >> option;
+            cout << "=====================================" << endl;
+            if (option < 1 || option > 8) cout << "Erro, por favor tente novamente!" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
 
-
-
+        } while (option < 1 || option > 8);
+    } else cout << "Nao existem avioes a mostrar" << endl;
 }
 
 void Menu::listFlights() {
