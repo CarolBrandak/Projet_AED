@@ -12,7 +12,7 @@
 #include <fstream>
 #include <algorithm>
 #include "Plane.h"
-//#include "Exceptions.h"
+#include "Exceptions.h"
 
 /**
  A class to manage an Company
@@ -108,6 +108,16 @@ class Company {
         * @return a vector containing Plane pointer objects
         */
         vector<Plane*> getAllPlanes();
+
+
+        // save data
+
+        void saveLuggage(vector<Luggage*> luggage);
+        void savePassengers(vector<Passenger*> passengers);
+        void saveFlights(vector<Flight*> flights);
+        void saveServices(vector<Service*> services);
+        void savePlanes(vector<Plane*> planes);
+        void saveTransports(vector<Transport*> transports);
 
         // Add
         void addPlane(Plane &plane);

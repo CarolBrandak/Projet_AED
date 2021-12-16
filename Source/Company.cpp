@@ -28,11 +28,6 @@ string Company::getNextPlaneID() {
     return to_string(nextPlaneID);
 }
 
-void Company::addPlane(Plane &plane) {
-    if (stoi(plane.getID()) > nextPlaneID) nextPlaneID++;
-    planes.push_back(&plane);
-}
-
 vector<Luggage*> Company::getAllLuggages() {
 
     vector<Luggage*> luggage = {};
@@ -58,7 +53,7 @@ vector<Luggage*> Company::getAllLuggages() {
             luggage.push_back(new Luggage(id, stoi(weight), v, planeHold == "1"));
         }
     } else {
-        
+        throw FileNotFound(LUGGAGE_FILE);
     }
     file.close();
     return luggage;
@@ -83,7 +78,7 @@ vector<Passenger*> Company::getAllPassengers() {
             passengers.push_back(new Passenger(id, name, stoi(age), gender[0], passportNumber));
         }
     } else {
-        cerr << "File in " << PASSENGER_FILE << " not found" << endl;
+        throw FileNotFound(PASSENGER_FILE);
     }
     file.close();
 
@@ -119,7 +114,7 @@ vector<Service*> Company::getAllServices() {
             services.push_back(new Service(id, type, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), Employee(name, stoi(age), gender[0])));
         }
     } else {
-        cerr << "File in " << SERVICE_FILE << " not found" << endl;
+        throw FileNotFound(SERVICE_FILE);
     }
     file.close();
     return services;
@@ -144,7 +139,7 @@ vector<Transport*> Company::getAllTransports() {
             transports.push_back(new Transport(id, type, stoi(distance), Date(stoi(hour), stoi(minute))));
         }
     } else {
-        cerr << "File in " << TRANSPORT_FILE << " not found" << endl;
+        throw FileNotFound(TRANSPORT_FILE);
     }
     file.close();
     return transports;
@@ -174,7 +169,7 @@ vector<Flight*> Company::getAllFlights() {
             flights.push_back(new Flight(id, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), stoi(duration), origin, Airport(airportName, destination)));
         }
     } else {
-        cerr << "File in " << FLIGHT_FILE << " not found" << endl;
+        throw FileNotFound(FLIGHT_FILE);
     }
     file.close();
 
@@ -194,36 +189,42 @@ vector<Plane*> Company::getAllPlanes() {
     vector<Plane*> allPlanes = {};
     ifstream file(PLANE_FILE);
 
-    if (file.is_open()) {
-        while (!file.eof()) {
+    try {
+        if (file.is_open()) {
+            while (!file.eof()) {
 
-            string id, licencePlate, type, weightCapacity, passengerCapacity;
+                string id, licencePlate, type, weightCapacity, passengerCapacity;
 
-            getline(file, id, ';');
-            getline(file, licencePlate, ';');
-            getline(file, type, ';');
-            getline(file, weightCapacity, ';');
-            getline(file, passengerCapacity);
+                getline(file, id, ';');
+                getline(file, licencePlate, ';');
+                getline(file, type, ';');
+                getline(file, weightCapacity, ';');
+                getline(file, passengerCapacity);
 
-            allPlanes.push_back(new Plane(id, licencePlate, type, stoi(weightCapacity), stoi(passengerCapacity)));
+                allPlanes.push_back(new Plane(id, licencePlate, type, stoi(weightCapacity), stoi(passengerCapacity)));
+            }
+        } else {
+            throw FileNotFound(PLANE_FILE);
         }
-    } else {
-        cerr << "File in " << PLANE_FILE << " not found" << endl;
-    }
-    file.close();
+        file.close();
 
-    vector<Service*> allServices = getAllServices();
-    vector<Flight*> allFlights = getAllFlights();
-    for (Plane *plane : allPlanes) {
-        for (Service *service: allServices) plane->addService(*service);
-        for (Flight *flight: allFlights) plane->addFlight(*flight);
-    }
+            vector<Service*> allServices = getAllServices();
+            vector<Flight*> allFlights = getAllFlights();
+            for (Plane *plane : allPlanes) {
+                for (Service *service: allServices) plane->addService(*service);
+                for (Flight *flight: allFlights) plane->addFlight(*flight);
+            }
 
-    this->planes = allPlanes;
-    return allPlanes;
+            this->planes = allPlanes;
+            return allPlanes;
+
+    } catch (FileNotFound error) {
+        error.showError();
+        exit(1);
+    }
 }
 
-void saveLuggage(vector<Luggage*> luggage) {
+void Company::saveLuggage(vector<Luggage*> luggage) {
 
     ofstream file(LUGGAGE_FILE);
     if (file.is_open()) {
@@ -241,7 +242,7 @@ void saveLuggage(vector<Luggage*> luggage) {
     file.close();
 }
 
-void savePassengers(vector<Passenger*> passengers) {
+void Company::savePassengers(vector<Passenger*> passengers) {
 
     ofstream file(PASSENGER_FILE);
     if (file.is_open()) {
@@ -258,7 +259,7 @@ void savePassengers(vector<Passenger*> passengers) {
     file.close();
 }
 
-void saveFlights(vector<Flight*> flights) {
+void Company::saveFlights(vector<Flight*> flights) {
 
     ofstream file(FLIGHT_FILE);
     if (file.is_open()) {
@@ -277,7 +278,7 @@ void saveFlights(vector<Flight*> flights) {
     file.close();
 }
 
-void saveServices(vector<Service*> services) {
+void Company::saveServices(vector<Service*> services) {
 
     ofstream file(SERVICE_FILE);
     if (file.is_open()) {
@@ -296,7 +297,7 @@ void saveServices(vector<Service*> services) {
     file.close();
 }
 
-void savePlanes(vector<Plane*> planes) {
+void Company::savePlanes(vector<Plane*> planes) {
 
     ofstream file(PLANE_FILE);
     if (file.is_open()) {
@@ -314,7 +315,7 @@ void savePlanes(vector<Plane*> planes) {
     file.close();
 }
 
-void saveTransports(vector<Transport*> transports) {
+void Company::saveTransports(vector<Transport*> transports) {
 
     ofstream file(TRANSPORT_FILE);
     if (file.is_open()) {
@@ -329,6 +330,19 @@ void saveTransports(vector<Transport*> transports) {
         cerr << "File in " << TRANSPORT_FILE << " not found" << endl;
     }
     file.close();
+}
+
+void Company::addPlane(Plane &plane) {
+    if (stoi(plane.getID()) > nextPlaneID) nextPlaneID++;
+    planes.push_back(&plane);
+}
+
+Flight* Company::findFlight(const string &origin, const string &destination) {
+    for (Plane *plane : planes) {
+        Flight* wanted = (*plane).findFlight(origin, destination);
+        if (wanted) return wanted;
+    }
+    return nullptr;
 }
 
 void Company::refreshData() {
@@ -364,28 +378,26 @@ void Company::save() {
         }
     }
 
-    savePlanes(planes);
-    savePassengers(allPassengers);
-    saveFlights(allFlights);
-    saveServices(allServices);
-    saveLuggage(allLuggage);
-    saveTransports(allTransports);
+    try {
+        savePlanes(planes);
+        savePassengers(allPassengers);
+        saveFlights(allFlights);
+        saveServices(allServices);
+        saveLuggage(allLuggage);
+        saveTransports(allTransports);
+
+        this->refreshData();
+
+    } catch (FileNotFound error) {
+        error.showError();
+        exit(1);
+    }
 
     allLuggage.clear();
     allPassengers.clear();
     allFlights.clear();
     allServices.clear();
     allTransports.clear();
-
-    refreshData();
-}
-
-Flight* Company::findFlight(const string &origin, const string &destination) {
-    for (Plane *plane : planes) {
-        Flight* wanted = (*plane).findFlight(origin, destination);
-        if (wanted) return wanted;
-    }
-    return nullptr;
 }
 
 #endif // PROJECT_AED_AGENCY_CPP
