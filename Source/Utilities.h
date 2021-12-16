@@ -4,7 +4,15 @@
 #include "Plane.h"
 
 /**
-* Boolean function thar compares to objects of this class, based on their number of passengers
+* Boolean function thar compares to Employees based on their names
+* @param e1 first Employee object that will be compared
+* @param e2 second Employee object that will be compared
+* @return if c1 has less than c2
+*/
+bool byEmployeeName(const Employee &e1, const Employee &e2);
+
+/**
+* Boolean function thar compares to Flights, based on their number of passengers
 * @param f1 first flight that will be compared
 * @param f2 second flight object that will be compared
 * @return if f1 has less number of passengers than f2
@@ -57,7 +65,7 @@ bool byVolume(const Luggage &l1, const Luggage &l2);
 * @param p2 second person that will be compared
 * @return if p1 has less name than p2, based on alphabetic order
 */
-bool byName(const Passenger &p1, const Passenger &p2);
+bool byPassengerName(const Passenger &p1, const Passenger &p2);
 
 /**
 * Boolean function thar compares to objects of this class, based on their age
@@ -106,5 +114,45 @@ bool byNumberOfFlights(const Plane &p1, const Plane &p2);
 * @return if p1 has less services than p2
 */
 bool byNumberOfServices(const Plane &p1, const Plane &p2);
+
+/**
+* Boolean function thar compares to objects of this class, based on their total number of services
+* @param s1 first person that will be compared
+* @param s2 second person that will be compared
+* @return if p1 has less services than p2
+*/
+bool byServiceDate(const Service &s1, const Service &s2);
+
+/**
+* Boolean function thar compares to objects of this class, based on their total number of services
+* @param s1 first person that will be compared
+* @param s2 second person that will be compared
+* @return if p1 has less services than p2
+*/
+bool byServiceType(const Service &s1, const Service &s2);
+
+/**
+* Boolean function thar compares to objects of this class, based on their total number of services
+* @param s1 first person that will be compared
+* @param s2 second person that will be compared
+* @return if p1 has less services than p2
+*/
+bool byDistance(const Transport &t1, const Transport &t2);
+
+/**
+* Boolean function thar compares to objects of this class, based on their total number of services
+* @param s1 first person that will be compared
+* @param s2 second person that will be compared
+* @return if p1 has less services than p2
+*/
+bool byTransportType(const Transport &t1, const Transport &t2);
+
+/**
+* Boolean function thar compares to objects of this class, based on their total number of services
+* @param s1 first person that will be compared
+* @param s2 second person that will be compared
+* @return if p1 has less services than p2
+*/
+bool byTransportTime(const Transport &t1, const Transport &t2);
 
 #endif // PROJECT_AED_UTILITIES_H
