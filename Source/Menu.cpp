@@ -117,9 +117,15 @@ void Menu::planeDataMenu() {
         }
         case 2: {
             string id;
-            cout << "Id do avião a remover: "; cin >> id;
-            company->removePlane(id);
-            company->save();
+            cout << "Id do avião a remover: ";
+            cin >> id;
+            if (company->removePlane(id)) {
+                company->save();
+                cout << "O voo com id: " << id << "foi removido" << endl;
+            }
+            else
+                cout << "O voo com id: " << id << " nao foi removido" << endl;
+
             getMenu();
             break;
         }

@@ -43,6 +43,7 @@ vector<Luggage*> Company::getAllLuggages() {
             string id, weight, widtht, height, depth, planeHold;
 
             getline(file, id, ';');
+            if (id.empty()) return luggage;
             getline(file, weight, ';');
             getline(file, widtht, ';');
             getline(file, height, ';');
@@ -74,6 +75,7 @@ vector<Passenger*> Company::getAllPassengers() {
             string id, name, age, gender, passportNumber;
 
             getline(file, id, ';');
+            if (id.empty()) return passengers;
             getline(file, name, ';');
             getline(file, age, ';');
             getline(file, gender, ';');
@@ -105,6 +107,7 @@ vector<Service*> Company::getAllServices() {
             string id, type, name, gender, age, year, month, day, hour, minute;
 
             getline(file, id, ';');
+            if (id.empty()) return services;
             getline(file, type, ';');
             getline(file, year, ';');
             getline(file, month, ';');
@@ -135,6 +138,7 @@ vector<Transport*> Company::getAllTransports() {
             string id, type, distance, hour, minute;
 
             getline(file, id, ';');
+            if (id.empty()) return transports;
             getline(file, type, ';');
             getline(file, distance, ';');
             getline(file, hour, ';');
@@ -160,6 +164,7 @@ vector<Flight*> Company::getAllFlights() {
             string id, year, month, day, hour, minute, duration, origin, destination, airportName;
 
             getline(file, id, ';');
+            if (id.empty()) return flights;
             getline(file, year, ';');
             getline(file, month, ';');
             getline(file, day, ';');
@@ -200,6 +205,7 @@ vector<Plane*> Company::getAllPlanes() {
                 string id, licencePlate, type, weightCapacity, passengerCapacity;
 
                 getline(file, id, ';');
+                if (id.empty()) return allPlanes;
                 getline(file, licencePlate, ';');
                 getline(file, type, ';');
                 getline(file, weightCapacity, ';');
@@ -341,11 +347,15 @@ void Company::addPlane(Plane &plane) {
     planes.push_back(&plane);
 }
 
-void Company::removePlane(const string &id) {
+bool Company::removePlane(const string &id) {
     for (vector<Plane*>::iterator it = planes.begin() ; it != planes.end() ; it++) {
-        if ((*it)->getID() == id) planes.erase(it);
+        if ((*it)->getID() == id) {
+            planes.erase(it);
+            return true;
+        }
     }
-    cout << "Não existe avião com id = " << id << " nesta companhia aérea" << endl;
+
+    return false;
 }
 
 Flight* Company::findFlight(const string &origin, const string &destination) {

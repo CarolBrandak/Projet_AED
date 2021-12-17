@@ -161,7 +161,7 @@ class Company {
          * A function that remove a plane from the current Company, based on its id
          * @param id - a string corresponding to the Plane id that will be removed from current Company
          */
-        void removePlane(const string &id);
+        bool removePlane(const string &id);
 
         /**
          * Finds a plane in current Company based on its id
