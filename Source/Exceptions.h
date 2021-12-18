@@ -124,7 +124,7 @@ class InvalidTransport : public exception {
 
         /**
          * Constructor of class
-         * @param transport - a Transport object is invalid
+         * @param transport - a Transport object that is invalid
          */
         InvalidTransport(Transport *transport);
 

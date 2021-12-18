@@ -49,6 +49,9 @@ class Luggage {
 
     /**
      * @var planeHold, luggage's planeHold, a boolean value
+     *                 planeHold = 0, hold luggage
+     *                 planeHold = 1, hand luggage
+     *
      */
     bool planeHold;
 
@@ -68,7 +71,7 @@ class Luggage {
          * Main constructor
          * @param ID Luggage's id, a string passed by value
          * @param WEIGHT Luggage's weight, a short int passed by value
-         * @param VOLUME Luggage's volume, a struct
+         * @param VOLUME Luggage's volume, a struct passed by value
          * @param planeHold Luggage's planeHold, a boolean passed by value
          */
         Luggage(string ID, short int WEIGHT, Volume VOLUME, bool planeHold);

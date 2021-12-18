@@ -84,7 +84,7 @@ void Flight::addTransport(Transport *transport) {
 
 void Flight::removeTransport(Transport *transport) {
     if (ID == transport->getID()) airport.removeTransport(transport);
-    else cout << "O transporte não pertence a este voo" << endl;
+    else cout << "O transporte nao existe neste voo" << endl;
 }
 
 Transport* Flight::searchTransport(const int &hour, const int &minute) {
@@ -99,41 +99,6 @@ Transport* Flight::searchTransport(const int &distance) {
     return airport.searchTransport(distance);
 }
 
-void Flight::addPassenger(const vector<Passenger*> &allPassengers) {
-
-    Cart cart = Cart();
-    queue<Luggage *> treadmill = {};
-
-    for (Passenger *passenger: allPassengers) {
-
-        string passengerId = passenger->getID();
-        string idToEnter = passengerId.substr(0, passengerId.find_last_of('-'));
-        string singleId = passengerId.substr(passengerId.find_last_of('-') + 1);
-
-        if (ID == idToEnter) {
-
-            if (stoi(singleId) > nextID) nextID++;
-            this->quantityOfPassengers++;
-            this->quantityOfWeight += passenger->getTotalWeight();
-
-            vector<Luggage *> passengerLuggage = passenger->getLuggage();
-
-            for (vector<Luggage *>::iterator it = passengerLuggage.begin(); it != passengerLuggage.end(); it++) {
-                if (!((*it)->getPlaneHold())) {
-                    passenger->removeLuggage(*it);
-                    treadmill.push(*it);
-                }
-            }
-            passengers.push_back(passenger);
-        }
-
-        if (!treadmill.empty()) {
-            cart.addLuggage(treadmill);
-            cart.putLuggage(this->luggage);
-        }
-    }
-}
-
 void Flight::addPassenger(Passenger& passenger) {
 
     string passengerId = passenger.getID();
@@ -142,7 +107,6 @@ void Flight::addPassenger(Passenger& passenger) {
 
     if (ID == idToEnter) {
 
-        Cart cart = Cart();
         queue<Luggage *> treadmill = {};
 
         if (stoi(singleId) > nextID) nextID++;
@@ -152,6 +116,11 @@ void Flight::addPassenger(Passenger& passenger) {
         vector<Luggage*> passengerLuggage = passenger.getLuggage();
 
         for (vector<Luggage*>::iterator it = passengerLuggage.begin() ; it != passengerLuggage.end() ; it++) {
+
+            if ((*it)->getPlaneHold())
+                if ((*it)->getTotalVolume() > MAX_HAND_LUGGAGE_VOLUME || (*it)->getWeight() > MAX_HAND_LUGGAGE_HEIGHT)
+                    (*it)->setPlaneHold(false);
+
             if (!((*it)->getPlaneHold())) {
                 passenger.removeLuggage(*it);
                 treadmill.push(*it);
@@ -160,6 +129,7 @@ void Flight::addPassenger(Passenger& passenger) {
         passengers.push_back(&passenger);
 
         if (!treadmill.empty()) {
+            Cart cart = Cart();
             cart.addLuggage(treadmill);
             cart.putLuggage(this->luggage);
         }
@@ -200,6 +170,7 @@ void Flight::addLuggage(Luggage *l) {
     if (ID == l->getID().substr(0, l->getID().find_last_of('-'))) {
         luggage.push_back(l);
         quantityOfWeight += l->getWeight();
+        return;
     }
 }
 
@@ -231,14 +202,14 @@ bool Flight::operator < (const Flight &flight) const {
     } return FLIGHT_DATE < flight.FLIGHT_DATE;
 }
 
-std::ostream & operator << (std::ostream & os, const Flight &flight) {
-    os  << "Flight ID: " << flight.ID
-        << "\nFlight Date: " << flight.FLIGHT_DATE
-        << "Flight Duration: " << flight.FLIGHT_DURATION
-        << " minutes\nOrigin: " << flight.ORIGIN
-        << "\nDestination: "<< flight.airport.getCity()
-        << "\nQuantity of Weight: " << flight.quantityOfWeight
-        << " Kgs\nQuantity Of Passengers: " << flight.quantityOfPassengers << endl;
+ostream & operator << (ostream & os, const Flight &flight) {
+    os  << "ID: " << flight.ID
+        << "\nData: " << flight.FLIGHT_DATE
+        << "Duracao: " << flight.FLIGHT_DURATION
+        << " minutos\nOrigem: " << flight.ORIGIN
+        << "\nDestino: "<< flight.airport.getCity()
+        << "\nQuantidade de carga que leva: " << flight.quantityOfWeight
+        << " Kgs\nQuantidade de passageiros que leva: " << flight.quantityOfPassengers << endl;
     return os;
 }
 

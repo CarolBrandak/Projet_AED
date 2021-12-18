@@ -8,10 +8,10 @@ Service::Service() : ID(""), TYPE(""), DATE(0, 0) {}
 Service::~Service() {}
 
 Service::Service(string id, string serviceType, Date serviceDate, Employee responsible) :
+    responsible(responsible),
     ID(id),
     TYPE(serviceType),
     DATE(serviceDate) {
-    this->responsible = responsible;
 }
 
 string Service::getID() const {

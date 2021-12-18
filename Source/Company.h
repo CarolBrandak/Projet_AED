@@ -1,6 +1,9 @@
 #ifndef PROJECT_AED_COMPANY_H
 #define PROJECT_AED_COMPANY_H
 
+/**
+ * Directories of all backup files
+ */
 #define FLIGHT_FILE "../Source/Files/Flights.txt"
 #define LUGGAGE_FILE "../Source/Files/Luggages.txt"
 #define PASSENGER_FILE "../Source/Files/Passengers.txt"

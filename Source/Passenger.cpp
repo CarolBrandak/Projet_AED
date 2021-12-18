@@ -43,17 +43,17 @@ int Passenger::getTotalVolume() const {
 }
 
 bool Passenger::operator < (const Passenger &passenger) const {
-    if (age == passenger.age) return name < passenger.name;
-    return age < passenger.age;
+    if (AGE == passenger.AGE) return NAME < passenger.NAME;
+    return AGE < passenger.AGE;
 }
 
 bool Passenger::operator == (const Passenger &passenger) const {
-    return this->PASSPORT == passenger.PASSPORT &&
-            this->name == passenger.name && this->age == passenger.age && this->gender == passenger.gender;
+    return this->PASSPORT == passenger.PASSPORT && this->ID == passenger.ID &&
+            this->NAME == passenger.NAME && this->AGE == passenger.AGE && this->GENDER == passenger.GENDER;
 }
 
 void Passenger::removeLuggage(Luggage *l) {
-    for (vector<Luggage*>::iterator it = this->luggage.begin() ; it != this->luggage.end() ; it++) {
+    for (auto it = this->luggage.begin() ; it != this->luggage.end() ; it++) {
         if (*it == l) {
             luggage.erase(it);
             return;
@@ -63,11 +63,11 @@ void Passenger::removeLuggage(Luggage *l) {
 
 ostream & operator << (ostream & os, const Passenger &passenger) {
     os  << "ID: " << passenger.ID <<
-        "\nName: " << passenger.name <<
-        "\nAge: " << passenger.age <<
-        "\nGender: " << passenger.gender <<
-        "\nPassport Number: " << passenger.PASSPORT <<
-        "\nNumber of luggages: " << passenger.getLuggage().size() << endl;
+        "\nNome: " << passenger.NAME <<
+        "\nIdade: " << passenger.AGE <<
+        "\nGenero: " << passenger.GENDER <<
+        "\nPassaporte: " << passenger.PASSPORT <<
+        "\nNumero de malas: " << passenger.getLuggage().size() << endl;
     return os;
 }
 

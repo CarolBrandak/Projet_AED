@@ -12,19 +12,19 @@ class Person {
     protected:
 
         /**
-         * @var name, a Person's name
+         * @var NAME, a Person's name
          */
-        string name;
+         const string NAME;
 
         /**
-         * @var age, a Person's age
+         * @var AGE, a Person's age
          */
-        short int age;
+        const short int AGE;
 
         /**
-         * @var gender, a Person's gender
+         * @var GENDER, a Person's gender
          */
-        char gender;
+        const char GENDER;
 
     public:
 
@@ -45,24 +45,6 @@ class Person {
          * @param gender Person's gender, a char passed by value
          */
         Person(string name, short int age, char gender);
-
-        /**
-         * Set Person's name
-         * @param name Person's new name, a string passed by value
-         */
-        void setName(const string &name);
-
-        /**
-         * Set Person's age
-         * @param age Person's new age, a short integer passed by value
-         */
-        void setAge(const short int &age);
-
-        /**
-         * Set Person's gender
-         * @param gender Person's new gender, a char passed by value
-         */
-        void setGender(const char &gender);
 
         /**
          * Returns Person's name

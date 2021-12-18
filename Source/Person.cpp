@@ -3,34 +3,22 @@
 
 #include "Person.h"
 
-Person::Person() {}
+Person::Person() : NAME(""), AGE(0), GENDER('?') {}
 
 Person::~Person() {}
 
-Person::Person(string name, short int age, char gender) : name(name), age(age), gender(toupper(gender)) {}
-
-void Person::setName(const string &name){
-    this->name = name;
-}
-
-void Person::setAge(const short int &age) {
-    this->age = age;
-}
-
-void Person::setGender(const char &gender) {
-    this->gender = gender;
-}
+Person::Person(string name, short int age, char gender) : NAME(name), AGE(age), GENDER(toupper(gender)) {}
 
 string Person::getName() const {
-    return this->name;
+    return this->NAME;
 }
 
 short int Person::getAge() const {
-    return this->age;
+    return this->AGE;
 }
 
 char Person::getGender() const {
-    return this->gender;
+    return this->GENDER;
 }
 
 #endif // PROJECT_AED_PERSON_CPP

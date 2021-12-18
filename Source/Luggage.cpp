@@ -43,10 +43,11 @@ bool Luggage::operator < (const Luggage &luggage) const {
 }
 
 ostream & operator << (ostream & os, const Luggage &luggage) {
+    string answer = luggage.planeHold ? "Sim" : "Nao";
     os   << "ID: " << luggage.ID <<
-            "\nWeight: " << luggage.WEIGHT <<
-            "\nVolume: " << luggage.getTotalVolume() <<
-            "\nPlaneHold: " << luggage.planeHold<< endl;
+            "\nPeso: " << luggage.WEIGHT <<
+            " kgs\nVolume: " << luggage.getTotalVolume() <<
+            " centimetros quadrados\nBagagem de mao: " << answer << endl;
     return os;
 }
 

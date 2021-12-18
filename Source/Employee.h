@@ -47,11 +47,19 @@ class Employee : public Person {
         bool operator < (const Employee &employee) const;
 
         /**
-        * @overload
-        * Function that returns all characteristics of the Employee being manipulated
-        * @param os ostream object, passed by reference
-        * @param Employee Employee object, passed by reference
-        * @return ostream object
+         * @overload
+         * A function thar copies current Employee for another one
+         * @param employee  object that will receive the data passed by reference
+         * @return a pointer to current object
+         */
+        Employee& operator = (const Employee &employee);
+
+        /**
+         * @overload
+         * Function that returns all characteristics of the Employee being manipulated
+         * @param os ostream object, passed by reference
+         * @param Employee Employee object, passed by reference
+         * @return ostream object
         */
         friend ostream & operator << (ostream & os, const Employee &employee);
 };

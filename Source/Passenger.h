@@ -13,7 +13,7 @@ class Passenger : public Person {
     private:
 
         /**
-         * @var id, a string
+         * @var ID, a string
          */
         const string ID;
 
@@ -51,7 +51,7 @@ class Passenger : public Person {
 
         /**
          * Set Passenger luggage
-         * @param luggages Passenger's new luggage, a vector with Luggage objects passed reference
+         * @param luggage Passenger's new luggage, a vector with Luggage objects passed reference
          */
         void addLuggage(Luggage &luggage);
 

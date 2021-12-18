@@ -1,6 +1,11 @@
-#pragma once
 #ifndef PROJECT_AED_FLIGHT_H
 #define PROJECT_AED_FLIGHT_H
+
+/**
+ * Definition of the maximum characteristics in a hand luggage
+ */
+#define MAX_HAND_LUGGAGE_VOLUME 1000
+#define MAX_HAND_LUGGAGE_HEIGHT 10
 
 #include <string>
 #include <vector>
@@ -16,6 +21,9 @@
 #include "Cart.h"
 #include "BST.h"
 
+/**
+ * First definition of useful class Cart
+ */
 class Cart;
 
 /**
@@ -41,7 +49,7 @@ class Flight {
         const short int FLIGHT_DURATION;
 
         /**
-         * @var origin - a const string that contains the origin of the flight
+         * @var ORIGIN - a const string that contains the origin of the flight
          */
         const string ORIGIN;
 
@@ -75,11 +83,6 @@ class Flight {
          */
         int nextID;
 
-         /**
-          * @var cart - A useful class for moving passengers' luggage
-          */
-        friend class Cart;
-
     public:
 
         /**
@@ -94,10 +97,10 @@ class Flight {
 
         /**
          * Main constructor
-         * @param ID - a string constant variable thar contains the ID of the flight
-         * @param FLIGHT_DATE - a Date type object that contains the date of the flight
-         * @param FLIGHT_DURATION - a short int constant variable that contains the flight's duration in minutes
-         * @param ORIGIN - a string that contains the origin of the flight
+         * @param id - a string constant variable thar contains the ID of the flight
+         * @param flightDate - a Date type object that contains the date of the flight
+         * @param flightDuration - a short int constant variable that contains the flight's duration in minutes
+         * @param origin - a string that contains the origin of the flight
          * @param airport - an Airport object that contains the destination of the flight and all transports
          */
         Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport);
@@ -163,7 +166,7 @@ class Flight {
         vector<Luggage*> getLuggage() const;
 
         /**
-         * Generate and returns the next Passenger's ID based on last Passengers
+         * Generate and returns the next Passenger's ID based on last Passengers insertions
          * @return a string, containing the next id
          */
         string getNextPassengerID();
@@ -217,18 +220,10 @@ class Flight {
         Transport* searchTransport(const int &distance);
 
         /**
-         * @overload
          * Adds passengers to the flight
          * @param passenger - Passenger object that will be added in the current flight
          */
         void addPassenger(Passenger& passenger);
-
-        /**
-         * @overload
-         * Adds passengers to the flight
-         * @param passengers - Passenger type vector that contains all passengers that will be added in flight
-         */
-        void addPassenger(const vector<Passenger*>& allPassengers);
 
         /**
          * Removes a passenger to the flight
@@ -264,7 +259,7 @@ class Flight {
 
         /**
          * @overload
-         * Boolean function that compares two objects of this class
+         * Boolean function that compares two objects of class Flight
          * @param flight another object that will be compared
          * @return if the current object is equal to the object passed by reference
          */
@@ -272,7 +267,7 @@ class Flight {
 
         /**
          * @overload
-         * Boolean function that compares two objects of this class
+         * Boolean function that compares two objects of class Flight
          * @param flight another object that will be compared
          * @return if the current object is equal to the object passed by reference
          */
