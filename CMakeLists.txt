@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 # To run Code, available in "Source"
 add_executable(     Projet_AED main.cpp
+                    Source/BST.h
                     Source/Employee.cpp Source/Employee.h
                     Source/Luggage.cpp Source/Luggage.h
                     Source/Passenger.cpp Source/Person.h
@@ -17,16 +18,9 @@ add_executable(     Projet_AED main.cpp
                     Source/Airport.cpp Source/Airport.cpp
                     Source/Transport.cpp Source/Transport.cpp
                     Source/Menu.h Source/Menu.cpp
-                    Source/BST.h
                     Source/Exceptions.cpp Source/Exceptions.h
                     Source/Utilities.cpp Source/Utilities.h
-                    Source/Cart.cpp Source/Cart.h)
-
-#To run Tests, available in "Tests"
-add_subdirectory(lib/googletest-master)
-include_directories(lib/googletest-master/googletest/include)
-include_directories(lib/googletest-master/googlemock/include)
-target_link_libraries(Projet_AED gtest gtest_main)
+                    Source/Cart.cpp Source/Cart.h                   )
 
 # To run Doxygen, available in "Documentation"
 find_package(Doxygen)
