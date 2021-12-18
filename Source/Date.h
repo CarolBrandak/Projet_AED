@@ -51,7 +51,7 @@ class Date {
         ~Date();
 
         /**
-         * Main constructor of the class: day, month, year
+         * Constructor of the class: day, month, year
          * @param day Date's day, a int passed by value
          * @param month Date's month, a int passed by value
          * @param year Date's year, a int passed by value
@@ -59,12 +59,12 @@ class Date {
         Date(int day, int month, int year);
 
         /**
-        * Constructor of the class: day, month, year, hour and minute
-        * @param day Date's day, a int passed by value
-        * @param month Date's month, a int passed by value
-        * @param year Date's year, a int passed by value
-        * @param hour, Date's hour, a integer passed by value
-        * @param minute, Date's minute, a integer passed by value
+         * Constructor of the class: day, month, year, hour and minute
+         * @param day Date's day, a int passed by value
+         * @param month Date's month, a int passed by value
+         * @param year Date's year, a int passed by value
+         * @param hour, Date's hour, a integer passed by value
+         * @param minute, Date's minute, a integer passed by value
         */
         Date(int day, int month, int year, int hour, int minute);
 

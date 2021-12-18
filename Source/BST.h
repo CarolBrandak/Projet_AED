@@ -64,8 +64,6 @@ public:
     int size(const Comparable& el) const;   //new
 };
 
-// Note that all "matching" is based on the < method.
-
 template <class Comparable>
 BST<Comparable>::BST(const Comparable& notFound): root(NULL), ITEM_NOT_FOUND(notFound)
 { }
@@ -115,7 +113,6 @@ bool BST<Comparable>::isEmpty( ) const {
     return root == NULL;
 }
 
-
 template <class Comparable>
 void BST<Comparable>::printTree( ) const {
     if(isEmpty())
@@ -146,9 +143,6 @@ iteratorBST<Comparable> BST<Comparable>::end() const {
     it.setBST(NULL);
     return it;
 }
-
-
-// private methods
 
 template <class Comparable>
 const Comparable& BST<Comparable>::elementAt(BinaryNode<Comparable>* t) const {
@@ -249,10 +243,6 @@ BinaryNode<Comparable>* BST<Comparable>::clone( BinaryNode<Comparable>* t ) cons
         return new BinaryNode<Comparable>(t->element, clone(t->left), clone(t->right));
 }
 
-
-//----------- iterators ---------
-
-// Postorder iterator
 template <class Comparable>
 class BSTItrPost {
     stack<BinaryNode<Comparable> *> itrStack;
@@ -299,8 +289,6 @@ void BSTItrPost<Comparable>::slideDown(BinaryNode<Comparable>* n) {
     }
 }
 
-
-// Preorder iterator
 template <class Comparable>
 class BSTItrPre {
     stack<BinaryNode<Comparable> *> itrStack;
@@ -338,8 +326,6 @@ void BSTItrPre<Comparable>::advance()
     }
 }
 
-
-//Inorder iterator
 template <class Comparable>
 class BSTItrIn {
     stack<BinaryNode<Comparable> *> itrStack;
@@ -374,8 +360,6 @@ void BSTItrIn<Comparable>::advance() {
         slideLeft(next);
 }
 
-
-//Bylevel iterator
 template <class Comparable>
 class BSTItrLevel {
     queue<BinaryNode<Comparable> *> itrQueue;
@@ -404,8 +388,6 @@ void BSTItrLevel<Comparable>::advance() {
         itrQueue.push(next);
 }
 
-
-// another inorder iterator
 template <class Comparable>
 class iteratorBST {
     stack<BinaryNode<Comparable> *> itrStack;

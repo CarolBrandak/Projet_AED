@@ -3,20 +3,20 @@
 
 #include "Airport.h"
 
-Airport::Airport() : city(""), name(""), transports(new Transport("","", 0, Date(0, 0))) {}
+Airport::Airport() : CITY(""), NAME(""), transports(new Transport("","", 0, Date(0, 0))) {}
 
 Airport::~Airport() {
     transports.makeEmpty();
 }
 
-Airport::Airport(string name, string city) : name(name), city(city), transports(new Transport("", "", 0, Date(0, 0))) {}
+Airport::Airport(string name, string city) : NAME(name), CITY(city), transports(new Transport("", "", 0, Date(0, 0))) {}
 
 string Airport::getName() const {
-    return name;
+    return NAME;
 }
 
 string Airport::getCity() const {
-    return city;
+    return CITY;
 }
 
 BST<Transport*> Airport::getTransports() const {
@@ -96,8 +96,9 @@ Transport* Airport::searchTransport(const int &hour, const int &minute) const {
     return nullptr;
 }
 
-ostream& operator << (ostream &os, const Airport &airport) {
-    os << "Airport's name: " << airport.name << "\nAirport's city: " << airport.city << endl;
+ostream & operator << (ostream &os, const Airport &airport) {
+    os << "Nome do aeroporto: " << airport.NAME <<
+        "\nCidade do aeroporto: " << airport.CITY << endl;
     return os;
 }
 

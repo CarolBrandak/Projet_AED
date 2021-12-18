@@ -19,9 +19,9 @@ bool Employee::operator < (const Employee &employee) const {
 }
 
 ostream & operator << (ostream & os, const Employee &employee) {
-    os  << "Name: " << employee.name
-        << "\nAge: " << employee.age
-        << "\nGender: " << employee.gender << endl;
+    os  << "Nome: " << employee.name
+        << "\nIdade: " << employee.age
+        << "\nGenero: " << employee.gender << endl;
     return os;
 }
 

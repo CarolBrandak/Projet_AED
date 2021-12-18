@@ -1,4 +1,3 @@
-#pragma once
 #ifndef PROJECT_AED_CART_H
 #define PROJECT_AED_CART_H
 
@@ -9,8 +8,6 @@
 #include <queue>
 #include <stack>
 #include "Luggage.h"
-
-class Flight;
 
 /**
  * A class to manage Luggage Cart
@@ -32,13 +29,19 @@ class Cart {
         Cart();
 
         /**
+         * A default destructor of the class
+         */
+        ~Cart();
+
+        /**
          * A function that adds luggage in current cart
-         * @param treadmill - a queue based on Luggage pointer objects that contains all Luggage in current Order
+         * @param treadmill - a queue based on Luggage pointer objects that contains all Luggage in order of arrival
          */
         void addLuggage(queue<Luggage *> treadmill);
 
         /**
          * A function that adds luggage in current flight
+         * @param luggage - a vector with Luggage pointer objects that will be filled by Cart's luggage too
          */
         void putLuggage(vector<Luggage*> &luggage);
 };

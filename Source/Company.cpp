@@ -1,29 +1,29 @@
-#ifndef PROJECT_AED_AGENCY_CPP
-#define PROJECT_AED_AGENCY_CPP
+#ifndef PROJECT_AED_COMPANY_CPP
+#define PROJECT_AED_COMPANY_CPP
 
 #include "Company.h"
 
-Company::Company() : name("") {}
+Company::Company() : NAME(" "), nextPlaneID(0) {}
 
 Company::~Company() {
     planes.clear();
 }
 
-Company::Company(string name) : name(name), planes(this->getAllPlanes()) {
+Company::Company(string name) : NAME(name), planes(this->getAllPlanes()) {
     this->nextPlaneID = planes.size();
 }
 
 void Company::presentation() {
-    cout << "=====================================" << endl;
-    cout << "==     Welcome to " << name << " Company!   ==" << endl;
-    cout << "=====================================" << endl;
+    cout << "=======================================" << endl;
+    cout << "== Bem-vindo a companhia aerea " << NAME << " ==" << endl;
+    cout << "=======================================" << endl;
 }
 
 string Company::getName() const {
-    return name;
+    return NAME;
 }
 
-vector<Plane*> Company::getPlanes() {
+vector<Plane*> Company::getPlanes() const {
     return planes;
 }
 
@@ -40,18 +40,18 @@ vector<Luggage*> Company::getAllLuggages() {
     if (file.is_open()) {
         while (!file.eof()) {
 
-            string id, weight, widtht, height, depth, planeHold;
+            string id, weight, width, height, depth, planeHold;
 
             getline(file, id, ';');
             if (id.empty()) return luggage;
             getline(file, weight, ';');
-            getline(file, widtht, ';');
+            getline(file, width, ';');
             getline(file, height, ';');
             getline(file, depth, ';');
             getline(file, planeHold);
 
             Volume v;
-            v.width = stoi(widtht);
+            v.width = stoi(width);
             v.height = stoi(height);
             v.depth = stoi(depth);
 
@@ -219,6 +219,7 @@ vector<Plane*> Company::getAllPlanes() {
         file.close();
 
             vector<Service*> allServices = getAllServices();
+            sort(allServices.begin(), allServices.end());
             vector<Flight*> allFlights = getAllFlights();
             for (Plane *plane : allPlanes) {
                 for (Service *service: allServices) plane->addService(*service);
@@ -228,13 +229,13 @@ vector<Plane*> Company::getAllPlanes() {
             this->planes = allPlanes;
             return allPlanes;
 
-    } catch (FileNotFound error) {
+    } catch (FileNotFound &error) {
         error.showError();
         exit(1);
     }
 }
 
-void Company::saveLuggage(vector<Luggage*> luggage) {
+void Company::saveLuggage(const vector<Luggage*> &luggage) {
 
     ofstream file(LUGGAGE_FILE);
     if (file.is_open()) {
@@ -252,7 +253,7 @@ void Company::saveLuggage(vector<Luggage*> luggage) {
     file.close();
 }
 
-void Company::savePassengers(vector<Passenger*> passengers) {
+void Company::savePassengers(const vector<Passenger*> &passengers) {
 
     ofstream file(PASSENGER_FILE);
     if (file.is_open()) {
@@ -269,7 +270,7 @@ void Company::savePassengers(vector<Passenger*> passengers) {
     file.close();
 }
 
-void Company::saveFlights(vector<Flight*> flights) {
+void Company::saveFlights(const vector<Flight*> &flights) {
 
     ofstream file(FLIGHT_FILE);
     if (file.is_open()) {
@@ -288,7 +289,7 @@ void Company::saveFlights(vector<Flight*> flights) {
     file.close();
 }
 
-void Company::saveServices(vector<Service*> services) {
+void Company::saveServices(const vector<Service*> &services) {
 
     ofstream file(SERVICE_FILE);
     if (file.is_open()) {
@@ -307,7 +308,7 @@ void Company::saveServices(vector<Service*> services) {
     file.close();
 }
 
-void Company::savePlanes(vector<Plane*> planes) {
+void Company::savePlanes(const vector<Plane*> &planes) {
 
     ofstream file(PLANE_FILE);
     if (file.is_open()) {
@@ -325,7 +326,7 @@ void Company::savePlanes(vector<Plane*> planes) {
     file.close();
 }
 
-void Company::saveTransports(vector<Transport*> transports) {
+void Company::saveTransports(const vector<Transport*> &transports) {
 
     ofstream file(TRANSPORT_FILE);
     if (file.is_open()) {
@@ -348,13 +349,12 @@ void Company::addPlane(Plane &plane) {
 }
 
 bool Company::removePlane(const string &id) {
-    for (vector<Plane*>::iterator it = planes.begin() ; it != planes.end() ; it++) {
+    for (auto it = planes.begin() ; it != planes.end() ; it++) {
         if ((*it)->getID() == id) {
             planes.erase(it);
             return true;
         }
     }
-
     return false;
 }
 
@@ -416,7 +416,7 @@ void Company::save() {
 
         this->refreshData();
 
-    } catch (FileNotFound error) {
+    } catch (FileNotFound &error) {
         error.showError();
         exit(1);
     }
@@ -428,4 +428,4 @@ void Company::save() {
     allTransports.clear();
 }
 
-#endif // PROJECT_AED_AGENCY_CPP
+#endif // PROJECT_AED_COMPANY_CPP

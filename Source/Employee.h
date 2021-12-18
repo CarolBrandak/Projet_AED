@@ -33,7 +33,7 @@ class Employee : public Person {
         /**
          * @overload
          * Boolean function that compares two objects of this class
-         * @param employee another object that will be compared
+         * @param employee another object that will be compared passed by reference
          * @return if the current object is the same of object passed by reference
          */
         bool operator == (const Employee &employee) const;
@@ -41,7 +41,7 @@ class Employee : public Person {
         /**
          * @overload
          * Boolean function that compares two objects of this class
-         * @param employee another object that will be compared
+         * @param employee another object that will be compared passed by reference
          * @return if the current object is less than object passed by reference
         */
         bool operator < (const Employee &employee) const;

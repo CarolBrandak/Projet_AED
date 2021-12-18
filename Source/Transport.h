@@ -1,7 +1,6 @@
 #ifndef PROJECT_AED_TRANSPORT_H
 #define PROJECT_AED_TRANSPORT_H
 
-#include <string>
 #include "Date.h"
 
 /**

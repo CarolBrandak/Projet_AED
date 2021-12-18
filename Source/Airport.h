@@ -13,14 +13,14 @@ class Airport {
     private:
 
         /**
-         * @var city, a const string containing Airport's city
+         * @var CITY, a const string containing Airport's city
          */
-        const string city;
+        const string CITY;
 
         /**
-         * @var name, const string containing Airport's name
+         * @var NAME, const string containing Airport's name
          */
-        const string name;
+        const string NAME;
 
         /**
          * @var transports, a BST data structure constituted by Transport objects to
@@ -42,8 +42,8 @@ class Airport {
 
         /**
          * Main constructor
-         * @param name - a string containing Airport's name
-         * @param city - a string containing Airport's city
+         * @param name - a string containing Airport's name passed by value
+         * @param city - a string containing Airport's city passed by value
          */
         Airport(string name, string city);
 
@@ -67,25 +67,25 @@ class Airport {
 
         /**
          * A function to get all Transports
-         * @return a vector that groups all Transport objects
+         * @return a vector that groups all Transport objects in order
          */
         vector<Transport*> getAllTransports() const;
 
         /**
-         * A function that adds a new transport to the BST data structure
+         * A function that adds a new transport to the BST data structure passed by pointer
          * @param transport - a Transport object passed by pointer that will eventually be added
          */
         void addTransport(Transport *transport);
 
         /**
-         * A function that removes a transport from the BST data structure
+         * A function that removes a transport from the BST data structure passed by pointer
          * @param transport - a Transport object passed by pointer that will eventually be removed
          */
         void removeTransport(Transport *transport);
 
         /**
          * @overload
-         * A function that returns all Transport objects that has the same type
+         * A function that returns all Transport objects that has the same type passed by constant reference
          * @param type - a string passed by reference that contains the wanted type of Transport
          * @return a vector with Transport objects that has the same type
          */

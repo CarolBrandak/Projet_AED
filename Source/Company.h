@@ -1,5 +1,5 @@
-#ifndef PROJECT_AED_AGENCY_H
-#define PROJECT_AED_AGENCY_H
+#ifndef PROJECT_AED_COMPANY_H
+#define PROJECT_AED_COMPANY_H
 
 #define FLIGHT_FILE "../Source/Files/Flights.txt"
 #define LUGGAGE_FILE "../Source/Files/Luggages.txt"
@@ -8,23 +8,22 @@
 #define SERVICE_FILE "../Source/Files/Services.txt"
 #define TRANSPORT_FILE "../Source/Files/Transports.txt"
 
-#include <vector>
 #include <fstream>
 #include <algorithm>
 #include "Plane.h"
 #include "Exceptions.h"
 
 /**
- A class to manage an Company
+ A class to manage a Company
  */
 class Company {
 
     private:
 
         /**
-         * @var name - a string containing the name of the current company
+         * @var name - a constant string containing the name of the current company
          */
-        const string name;
+        const string NAME;
 
         /**
          * @var nextPlaneID - an integer value that contain the next unique Plane ID, based on
@@ -54,7 +53,7 @@ class Company {
          * Main constructor of the class.
          * @param name - a string containing the Company name
          */
-        Company(string name);
+        explicit Company(string name);
 
         /**
          * A void function that presents the company for the user
@@ -77,37 +76,37 @@ class Company {
          * Returns all Planes of the system
          * @return a vector containing Plane pointer objects
         */
-        vector<Plane*> getPlanes();
+        vector<Plane*> getPlanes() const;
 
         /**
          * Returns all Luggages of the system, by reading files
          * @return a vector containing Luggage pointer objects
          */
-        vector<Luggage*> getAllLuggages();
+        static vector<Luggage*> getAllLuggages();
 
         /**
         * Returns all Passengers of the system, by reading files
         * @return a vector containing Passengers pointer objects
         */
-        vector<Passenger*> getAllPassengers();
+        static vector<Passenger*> getAllPassengers();
 
         /**
         * Returns all Services of the system, by reading files
         * @return a vector containing Service pointer objects
         */
-        vector<Service*> getAllServices();
+        static vector<Service*> getAllServices();
 
         /**
         * Returns all Transports of the system, by reading files
         * @return a vector containing Transport pointer objects
         */
-        vector<Transport*> getAllTransports();
+        static vector<Transport*> getAllTransports();
 
         /**
         * Returns all Flights of the system, by reading files
         * @return a vector containing Flight pointer objects
         */
-        vector<Flight*> getAllFlights();
+        static vector<Flight*> getAllFlights();
 
         /**
         * Returns all Planes of the system, by reading files
@@ -119,37 +118,37 @@ class Company {
          * A function that saves in correspondent file all Luggage data
          * @param luggage - a vector with Luggage pointer object that will be saved
          */
-        void saveLuggage(vector<Luggage*> luggage);
+        static void saveLuggage(const vector<Luggage*> &luggage);
 
         /**
          * A function that saves in correspondent file all Passengers data
          * @param passengers - a vector with Passengers pointer object that will be saved
          */
-        void savePassengers(vector<Passenger*> passengers);
+        static void savePassengers(const vector<Passenger*> &passengers);
 
         /**
          * A function that saves in correspondent file all Flights data
          * @param flights - a vector with Flights pointer object that will be saved
          */
-        void saveFlights(vector<Flight*> flights);
+        static void saveFlights(const vector<Flight*> &flights);
 
         /**
          * A function that saves in correspondent file all Services data
          * @param services - a vector with Services pointer object that will be saved
          */
-        void saveServices(vector<Service*> services);
+        static void saveServices(const vector<Service*> &services);
 
         /**
          * A function that saves in correspondent file all Planes data
          * @param planes - a vector with Planes pointer object that will be saved
          */
-        void savePlanes(vector<Plane*> planes);
+        static void savePlanes(const vector<Plane*> &planes);
 
         /**
          * A function that saves in correspondent file all Transports data
          * @param transports - a vector with Transports pointer object that will be saved
          */
-        void saveTransports(vector<Transport*> transports);
+        static void saveTransports(const vector<Transport*> &transports);
 
         /**
          * A function that added a new plane in current Company
@@ -189,4 +188,4 @@ class Company {
         void save();
 };
 
-#endif // PROJECT_AED_AGENCY_H
+#endif // PROJECT_AED_COMPANY_H

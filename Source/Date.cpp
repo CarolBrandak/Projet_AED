@@ -24,11 +24,11 @@ Date::Date(int day, int month, int year) {
 }
 
 Date::Date(int hour, int minute) {
-    this->hour = hour;
-    this->minute = minute;
-    this->day = 0;
-    this->month = 0;
-    this->year = 0;
+    this -> hour = hour;
+    this -> minute = minute;
+    this -> day = 0;
+    this -> month = 0;
+    this -> year = 0;
 }
 
 int Date::getDay() const {
@@ -56,11 +56,11 @@ void Date::setDay(const int &day){
 }
 
 void Date::setMonth(const int &month){
-    this->month=month;
+    this->month = month;
 }
 
 void Date::setYear(const int &year){
-    this->year=year;
+    this->year = year;
 }
 
 void Date::setHour(const int &hour) {
@@ -95,7 +95,6 @@ ostream & operator << (ostream & os, const Date &date) {
            << ":" << setfill('0') << setw(2) << date.minute << endl;
 
     } else if (!date.hour && !date.minute) {
-
         os  << setfill('0') << setw(2) << date.day
             << "-" << setfill('0') << setw(2) << date.month
             << "-" << setfill('0') << setw(4) << date.year << endl;
@@ -105,8 +104,7 @@ ostream & operator << (ostream & os, const Date &date) {
            << "-" << setfill('0') << setw(2) << date.month
            << "-" << setfill('0') << setw(4) << date.year
            << " " << setfill('0') << setw(2) << date.hour
-           << ":" << setfill('0') << setw(2) << date.minute
-           << endl;
+           << ":" << setfill('0') << setw(2) << date.minute << endl;
     }
     return os;
 }
