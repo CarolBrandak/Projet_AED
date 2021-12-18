@@ -35,10 +35,35 @@ class Company {
         int nextPlaneID;
 
         /**
-         * @var planes - a vector with Plane pointer objects that contains all planes
-         *               and information of the application
+         * @var allPlanes - a vector with Plane pointer objects that contains all planes
+         *                  and information of the application
          */
-        vector<Plane*> planes;
+        vector<Plane*> allPlanes;
+
+        /**
+         * @var allFlights - a vector with Flights pointer objects that contains all flights of the application
+         */
+        vector<Flight*> allFlights;
+
+        /**
+        * @var allPassengers - a vector with Passengers pointer objects that contains all passengers of the application
+        */
+        vector<Passenger*> allPassengers;
+
+        /**
+        * @var allLuggage - a vector with Luggage pointer objects that contains all luggage of the application
+        */
+        vector<Luggage*> allLuggage;
+
+        /**
+        * @var allServices - a vector with Services pointer objects that contains all service of the application
+        */
+        vector<Service*> allServices;
+
+        /**
+        * @var allTransports - a vector with Transports pointer objects that contains all transports of the application
+        */
+        vector<Transport*> allTransports;
 
     public:
 
@@ -79,79 +104,98 @@ class Company {
          * Returns all Planes of the system
          * @return a vector containing Plane pointer objects
         */
-        vector<Plane*> getPlanes() const;
+        vector<Plane*> getAllPlanes() const;
 
         /**
-         * Returns all Luggages of the system, by reading files
+         * Returns all Luggages of the system
          * @return a vector containing Luggage pointer objects
          */
-        static vector<Luggage*> getAllLuggages();
+        vector<Luggage*> getAllLuggages() const;
 
         /**
-        * Returns all Passengers of the system, by reading files
+        * Returns all Passengers of the system
         * @return a vector containing Passengers pointer objects
         */
-        static vector<Passenger*> getAllPassengers();
+        vector<Passenger*> getAllPassengers() const;
 
         /**
-        * Returns all Services of the system, by reading files
+        * Returns all Services of the system
         * @return a vector containing Service pointer objects
         */
-        static vector<Service*> getAllServices();
+        vector<Service*> getAllServices() const;
 
         /**
-        * Returns all Transports of the system, by reading files
+        * Returns all Transports of the system
         * @return a vector containing Transport pointer objects
         */
-        static vector<Transport*> getAllTransports();
+        vector<Transport*> getAllTransports() const;
 
         /**
         * Returns all Flights of the system, by reading files
         * @return a vector containing Flight pointer objects
         */
-        static vector<Flight*> getAllFlights();
+        vector<Flight*> getAllFlights() const;
 
         /**
-        * Returns all Planes of the system, by reading files
-        * @return a vector containing Plane pointer objects
+         * Void function that reads from a file all the characteristics of the Flights
+         */
+        void readFlights();
+
+        /**
+        * Void function that reads from a file all the characteristics of the Luggage
         */
-        vector<Plane*> getAllPlanes();
+        void readLuggage();
+
+        /**
+        * Void function that reads from a file all the characteristics of the Passengers
+        */
+        void readPassengers();
+
+        /**
+        * Void function that reads from a file all the characteristics of the Planes
+        */
+        void readPlanes();
+
+        /**
+        * Void function that reads from a file all the characteristics of the Services
+        */
+        void readServices();
+
+        /**
+        * Void function that reads from a file all the characteristics of the Transports
+        */
+        void readTransports();
 
         /**
          * A function that saves in correspondent file all Luggage data
          * @param luggage - a vector with Luggage pointer object that will be saved
          */
-        static void saveLuggage(const vector<Luggage*> &luggage);
+        void saveLuggage();
 
         /**
          * A function that saves in correspondent file all Passengers data
-         * @param passengers - a vector with Passengers pointer object that will be saved
          */
-        static void savePassengers(const vector<Passenger*> &passengers);
+        void savePassengers();
 
         /**
          * A function that saves in correspondent file all Flights data
-         * @param flights - a vector with Flights pointer object that will be saved
          */
-        static void saveFlights(const vector<Flight*> &flights);
+        void saveFlights();
 
         /**
          * A function that saves in correspondent file all Services data
-         * @param services - a vector with Services pointer object that will be saved
          */
-        static void saveServices(const vector<Service*> &services);
+        void saveServices();
 
         /**
          * A function that saves in correspondent file all Planes data
-         * @param planes - a vector with Planes pointer object that will be saved
          */
-        static void savePlanes(const vector<Plane*> &planes);
+        void savePlanes();
 
         /**
          * A function that saves in correspondent file all Transports data
-         * @param transports - a vector with Transports pointer object that will be saved
          */
-        static void saveTransports(const vector<Transport*> &transports);
+        void saveTransports();
 
         /**
          * A function that added a new plane in current Company

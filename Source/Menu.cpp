@@ -630,7 +630,7 @@ char Menu::totalOrPartial() {
 
 void Menu::listPlanes() {
 
-    vector<Plane*> planes = company->getPlanes();
+    vector<Plane*> planes = company->getAllPlanes();
     if (!planes.empty()) {
         int option;
         do {
