@@ -224,6 +224,27 @@ class Company {
          */
         Flight* findFlight(const string &origin, const string &destination);
 
+
+        void addFlight(Flight &flight); //
+        void removeFlight(Flight &flight); //
+        void removeFlight(const string &id); //
+
+        void addLuggage(Luggage &l); //
+        void removeLuggage(const string &id); //
+        void removeLuggage(Luggage &l); //
+
+        void addPassenger(Passenger &passenger); //
+        void removePassenger(const string &id); //
+
+        void addService(Service &service); //
+        void removeService(const string &id); //
+        void removeService(Service &service); //
+
+        void addTransport(Transport &transport); //
+        void removeTransport(const string &id); //
+        void removeTransport(Transport &transport); //
+
+
         /**
          * A function that refreshes all data in database, based on reading files
          */

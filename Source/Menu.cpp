@@ -33,13 +33,13 @@ void Menu::mainMenu() {
 
     int option;
     do {
-        cout << "=====================================" << endl;
+        cout << "=======================================" << endl;
         cout << "1 - Menu gestor da companhia" << endl;
         cout << "2 - Menu passageiro" << endl;
         cout << "3 - Sair" << endl;
-        cout << "A sua escolha: ";
+        cout << "Escolha: ";
         cin >> option;
-        cout << "=====================================" << endl;
+        cout << "=======================================" << endl;
         if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
@@ -58,17 +58,17 @@ void Menu::companyMenu() {
 
     int option;
     do {
-        cout << "=====================================" << endl;
-        cout << "1 - Planes" << endl;
+        cout << "=======================================" << endl;
+        cout << "1 - Avioes" << endl;
         cout << "2 - Voos" << endl;
         cout << "3 - Passageiros" << endl;
         cout << "4 - Bagagem" << endl;
         cout << "5 - Transportes" << endl;
-        cout << "6 - Funcionarios / Serviços" << endl;
+        cout << "6 - Funcionarios / Servicos" << endl;
         cout << "7 - Voltar para o menu principal" << endl;
         cout << "Escolha: ";
         cin >> option;
-        cout << "=====================================" << endl;
+        cout << "=======================================" << endl;
         if (option < 1 || option > 7) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
@@ -92,11 +92,11 @@ void Menu::planeDataMenu() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Adicionar plane" << endl;
-        cout << "2 - Remover plane" << endl;
-        cout << "3 - Listar plane" << endl;
-        cout << "4 - Procurar plane" << endl;
-        cout << "5 - Voltar para trás" << endl;
+        cout << "1 - Adicionar aviao" << endl;
+        cout << "2 - Remover aviao" << endl;
+        cout << "3 - Listar avioes" << endl;
+        cout << "4 - Procurar aviao" << endl;
+        cout << "5 - Voltar para tras" << endl;
         cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
@@ -117,24 +117,27 @@ void Menu::planeDataMenu() {
         }
         case 2: {
             string id;
-            cout << "Id do avião a remover: ";
+            cout << "Id do aviao a remover: ";
             cin >> id;
             if (company->removePlane(id)) {
                 company->save();
-                cout << "O voo com id: " << id << "foi removido" << endl;
+                cout << "O aviao com id " << id << " foi removido" << endl;
             }
             else
-                cout << "O voo com id: " << id << " nao foi removido" << endl;
-
+                cout << "O aviao com id " << id << " nao existe" << endl;
             getMenu();
             break;
         }
         case 3: listPlanes(); break;
         case 4: {
-            // Procurar e fazer cout de toda a informação do avião.
-            // A company terá uma função para fazer isso. Retornará NULL se não encontrar nada, ou retornará um avião. Depois coloco aqui.
-            // if (found) mostra, else mensagem de erro
+            string id;
+            cout << "Id do aviao a procurar: ";
+            cin >> id;
+            Plane *plane = company->findPlane(id);
+            if (plane) cout << *plane << endl;
+            else cout << "O aviao com id " << id << " nao existe" << endl;
             getMenu();
+            break;
         }
         case 5: menuState.pop(); getMenu(); break;
     }
@@ -149,7 +152,7 @@ void Menu::flightDataMenu() {
         cout << "2 - Remover voo" << endl;
         cout << "3 - Listar voos" << endl;
         cout << "4 - Procurar voo" << endl;
-        cout << "5 - Voltar para trás" << endl;
+        cout << "5 - Voltar para tras" << endl;
         cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
@@ -161,12 +164,17 @@ void Menu::flightDataMenu() {
 
     switch(option) {
         case 1: {
-
-            // 1ª passo -> em que Plane é que vai ser colocado o novo voo: inputs e depois:
-            // Plane *plane = company->findPlane(id)
-            // if (plane) // se o avião existir, então inputs para a construção do voo
-            // else cout << Não há esse plane;
-
+            string id;
+            cout << "Id do aviao: ";
+            cin >> id;
+            Plane *plane = company->findPlane(id);
+            if (plane) {
+                Flight newFlight = fillFlightData(plane->getNextFlightID());
+                plane->addFlight(newFlight);
+                company->addFlight(newFlight);
+                company->save();
+            } else cout << "O aviao com id " << id << " nao existe" << endl;
+            getMenu();
             break;
         }
         case 2: {

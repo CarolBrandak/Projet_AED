@@ -391,9 +391,31 @@ void Company::addPlane(Plane &plane) {
     allPlanes.push_back(&plane);
 }
 
-bool Company::removePlane(const string &id) {
+void Company::addFlight(Flight &flight) {
+    allFlights.push_back(&flight);
+}
+
+void Company::addLuggage(Luggage &l) {
+    allLuggage.push_back(&l);
+}
+
+void Company::addPassenger(Passenger &passenger) {
+    allPassengers.push_back(&passenger);
+}
+
+void Company::addService(Service &service) {
+    allServices.push_back(&service);
+}
+
+void Company::addTransport(Transport &transport) {
+    allTransports.push_back(&transport);
+}
+
+bool Company::removePlane(const string &id) {                               // 1
     for (auto it = allPlanes.begin() ; it != allPlanes.end() ; it++) {
         if ((*it)->getID() == id) {
+            removeFlight(id);                                                   // 1
+            removeService(id);                                                  // 1
             allPlanes.erase(it);
             return true;
         }
@@ -401,17 +423,130 @@ bool Company::removePlane(const string &id) {
     return false;
 }
 
-Flight* Company::findFlight(const string &origin, const string &destination) {
-    for (Plane *plane : allPlanes) {
-        Flight* wanted = (*plane).findFlight(origin, destination);
-        if (wanted) return wanted;
+void Company::removeFlight(Flight &flight) {
+    for (auto it = allFlights.begin() ; it != allFlights.end() ; it++) {
+        if ((*it) == &flight) {
+            allFlights.erase(it);
+            removePassenger(flight.getID());    // 1-1
+            removeTransport(flight.getID());    // 1-1
+            it--;
+        }
     }
-    return nullptr;
+}
+
+void Company::removeFlight (const string &id) {                                         // 1 ou 1-1
+
+    for (auto it = allFlights.begin() ; it != allFlights.end() ; it++) {
+        if (id.size() <= 2) {                                                               // 1
+            if ((*it)->getID().substr(0, (*it)->getID().find('-')) == id) {
+                removePassenger((*it)->getID());                                            // 1-1
+                removeLuggage((*it)->getID());
+                removeTransport((*it)->getID());                                            // 1-1
+                allFlights.erase(it);
+                it--;
+            }
+        } else {                                                                            // 1-1
+            if ((*it)->getID() == id) {
+                removePassenger((*it)->getID());
+                removeLuggage((*it)->getID());// 1-1
+                removeTransport((*it)->getID());                                            // 1-1
+                allFlights.erase(it);
+                it--;
+            }
+        }
+    }
+}
+
+void Company::removeLuggage(const string &id) {                                         // 1-1-1
+    for (auto it = allLuggage.begin() ; it != allLuggage.end() ; it++ ) {
+        if ((*it)->getID() == id) {
+            allLuggage.erase(it);
+            it--;
+        }
+    }
+}
+
+void Company::removeLuggage(Luggage &l) {
+    for (auto it = allLuggage.begin() ; it != allLuggage.end() ; it++ ) {
+        if ((*it) == &l) {
+            allLuggage.erase(it);
+            it--;
+        }
+    }
+}
+
+void Company::removePassenger(const string &id) {                                               // 1-1 ou 1-1-1
+    for (auto it = allPassengers.begin() ; it != allPassengers.end() ; it++) {
+        if ((*it)->getID().find('-') == (*it)->getID().find_last_of('-')) {             // 1-1
+            if ((*it)->getID() == id) {
+                removeLuggage((*it)->getID());
+                allPassengers.erase(it);
+                it--;
+            }
+        } else {                                                                        // 1-1-1
+            if ((*it)->getID().substr(0, (*it)->getID().find_last_of('-')) == id) {
+                removeLuggage((*it)->getID());
+                allPassengers.erase(it);
+                it--;
+            }
+        }
+    }
+}
+
+void Company::removeService(const string &id) {
+    for (auto it = allServices.begin() ; it != allServices.end() ; it++) {
+        if (id.size() <= 2) {
+            if ((*it)->getID().substr(0, (*it)->getID().find_last_of('-')) == id) {
+                allServices.erase(it);
+                it--;
+            }
+        } else {
+            if ((*it)->getID() == id) {
+                allServices.erase(it);
+                it--;
+            }
+        }
+    }
+}
+
+void Company::removeService(Service &service) {
+    for (auto it = allServices.begin() ; it != allServices.end() ; it++) {
+        if ((*it) == &service) {
+            allServices.erase(it);
+            it--;
+        }
+    }
+}
+
+void Company::removeTransport(const string &id) {
+    for (auto it = allTransports.begin() ; it != allTransports.end() ; it++) {
+        if ((*it)->getID() == id) {
+            allTransports.erase(it);
+            it--;
+        }
+    }
+}
+
+void Company::removeTransport(Transport &transport) {
+    for (auto it = allTransports.begin() ; it != allTransports.end() ; it++) {
+        if ((*it) == &transport) {
+            allTransports.erase(it);
+            it--;
+        }
+    }
 }
 
 Plane* Company::findPlane(const string &id) {
     for (Plane *plane : allPlanes) {
         if (plane->getID() == id) return plane;
+    }
+    return nullptr;
+}
+
+Flight* Company::findFlight(const string &origin, const string &destination) {
+    for (Plane *plane : allPlanes) {
+        Flight* wanted = (*plane).findFlight(origin, destination);
+        if (wanted) return wanted;
     }
     return nullptr;
 }
