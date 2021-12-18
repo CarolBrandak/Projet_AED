@@ -27,7 +27,7 @@ bool byDuration(const Flight *f1, const Flight *f2) {
     return f1->getFlightDuration() < f2->getFlightDuration();
 }
 
- bool byWeight(const Luggage *l1, const Luggage *l2) {
+bool byWeight(const Luggage *l1, const Luggage *l2) {
     return l1->getWeight() < l2->getWeight();
 }
 
@@ -47,7 +47,7 @@ bool byLuggage(const Passenger *p1, const Passenger *p2) {
     return p1->getLuggage().size() < p2->getLuggage().size();
 }
 
- bool byMaximumWeight(const Plane *p1, const Plane *p2) {
+bool byMaximumWeight(const Plane *p1, const Plane *p2) {
     return p1->getMaxWeightCapacity() < p2->getMaxWeightCapacity();
 }
 

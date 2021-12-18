@@ -77,7 +77,7 @@ class Transport {
 
         /**
          * @overload
-         * Boolean function that compares two objects of this class
+         * Boolean function that compares two objects of class Transport
          * @param transport another object that will be compared
          * @return if the current object is the same than object passed by reference
         */
@@ -85,7 +85,7 @@ class Transport {
 
         /**
          * @overload
-         * Boolean function that compares two objects of this class
+         * Boolean function that compares two objects of class Transport
          * @param transport another object that will be compared
          * @return if the current object is less than object passed by reference
         */

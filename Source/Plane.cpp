@@ -93,10 +93,10 @@ string Plane::getNextFlightID() {
 void Plane::setNextServiceAsDone() {
     if (!servicesToBeMade.empty()) {
         madeServices.push_back(servicesToBeMade.front());
-        cout << "Realizado o serviço " << servicesToBeMade.front() << endl;
+        cout << "Realizado o servico " << servicesToBeMade.front() << endl;
         servicesToBeMade.pop();
     } else {
-        cout << "Não há mais serviços para efetuar" << endl;
+        cout << "Nao ha mais servicos para efetuar" << endl;
     }
 }
 
@@ -132,7 +132,7 @@ void Plane::removeFlight(const string &id) {
             return;
         }
     }
-    cout << "Voo não encontrado" << endl;
+    cout << "Voo nao encontrado" << endl;
 }
 
 Flight* Plane::findFlight(const string &origin, const string &destination) {
@@ -192,13 +192,13 @@ bool Plane::operator < (const Plane &plane) const {
 
 ostream & operator << (ostream & os, const Plane &plane) {
     os << "ID: " << plane.ID <<
-        "\nLicense Plate: " << plane.LICENSE_PLATE <<
-        "\nType: " << plane.TYPE <<
-        "\nMax Weight Capacity: "  << plane.MAX_WEIGHT_CAPACITY <<
-        "\nMax Passengers Capacity: " << plane.MAX_PASSENGERS_CAPACITY <<
-        "\nQuantity of flights: " << plane.getQuantityOfFlights() <<
-        "\nQuantity of services to be made: " << plane.getQuantityOfServicesToBeMade() <<
-        "\nQuantity of made services: " << plane.getQuantityOfMadeServices() << endl;
+        "\nMatricula: " << plane.LICENSE_PLATE <<
+        "\nTipo: " << plane.TYPE <<
+        "\nCapacidade maxima de carga: "  << plane.MAX_WEIGHT_CAPACITY <<
+        " Kgs\nLotacao maxima: " << plane.MAX_PASSENGERS_CAPACITY <<
+        "\nQuantidade de voos: " << plane.getQuantityOfFlights() <<
+        "\nQuantidade de servicos a realizar: " << plane.getQuantityOfServicesToBeMade() <<
+        "\nQuantidade de servicos realizados: " << plane.getQuantityOfMadeServices() << endl;
     return os;
 }
 

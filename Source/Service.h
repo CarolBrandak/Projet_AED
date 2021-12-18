@@ -40,12 +40,12 @@ class Service {
 
         /**
          * Constructor that creates an service
-         * @param ID - a string, containing service's id
-         * @param TYPE - a string, containing the service type
-         * @param DATE - a Date type object containing the Date of the service
+         * @param id - a string, containing service's id
+         * @param type - a string, containing the service type
+         * @param date - a Date type object containing the Date of the service
          * @param responsible - a Employee type object, containing the Employee responsible for the service
          */
-        Service(string ID, string TYPE, Date DATE, Employee responsible);
+        Service(string id, string type, Date date, Employee responsible);
 
         /**
          * Returns Service's id

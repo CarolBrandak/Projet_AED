@@ -7,11 +7,11 @@ Service::Service() : ID(""), TYPE(""), DATE(0, 0) {}
 
 Service::~Service() {}
 
-Service::Service(string id, string serviceType, Date serviceDate, Employee responsible) :
+Service::Service(string id, string type, Date date, Employee responsible) :
     responsible(responsible),
     ID(id),
-    TYPE(serviceType),
-    DATE(serviceDate) {
+    TYPE(type),
+    DATE(date) {
 }
 
 string Service::getID() const {
@@ -46,9 +46,9 @@ bool Service::operator < (const Service &service) const {
 }
 
 ostream & operator << (ostream & os, const Service &service) {
-    os << "Type: " << service.TYPE <<
-        "\nDate: " << service.DATE <<
-        "Responsible: " << service.responsible;
+    os << "Tipo: " << service.TYPE <<
+        "\nData: " << service.DATE <<
+        "\nResponsavel: " << service.responsible;
     return os;
 }
 

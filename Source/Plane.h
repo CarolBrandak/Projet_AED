@@ -182,7 +182,7 @@ class Plane {
 
         /**
          * Function that add a flight into vector flights
-         * @param flight - A Flight type object that will be added to vector flights
+         * @param flight - A Flight type object that will be added into vector flights
          */
         void addFlight(Flight &flight);
 
