@@ -20,32 +20,71 @@
 class Menu {
 
     private:
-
+        /**
+         * @var company - object used to manage the an company´s operations and data
+         * */
         Company *company;
+        /**
+         * @var menuState - stack used to navigate through the menu
+         * */
         std::stack<short int> menuState;
 
-        //Menu Caller
+        /**
+         * Function that calls the top of the menuState stack
+         * */
         void getMenu();
 
-        // Principais
+        /**
+         * Menu for the company manager
+         * */
         void companyMenu();
+        /**
+         * Menu for the passenger
+         * */
         void passengerMenu();
+
         void allLists();
         char totalOrPartial();
 
-        // CompanyMenu
+        /**
+         * Menu for managing planes
+         * */
         void planeDataMenu();
+        /**
+         * Menu for managing flights
+         * */
         void flightDataMenu();
+        /**
+         * Menu for managing passengers
+         * */
         void passengerDataMenu();
+        /**
+         * Menu for managing luggages
+         * */
         void luggageDataMenu();
+        /**
+         * Menu for managing employees
+         * */
         void employeeDataMenu();
+        /**
+         * Menu for managing transports
+         * */
         void transportDataMenu();
 
-        // PassengerMenu
+        /**
+         * function that allows the passenger to buy a ticket
+         * by asking all the data necessary to make a purchase
+         * */
         void buyTicket();
+        /**
+         * function that allows the passenger to cancel
+         * a ticket by the inputing the data related to
+         * the ticket
+         * */
         void cancelTicket();
 
         // Listagens
+
         void listPlanes();
         void listFlights();
         void listPassengers();
@@ -63,7 +102,15 @@ class Menu {
         Transport fillTransportData(const string &id);
 
     public:
+        /**
+         * Construtor para a classe menu
+         * */
         Menu();
+        /**
+         * Main menu that allows the user to choose
+         * between the passenger menu or the company
+         * manager menu
+         * */
         void mainMenu();
 };
 
