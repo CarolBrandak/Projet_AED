@@ -235,6 +235,7 @@ class Company {
 
         void addPassenger(Passenger &passenger); //
         void removePassenger(const string &id); //
+        void removePassenger(Passenger &passenger); //
 
         void addService(Service &service); //
         void removeService(const string &id); //

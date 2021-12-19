@@ -475,6 +475,16 @@ void Company::removeLuggage(Luggage &l) {
     }
 }
 
+void Company::removePassenger(Passenger &passenger) {
+    for (auto it = allPassengers.begin() ; it != allPassengers.end() ; it++) {
+        if ((*it)->getID() == passenger.getID()) {
+            removeLuggage((*it)->getID());
+            allPassengers.erase(it);
+            return;
+        }
+    }
+}
+
 void Company::removePassenger(const string &id) {                                               // 1-1 ou 1-1-1
     for (auto it = allPassengers.begin() ; it != allPassengers.end() ; it++) {
         if ((*it)->getID().find('-') == (*it)->getID().find_last_of('-')) {             // 1-1

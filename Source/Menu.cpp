@@ -218,7 +218,7 @@ void Menu::passengerDataMenu() {
         cout << "2 - Remover Passageiro" << endl;
         cout << "3 - Listar Passageiros" << endl;
         cout << "4 - Procurar passageiro" << endl;
-        cout << "5 - Voltar para trás" << endl;
+        cout << "5 - Voltar para tras" << endl;
         cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
@@ -229,57 +229,35 @@ void Menu::passengerDataMenu() {
     } while (option < 1 || option > 5);
 
 
-    string id,name,age,gender,passportNumber,origin, destination;
-    switch(option) {
+    string origin, destination, passport;
+    switch (option) {
         case 1: {
-
-            // Procurar o voo onde inserir o passageiro (inicio, destino)
-            // se existir, criar o passageiro com inputs e colocar
-            // else mensagem de erro
-
-            cout << "Por favor introduza o país de origem" << endl;
-            cin >> origin;
-            cout << "Por favor introduza o país de destino" << endl;
-            cin >> destination;
+            cout << "Por favor introduza o pais de origem: "; cin >> origin;
+            cout << "Por favor introduza o pais de destino: "; cin >> destination;
             Flight* flight = company->findFlight(origin,destination);
             if (flight) {
-                cout << "Enter the passenger's ID" << endl;                 // o id do passageiro é automático, basta chamar flight->getNextID ou algo do tipo
-                cin >> id;
-                cout << "Enter the passenger's name" << endl;
-                cin >> name;
-                cout << "Enter the passenger's age" << endl;
-                cin >> age;
-                cout << "Enter the passenger's gender (M ou F)" << endl;
-                cin >> gender;
-                cout << "Introduza o número do passaporte do passageiro" << endl;
-                cin >> passportNumber;
-                //Passenger passenger(id,name,age,gender,passportNumber);
-                //flight->addPassenger(passenger);
-            } else cout << "Mensagem de erro a dizer que o voo procurado não existe" << endl;
+                Passenger newPassenger = fillPassengerData(flight->getNextPassengerID());
+                flight->addPassenger(newPassenger);
+                company->addPassenger(newPassenger);
+                company->save();
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
         case 2: {
-            cout << "Por favor introduza o país de origem" << endl;
-            cin >> origin;
-            cout << "Por favor introduza o país de destino" << endl;
-            cin >> destination;
-            Flight* flight = company->findFlight(origin,destination);
+            cout << "Por favor introduza o pais de origem: "; cin >> origin;
+            cout << "Por favor introduza o pais de destino: "; cin >> destination;
+            Flight* flight = company->findFlight(origin, destination);
             if (flight) {
-                cout << "Enter the passenger's ID" << endl;
-                cin >> id;
-                cout << "Enter the passenger's name" << endl;
-                cin >> name;
-                cout << "Enter the passenger's age" << endl;
-                cin >> age;
-                cout << "Enter the passenger's gender (M ou F)" << endl;
-                cin >> gender;
-                cout << "Introduza o número do passaporte do passageiro" << endl;
-                cin >> passportNumber;
-               // Passenger passenger(id,name,age,gender,passportNumber);
-                // primeiro procurar e se depois existir, remover, senão mensagem de erro
-                //flight->removePassenger(passenger);
-            } else cout << "Mensagem de erro a dizer que esse voo não existe" << endl;
+                cout << "Passaporte do passageiro: "; cin >> passport;
+                Passenger *p = flight->findPassenger(passport);
+                if (p) {
+                    flight->removePassenger(*p);
+                    company->removePassenger(*p);
+                    company->save();
+                } else cout << "O passageiro de passaporte " << passport << " nao se encontra neste voo" << endl;
+
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
@@ -290,7 +268,13 @@ void Menu::passengerDataMenu() {
             cout << "Por favor introduza o país de destino" << endl;
             cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
-            // se existir, ok, senão mensagem a dizer que não existe.
+            if (flight) {
+                cout << "Passaporte do passageiro: "; cin >> passport;
+                Passenger *p = flight->findPassenger(passport);
+                if (p) {
+                    cout << *p << endl;
+                } else cout << "O passageiro de passaporte " << passport << " nao se encontra neste voo" << endl;
+            }
             getMenu();
             break;
         }
@@ -587,7 +571,8 @@ Passenger Menu::fillPassengerData(const string &id) {
     string name, passport;
     short int age;
     char gender;
-    cout << "Nome: "; getline(cin, name); cin.clear(); cin.ignore(1000, '\n');
+    cin.clear(); cin.ignore(1000, '\n');
+    cout << "Nome: "; getline(cin, name);
     cout << "Idade: "; cin >> age;
     cout << "Genero M/F/?: "; cin >> gender;
     cout << "Passaporte: "; cin >> passport;
@@ -602,9 +587,9 @@ Luggage Menu::fillLuggageData(const string &id) {
     cout << "Comprimento (em centimetros): "; cin >> width;
     cout << "Largura (em centimetros): "; cin >> height;
     cout << "Profundidade: (em centimetros)"; cin >> depth;
-    cout << "Bagagem de mão? S/N"; cin >> planeHold;
+    cout << "Bagagem de mao? S/N"; cin >> planeHold;
     Volume v = {width, height, depth};
-    return Luggage(id, weight, v, toupper(planeHold) == 'S' || toupper(planeHold) == 's');
+    return Luggage(id, weight, v, toupper(planeHold) == 'S');
 }
 
 Employee Menu::fillEmployeeData() {
