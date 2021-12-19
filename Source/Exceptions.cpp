@@ -24,7 +24,7 @@ Transport TransportAlreadyExist::getTransport() const {
 }
 
 void TransportAlreadyExist::showError() const {
-    cerr << "O transporte " << this->transport << " ja existe no aeroporto" << endl;
+    cerr << "O transporte\n" << *transport << " ja existe no aeroporto" << endl;
 }
 
 TransportDoesNotExist::TransportDoesNotExist(Transport *transport) {
@@ -36,7 +36,7 @@ Transport TransportDoesNotExist::getTransport() const {
 }
 
 void TransportDoesNotExist::showError() const {
-    cerr << "O transporte " << *transport << " nao existe no aeroporto" << endl;
+    cerr << "O transporte\n" << *transport << " nao existe no aeroporto" << endl;
 }
 
 InvalidTransport::InvalidTransport(Transport *transport) {
@@ -48,7 +48,7 @@ Transport InvalidTransport::getTransport() const {
 }
 
 void InvalidTransport::showError() const {
-    cerr << "O transporte " << *transport << " tem formato invalido" << endl;
+    cerr << "O transporte\n" << *transport << " tem formato invalido" << endl;
 }
 
 InvalidDate::InvalidDate(Date date) {
@@ -66,7 +66,7 @@ void InvalidDate::showError() const {
 InvalidEmployee::InvalidEmployee(Employee employee) : employee(employee) {}
 
 void InvalidEmployee::showError() const {
-    cerr << "O funcionario " << employee << " tem formato invalido" << endl;
+    cerr << "O funcionario\n" << employee << " tem formato invalido" << endl;
 }
 
 InvalidLuggage::InvalidLuggage(Luggage *luggage) {
@@ -74,7 +74,7 @@ InvalidLuggage::InvalidLuggage(Luggage *luggage) {
 }
 
 void InvalidLuggage::showError() const {
-    cerr << "A bagagem " << luggage << " tem formato invalido" << endl;
+    cerr << "A bagagem\n" << *luggage << " tem formato invalido" << endl;
 }
 
 InvalidPassenger::InvalidPassenger(Passenger *passenger) {
@@ -82,7 +82,7 @@ InvalidPassenger::InvalidPassenger(Passenger *passenger) {
 }
 
 void InvalidPassenger::showError() const {
-    cerr << "O passageiro " << passenger << " tem formato invalido" << endl;
+    cerr << "O passageiro\n" << *passenger << " tem formato invalido" << endl;
 }
 
 InvalidService::InvalidService(Service *service) {
@@ -90,7 +90,7 @@ InvalidService::InvalidService(Service *service) {
 }
 
 void InvalidService::showError() const {
-    cerr << "O servico " << service << " tem formato invalido" << endl;
+    cerr << "O servico\n" << *service << " tem formato invalido" << endl;
 }
 
 #endif // PROJECT_AED_EXCEPTIONS_CPP

@@ -236,10 +236,14 @@ void Menu::passengerDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight* flight = company->findFlight(origin,destination);
             if (flight) {
-                Passenger newPassenger = fillPassengerData(flight->getNextPassengerID());
-                flight->addPassenger(newPassenger);
-                company->addPassenger(newPassenger);
-                company->save();
+                try {
+                    Passenger newPassenger = fillPassengerData(flight->getNextPassengerID());
+                    flight->addPassenger(newPassenger);
+                    company->addPassenger(newPassenger);
+                    company->save();
+                } catch (InvalidPassenger &error) {
+                    error.showError();
+                }
             } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
@@ -310,10 +314,14 @@ void Menu::luggageDataMenu() {
                 cout << "Passaporte do passageiro: "; cin >> passport;
                 Passenger *p = flight->findPassenger(passport);
                 if (p) {
-                    Luggage l = fillLuggageData(p->getID());
-                    p->addLuggage(l);
-                    company->addLuggage(l);
-                    company->save();
+                    try {
+                        Luggage l = fillLuggageData(p->getID());
+                        p->addLuggage(l);
+                        company->addLuggage(l);
+                        company->save();
+                    } catch (InvalidLuggage &error) {
+                        error.showError();
+                    }
                 } else cout << "O passageiro de passaporte " << passport << " nao se encontra neste voo" << endl;
             } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
@@ -384,10 +392,14 @@ void Menu::employeeDataMenu() {
             cout << "ID do aviao: "; cin >> id;
             Plane *p = company->findPlane(id);
             if (p) {
-                Service s = fillServiceData(p->getID());
-                p->addService(s);
-                company->addService(s);
-                company->save();
+                try {
+                    Service s = fillServiceData(p->getID());
+                    p->addService(s);
+                    company->addService(s);
+                    company->save();
+                } catch (InvalidService &error) {
+                    error.showError();
+                }
             } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
@@ -401,10 +413,14 @@ void Menu::employeeDataMenu() {
                 Date d = fillDateData();
                 Service *s = p->findService(d);
                 if (s) {
-                    Employee e = fillEmployeeData();
-                    s->setResponsible(e);
-                    company->setServiceResponsible(*s, e);
-                    company->save();
+                    try {
+                        Employee e = fillEmployeeData();
+                        s->setResponsible(e);
+                        company->setServiceResponsible(*s, e);
+                        company->save();
+                    } catch (InvalidEmployee &error) {
+                        error.showError();
+                    }
                 } else cout << "Nao existe nenhum servico nessa data" << endl;
             } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
@@ -425,11 +441,17 @@ void Menu::employeeDataMenu() {
             cout << "ID do aviao: "; cin >> id;
             Plane *p = company->findPlane(id);
             if (p) {
-                Date d = fillDateData();
-                Service *s = p->findService(d);
-                if (s) {
-                    cout << *s << endl;
-                } else cout << "Nao existe qualquer servico nessa data" << endl;
+                try {
+                    Date d = fillDateData();
+                    Service *s = p->findService(d);
+                    if (s) {
+                        cout << *s << endl;
+                    } else cout << "Nao existe qualquer servico nessa data" << endl;
+                } catch (InvalidDate &dateError) {
+                    dateError.showError();
+                } catch (InvalidService &serviceError) {
+                    serviceError.showError();
+                }
             } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
@@ -442,10 +464,14 @@ void Menu::employeeDataMenu() {
                 string name;
                 cin.clear(); cin.ignore(1000, '\n');
                 cout << "Nome do funcionario: "; getline(cin, name);
-                Employee *e = p->findEmployee(name);
-                if (e) {
-                    cout << *e << endl;
-                } else cout << "Nao existe qualquer funcionario a trabalhar nessa data" << endl;
+                try {
+                    Employee *e = p->findEmployee(name);
+                    if (e) {
+                        cout << *e << endl;
+                    } else cout << "Nao existe qualquer funcionario a trabalhar nessa data" << endl;
+                } catch (InvalidEmployee &error) {
+                    error.showError();
+                }
             } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
@@ -480,8 +506,8 @@ void Menu::transportDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
-                Transport t = fillTransportData(flight->getID());
                 try {
+                    Transport t = fillTransportData(flight->getID());
                     flight->addTransport(&t);
                     company->addTransport(t);
                     company->save();
@@ -497,8 +523,8 @@ void Menu::transportDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
-                Transport t = fillTransportData(flight->getID());
                 try {
+                    Transport t = fillTransportData(flight->getID());
                     flight->getAirport().showTransports();
                     flight->removeTransport(&t);
                     company->removeTransport(t);
@@ -516,27 +542,31 @@ void Menu::transportDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
-                char op;
-                cout << "Pesquisar por horario, tipo ou distancia? H/T/D: "; cin >> op;
-                op = toupper(op);
-                if (op == 'H') {
-                    int hour, minute;
-                    cout << "Hora: "; cin >> hour;
-                    cout << "Minute: "; cin >> minute;
-                    Transport *t = flight->searchTransport(hour, minute);
-                    if (t) cout << *t << endl;
-                    else cout << "Nao existe transporte com essa carateristica" << endl;
-                } else if (op == 'T') {
-                    string type;
-                    cout << "Tipo: "; cin >> type;
-                    vector<Transport*> t = flight->searchTransport(type);
-                    for (Transport *transport : t) cout << *transport << endl;
-                } else {
-                    int distance;
-                    cout << "Distancia (em metros): "; cin >> distance;
-                    Transport *t = flight->searchTransport(distance);
-                    if (t) cout << *t << endl;
-                    else cout << "Nao existe transporte com essa carateristica" << endl;
+                try {
+                    char op;
+                    cout << "Pesquisar por horario, tipo ou distancia? H/T/D: "; cin >> op;
+                    op = toupper(op);
+                    if (op == 'H') {
+                        int hour, minute;
+                        cout << "Hora: "; cin >> hour;
+                        cout << "Minute: "; cin >> minute;
+                        Transport *t = flight->searchTransport(hour, minute);
+                        if (t) cout << *t << endl;
+                        else cout << "Nao existe transporte com essa carateristica" << endl;
+                    } else if (op == 'T') {
+                        string type;
+                        cout << "Tipo: "; cin >> type;
+                        vector<Transport*> t = flight->searchTransport(type);
+                        for (Transport *transport : t) cout << *transport << endl;
+                    } else {
+                        int distance;
+                        cout << "Distancia (em metros): "; cin >> distance;
+                        Transport *t = flight->searchTransport(distance);
+                        if (t) cout << *t << endl;
+                        else cout << "Nao existe transporte com essa carateristica" << endl;
+                    }
+                } catch (InvalidTransport &error) {
+                    error.showError();
                 }
             } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
@@ -653,16 +683,12 @@ Flight Menu::fillFlightData(const string &id) {
 
     string origin, destination, airportName;
     int year, month, day, hour, minute, duration;
-    cout << "Data do voo:\nAno: "; cin >> year;
-    cout << "Mes: "; cin >> month;
-    cout << "Dia: "; cin >> day;
-    cout << "Hora: "; cin >> hour;
-    cout << "Minuto: "; cin >> minute;
+    Date d = fillDateData();
     cout << "Duracao (em minutos): "; cin >> duration;
     cout << "Origem: "; cin >> origin; cin.clear(); cin.ignore(1000, '\n');
     cout << "Destino: "; cin >> destination;cin.clear(); cin.ignore(1000, '\n');
     cout << "Nome do aeroporto de destino: "; getline(cin, airportName);
-    return Flight(id, Date(day, month, year, hour, minute), duration, origin, Airport(airportName, destination));
+    return Flight(id, d, duration, origin, Airport(airportName, destination));
 }
 
 Passenger Menu::fillPassengerData(const string &id) {
@@ -675,6 +701,7 @@ Passenger Menu::fillPassengerData(const string &id) {
     cout << "Idade: "; cin >> age;
     cout << "Genero M/F/?: "; cin >> gender;
     cout << "Passaporte: "; cin >> passport;
+    if (name.empty() || passport.empty()) throw InvalidPassenger(new Passenger(id, name, age, gender, passport));
     return Passenger(id, name, age, gender, passport);
 }
 
@@ -688,6 +715,7 @@ Luggage Menu::fillLuggageData(const string &id) {
     cout << "Profundidade: (em centimetros)"; cin >> depth;
     cout << "Bagagem de mao? S/N"; cin >> planeHold;
     Volume v = {width, height, depth};
+    if (weight*width*height*depth <= 0) throw InvalidLuggage(new Luggage(id, weight, v, toupper(planeHold) == 'S'));
     return Luggage(id, weight, v, toupper(planeHold) == 'S');
 }
 
@@ -700,6 +728,7 @@ Employee Menu::fillEmployeeData() {
     cout << "Nome: "; getline(cin, name);
     cout << "Idade: "; cin >> age;
     cout << "Genero: "; cin >> gender;
+    if (name.empty() || age < 0 || age > 120) throw InvalidEmployee(Employee(name, age, gender));
     return Employee(name, age, gender);
 }
 
@@ -711,6 +740,7 @@ Service Menu::fillServiceData(const string &id) {
     cout << "Tipo: "; cin >> type;
     Date d = fillDateData();
     Employee e = fillEmployeeData();
+    if (type.empty()) throw InvalidService(new Service(id, type, Date(year, month, day, hour, minute), e));
     return Service(id, type, Date(year, month, day, hour, minute), e);
 }
 
@@ -722,6 +752,7 @@ Date Menu::fillDateData() {
     cout << "Dia: "; cin >> day;
     cout << "Hora: "; cin >> hour;
     cout << "Minute: "; cin >> minute;
+    if (year < 2021 || month > 12 || day > 31 || hour > 23 || minute > 60) throw InvalidDate(Date(year, month, day, hour, minute));
     return Date(year, month, day, hour, minute);
 }
 
@@ -733,6 +764,7 @@ Transport Menu::fillTransportData(const string &id) {
     cout << "Distancia ao aeroporto: "; cin >> distance;
     cout << "Hora de partida: "; cin >> hour;
     cout << "Minuto de partida: "; cin >> minute;
+    if (minute < 0 || minute > 59 || hour < 0 || hour > 23 || type.empty() || distance < 0) throw InvalidTransport(new Transport(id, type, distance, Date(hour, minute)));
     return Transport(id, type, distance, Date(hour, minute));
 }
 
