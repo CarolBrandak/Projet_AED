@@ -186,7 +186,7 @@ void Flight::removeLuggage(const string &id) {
 
 Luggage* Flight::findLuggage(const string &id) {
     for (Luggage* l : luggage) {
-        if (l->getID() == ID) return l;
+        if (l->getID().substr(0, l->getID().find_last_of('-')) == ID) return l;
     }
     return nullptr;
 }

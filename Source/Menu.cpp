@@ -179,9 +179,9 @@ void Menu::flightDataMenu() {
         }
         case 2: {
             string origin, destination;
-            cout << "Por favor introduza o país de origem: ";
+            cout << "Por favor introduza a cidade de origem: ";
             cin >> origin;
-            cout << "Por favor introduza o país de destino: ";
+            cout << "Por favor introduza a cidade de destino: ";
             cin >> destination;
             Flight* flight = company->findFlight(origin, destination);
             if (flight) {
@@ -195,9 +195,9 @@ void Menu::flightDataMenu() {
 
         case 4: {
             string origin, destination;
-            cout << "Por favor introduza o pais de origem: ";
+            cout << "Por favor introduza a cidade de origem: ";
             cin >> origin;
-            cout << "Por favor introduza o pais de destino: ";
+            cout << "Por favor introduza a cidade de destino: ";
             cin >> destination;
             Flight* flight = company->findFlight(origin, destination);
             if (flight) cout << *flight;
@@ -232,8 +232,8 @@ void Menu::passengerDataMenu() {
     string origin, destination, passport;
     switch (option) {
         case 1: {
-            cout << "Por favor introduza o pais de origem: "; cin >> origin;
-            cout << "Por favor introduza o pais de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight* flight = company->findFlight(origin,destination);
             if (flight) {
                 Passenger newPassenger = fillPassengerData(flight->getNextPassengerID());
@@ -245,8 +245,8 @@ void Menu::passengerDataMenu() {
             break;
         }
         case 2: {
-            cout << "Por favor introduza o pais de origem: "; cin >> origin;
-            cout << "Por favor introduza o pais de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight* flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Passaporte do passageiro: "; cin >> passport;
@@ -255,6 +255,7 @@ void Menu::passengerDataMenu() {
                     flight->removePassenger(*p);
                     company->removePassenger(*p);
                     company->save();
+                    cout << "O passageiro\n" << *p << "foi eliminado com sucesso" << endl;
                 } else cout << "O passageiro de passaporte " << passport << " nao se encontra neste voo" << endl;
 
             } else cout << "O voo nao existe na base de dados" << endl;
@@ -263,10 +264,8 @@ void Menu::passengerDataMenu() {
         }
         case 3: listPassengers(); break;
         case 4: {
-            cout << "Por favor introduza o país de origem" << endl;
-            cin >> origin;
-            cout << "Por favor introduza o país de destino" << endl;
-            cin >> destination;
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Passaporte do passageiro: "; cin >> passport;
@@ -274,7 +273,7 @@ void Menu::passengerDataMenu() {
                 if (p) {
                     cout << *p << endl;
                 } else cout << "O passageiro de passaporte " << passport << " nao se encontra neste voo" << endl;
-            }
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
@@ -287,11 +286,11 @@ void Menu::luggageDataMenu() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Adicionar Luggage" << endl;
+        cout << "1 - Adicionar Bagagem" << endl;
         cout << "2 - Remover Bagagem" << endl;
         cout << "3 - Listar Bagagem" << endl;
         cout << "4 - Procurar Bagagem" << endl;
-        cout << "5 - Voltar para trás" << endl;
+        cout << "5 - Voltar para tras" << endl;
         cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
@@ -301,27 +300,53 @@ void Menu::luggageDataMenu() {
 
     } while (option < 1 || option > 5);
 
+    string origin, destination, passport, id;
     switch (option) {
         case 1: {
-            // perguntar para que voo
-            // se o voo existir, passar para a parte seguinte, senão mensagem a dizer que esse voo n existe ou algo do genero
-            // inputs para fazer a luggage nova
-            // inserir no voo
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            if (flight) {
+                cout << "Passaporte do passageiro: "; cin >> passport;
+                Passenger *p = flight->findPassenger(passport);
+                if (p) {
+                    Luggage l = fillLuggageData(p->getID());
+                    p->addLuggage(l);
+                    company->addLuggage(l);
+                    company->save();
+                } else cout << "O passageiro de passaporte " << passport << " nao se encontra neste voo" << endl;
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
         case 2: {
-            // perguntar para que voo
-            // se o voo existir, passar para a parte seguinte, senão mensagem a dizer que esse voo n existe ou algo do genero
-            // input para determinar o id da luggage
-            // remover se existir
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            if (flight) {
+                cout << "Id da barragem a remover: "; cin >> id;
+                Luggage *luggage = flight->findLuggage(id);
+                if (luggage) {
+                    flight->removeLuggage(luggage->getID());
+                    company->removeLuggage(*luggage);
+                    company->save();
+                } else cout << "A bagagem de id " << id << " nao existe neste voo" << endl;
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
         case 3: listLuggages(); break;
         case 4: {
-            // perguntar qual é o voo. Se o voo existir, procurar bagagem com base no id
-            // se existir essa bagagem nesse voo, remover, senão mensagem a dizer que ela n está lá
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            if (flight) {
+                cout << "Id da barragem a remover: "; cin >> id;
+                Luggage *luggage = flight->findLuggage(id);
+                if (luggage) {
+                    cout << *luggage << endl;
+                } else cout << "A bagagem de id " << id << " nao existe neste voo" << endl;
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
