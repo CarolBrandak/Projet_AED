@@ -224,27 +224,95 @@ class Company {
          */
         Flight* findFlight(const string &origin, const string &destination);
 
-
-        void addFlight(Flight &flight); //
-        void removeFlight(Flight &flight); //
+        /**
+         * Adds flight to vector that holds all flights in the program
+         * @param flight - flight to be added
+         */
+        void addFlight(Flight &flight);
+        /**
+         * Remove flight from the vector that holds all flights in the program
+         * @param flight - flight to be removed
+         */
+        void removeFlight(Flight &flight);
+        /**
+         * Remove flight from vector that holds all flights in the program
+         * @param id - id of the flight to be removed
+         */
         void removeFlight(const string &id); //
 
-        void addLuggage(Luggage &l); //
-        void removeLuggage(const string &id); //
-        void removeLuggage(Luggage &l); //
+        /**
+         * Adds luggage to vector that holds all luggages in the program
+         * @param l - luggage to be added
+         */
+        void addLuggage(Luggage &l);
+        /**
+         * Removes luggage from vector that holds all luggages in the program
+         * @param id - id of the luggage to be removed
+         */
+        void removeLuggage(const string &id);
+        /**
+         * Removes luggage from vector that holds all luggages in the program
+         * @param l - luggage to be removed
+         */
+        void removeLuggage(Luggage &l);
 
-        void addPassenger(Passenger &passenger); //
-        void removePassenger(const string &id); //
-        void removePassenger(Passenger &passenger); //
+        /**
+         * Adds passenger to vector that holds all passengers in the program
+         * @param passenger - passenger to be added
+         */
+        void addPassenger(Passenger &passenger);
+        /**
+         * Removes passenger from vector that holds all passengers in the program
+         * @param id - id of the passenger to be removed
+         */
+        void removePassenger(const string &id);
+        /**
+         * Removes passenger from vector that holds all passengers in the program
+         * @param passenger - passenger to be removed
+         */
+        void removePassenger(Passenger &passenger);
 
-        void addService(Service &service); //
-        void removeService(const string &id); //
-        void removeService(Service &service); //
+        /**
+         * Adds services to the vector that holds all services in the program
+         * @param service - service to be added
+         */
+        void addService(Service &service);
+        /**
+         * Removes service from vector that contains all of the services in the program
+         * using the id of the service.
+         * @param id - id of the service to be removed
+         */
+        void removeService(const string &id);
+        /**
+         * Removes service from vector that contains all of the services in the program
+         * using the service object that needs to be removed
+         * @param service - service to be removed
+         */
+        void removeService(Service &service);
+        /**
+         * Sets the responsible for a specific service
+         * @param service - service to be made
+         * @param employee - employee to be responsible for the service
+         */
         void setServiceResponsible(Service &service, Employee &employee);
 
-        void addTransport(Transport &transport); //
-        void removeTransport(const string &id); //
-        void removeTransport(Transport &transport); //
+        /**
+         * Adds transport to vector that contains all of the transports in the program
+         * @param transport - transport to be added
+         */
+        void addTransport(Transport &transport);
+        /**
+         * Removes transport from vector that contains all of the transports in the program
+         * re the id of the transport.
+         * @param id - id of the transport to be removed
+         */
+        void removeTransport(const string &id);
+        /**
+         * Removes transport from vector that contains all of the transport in the program
+         * recieving as parameter the transport object that needs to be removed.
+         * @param service - service to be removed
+         */
+        void removeTransport(Transport &transport);
 
 
         /**

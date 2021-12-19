@@ -427,29 +427,29 @@ void Company::removeFlight(Flight &flight) {
     for (auto it = allFlights.begin() ; it != allFlights.end() ; it++) {
         if ((*it) == &flight) {
             allFlights.erase(it);
-            removePassenger(flight.getID());    // 1-1
-            removeTransport(flight.getID());    // 1-1
+            removePassenger(flight.getID());
+            removeTransport(flight.getID());
             it--;
         }
     }
 }
 
-void Company::removeFlight (const string &id) {                                         // 1 ou 1-1
+void Company::removeFlight (const string &id) {
 
     for (auto it = allFlights.begin() ; it != allFlights.end() ; it++) {
-        if (id.size() <= 2) {                                                               // 1
+        if (id.size() <= 2) {
             if ((*it)->getID().substr(0, (*it)->getID().find('-')) == id) {
-                removePassenger((*it)->getID());                                            // 1-1
+                removePassenger((*it)->getID());
                 removeLuggage((*it)->getID());
-                removeTransport((*it)->getID());                                            // 1-1
+                removeTransport((*it)->getID());
                 allFlights.erase(it);
                 it--;
             }
-        } else {                                                                            // 1-1
+        } else {
             if ((*it)->getID() == id) {
                 removePassenger((*it)->getID());
                 removeLuggage((*it)->getID());// 1-1
-                removeTransport((*it)->getID());                                            // 1-1
+                removeTransport((*it)->getID());
                 allFlights.erase(it);
                 it--;
             }
@@ -457,7 +457,7 @@ void Company::removeFlight (const string &id) {                                 
     }
 }
 
-void Company::removeLuggage(const string &id) {                                         // 1-1-1
+void Company::removeLuggage(const string &id) {
     for (auto it = allLuggage.begin() ; it != allLuggage.end() ; it++ ) {
         if ((*it)->getID() == id) {
             allLuggage.erase(it);
@@ -543,9 +543,10 @@ void Company::removeTransport(const string &id) {
 
 void Company::removeTransport(Transport &transport) {
     for (auto it = allTransports.begin() ; it != allTransports.end() ; it++) {
-        if ((*it) == &transport) {
+        if ((*it)->getID() == transport.getID() && (*it)->getType() == (*it)->getType()
+                    && (*it)->getDistance() == transport.getDistance()) {
             allTransports.erase(it);
-            return;
+            it--;
         }
     }
 }

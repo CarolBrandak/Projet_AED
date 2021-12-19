@@ -335,8 +335,12 @@ void Menu::luggageDataMenu() {
                 cout << "Introduza o passaporte do passageiro: "; cin >> passport;
                 vector<Luggage*> allLuggage = flight->findPassengerLuggage(passport);
                 if (!allLuggage.empty()) {
-                    for (Luggage *l : allLuggage) cout << *l << endl;
-                } else cout << "Nao existe bagagens associadas a esse passaporte" << endl;
+                    for (Luggage *l : allLuggage) {
+                        flight->removeLuggage(l->getID());
+                        company->removeLuggage(l->getID());
+                    }
+                    company->save();
+                } else cout << "Nao existe bagagens associadas a este passaporte" << endl;
             } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
@@ -347,7 +351,7 @@ void Menu::luggageDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
-                cout << "Id da barragem a remover: "; cin >> id;
+                cout << "Id da barragem a procurar: "; cin >> id;
                 Luggage *luggage = flight->findLuggage(id);
                 if (luggage) {
                     cout << *luggage << endl;
@@ -486,7 +490,7 @@ void Menu::transportDataMenu() {
         cout << "1 - Adicionar transporte" << endl;
         cout << "2 - Remover transporte" << endl;
         cout << "3 - Listar transportes" << endl;
-        cout << "4 - Find transporte" << endl;
+        cout << "4 - Encontrar transporte" << endl;
         cout << "5 - Voltar para tras" << endl;
         cout << "Escolha: ";
         cin >> option;
@@ -510,6 +514,10 @@ void Menu::transportDataMenu() {
                     company->addTransport(t);
                     company->save();
                 } catch (TransportAlreadyExist &error) {
+                    cout << endl;
+                    error.showError();
+                } catch (InvalidTransport &error) {
+                    cout << endl;
                     error.showError();
                 }
             } else cout << "O voo nao existe na base de dados" << endl;
@@ -523,11 +531,12 @@ void Menu::transportDataMenu() {
             if (flight) {
                 try {
                     Transport t = fillTransportData(flight->getID());
-                    flight->getAirport().showTransports();
                     flight->removeTransport(&t);
                     company->removeTransport(t);
                     company->save();
+                    cout << "Transporte removido com sucesso" << endl;
                 } catch (TransportDoesNotExist &error) {
+                    cout << endl << endl << error.getTransport() << endl << endl;
                     error.showError();
                 }
             } else cout << "O voo nao existe na base de dados" << endl;
@@ -623,6 +632,8 @@ void Menu::buyTicket() {
     cin >> destination;
     flight = company->findFlight(origin, destination);
     if(flight) {
+        cout << "Informacao do voo escolhido: " << endl;
+        cout << *flight << endl;
         cout << "Quantas pessoas vao viajar?" << endl;
         cin >> quantityOfPassengers;
         unsigned int flightPassengersAfterAdd = flight->getPassengersQuantity()+quantityOfPassengers;

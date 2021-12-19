@@ -45,7 +45,7 @@ void Airport::addTransport(Transport *transport) {
 void Airport::removeTransport(Transport *transport) {
 
     Transport* found = transports.find(transport);
-    if (!(*found == Transport("", "", 0, Date(0, 0)))) {
+    if (!(found == new Transport("", "", 0, Date(0, 0)))) {
         transports.remove(transport);
     } else throw TransportDoesNotExist(transport);
 }
