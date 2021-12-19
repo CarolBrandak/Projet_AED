@@ -20,10 +20,12 @@
 class Menu {
 
     private:
+
         /**
          * @var company - object used to manage the an company´s operations and data
          * */
         Company *company;
+
         /**
          * @var menuState - stack used to navigate through the menu
          * */
@@ -38,34 +40,48 @@ class Menu {
          * Menu for the company manager
          * */
         void companyMenu();
+
         /**
          * Menu for the passenger
          * */
         void passengerMenu();
 
+        /**
+         * Menu for all lists
+         */
         void allLists();
+
+        /**
+         * A function that return if user wants partial or total list of objects
+         * @return a char, containing the answer
+         */
         char totalOrPartial();
 
         /**
          * Menu for managing planes
          * */
         void planeDataMenu();
+
         /**
          * Menu for managing flights
          * */
         void flightDataMenu();
+
         /**
          * Menu for managing passengers
          * */
         void passengerDataMenu();
+
         /**
          * Menu for managing luggages
          * */
         void luggageDataMenu();
+
         /**
          * Menu for managing employees
          * */
         void employeeDataMenu();
+
         /**
          * Menu for managing transports
          * */
@@ -76,6 +92,7 @@ class Menu {
          * by asking all the data necessary to make a purchase
          * */
         void buyTicket();
+
         /**
          * function that allows the passenger to cancel
          * a ticket by the inputing the data related to
@@ -83,18 +100,53 @@ class Menu {
          * */
         void cancelTicket();
 
-        // Listagens
-
+        /**
+         * Menu to list all Planes of the system
+         */
         void listPlanes();
+
+        /**
+        * Menu to list all Flights of the system
+        */
         void listFlights();
+
+        /**
+        * Menu to list all Passengers of the system
+        */
         void listPassengers();
+
+        /**
+        * Menu to list all Luggages of the system
+        */
         void listLuggages();
+
+        /**
+        * Menu to list all Services of the system
+        */
         void listServices();
+
+        /**
+        * Menu to list all Employees of the system
+        */
         void listEmployees();
+
+        /**
+        * Menu to list all Transports of the system
+        */
         void listTransports();
 
-        // Inputs
+        /**
+         * A function to fill a Plane data
+         * @param id - a string containing the id of plane
+         * @return a Plane object
+         */
         Plane fillPlaneData(const string &id);
+
+        /**
+         *
+         * @param id
+         * @return
+         */
         Flight fillFlightData(const string &id);
         Passenger fillPassengerData(const string &id);
         Luggage fillLuggageData(const string &id);
@@ -104,10 +156,12 @@ class Menu {
         Date fillDateData();
 
     public:
+
         /**
          * Construtor para a classe menu
          * */
         Menu();
+
         /**
          * Main menu that allows the user to choose
          * between the passenger menu or the company

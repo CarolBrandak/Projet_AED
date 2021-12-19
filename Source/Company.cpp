@@ -263,7 +263,7 @@ void Company::readPlanes() {
 
             readServices();
             readFlights();
-            sort(allServices.begin(), allServices.end());
+
             for (Plane *plane : planes) {
                 for (Service *service: allServices) plane->addService(*service);
                 for (Flight *flight: allFlights) plane->addFlight(*flight);

@@ -281,7 +281,7 @@ void Menu::passengerDataMenu() {
             getMenu();
             break;
         }
-        case 6: menuState.pop(); getMenu(); break;
+        case 5: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -624,7 +624,7 @@ void Menu::buyTicket() {
     cin >> destination;
     flight = company->findFlight(origin, destination);
     if(flight) {
-        cout << "Quantas pessoas vão viajar?" << endl;
+        cout << "Quantas pessoas vao viajar?" << endl;
         cin >> quantityOfPassengers;
         unsigned int flightPassengersAfterAdd = flight->getPassengersQuantity()+quantityOfPassengers;
         Plane *plane = company->findPlane(flight->getID().substr(0,flight->getID().find('-')));
@@ -634,18 +634,19 @@ void Menu::buyTicket() {
             vector<Luggage*> allLuggage;
             short int totalWeight = 0;
             while(cont <= quantityOfPassengers) {
-                cout << "Insira os dados o " << cont << "º passageiro" << endl;
-                Passenger passenger = fillPassengerData(flight->getID());
+                cout << "Insira os dados o " << cont << "o passageiro" << endl;
+                Passenger passenger = fillPassengerData(flight->getNextPassengerID());
                 cout << "Quantas malas tem o " << passenger.getName() << "?" << endl;
                 cin >> quantityOfLuggage;
                 for(short int contLuggage = 1; contLuggage <= quantityOfLuggage; contLuggage++) {
-                    cout << "Insira os dados da " << contLuggage << "ª baggagem" << endl;
-                    Luggage luggage = fillLuggageData(flight->getID());
+                    cout << "Insira os dados da " << contLuggage << "a baggagem" << endl;
+                    Luggage luggage = fillLuggageData(passenger.getID());
                     totalWeight += luggage.getWeight();
                     passenger.addLuggage(luggage);
                     allLuggage.push_back(&luggage);
                 }
                 allPassengers.push_back(&passenger);
+                cont++;
             }
             if (plane->getMaxWeightCapacity() >= (totalWeight + flight->getWeightQuantity())) {
                 for (Passenger *passenger : allPassengers) {
@@ -660,6 +661,8 @@ void Menu::buyTicket() {
                         "adicao, excede o limite" << endl;
             }
         }
+        menuState.pop();
+        getMenu();
     }
 }
 
@@ -696,6 +699,8 @@ void Menu::cancelTicket() {
         } while (!respostaValida);
 
     } while (answer);
+    menuState.pop();
+    getMenu();
 }
 
 void Menu::allLists() {
@@ -811,13 +816,13 @@ Service Menu::fillServiceData(const string &id) {
 Date Menu::fillDateData() {
 
     int year, month, day, hour, minute;
-    cout << "Data:\nAno: "; cin >> year;
+    cout << "Ano: "; cin >> year;
     cout << "Mes: "; cin >> month;
     cout << "Dia: "; cin >> day;
     cout << "Hora: "; cin >> hour;
     cout << "Minute: "; cin >> minute;
     if (year < 2021 || month > 12 || day > 31 || hour > 23 || minute > 60) throw InvalidDate(Date(year, month, day, hour, minute));
-    return Date(year, month, day, hour, minute);
+    return Date(day, month, year, hour, minute);
 }
 
 Transport Menu::fillTransportData(const string &id) {
@@ -1062,7 +1067,7 @@ void Menu::listServices() {
         for (Service *service : services) cout << *service << endl;
 
     } else {
-        cout << "O aviao selecionado nao possui qualquer serviço" << endl;
+        cout << "O aviao selecionado nao possui qualquer servico" << endl;
     }
     getMenu();
 }
