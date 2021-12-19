@@ -100,6 +100,8 @@ class Menu {
         Luggage fillLuggageData(const string &id);
         Employee fillEmployeeData();
         Transport fillTransportData(const string &id);
+        Service fillServiceData(const string &id);
+        Date fillDateData();
 
     public:
         /**

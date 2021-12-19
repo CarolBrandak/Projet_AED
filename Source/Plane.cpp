@@ -93,7 +93,7 @@ string Plane::getNextFlightID() {
 void Plane::setNextServiceAsDone() {
     if (!servicesToBeMade.empty()) {
         madeServices.push_back(servicesToBeMade.front());
-        cout << "Realizado o servico " << servicesToBeMade.front() << endl;
+        cout << "Realizado o servico " << *servicesToBeMade.front() << endl;
         servicesToBeMade.pop();
     } else {
         cout << "Nao ha mais servicos para efetuar" << endl;
@@ -145,7 +145,7 @@ Flight* Plane::findFlight(const string &origin, const string &destination) {
 }
 
 void Plane::addService(Service &service) {
-    if (ID == service.getID().substr(0, service.getID().find('-'))) servicesToBeMade.push(&service);
+    if (ID == service.getID()) servicesToBeMade.push(&service);
 }
 
 Service* Plane::findService(Date &date) {

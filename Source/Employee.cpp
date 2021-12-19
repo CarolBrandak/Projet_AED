@@ -24,11 +24,9 @@ Employee& Employee::operator = (const Employee &employee) {
 
 ostream & operator << (ostream & os, const Employee &employee) {
     os  << "Nome: " << employee.NAME
-        << "\nIdade: " << employee.NAME
+        << "\nIdade: " << employee.AGE
         << "\nGenero: " << employee.GENDER << endl;
     return os;
 }
-
-
 
 #endif //PROJECT_AED_EMPLOYEE_CPP

@@ -36,7 +36,7 @@ Transport TransportDoesNotExist::getTransport() const {
 }
 
 void TransportDoesNotExist::showError() const {
-    cerr << "O transporte " << this->transport << " nao existe no aeroporto" << endl;
+    cerr << "O transporte " << *transport << " nao existe no aeroporto" << endl;
 }
 
 InvalidTransport::InvalidTransport(Transport *transport) {
@@ -48,7 +48,7 @@ Transport InvalidTransport::getTransport() const {
 }
 
 void InvalidTransport::showError() const {
-    cerr << "O transporte " << this->transport << " tem formato invalido" << endl;
+    cerr << "O transporte " << *transport << " tem formato invalido" << endl;
 }
 
 InvalidDate::InvalidDate(Date date) {

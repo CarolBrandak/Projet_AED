@@ -528,6 +528,10 @@ void Company::removeService(Service &service) {
     }
 }
 
+void Company::setServiceResponsible(Service &s, Employee &employee) {
+    for (auto *service : allServices) if (*service == s) service->setResponsible(employee);
+}
+
 void Company::removeTransport(const string &id) {
     for (auto it = allTransports.begin() ; it != allTransports.end() ; it++) {
         if ((*it)->getID() == id) {
@@ -541,7 +545,7 @@ void Company::removeTransport(Transport &transport) {
     for (auto it = allTransports.begin() ; it != allTransports.end() ; it++) {
         if ((*it) == &transport) {
             allTransports.erase(it);
-            it--;
+            return;
         }
     }
 }

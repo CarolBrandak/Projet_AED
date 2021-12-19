@@ -360,57 +360,97 @@ void Menu::employeeDataMenu() {
     do {
         cout << "=====================================" << endl;
         cout << "1 - Listagem de Trabalhadores" << endl;
-        cout << "2 - Listagem de Serviços" << endl;
-        cout << "3 - Adicionar Trabalhador" << endl;
-        cout << "4 - Adicionar Serviço" << endl;
-        cout << "5 - Remover Trabalhador" << endl;
-        cout << "6 - Remover Serviço" << endl;
-        cout << "7 - Procurar Trabalhador" << endl;
-        cout << "8 - Procurar Serviço" << endl;
-        cout << "9 - Quit" << endl;
-        cout << "Your choice: ";
+        cout << "2 - Listagem de Servicos" << endl;
+        cout << "3 - Adicionar Servico" << endl;
+        cout << "4 - Modificar Trabalhador" << endl;
+        cout << "5 - Realizar Servico" << endl;
+        cout << "6 - Procurar Trabalhador" << endl;
+        cout << "7 - Procurar Servico" << endl;
+        cout << "8 - Voltar para tras" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 9) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 8) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
 
-    } while (option < 1 || option > 9);
+    } while (option < 1 || option > 8);
 
     switch(option) {
         case 1: listEmployees(); getMenu(); break;
         case 2: listServices(); getMenu(); break;
         case 3: {
-            //company.addWorker()
+            string id;
+            cout << "ID do aviao: "; cin >> id;
+            Plane *p = company->findPlane(id);
+            if (p) {
+                Service s = fillServiceData(p->getID());
+                p->addService(s);
+                company->addService(s);
+                company->save();
+            } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
         }
         case 4: {
-            //flight.addService()
+            string id;
+            int year, month, day, hour, minute;
+            cout << "ID do aviao: "; cin >> id;
+            Plane *p = company->findPlane(id);
+            if (p) {
+                Date d = fillDateData();
+                Service *s = p->findService(d);
+                if (s) {
+                    Employee e = fillEmployeeData();
+                    s->setResponsible(e);
+                    company->setServiceResponsible(*s, e);
+                    company->save();
+                } else cout << "Nao existe nenhum servico nessa data" << endl;
+            } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
         }
         case 5: {
-            //company.removeWorker()
+            string id;
+            cout << "ID do aviao: "; cin >> id;
+            Plane *p = company->findPlane(id);
+            if (p) {
+                p->setNextServiceAsDone();
+            } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
         }
         case 6: {
-            //flight.removeService()
+            string id;
+            cout << "ID do aviao: "; cin >> id;
+            Plane *p = company->findPlane(id);
+            if (p) {
+                Date d = fillDateData();
+                Service *s = p->findService(d);
+                if (s) {
+                    cout << *s << endl;
+                } else cout << "Nao existe qualquer servico nessa data" << endl;
+            } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
         }
         case 7: {
-            //company.findWorker()
+            string id;
+            cout << "ID do aviao: "; cin >> id;
+            Plane *p = company->findPlane(id);
+            if (p) {
+                string name;
+                cin.clear(); cin.ignore(1000, '\n');
+                cout << "Nome do funcionario: "; getline(cin, name);
+                Employee *e = p->findEmployee(name);
+                if (e) {
+                    cout << *e << endl;
+                } else cout << "Nao existe qualquer funcionario a trabalhar nessa data" << endl;
+            } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
             getMenu();
             break;
         }
-        case 8: {
-            //flight.findService()
-            getMenu();
-            break;
-        }
-        case 9: menuState.pop(); getMenu(); break;
+        case 8: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -423,8 +463,8 @@ void Menu::transportDataMenu() {
         cout << "2 - Remover transporte" << endl;
         cout << "3 - Listar transportes" << endl;
         cout << "4 - Find transporte" << endl;
-        cout << "5 - Quit" << endl;
-        cout << "Your choice: ";
+        cout << "5 - Voltar para tras" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
         if (option < 1 || option > 5) cout << "Erro, por favor tente novamente!" << endl;
@@ -433,20 +473,74 @@ void Menu::transportDataMenu() {
 
     } while (option < 1 || option > 5);
 
+    string origin, destination;
     switch (option) {
         case 1: {
-            // perguntar qual é o flight, se existir, adicionar o transporte
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            if (flight) {
+                Transport t = fillTransportData(flight->getID());
+                try {
+                    flight->addTransport(&t);
+                    company->addTransport(t);
+                    company->save();
+                } catch (TransportAlreadyExist &error) {
+                    error.showError();
+                }
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
         case 2: {
-            // perguntar qual é o flight, se existir, remover o transporte
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            if (flight) {
+                Transport t = fillTransportData(flight->getID());
+                try {
+                    flight->getAirport().showTransports();
+                    flight->removeTransport(&t);
+                    company->removeTransport(t);
+                    company->save();
+                } catch (TransportDoesNotExist &error) {
+                    error.showError();
+                }
+            } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
         }
         case 3: listTransports(); getMenu(); break;
         case 4: {
-            // perguntar qual é o flight, se existir, mostrar o transporte
+            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
+            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            Flight *flight = company->findFlight(origin, destination);
+            if (flight) {
+                char op;
+                cout << "Pesquisar por horario, tipo ou distancia? H/T/D: "; cin >> op;
+                op = toupper(op);
+                if (op == 'H') {
+                    int hour, minute;
+                    cout << "Hora: "; cin >> hour;
+                    cout << "Minute: "; cin >> minute;
+                    Transport *t = flight->searchTransport(hour, minute);
+                    if (t) cout << *t << endl;
+                    else cout << "Nao existe transporte com essa carateristica" << endl;
+                } else if (op == 'T') {
+                    string type;
+                    cout << "Tipo: "; cin >> type;
+                    vector<Transport*> t = flight->searchTransport(type);
+                    for (Transport *transport : t) cout << *transport << endl;
+                } else {
+                    int distance;
+                    cout << "Distancia (em metros): "; cin >> distance;
+                    Transport *t = flight->searchTransport(distance);
+                    if (t) cout << *t << endl;
+                    else cout << "Nao existe transporte com essa carateristica" << endl;
+                }
+            } else cout << "O voo nao existe na base de dados" << endl;
+            getMenu();
+            break;
             getMenu();
             break;
         }
@@ -459,11 +553,11 @@ void Menu::passengerMenu() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Os meus bilhetes" << endl;
+        cout << "1 - Listagens" << endl;
         cout << "2 - Comprar bilhete" << endl;
         cout << "3 - Cancelar bilhete" << endl;
-        cout << "4 - Quit" << endl;
-        cout << "Your choice: ";
+        cout << "4 - Voltar ao menu principal" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
         if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
@@ -488,26 +582,6 @@ void Menu::passengerMenu() {
             menuState.pop(); getMenu();
     }
 }
-/**
-Passenger Menu::fillPassengerData() {
-
-    string origin,destination,id,name,passportNumber;
-    short int age;
-    char gender;
-    cout << "Enter the passenger's ID" << endl;
-    cin >> id;
-    cout << "Enter the passenger's name" << endl;
-    cin >> name;
-    cout << "Enter the passenger's age" << endl;
-    cin >> age;
-    cout << "Enter the passenger's gender (M ou F)" << endl;
-    cin >> gender;
-    cout << "Introduza o número do passaporte do passageiro" << endl;
-    cin >> passportNumber;
-    return {id, name, age, gender, passportNumber};
-
-}
- */
 
 void Menu::buyTicket() {
     short int quantityOfPassengers;
@@ -537,13 +611,13 @@ void Menu::allLists() {
         cout << "=====================================" << endl;
         cout << "1 - Listar Avioes" << endl;
         cout << "2 - Listar Voos" << endl;
-        cout << "3 - Listar Passengers" << endl;
-        cout << "4 - Listar Luggages" << endl;
-        cout << "5 - Listar Services" << endl;
-        cout << "6 - Listar Employessss" << endl;
+        cout << "3 - Listar Passageiros" << endl;
+        cout << "4 - Listar Bagagens" << endl;
+        cout << "5 - Listar Servicos" << endl;
+        cout << "6 - Listar Funcionarios" << endl;
         cout << "7 - Listar Transportes" << endl;
-        cout << "8 - Quit" << endl;
-        cout << "Your choice: ";
+        cout << "8 - Voltar para tras" << endl;
+        cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
         if (option < 1 || option > 8) cout << "Erro, por favor tente novamente!" << endl;
@@ -622,10 +696,33 @@ Employee Menu::fillEmployeeData() {
     string name;
     short int age;
     char gender;
-    cout << "Nome: "; cin >> name;
+    cin.clear(); cin.ignore(1000, '\n');
+    cout << "Nome: "; getline(cin, name);
     cout << "Idade: "; cin >> age;
     cout << "Genero: "; cin >> gender;
     return Employee(name, age, gender);
+}
+
+Service Menu::fillServiceData(const string &id) {
+
+    string type;
+    int year, month, day, hour, minute;
+    cin.clear(); cin.ignore(1000, '\n');
+    cout << "Tipo: "; cin >> type;
+    Date d = fillDateData();
+    Employee e = fillEmployeeData();
+    return Service(id, type, Date(year, month, day, hour, minute), e);
+}
+
+Date Menu::fillDateData() {
+
+    int year, month, day, hour, minute;
+    cout << "Data:\nAno: "; cin >> year;
+    cout << "Mes: "; cin >> month;
+    cout << "Dia: "; cin >> day;
+    cout << "Hora: "; cin >> hour;
+    cout << "Minute: "; cin >> minute;
+    return Date(year, month, day, hour, minute);
 }
 
 Transport Menu::fillTransportData(const string &id) {
@@ -664,7 +761,7 @@ void Menu::listPlanes() {
             cout << "2 - Ordenar por lotacao maxima" << endl;
             cout << "3 - Ordenar por numero de voos" << endl;
             cout << "4 - Ordenar por numero de servicos" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
@@ -711,7 +808,7 @@ void Menu::listFlights() {
             cout << "2 - Ordenar por lotacao" << endl;
             cout << "3 - Ordenar por data de partida" << endl;
             cout << "4 - Ordenar por duracao" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 4) cout << "Erro, por favor tente novamente!" << endl;
@@ -760,7 +857,7 @@ void Menu::listPassengers() {
             cout << "1 - Ordenar por nome" << endl;
             cout << "2 - Ordenar por idade" << endl;
             cout << "3 - Ordenar por quantidade de malas" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
@@ -807,7 +904,7 @@ void Menu::listLuggages() {
             cout << "=====================================" << endl;
             cout << "1 - Ordenar por peso" << endl;
             cout << "2 - Ordenar por volume" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 2) cout << "Erro, por favor tente novamente!" << endl;
@@ -852,7 +949,7 @@ void Menu::listServices() {
             cout << "=====================================" << endl;
             cout << "1 - Ordenar por data de realizacao" << endl;
             cout << "2 - Ordenar por tipo" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 2) cout << "Erro, por favor tente novamente!" << endl;
@@ -901,7 +998,7 @@ void Menu::listEmployees() {
             cout << "=====================================" << endl;
             cout << "1 - Ordenar por nome" << endl;
             cout << "2 - Ordenar por idade" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 2) cout << "Erro, por favor tente novamente!" << endl;
@@ -948,7 +1045,7 @@ void Menu::listTransports() {
             cout << "1 - Ordenar por distancia ao aeroporto" << endl;
             cout << "2 - Ordenar por tipo" << endl;
             cout << "3 - Ordenar por horario" << endl;
-            cout << "Your choice: ";
+            cout << "Escolha: ";
             cin >> option;
             cout << "=====================================" << endl;
             if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;

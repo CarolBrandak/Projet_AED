@@ -240,6 +240,7 @@ class Company {
         void addService(Service &service); //
         void removeService(const string &id); //
         void removeService(Service &service); //
+        void setServiceResponsible(Service &service, Employee &employee);
 
         void addTransport(Transport &transport); //
         void removeTransport(const string &id); //

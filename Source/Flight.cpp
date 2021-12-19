@@ -84,7 +84,7 @@ void Flight::addTransport(Transport *transport) {
 
 void Flight::removeTransport(Transport *transport) {
     if (ID == transport->getID()) airport.removeTransport(transport);
-    else cout << "O transporte nao existe neste voo" << endl;
+    else cerr << "O transporte nao existe neste voo" << endl;
 }
 
 Transport* Flight::searchTransport(const int &hour, const int &minute) {
