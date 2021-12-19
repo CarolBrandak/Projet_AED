@@ -258,6 +258,13 @@ class Flight {
         Luggage* findLuggage(const string &id);
 
         /**
+         * Find luggage in the flight based on passenger's passport
+         * @param passport - a string passed by reference that contains a passenger's passport
+         * @return a vector containing all the luggage associated to the passenger
+        */
+        vector<Luggage*> findPassengerLuggage(const string &passport);
+
+        /**
          * @overload
          * Boolean function that compares two objects of class Flight
          * @param flight another object that will be compared

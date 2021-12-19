@@ -179,7 +179,7 @@ void Flight::removeLuggage(const string &id) {
         if ((*it)->getID() == id) {
             luggage.erase(it);
             quantityOfWeight -= (*it)->getWeight();
-            return;
+            it--;
         }
     }
 }
@@ -189,6 +189,20 @@ Luggage* Flight::findLuggage(const string &id) {
         if (l->getID().substr(0, l->getID().find_last_of('-')) == ID) return l;
     }
     return nullptr;
+}
+
+vector<Luggage*> Flight::findPassengerLuggage(const string &passport) {
+    vector<Luggage*> answer;
+    for (Passenger *p : passengers) {
+        if (p->getPassportNumber() == passport) {
+            answer = p->getLuggage();
+            for (Luggage *l : luggage) {
+                if (l->getID() == p->getID()) answer.push_back(l);
+            }
+            return answer;
+        }
+    }
+    return answer;
 }
 
 bool Flight::operator == (const Flight &flight) const {

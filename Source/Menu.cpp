@@ -291,7 +291,7 @@ void Menu::luggageDataMenu() {
     do {
         cout << "=====================================" << endl;
         cout << "1 - Adicionar Bagagem" << endl;
-        cout << "2 - Remover Bagagem" << endl;
+        cout << "2 - Remover Bagagem de um Passageiro" << endl;
         cout << "3 - Listar Bagagem" << endl;
         cout << "4 - Procurar Bagagem" << endl;
         cout << "5 - Voltar para tras" << endl;
@@ -332,13 +332,11 @@ void Menu::luggageDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
-                cout << "Id da barragem a remover: "; cin >> id;
-                Luggage *luggage = flight->findLuggage(id);
-                if (luggage) {
-                    flight->removeLuggage(luggage->getID());
-                    company->removeLuggage(*luggage);
-                    company->save();
-                } else cout << "A bagagem de id " << id << " nao existe neste voo" << endl;
+                cout << "Introduza o passaporte do passageiro: "; cin >> passport;
+                vector<Luggage*> allLuggage = flight->findPassengerLuggage(passport);
+                if (!allLuggage.empty()) {
+                    for (Luggage *l : allLuggage) cout << *l << endl;
+                } else cout << "Nao existe bagagens associadas a esse passaporte" << endl;
             } else cout << "O voo nao existe na base de dados" << endl;
             getMenu();
             break;
@@ -542,35 +540,36 @@ void Menu::transportDataMenu() {
             cout << "Por favor introduza a cidade de destino: "; cin >> destination;
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
-                try {
-                    char op;
-                    cout << "Pesquisar por horario, tipo ou distancia? H/T/D: "; cin >> op;
-                    op = toupper(op);
-                    if (op == 'H') {
-                        int hour, minute;
-                        cout << "Hora: "; cin >> hour;
-                        cout << "Minute: "; cin >> minute;
-                        Transport *t = flight->searchTransport(hour, minute);
-                        if (t) cout << *t << endl;
-                        else cout << "Nao existe transporte com essa carateristica" << endl;
-                    } else if (op == 'T') {
-                        string type;
-                        cout << "Tipo: "; cin >> type;
-                        vector<Transport*> t = flight->searchTransport(type);
-                        for (Transport *transport : t) cout << *transport << endl;
-                    } else {
-                        int distance;
-                        cout << "Distancia (em metros): "; cin >> distance;
-                        Transport *t = flight->searchTransport(distance);
-                        if (t) cout << *t << endl;
-                        else cout << "Nao existe transporte com essa carateristica" << endl;
+                if (!flight->getAllTransports().empty()) {
+                    try {
+                        char op;
+                        cout << "Pesquisar por horario, tipo ou distancia? H/T/D: "; cin >> op;
+                        op = toupper(op);
+                        if (op == 'H') {
+                            int hour, minute;
+                            cout << "Hora: "; cin >> hour;
+                            cout << "Minute: "; cin >> minute;
+                            Transport *t = flight->searchTransport(hour, minute);
+                            if (t) cout << *t << endl;
+                            else cout << "Nao existe transporte com essa carateristica" << endl;
+                        } else if (op == 'T') {
+                            string type;
+                            cout << "Tipo: "; cin >> type;
+                            vector<Transport*> t = flight->searchTransport(type);
+                            for (Transport *transport : t) cout << *transport << endl;
+                        } else {
+                            int distance;
+                            cout << "Distancia (em metros): "; cin >> distance;
+                            Transport *t = flight->searchTransport(distance);
+                            if (t) cout << *t << endl;
+                            else cout << "Nao existe transporte com essa carateristica" << endl;
+                        }
+                    } catch (InvalidTransport &error) {
+                        error.showError();
                     }
-                } catch (InvalidTransport &error) {
-                    error.showError();
                 }
+                else cout << "Nao existem transportes para esse voo" << endl;
             } else cout << "O voo nao existe na base de dados" << endl;
-            getMenu();
-            break;
             getMenu();
             break;
         }
@@ -781,8 +780,8 @@ Luggage Menu::fillLuggageData(const string &id) {
     cout << "Peso (em Kgs): "; cin >> weight;
     cout << "Comprimento (em centimetros): "; cin >> width;
     cout << "Largura (em centimetros): "; cin >> height;
-    cout << "Profundidade: (em centimetros)"; cin >> depth;
-    cout << "Bagagem de mao? S/N"; cin >> planeHold;
+    cout << "Profundidade (em centimetros): "; cin >> depth;
+    cout << "Bagagem de mao? S/N "; cin >> planeHold;
     Volume v = {width, height, depth};
     if (weight*width*height*depth <= 0) throw InvalidLuggage(new Luggage(id, weight, v, toupper(planeHold) == 'S'));
     return Luggage(id, weight, v, toupper(planeHold) == 'S');
