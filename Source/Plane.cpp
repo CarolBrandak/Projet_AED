@@ -120,8 +120,10 @@ void Plane::checkFlights() {
 }
 
 void Plane::addFlight(Flight &flight) {
-    if (ID == flight.getID().substr(0, flight.getID().find('-'))) flights.push_back(&flight);
-    if (stoi(flight.getID().substr(flight.getID().find('-') + 1)) > nextFlightID) nextFlightID++;
+    if (ID == flight.getID().substr(0, flight.getID().find('-'))) {
+        flights.push_back(&flight);
+        if (stoi(flight.getID().substr(flight.getID().find('-') + 1)) > nextFlightID) nextFlightID++;
+    }
 }
 
 void Plane::removeFlight(const string &id) {

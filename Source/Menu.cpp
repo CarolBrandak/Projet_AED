@@ -178,23 +178,30 @@ void Menu::flightDataMenu() {
             break;
         }
         case 2: {
-
-            // inputs do voo, por exemplo por id
-            // se existir, remove
-
+            string origin, destination;
+            cout << "Por favor introduza o país de origem: ";
+            cin >> origin;
+            cout << "Por favor introduza o país de destino: ";
+            cin >> destination;
+            Flight* flight = company->findFlight(origin, destination);
+            if (flight) {
+                company->removeFlight(*flight);
+                company->save();
+            } else cout << "O voo com origem " << origin << " e destino " << destination << " nao existe" << endl;
+            getMenu();
             break;
         }
         case 3: listFlights(); break;
 
         case 4: {
-            std::string origin,destination;
-            cout << "Por favor introduza o país de origem: ";
+            string origin, destination;
+            cout << "Por favor introduza o pais de origem: ";
             cin >> origin;
-            cout << "Por favor introduza o país de destino: ";
+            cout << "Por favor introduza o pais de destino: ";
             cin >> destination;
-            Flight* flight = company->findFlight(origin,destination); // não esquecer que isto retorna null se não encontrar
-            if (flight) cout << *flight;                                 // verificação se é null
-            else cout << "Não encontrado ou alguma mensagem assim" << endl;
+            Flight* flight = company->findFlight(origin, destination);
+            if (flight) cout << *flight;
+            else cout << "Voo nao encontrado na base de dados" << endl;
             getMenu();
             break;
         }
@@ -552,10 +559,10 @@ Plane Menu::fillPlaneData(const string &id) {
 
     string licencePlate, type;
     int weightCapacity, passengerCapacity;
-    cout << "Licence Plate: "; cin >> licencePlate;
-    cout << "Type: "; cin >> type;
-    cout << "Weight capaticy: "; cin >> weightCapacity;
-    cout << "Passenger capacity: "; cin >> passengerCapacity;
+    cout << "Matricula: "; cin >> licencePlate;
+    cout << "Tipo: "; cin >> type;
+    cout << "Capacidade de carga: "; cin >> weightCapacity;
+    cout << "Lotacao maxima: "; cin >> passengerCapacity;
     return Plane(id, licencePlate, type, weightCapacity, passengerCapacity);
 }
 
@@ -563,15 +570,15 @@ Flight Menu::fillFlightData(const string &id) {
 
     string origin, destination, airportName;
     int year, month, day, hour, minute, duration;
-    cout << "Flight date:\nYear: "; cin >> year;
-    cout << "Month: "; cin >> month;
-    cout << "Day: "; cin >> day;
-    cout << "Hour: "; cin >> hour;
-    cout << "Minute: "; cin >> minute;
-    cout << "Duration: "; cin >> duration;
-    cout << "Origin: "; cin >> origin;
-    cout << "Airport name: "; cin >> airportName;
-    cout << "Airport city: "; cin >> destination;
+    cout << "Data do voo:\nAno: "; cin >> year;
+    cout << "Mes: "; cin >> month;
+    cout << "Dia: "; cin >> day;
+    cout << "Hora: "; cin >> hour;
+    cout << "Minuto: "; cin >> minute;
+    cout << "Duracao (em minutos): "; cin >> duration;
+    cout << "Origem: "; cin >> origin; cin.clear(); cin.ignore(1000, '\n');
+    cout << "Destino: "; cin >> destination;cin.clear(); cin.ignore(1000, '\n');
+    cout << "Nome do aeroporto de destino: "; getline(cin, airportName);
     return Flight(id, Date(day, month, year, hour, minute), duration, origin, Airport(airportName, destination));
 }
 
@@ -580,10 +587,10 @@ Passenger Menu::fillPassengerData(const string &id) {
     string name, passport;
     short int age;
     char gender;
-    cout << "Name: "; cin >> name;
-    cout << "Age: "; cin >> age;
-    cout << "Gender: "; cin >> gender;
-    cout << "Passport: "; cin >> passport;
+    cout << "Nome: "; getline(cin, name); cin.clear(); cin.ignore(1000, '\n');
+    cout << "Idade: "; cin >> age;
+    cout << "Genero M/F/?: "; cin >> gender;
+    cout << "Passaporte: "; cin >> passport;
     return Passenger(id, name, age, gender, passport);
 }
 
@@ -591,13 +598,13 @@ Luggage Menu::fillLuggageData(const string &id) {
 
     short int weight, width, height, depth;
     char planeHold;
-    cout << "Weight: "; cin >> weight;
-    cout << "Width: "; cin >> width;
-    cout << "Height: "; cin >> height;
-    cout << "Depth: "; cin >> depth;
+    cout << "Peso (em Kgs): "; cin >> weight;
+    cout << "Comprimento (em centimetros): "; cin >> width;
+    cout << "Largura (em centimetros): "; cin >> height;
+    cout << "Profundidade: (em centimetros)"; cin >> depth;
     cout << "Bagagem de mão? S/N"; cin >> planeHold;
     Volume v = {width, height, depth};
-    return Luggage(id, weight, v, toupper(planeHold) == 'S');
+    return Luggage(id, weight, v, toupper(planeHold) == 'S' || toupper(planeHold) == 's');
 }
 
 Employee Menu::fillEmployeeData() {
@@ -605,9 +612,9 @@ Employee Menu::fillEmployeeData() {
     string name;
     short int age;
     char gender;
-    cout << "Name: "; cin >> name;
-    cout << "Age: "; cin >> age;
-    cout << "Gender: "; cin >> gender;
+    cout << "Nome: "; cin >> name;
+    cout << "Idade: "; cin >> age;
+    cout << "Genero: "; cin >> gender;
     return Employee(name, age, gender);
 }
 
@@ -615,10 +622,10 @@ Transport Menu::fillTransportData(const string &id) {
 
     string type;
     int distance, hour, minute;
-    cout << "Type: "; cin >> type;
-    cout << "Distance: "; cin >> distance;
-    cout << "Hour: "; cin >> hour;
-    cout << "Minute: "; cin >> minute;
+    cout << "Tipo (taxi, barco, metro...): "; cin >> type;
+    cout << "Distancia ao aeroporto: "; cin >> distance;
+    cout << "Hora de partida: "; cin >> hour;
+    cout << "Minuto de partida: "; cin >> minute;
     return Transport(id, type, distance, Date(hour, minute));
 }
 
@@ -628,7 +635,7 @@ char Menu::totalOrPartial() {
     do {
         cout << "Listagem total ou parcial? T/P: ";
         cin >> option;
-        if (toupper(option) != 'T' && toupper(option) != 'P') cout << "Input inválido, por favor tente novamente" << endl;
+        if (toupper(option) != 'T' && toupper(option) != 'P') cout << "Input invalido, por favor tente novamente" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
     } while (toupper(option) != 'T' && toupper(option) != 'P');
@@ -644,7 +651,7 @@ void Menu::listPlanes() {
         do {
             cout << "=====================================" << endl;
             cout << "1 - Ordenar por capacidade maxima de carga" << endl;
-            cout << "2 - Ordenar por lotaçao maxima" << endl;
+            cout << "2 - Ordenar por lotacao maxima" << endl;
             cout << "3 - Ordenar por numero de voos" << endl;
             cout << "4 - Ordenar por numero de servicos" << endl;
             cout << "Your choice: ";
@@ -681,7 +688,7 @@ void Menu::listFlights() {
         Plane *p = company->findPlane(id);
         if (p) flights = p->getVectorFlights();
         else {
-            cout << "Aviao não encontrado" << endl;
+            cout << "Aviao nao encontrado" << endl;
             getMenu();
         }
     }
