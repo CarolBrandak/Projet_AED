@@ -614,24 +614,88 @@ void Menu::passengerMenu() {
 }
 
 void Menu::buyTicket() {
-    short int quantityOfPassengers;
-    string origin, destinantion;
+    unsigned int quantityOfPassengers;
+
+    string origin, destination;
     Flight* flight;
-    while(true) {
-        cout << "Where do you want to travel from?" << endl;
-        cin >> origin;
-        cout << "Where do you want to travel to?" << endl;
-        cin >> destinantion;
-        flight = company->findFlight(origin,destinantion);
-        //if(!nullptr) {
-            
-        //}
+    cout << "De onde quer viajar?" << endl;
+    cin >> origin;
+    cout << "Para onde quer viajar?" << endl;
+    cin >> destination;
+    flight = company->findFlight(origin, destination);
+    if(flight) {
+        cout << "Quantas pessoas vão viajar?" << endl;
+        cin >> quantityOfPassengers;
+        unsigned int flightPassengersAfterAdd = flight->getPassengersQuantity()+quantityOfPassengers;
+        Plane *plane = company->findPlane(flight->getID().substr(0,flight->getID().find('-')));
+        if(flightPassengersAfterAdd <= plane->getMaxPassengersCapacity()) {
+            short int cont = 1, quantityOfLuggage;
+            vector<Passenger*> allPassengers;
+            vector<Luggage*> allLuggage;
+            short int totalWeight = 0;
+            while(cont <= quantityOfPassengers) {
+                cout << "Insira os dados o " << cont << "º passageiro" << endl;
+                Passenger passenger = fillPassengerData(flight->getID());
+                cout << "Quantas malas tem o " << passenger.getName() << "?" << endl;
+                cin >> quantityOfLuggage;
+                for(short int contLuggage = 1; contLuggage <= quantityOfLuggage; contLuggage++) {
+                    cout << "Insira os dados da " << contLuggage << "ª baggagem" << endl;
+                    Luggage luggage = fillLuggageData(flight->getID());
+                    totalWeight += luggage.getWeight();
+                    passenger.addLuggage(luggage);
+                    allLuggage.push_back(&luggage);
+                }
+                allPassengers.push_back(&passenger);
+            }
+            if (plane->getMaxWeightCapacity() >= (totalWeight + flight->getWeightQuantity())) {
+                for (Passenger *passenger : allPassengers) {
+                    flight->addPassenger(*passenger);
+                    company->addPassenger(*passenger);
+                }
+                for (Luggage *luggage : allLuggage) company->addLuggage(*luggage);
+                company->save();
+                cout << "O(s) passageiro(s) foram adicionados ao voo!" << endl;
+            } else {
+                cout << "Nao foi possivel adicionar o(s) passageiro(s) no voo porque o peso total do aviao apos a vossa"
+                        "adicao, excede o limite" << endl;
+            }
+        }
     }
 }
 
 void Menu::cancelTicket() {
 
+    string origin, destination, passport;
+    char op;
+    bool answer = true;
+    bool respostaValida = false;
+    do {
+        cout << "De onde quer viajar?" << endl;
+        cin >> origin;
+        cout << "Para onde quer viajar?" << endl;
+        cin >> destination;
+        Flight *flight = company->findFlight(origin, destination);
+        if (flight) {
+            cout << "Numero de passaporte: ";
+            cin >> passport;
+            Passenger *p = flight->findPassenger(passport);
+            if (p) {
+                flight->removePassenger(*p);
+                company->removePassenger(*p);
+                company->save();
+            }
+        }
 
+        do {
+            cout << "Quer cancelar outro bilhete? S/N"; cin >> op;
+            if(op == 'S' || op == 's') { respostaValida = true; }
+            else if(op == 'N' || op == 'n') { answer = false; respostaValida = true;}
+
+            if(!respostaValida) cout << "Por favor insira S ou N" << endl;
+
+        } while (!respostaValida);
+
+    } while (answer);
 }
 
 void Menu::allLists() {

@@ -120,8 +120,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2ecd470f1e299773ae530e3d65b0ce58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6759f7cdf50ebda05a9d74839c0ffa6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#a6759f7cdf50ebda05a9d74839c0ffa6b">addPassenger</a> (<a class="el" href="class_passenger.html">Passenger</a> &amp;passenger)</td></tr>
 <tr class="separator:a6759f7cdf50ebda05a9d74839c0ffa6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbc29b5481531d16632078a79fd266ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#abbc29b5481531d16632078a79fd266ef">addPassenger</a> (const vector&lt; <a class="el" href="class_passenger.html">Passenger</a> * &gt; &amp;allPassengers)</td></tr>
-<tr class="separator:abbc29b5481531d16632078a79fd266ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3db3934e4542d9a20d15a491d3c82429"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#a3db3934e4542d9a20d15a491d3c82429">removePassenger</a> (<a class="el" href="class_passenger.html">Passenger</a> &amp;passenger)</td></tr>
 <tr class="separator:a3db3934e4542d9a20d15a491d3c82429"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1d2bd9ab8e783dbfa02978a98d24a64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_passenger.html">Passenger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#ae1d2bd9ab8e783dbfa02978a98d24a64">findPassenger</a> (const string &amp;passport)</td></tr>
@@ -163,18 +161,15 @@ short int&#160;</td><td class="memItemRight" valign="bottom"><b>quantityOfWeight
 <tr class="memitem:aad1709cb73043170c83e3e004934c420"><td class="memItemLeft" align="right" valign="top"><a id="aad1709cb73043170c83e3e004934c420" name="aad1709cb73043170c83e3e004934c420"></a>
 vector&lt; <a class="el" href="class_passenger.html">Passenger</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>passengers</b></td></tr>
 <tr class="separator:aad1709cb73043170c83e3e004934c420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa786d57fac8e173ab57a3937fc10673f"><td class="memItemLeft" align="right" valign="top"><a id="aa786d57fac8e173ab57a3937fc10673f" name="aa786d57fac8e173ab57a3937fc10673f"></a>
+<tr class="memitem:a60dd07c58ef346e251c72368f50d2e48"><td class="memItemLeft" align="right" valign="top"><a id="a60dd07c58ef346e251c72368f50d2e48" name="a60dd07c58ef346e251c72368f50d2e48"></a>
 vector&lt; <a class="el" href="class_luggage.html">Luggage</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>luggage</b></td></tr>
-<tr class="separator:aa786d57fac8e173ab57a3937fc10673f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a60dd07c58ef346e251c72368f50d2e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0d06c31fe1f328e17bd0a5759d4a293"><td class="memItemLeft" align="right" valign="top"><a id="ad0d06c31fe1f328e17bd0a5759d4a293" name="ad0d06c31fe1f328e17bd0a5759d4a293"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>nextID</b></td></tr>
 <tr class="separator:ad0d06c31fe1f328e17bd0a5759d4a293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a53a9d95c1ed7dade8969f9e06420508f"><td class="memItemLeft" align="right" valign="top"><a id="a53a9d95c1ed7dade8969f9e06420508f" name="a53a9d95c1ed7dade8969f9e06420508f"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
-<tr class="separator:a53a9d95c1ed7dade8969f9e06420508f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d88bde26f419c282b821b291275c536"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#a4d88bde26f419c282b821b291275c536">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_flight.html">Flight</a> &amp;flight)</td></tr>
 <tr class="separator:a4d88bde26f419c282b821b291275c536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -262,10 +257,10 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
 </div><div class="memdoc">
 <p >Main constructor </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ID</td><td>- a string constant variable thar contains the ID of the flight </td></tr>
-    <tr><td class="paramname">FLIGHT_DATE</td><td>- a <a class="el" href="class_date.html">Date</a> type object that contains the date of the flight </td></tr>
-    <tr><td class="paramname">FLIGHT_DURATION</td><td>- a short int constant variable that contains the flight's duration in minutes </td></tr>
-    <tr><td class="paramname">ORIGIN</td><td>- a string that contains the origin of the flight </td></tr>
+    <tr><td class="paramname">id</td><td>- a string constant variable thar contains the ID of the flight </td></tr>
+    <tr><td class="paramname">flightDate</td><td>- a <a class="el" href="class_date.html">Date</a> type object that contains the date of the flight </td></tr>
+    <tr><td class="paramname">flightDuration</td><td>- a short int constant variable that contains the flight's duration in minutes </td></tr>
+    <tr><td class="paramname">origin</td><td>- a string that contains the origin of the flight </td></tr>
     <tr><td class="paramname">airport</td><td>- an <a class="el" href="class_airport.html">Airport</a> object that contains the destination of the flight and all transports </td></tr>
   </table>
   </dd>
@@ -298,32 +293,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
 
 </div>
 </div>
-<a id="abbc29b5481531d16632078a79fd266ef" name="abbc29b5481531d16632078a79fd266ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbc29b5481531d16632078a79fd266ef">&#9670;&nbsp;</a></span>addPassenger() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Flight::addPassenger </td>
-          <td>(</td>
-          <td class="paramtype">const vector&lt; <a class="el" href="class_passenger.html">Passenger</a> * &gt; &amp;&#160;</td>
-          <td class="paramname"><em>allPassengers</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Adds passengers to the flight </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">passengers</td><td>- <a class="el" href="class_passenger.html">Passenger</a> type vector that contains all passengers that will be added in flight </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a6759f7cdf50ebda05a9d74839c0ffa6b" name="a6759f7cdf50ebda05a9d74839c0ffa6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6759f7cdf50ebda05a9d74839c0ffa6b">&#9670;&nbsp;</a></span>addPassenger() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6759f7cdf50ebda05a9d74839c0ffa6b">&#9670;&nbsp;</a></span>addPassenger()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -337,7 +308,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Adds passengers to the flight </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Adds passengers to the flight </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">passenger</td><td>- <a class="el" href="class_passenger.html">Passenger</a> object that will be added in the current flight </td></tr>
   </table>
@@ -596,7 +567,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Generate and returns the next <a class="el" href="class_passenger.html">Passenger</a>'s ID based on last Passengers </p><dl class="section return"><dt>Returns</dt><dd>a string, containing the next id </dd></dl>
+<p >Generate and returns the next <a class="el" href="class_passenger.html">Passenger</a>'s ID based on last Passengers insertions </p><dl class="section return"><dt>Returns</dt><dd>a string, containing the next id </dd></dl>
 
 </div>
 </div>
@@ -669,7 +640,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Boolean function that compares two objects of this class </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Boolean function that compares two objects of class <a class="el" href="class_flight.html">Flight</a> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flight</td><td>another object that will be compared </td></tr>
   </table>
@@ -694,7 +665,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Cart</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Boolean function that compares two objects of this class </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Boolean function that compares two objects of class <a class="el" href="class_flight.html">Flight</a> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flight</td><td>another object that will be compared </td></tr>
   </table>

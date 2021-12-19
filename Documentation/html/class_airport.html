@@ -105,12 +105,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ad42f2109107aa621a9cc200c5defc489"><td class="memItemLeft" align="right" valign="top"><a id="ad42f2109107aa621a9cc200c5defc489" name="ad42f2109107aa621a9cc200c5defc489"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>city</b></td></tr>
-<tr class="separator:ad42f2109107aa621a9cc200c5defc489"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9d63a78366354834c0e0900cfbed0ae"><td class="memItemLeft" align="right" valign="top"><a id="af9d63a78366354834c0e0900cfbed0ae" name="af9d63a78366354834c0e0900cfbed0ae"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr class="separator:af9d63a78366354834c0e0900cfbed0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45d54c140650b705c52e5afe1cf21a04"><td class="memItemLeft" align="right" valign="top"><a id="a45d54c140650b705c52e5afe1cf21a04" name="a45d54c140650b705c52e5afe1cf21a04"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>CITY</b></td></tr>
+<tr class="separator:a45d54c140650b705c52e5afe1cf21a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab31649b53791a3a1ed95e84002c5386"><td class="memItemLeft" align="right" valign="top"><a id="aab31649b53791a3a1ed95e84002c5386" name="aab31649b53791a3a1ed95e84002c5386"></a>
+const string&#160;</td><td class="memItemRight" valign="bottom"><b>NAME</b></td></tr>
+<tr class="separator:aab31649b53791a3a1ed95e84002c5386"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78ee78a2f0b0dc6753ca4f7582372fa5"><td class="memItemLeft" align="right" valign="top"><a id="a78ee78a2f0b0dc6753ca4f7582372fa5" name="a78ee78a2f0b0dc6753ca4f7582372fa5"></a>
 <a class="el" href="class_b_s_t.html">BST</a>&lt; <a class="el" href="class_transport.html">Transport</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>transports</b></td></tr>
 <tr class="separator:a78ee78a2f0b0dc6753ca4f7582372fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,8 +186,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p >Main constructor </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>- a string containing <a class="el" href="class_airport.html">Airport</a>'s name </td></tr>
-    <tr><td class="paramname">city</td><td>- a string containing <a class="el" href="class_airport.html">Airport</a>'s city </td></tr>
+    <tr><td class="paramname">name</td><td>- a string containing <a class="el" href="class_airport.html">Airport</a>'s name passed by value </td></tr>
+    <tr><td class="paramname">city</td><td>- a string containing <a class="el" href="class_airport.html">Airport</a>'s city passed by value </td></tr>
   </table>
   </dd>
 </dl>
@@ -210,7 +210,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >A function that adds a new transport to the <a class="el" href="class_b_s_t.html">BST</a> data structure </p><dl class="params"><dt>Parameters</dt><dd>
+<p >A function that adds a new transport to the <a class="el" href="class_b_s_t.html">BST</a> data structure passed by pointer </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">transport</td><td>- a <a class="el" href="class_transport.html">Transport</a> object passed by pointer that will eventually be added </td></tr>
   </table>
@@ -233,7 +233,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >A function to get all Transports </p><dl class="section return"><dt>Returns</dt><dd>a vector that groups all <a class="el" href="class_transport.html">Transport</a> objects </dd></dl>
+<p >A function to get all Transports </p><dl class="section return"><dt>Returns</dt><dd>a vector that groups all <a class="el" href="class_transport.html">Transport</a> objects in order </dd></dl>
 
 </div>
 </div>
@@ -306,7 +306,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >A function that removes a transport from the <a class="el" href="class_b_s_t.html">BST</a> data structure </p><dl class="params"><dt>Parameters</dt><dd>
+<p >A function that removes a transport from the <a class="el" href="class_b_s_t.html">BST</a> data structure passed by pointer </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">transport</td><td>- a <a class="el" href="class_transport.html">Transport</a> object passed by pointer that will eventually be removed </td></tr>
   </table>
@@ -391,7 +391,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. A function that returns all <a class="el" href="class_transport.html">Transport</a> objects that has the same type </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. A function that returns all <a class="el" href="class_transport.html">Transport</a> objects that has the same type passed by constant reference </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>- a string passed by reference that contains the wanted type of <a class="el" href="class_transport.html">Transport</a> </td></tr>
   </table>

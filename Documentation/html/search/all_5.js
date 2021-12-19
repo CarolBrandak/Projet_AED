@@ -7,5 +7,6 @@ var searchData=
   ['findpassenger_4',['findPassenger',['../class_flight.html#ae1d2bd9ab8e783dbfa02978a98d24a64',1,'Flight']]],
   ['findplane_5',['findPlane',['../class_company.html#a7792f626d0344fb6f0166de50f145a05',1,'Company']]],
   ['findservice_6',['findService',['../class_plane.html#a00081cd70347db4416d49a4de03640da',1,'Plane']]],
-  ['flight_7',['Flight',['../class_flight.html',1,'Flight'],['../class_flight.html#acbf1e8c321e01e04db2fe651a08b30af',1,'Flight::Flight()'],['../class_flight.html#aa130faa45394c052525c10f08208f45b',1,'Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport)']]]
+  ['flight_7',['Flight',['../class_flight.html',1,'Flight'],['../class_flight.html#acbf1e8c321e01e04db2fe651a08b30af',1,'Flight::Flight()'],['../class_flight.html#aa130faa45394c052525c10f08208f45b',1,'Flight::Flight(string id, Date flightDate, short int flightDuration, string origin, Airport airport)']]],
+  ['flightdatamenu_8',['flightDataMenu',['../class_menu.html#a2c2fd1254545be00b094dee29d0f4932',1,'Menu']]]
 ];

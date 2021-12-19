@@ -77,6 +77,8 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a839de963dfdae31325ade5d59e247d75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cart.html#a839de963dfdae31325ade5d59e247d75">Cart</a> ()</td></tr>
 <tr class="separator:a839de963dfdae31325ade5d59e247d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74cee9e32b8b784d8b0ab0b03d7dbe6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cart.html#ae74cee9e32b8b784d8b0ab0b03d7dbe6">~Cart</a> ()</td></tr>
+<tr class="separator:ae74cee9e32b8b784d8b0ab0b03d7dbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26c122b75c99704688dd5a0a8bb91d5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cart.html#a26c122b75c99704688dd5a0a8bb91d5c">addLuggage</a> (queue&lt; <a class="el" href="class_luggage.html">Luggage</a> * &gt; treadmill)</td></tr>
 <tr class="separator:a26c122b75c99704688dd5a0a8bb91d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ab4595debc2ee27e5c86701c4355811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cart.html#a6ab4595debc2ee27e5c86701c4355811">putLuggage</a> (vector&lt; <a class="el" href="class_luggage.html">Luggage</a> * &gt; &amp;luggage)</td></tr>
@@ -109,6 +111,24 @@ list&lt; queue&lt; stack&lt; <a class="el" href="class_luggage.html">Luggage</a>
 
 </div>
 </div>
+<a id="ae74cee9e32b8b784d8b0ab0b03d7dbe6" name="ae74cee9e32b8b784d8b0ab0b03d7dbe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74cee9e32b8b784d8b0ab0b03d7dbe6">&#9670;&nbsp;</a></span>~Cart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Cart::~Cart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >A default destructor of the class </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a26c122b75c99704688dd5a0a8bb91d5c" name="a26c122b75c99704688dd5a0a8bb91d5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26c122b75c99704688dd5a0a8bb91d5c">&#9670;&nbsp;</a></span>addLuggage()</h2>
@@ -127,7 +147,7 @@ list&lt; queue&lt; stack&lt; <a class="el" href="class_luggage.html">Luggage</a>
 </div><div class="memdoc">
 <p >A function that adds luggage in current cart </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">treadmill</td><td>- a queue based on <a class="el" href="class_luggage.html">Luggage</a> pointer objects that contains all <a class="el" href="class_luggage.html">Luggage</a> in current Order </td></tr>
+    <tr><td class="paramname">treadmill</td><td>- a queue based on <a class="el" href="class_luggage.html">Luggage</a> pointer objects that contains all <a class="el" href="class_luggage.html">Luggage</a> in order of arrival </td></tr>
   </table>
   </dd>
 </dl>
@@ -149,7 +169,12 @@ list&lt; queue&lt; stack&lt; <a class="el" href="class_luggage.html">Luggage</a>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >A function that adds luggage in current flight </p>
+<p >A function that adds luggage in current flight </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">luggage</td><td>- a vector with <a class="el" href="class_luggage.html">Luggage</a> pointer objects that will be filled by <a class="el" href="class_cart.html">Cart</a>'s luggage too </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

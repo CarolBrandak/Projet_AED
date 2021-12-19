@@ -70,114 +70,165 @@ $(function() {
   <div class="headertitle"><div class="title">Company.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PROJECT_AED_AGENCY_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PROJECT_AED_AGENCY_H</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PROJECT_AED_COMPANY_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PROJECT_AED_COMPANY_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#define FLIGHT_FILE &quot;../Source/Files/Flights.txt&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define LUGGAGE_FILE &quot;../Source/Files/Luggages.txt&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define PASSENGER_FILE &quot;../Source/Files/Passengers.txt&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define PLANE_FILE &quot;../Source/Files/Planes.txt&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define SERVICE_FILE &quot;../Source/Files/Services.txt&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define TRANSPORT_FILE &quot;../Source/Files/Transports.txt&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Plane.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Exceptions.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_company.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="class_company.html">Company</a> {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define FLIGHT_FILE &quot;../Source/Files/Flights.txt&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define LUGGAGE_FILE &quot;../Source/Files/Luggages.txt&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define PASSENGER_FILE &quot;../Source/Files/Passengers.txt&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define PLANE_FILE &quot;../Source/Files/Planes.txt&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define SERVICE_FILE &quot;../Source/Files/Services.txt&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define TRANSPORT_FILE &quot;../Source/Files/Transports.txt&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Plane.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Exceptions.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_company.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="class_company.html">Company</a> {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> name;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">int</span> nextPlaneID;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="class_company.html#a2e4a82f9b7fc3e1f0c09dcaa417240c4">   39</a></span>        vector&lt;Plane*&gt; <a class="code hl_variable" href="class_company.html#a2e4a82f9b7fc3e1f0c09dcaa417240c4">planes</a>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> NAME;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">int</span> nextPlaneID;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        vector&lt;Plane*&gt; allPlanes;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_function" href="class_company.html#a29937dda711b09df306ae7ca9b3d6b42">Company</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        vector&lt;Flight*&gt; allFlights;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_function" href="class_company.html#a61c2a9ec178e683310583ef15635b53c">~Company</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        vector&lt;Passenger*&gt; allPassengers;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_function" href="class_company.html#a29937dda711b09df306ae7ca9b3d6b42">Company</a>(<span class="keywordtype">string</span> name);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#ad2f6c6285643e6f8ea432fe775b1f47f">presentation</a>();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_company.html#a4a45565d61c119cb590383553bc327d1">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        vector&lt;Luggage*&gt; allLuggage;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        vector&lt;Service*&gt; allServices;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        vector&lt;Transport*&gt; allTransports;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_company.html#a72e8e742e425be505d038212226c62bc">getNextPlaneID</a>();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        vector&lt;Plane*&gt; <a class="code hl_function" href="class_company.html#a4d5ea4dea8c9d6660244ea6e36b7ef4a">getPlanes</a>();</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        vector&lt;Luggage*&gt; <a class="code hl_function" href="class_company.html#aef0d95320d3a03a759faae127fa2912b">getAllLuggages</a>();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        vector&lt;Passenger*&gt; <a class="code hl_function" href="class_company.html#adcb91e68450f85ce4a25af4796892fa7">getAllPassengers</a>();</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        vector&lt;Service*&gt; <a class="code hl_function" href="class_company.html#af03ebe5b38a4c4b534bfc014c8a878fd">getAllServices</a>();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        vector&lt;Transport*&gt; <a class="code hl_function" href="class_company.html#ad12649fdcf3bfbdf3eb5c42da27bae73">getAllTransports</a>();</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        vector&lt;Flight*&gt; <a class="code hl_function" href="class_company.html#afe7c21addcf1a5598a9f93c41c5855f4">getAllFlights</a>();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        vector&lt;Plane*&gt; <a class="code hl_function" href="class_company.html#a17f3f7776c381dfae94730c96d7ef159">getAllPlanes</a>();</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a469a0c77a57c6caedc1ad9b603d24204">saveLuggage</a>(vector&lt;Luggage*&gt; luggage);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a9712112abe1549927ed92a21a9da1aed">savePassengers</a>(vector&lt;Passenger*&gt; passengers);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a361e8672bc4bb5ec28d52223e19f777f">saveFlights</a>(vector&lt;Flight*&gt; flights);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#afd6cb774c63be2ee28865723c310296b">saveServices</a>(vector&lt;Service*&gt; services);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a0f7c075fc5d95e8650cf25312a7bf629">savePlanes</a>(vector&lt;Plane*&gt; <a class="code hl_variable" href="class_company.html#a2e4a82f9b7fc3e1f0c09dcaa417240c4">planes</a>);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#abf59cd4a14cbb6a65e6a03b0659350eb">saveTransports</a>(vector&lt;Transport*&gt; transports);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_function" href="class_company.html#a29937dda711b09df306ae7ca9b3d6b42">Company</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_function" href="class_company.html#a61c2a9ec178e683310583ef15635b53c">~Company</a>();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">explicit</span> <a class="code hl_function" href="class_company.html#a29937dda711b09df306ae7ca9b3d6b42">Company</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#ad2f6c6285643e6f8ea432fe775b1f47f">presentation</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_company.html#a4a45565d61c119cb590383553bc327d1">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_company.html#a72e8e742e425be505d038212226c62bc">getNextPlaneID</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        vector&lt;Plane*&gt; <a class="code hl_function" href="class_company.html#af69dc1b0ec18977c25ebf2811f5cadf9">getAllPlanes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        vector&lt;Luggage*&gt; <a class="code hl_function" href="class_company.html#a03b9d1e796c7b5839f8d6b1f8e44d225">getAllLuggages</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        vector&lt;Passenger*&gt; <a class="code hl_function" href="class_company.html#a41c2820c60afee2d62206aceb1a64eaa">getAllPassengers</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        vector&lt;Service*&gt; <a class="code hl_function" href="class_company.html#ac2b4afd4cc016e687707d5cd97b36a03">getAllServices</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        vector&lt;Transport*&gt; <a class="code hl_function" href="class_company.html#ae76cb542d9dc9d6896401c4805df4699">getAllTransports</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        vector&lt;Flight*&gt; <a class="code hl_function" href="class_company.html#ae2ca078a3a72843c1ff01055b5743e2f">getAllFlights</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a3dfe51ca6c0b82f112f8ce9d31a1488e">readFlights</a>();</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a57659914b12089d5d0cdd4edcac8827a">readLuggage</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#af13d4d24a0a78f8dae44f987219a5a72">readPassengers</a>();</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#afa18a4625079c494575f66aae25af329">addPlane</a>(<a class="code hl_class" href="class_plane.html">Plane</a> &amp;plane);</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#ace42b87d21f81fc7a9593aa540bb4b7d">removePlane</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <a class="code hl_class" href="class_plane.html">Plane</a>* <a class="code hl_function" href="class_company.html#a7792f626d0344fb6f0166de50f145a05">findPlane</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <a class="code hl_class" href="class_flight.html">Flight</a>* <a class="code hl_function" href="class_company.html#a42bb82129b319e2776f9ab52d7c83b02">findFlight</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;origin, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;destination);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a7136d57fa0e5f8d9dfcc43d44e677f41">refreshData</a>();</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#aabdffda816db4cd59eca9feeb3f245ea">save</a>();</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>};</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">#endif </span><span class="comment">// PROJECT_AED_AGENCY_H</span></div>
-<div class="ttc" id="aclass_company_html"><div class="ttname"><a href="class_company.html">Company</a></div><div class="ttdef"><b>Definition:</b> Company.h:20</div></div>
-<div class="ttc" id="aclass_company_html_a0f7c075fc5d95e8650cf25312a7bf629"><div class="ttname"><a href="class_company.html#a0f7c075fc5d95e8650cf25312a7bf629">Company::savePlanes</a></div><div class="ttdeci">void savePlanes(vector&lt; Plane * &gt; planes)</div><div class="ttdef"><b>Definition:</b> Company.cpp:304</div></div>
-<div class="ttc" id="aclass_company_html_a17f3f7776c381dfae94730c96d7ef159"><div class="ttname"><a href="class_company.html#a17f3f7776c381dfae94730c96d7ef159">Company::getAllPlanes</a></div><div class="ttdeci">vector&lt; Plane * &gt; getAllPlanes()</div><div class="ttdef"><b>Definition:</b> Company.cpp:191</div></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#aeeed92d30ce818614a379eef200bd170">readPlanes</a>();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a8d874cffcab05ec31114423235deac03">readServices</a>();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#ad9be951a9a1fdb7f8f6d9cd153f4cdd4">readTransports</a>();</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#acf196dfcede9ee63ed70bd1cd8ac81e2">saveLuggage</a>();</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a261b9cd81ff9075c53e1a99026d770dc">savePassengers</a>();</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#ad993ee916ec6e3e991e06ed074e148a6">saveFlights</a>();</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a02e67fd8c9b8bc3389052ca85667f931">saveServices</a>();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#ae28b0fcd792acb75b29ac88b94638d9a">savePlanes</a>();</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a3c4a52f11dd47c77a863aaab93c64637">saveTransports</a>();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#afa18a4625079c494575f66aae25af329">addPlane</a>(<a class="code hl_class" href="class_plane.html">Plane</a> &amp;plane);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_company.html#aa8ff11301159fa0f6e21a11aeeba78ce">removePlane</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <a class="code hl_class" href="class_plane.html">Plane</a>* <a class="code hl_function" href="class_company.html#a7792f626d0344fb6f0166de50f145a05">findPlane</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <a class="code hl_class" href="class_flight.html">Flight</a>* <a class="code hl_function" href="class_company.html#a42bb82129b319e2776f9ab52d7c83b02">findFlight</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;origin, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;destination);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keywordtype">void</span> addFlight(<a class="code hl_class" href="class_flight.html">Flight</a> &amp;flight); <span class="comment">//</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordtype">void</span> removeFlight(<a class="code hl_class" href="class_flight.html">Flight</a> &amp;flight); <span class="comment">//</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordtype">void</span> removeFlight(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>); <span class="comment">//</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordtype">void</span> addLuggage(<a class="code hl_class" href="class_luggage.html">Luggage</a> &amp;l); <span class="comment">//</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="keywordtype">void</span> removeLuggage(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>); <span class="comment">//</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordtype">void</span> removeLuggage(<a class="code hl_class" href="class_luggage.html">Luggage</a> &amp;l); <span class="comment">//</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordtype">void</span> addPassenger(<a class="code hl_class" href="class_passenger.html">Passenger</a> &amp;passenger); <span class="comment">//</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="keywordtype">void</span> removePassenger(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>); <span class="comment">//</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <span class="keywordtype">void</span> removePassenger(<a class="code hl_class" href="class_passenger.html">Passenger</a> &amp;passenger); <span class="comment">//</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordtype">void</span> addService(<a class="code hl_class" href="class_service.html">Service</a> &amp;service); <span class="comment">//</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordtype">void</span> removeService(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>); <span class="comment">//</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordtype">void</span> removeService(<a class="code hl_class" href="class_service.html">Service</a> &amp;service); <span class="comment">//</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordtype">void</span> setServiceResponsible(<a class="code hl_class" href="class_service.html">Service</a> &amp;service, <a class="code hl_class" href="class_employee.html">Employee</a> &amp;employee);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordtype">void</span> addTransport(<a class="code hl_class" href="class_transport.html">Transport</a> &amp;transport); <span class="comment">//</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordtype">void</span> removeTransport(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;<span class="keywordtype">id</span>); <span class="comment">//</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordtype">void</span> removeTransport(<a class="code hl_class" href="class_transport.html">Transport</a> &amp;transport); <span class="comment">//</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#a7136d57fa0e5f8d9dfcc43d44e677f41">refreshData</a>();</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_company.html#aabdffda816db4cd59eca9feeb3f245ea">save</a>();</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>};</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#endif </span><span class="comment">// PROJECT_AED_COMPANY_H</span></div>
+<div class="ttc" id="aclass_company_html"><div class="ttname"><a href="class_company.html">Company</a></div><div class="ttdef"><b>Definition:</b> Company.h:22</div></div>
+<div class="ttc" id="aclass_company_html_a02e67fd8c9b8bc3389052ca85667f931"><div class="ttname"><a href="class_company.html#a02e67fd8c9b8bc3389052ca85667f931">Company::saveServices</a></div><div class="ttdeci">void saveServices()</div><div class="ttdef"><b>Definition:</b> Company.cpp:335</div></div>
+<div class="ttc" id="aclass_company_html_a03b9d1e796c7b5839f8d6b1f8e44d225"><div class="ttname"><a href="class_company.html#a03b9d1e796c7b5839f8d6b1f8e44d225">Company::getAllLuggages</a></div><div class="ttdeci">vector&lt; Luggage * &gt; getAllLuggages() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:31</div></div>
+<div class="ttc" id="aclass_company_html_a261b9cd81ff9075c53e1a99026d770dc"><div class="ttname"><a href="class_company.html#a261b9cd81ff9075c53e1a99026d770dc">Company::savePassengers</a></div><div class="ttdeci">void savePassengers()</div><div class="ttdef"><b>Definition:</b> Company.cpp:299</div></div>
 <div class="ttc" id="aclass_company_html_a29937dda711b09df306ae7ca9b3d6b42"><div class="ttname"><a href="class_company.html#a29937dda711b09df306ae7ca9b3d6b42">Company::Company</a></div><div class="ttdeci">Company()</div><div class="ttdef"><b>Definition:</b> Company.cpp:6</div></div>
-<div class="ttc" id="aclass_company_html_a2e4a82f9b7fc3e1f0c09dcaa417240c4"><div class="ttname"><a href="class_company.html#a2e4a82f9b7fc3e1f0c09dcaa417240c4">Company::planes</a></div><div class="ttdeci">vector&lt; Plane * &gt; planes</div><div class="ttdef"><b>Definition:</b> Company.h:39</div></div>
-<div class="ttc" id="aclass_company_html_a361e8672bc4bb5ec28d52223e19f777f"><div class="ttname"><a href="class_company.html#a361e8672bc4bb5ec28d52223e19f777f">Company::saveFlights</a></div><div class="ttdeci">void saveFlights(vector&lt; Flight * &gt; flights)</div><div class="ttdef"><b>Definition:</b> Company.cpp:266</div></div>
-<div class="ttc" id="aclass_company_html_a42bb82129b319e2776f9ab52d7c83b02"><div class="ttname"><a href="class_company.html#a42bb82129b319e2776f9ab52d7c83b02">Company::findFlight</a></div><div class="ttdeci">Flight * findFlight(const string &amp;origin, const string &amp;destination)</div><div class="ttdef"><b>Definition:</b> Company.cpp:351</div></div>
-<div class="ttc" id="aclass_company_html_a469a0c77a57c6caedc1ad9b603d24204"><div class="ttname"><a href="class_company.html#a469a0c77a57c6caedc1ad9b603d24204">Company::saveLuggage</a></div><div class="ttdeci">void saveLuggage(vector&lt; Luggage * &gt; luggage)</div><div class="ttdef"><b>Definition:</b> Company.cpp:231</div></div>
-<div class="ttc" id="aclass_company_html_a4a45565d61c119cb590383553bc327d1"><div class="ttname"><a href="class_company.html#a4a45565d61c119cb590383553bc327d1">Company::getName</a></div><div class="ttdeci">string getName() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:22</div></div>
-<div class="ttc" id="aclass_company_html_a4d5ea4dea8c9d6660244ea6e36b7ef4a"><div class="ttname"><a href="class_company.html#a4d5ea4dea8c9d6660244ea6e36b7ef4a">Company::getPlanes</a></div><div class="ttdeci">vector&lt; Plane * &gt; getPlanes()</div><div class="ttdef"><b>Definition:</b> Company.cpp:26</div></div>
+<div class="ttc" id="aclass_company_html_a3c4a52f11dd47c77a863aaab93c64637"><div class="ttname"><a href="class_company.html#a3c4a52f11dd47c77a863aaab93c64637">Company::saveTransports</a></div><div class="ttdeci">void saveTransports()</div><div class="ttdef"><b>Definition:</b> Company.cpp:372</div></div>
+<div class="ttc" id="aclass_company_html_a3dfe51ca6c0b82f112f8ce9d31a1488e"><div class="ttname"><a href="class_company.html#a3dfe51ca6c0b82f112f8ce9d31a1488e">Company::readFlights</a></div><div class="ttdeci">void readFlights()</div><div class="ttdef"><b>Definition:</b> Company.cpp:193</div></div>
+<div class="ttc" id="aclass_company_html_a41c2820c60afee2d62206aceb1a64eaa"><div class="ttname"><a href="class_company.html#a41c2820c60afee2d62206aceb1a64eaa">Company::getAllPassengers</a></div><div class="ttdeci">vector&lt; Passenger * &gt; getAllPassengers() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:35</div></div>
+<div class="ttc" id="aclass_company_html_a42bb82129b319e2776f9ab52d7c83b02"><div class="ttname"><a href="class_company.html#a42bb82129b319e2776f9ab52d7c83b02">Company::findFlight</a></div><div class="ttdeci">Flight * findFlight(const string &amp;origin, const string &amp;destination)</div><div class="ttdef"><b>Definition:</b> Company.cpp:560</div></div>
+<div class="ttc" id="aclass_company_html_a4a45565d61c119cb590383553bc327d1"><div class="ttname"><a href="class_company.html#a4a45565d61c119cb590383553bc327d1">Company::getName</a></div><div class="ttdeci">string getName() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:23</div></div>
+<div class="ttc" id="aclass_company_html_a57659914b12089d5d0cdd4edcac8827a"><div class="ttname"><a href="class_company.html#a57659914b12089d5d0cdd4edcac8827a">Company::readLuggage</a></div><div class="ttdeci">void readLuggage()</div><div class="ttdef"><b>Definition:</b> Company.cpp:56</div></div>
 <div class="ttc" id="aclass_company_html_a61c2a9ec178e683310583ef15635b53c"><div class="ttname"><a href="class_company.html#a61c2a9ec178e683310583ef15635b53c">Company::~Company</a></div><div class="ttdeci">~Company()</div><div class="ttdef"><b>Definition:</b> Company.cpp:8</div></div>
-<div class="ttc" id="aclass_company_html_a7136d57fa0e5f8d9dfcc43d44e677f41"><div class="ttname"><a href="class_company.html#a7136d57fa0e5f8d9dfcc43d44e677f41">Company::refreshData</a></div><div class="ttdeci">void refreshData()</div><div class="ttdef"><b>Definition:</b> Company.cpp:366</div></div>
-<div class="ttc" id="aclass_company_html_a72e8e742e425be505d038212226c62bc"><div class="ttname"><a href="class_company.html#a72e8e742e425be505d038212226c62bc">Company::getNextPlaneID</a></div><div class="ttdeci">string getNextPlaneID()</div><div class="ttdef"><b>Definition:</b> Company.cpp:30</div></div>
-<div class="ttc" id="aclass_company_html_a7792f626d0344fb6f0166de50f145a05"><div class="ttname"><a href="class_company.html#a7792f626d0344fb6f0166de50f145a05">Company::findPlane</a></div><div class="ttdeci">Plane * findPlane(const string &amp;id)</div><div class="ttdef"><b>Definition:</b> Company.cpp:359</div></div>
-<div class="ttc" id="aclass_company_html_a9712112abe1549927ed92a21a9da1aed"><div class="ttname"><a href="class_company.html#a9712112abe1549927ed92a21a9da1aed">Company::savePassengers</a></div><div class="ttdeci">void savePassengers(vector&lt; Passenger * &gt; passengers)</div><div class="ttdef"><b>Definition:</b> Company.cpp:249</div></div>
-<div class="ttc" id="aclass_company_html_aabdffda816db4cd59eca9feeb3f245ea"><div class="ttname"><a href="class_company.html#aabdffda816db4cd59eca9feeb3f245ea">Company::save</a></div><div class="ttdeci">void save()</div><div class="ttdef"><b>Definition:</b> Company.cpp:370</div></div>
-<div class="ttc" id="aclass_company_html_abf59cd4a14cbb6a65e6a03b0659350eb"><div class="ttname"><a href="class_company.html#abf59cd4a14cbb6a65e6a03b0659350eb">Company::saveTransports</a></div><div class="ttdeci">void saveTransports(vector&lt; Transport * &gt; transports)</div><div class="ttdef"><b>Definition:</b> Company.cpp:322</div></div>
-<div class="ttc" id="aclass_company_html_ace42b87d21f81fc7a9593aa540bb4b7d"><div class="ttname"><a href="class_company.html#ace42b87d21f81fc7a9593aa540bb4b7d">Company::removePlane</a></div><div class="ttdeci">void removePlane(const string &amp;id)</div><div class="ttdef"><b>Definition:</b> Company.cpp:344</div></div>
-<div class="ttc" id="aclass_company_html_ad12649fdcf3bfbdf3eb5c42da27bae73"><div class="ttname"><a href="class_company.html#ad12649fdcf3bfbdf3eb5c42da27bae73">Company::getAllTransports</a></div><div class="ttdeci">vector&lt; Transport * &gt; getAllTransports()</div><div class="ttdef"><b>Definition:</b> Company.cpp:127</div></div>
-<div class="ttc" id="aclass_company_html_ad2f6c6285643e6f8ea432fe775b1f47f"><div class="ttname"><a href="class_company.html#ad2f6c6285643e6f8ea432fe775b1f47f">Company::presentation</a></div><div class="ttdeci">void presentation()</div><div class="ttdef"><b>Definition:</b> Company.cpp:16</div></div>
-<div class="ttc" id="aclass_company_html_adcb91e68450f85ce4a25af4796892fa7"><div class="ttname"><a href="class_company.html#adcb91e68450f85ce4a25af4796892fa7">Company::getAllPassengers</a></div><div class="ttdeci">vector&lt; Passenger * &gt; getAllPassengers()</div><div class="ttdef"><b>Definition:</b> Company.cpp:66</div></div>
-<div class="ttc" id="aclass_company_html_aef0d95320d3a03a759faae127fa2912b"><div class="ttname"><a href="class_company.html#aef0d95320d3a03a759faae127fa2912b">Company::getAllLuggages</a></div><div class="ttdeci">vector&lt; Luggage * &gt; getAllLuggages()</div><div class="ttdef"><b>Definition:</b> Company.cpp:35</div></div>
-<div class="ttc" id="aclass_company_html_af03ebe5b38a4c4b534bfc014c8a878fd"><div class="ttname"><a href="class_company.html#af03ebe5b38a4c4b534bfc014c8a878fd">Company::getAllServices</a></div><div class="ttdeci">vector&lt; Service * &gt; getAllServices()</div><div class="ttdef"><b>Definition:</b> Company.cpp:97</div></div>
-<div class="ttc" id="aclass_company_html_afa18a4625079c494575f66aae25af329"><div class="ttname"><a href="class_company.html#afa18a4625079c494575f66aae25af329">Company::addPlane</a></div><div class="ttdeci">void addPlane(Plane &amp;plane)</div><div class="ttdef"><b>Definition:</b> Company.cpp:339</div></div>
-<div class="ttc" id="aclass_company_html_afd6cb774c63be2ee28865723c310296b"><div class="ttname"><a href="class_company.html#afd6cb774c63be2ee28865723c310296b">Company::saveServices</a></div><div class="ttdeci">void saveServices(vector&lt; Service * &gt; services)</div><div class="ttdef"><b>Definition:</b> Company.cpp:285</div></div>
-<div class="ttc" id="aclass_company_html_afe7c21addcf1a5598a9f93c41c5855f4"><div class="ttname"><a href="class_company.html#afe7c21addcf1a5598a9f93c41c5855f4">Company::getAllFlights</a></div><div class="ttdeci">vector&lt; Flight * &gt; getAllFlights()</div><div class="ttdef"><b>Definition:</b> Company.cpp:152</div></div>
-<div class="ttc" id="aclass_flight_html"><div class="ttname"><a href="class_flight.html">Flight</a></div><div class="ttdef"><b>Definition:</b> Flight.h:24</div></div>
+<div class="ttc" id="aclass_company_html_a7136d57fa0e5f8d9dfcc43d44e677f41"><div class="ttname"><a href="class_company.html#a7136d57fa0e5f8d9dfcc43d44e677f41">Company::refreshData</a></div><div class="ttdeci">void refreshData()</div><div class="ttdef"><b>Definition:</b> Company.cpp:568</div></div>
+<div class="ttc" id="aclass_company_html_a72e8e742e425be505d038212226c62bc"><div class="ttname"><a href="class_company.html#a72e8e742e425be505d038212226c62bc">Company::getNextPlaneID</a></div><div class="ttdeci">string getNextPlaneID()</div><div class="ttdef"><b>Definition:</b> Company.cpp:51</div></div>
+<div class="ttc" id="aclass_company_html_a7792f626d0344fb6f0166de50f145a05"><div class="ttname"><a href="class_company.html#a7792f626d0344fb6f0166de50f145a05">Company::findPlane</a></div><div class="ttdeci">Plane * findPlane(const string &amp;id)</div><div class="ttdef"><b>Definition:</b> Company.cpp:553</div></div>
+<div class="ttc" id="aclass_company_html_a8d874cffcab05ec31114423235deac03"><div class="ttname"><a href="class_company.html#a8d874cffcab05ec31114423235deac03">Company::readServices</a></div><div class="ttdeci">void readServices()</div><div class="ttdef"><b>Definition:</b> Company.cpp:128</div></div>
+<div class="ttc" id="aclass_company_html_aa8ff11301159fa0f6e21a11aeeba78ce"><div class="ttname"><a href="class_company.html#aa8ff11301159fa0f6e21a11aeeba78ce">Company::removePlane</a></div><div class="ttdeci">bool removePlane(const string &amp;id)</div><div class="ttdef"><b>Definition:</b> Company.cpp:414</div></div>
+<div class="ttc" id="aclass_company_html_aabdffda816db4cd59eca9feeb3f245ea"><div class="ttname"><a href="class_company.html#aabdffda816db4cd59eca9feeb3f245ea">Company::save</a></div><div class="ttdeci">void save()</div><div class="ttdef"><b>Definition:</b> Company.cpp:572</div></div>
+<div class="ttc" id="aclass_company_html_ac2b4afd4cc016e687707d5cd97b36a03"><div class="ttname"><a href="class_company.html#ac2b4afd4cc016e687707d5cd97b36a03">Company::getAllServices</a></div><div class="ttdeci">vector&lt; Service * &gt; getAllServices() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:39</div></div>
+<div class="ttc" id="aclass_company_html_acf196dfcede9ee63ed70bd1cd8ac81e2"><div class="ttname"><a href="class_company.html#acf196dfcede9ee63ed70bd1cd8ac81e2">Company::saveLuggage</a></div><div class="ttdeci">void saveLuggage()</div><div class="ttdef"><b>Definition:</b> Company.cpp:281</div></div>
+<div class="ttc" id="aclass_company_html_ad2f6c6285643e6f8ea432fe775b1f47f"><div class="ttname"><a href="class_company.html#ad2f6c6285643e6f8ea432fe775b1f47f">Company::presentation</a></div><div class="ttdeci">void presentation()</div><div class="ttdef"><b>Definition:</b> Company.cpp:17</div></div>
+<div class="ttc" id="aclass_company_html_ad993ee916ec6e3e991e06ed074e148a6"><div class="ttname"><a href="class_company.html#ad993ee916ec6e3e991e06ed074e148a6">Company::saveFlights</a></div><div class="ttdeci">void saveFlights()</div><div class="ttdef"><b>Definition:</b> Company.cpp:316</div></div>
+<div class="ttc" id="aclass_company_html_ad9be951a9a1fdb7f8f6d9cd153f4cdd4"><div class="ttname"><a href="class_company.html#ad9be951a9a1fdb7f8f6d9cd153f4cdd4">Company::readTransports</a></div><div class="ttdeci">void readTransports()</div><div class="ttdef"><b>Definition:</b> Company.cpp:163</div></div>
+<div class="ttc" id="aclass_company_html_ae28b0fcd792acb75b29ac88b94638d9a"><div class="ttname"><a href="class_company.html#ae28b0fcd792acb75b29ac88b94638d9a">Company::savePlanes</a></div><div class="ttdeci">void savePlanes()</div><div class="ttdef"><b>Definition:</b> Company.cpp:354</div></div>
+<div class="ttc" id="aclass_company_html_ae2ca078a3a72843c1ff01055b5743e2f"><div class="ttname"><a href="class_company.html#ae2ca078a3a72843c1ff01055b5743e2f">Company::getAllFlights</a></div><div class="ttdeci">vector&lt; Flight * &gt; getAllFlights() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:47</div></div>
+<div class="ttc" id="aclass_company_html_ae76cb542d9dc9d6896401c4805df4699"><div class="ttname"><a href="class_company.html#ae76cb542d9dc9d6896401c4805df4699">Company::getAllTransports</a></div><div class="ttdeci">vector&lt; Transport * &gt; getAllTransports() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:43</div></div>
+<div class="ttc" id="aclass_company_html_aeeed92d30ce818614a379eef200bd170"><div class="ttname"><a href="class_company.html#aeeed92d30ce818614a379eef200bd170">Company::readPlanes</a></div><div class="ttdeci">void readPlanes()</div><div class="ttdef"><b>Definition:</b> Company.cpp:236</div></div>
+<div class="ttc" id="aclass_company_html_af13d4d24a0a78f8dae44f987219a5a72"><div class="ttname"><a href="class_company.html#af13d4d24a0a78f8dae44f987219a5a72">Company::readPassengers</a></div><div class="ttdeci">void readPassengers()</div><div class="ttdef"><b>Definition:</b> Company.cpp:92</div></div>
+<div class="ttc" id="aclass_company_html_af69dc1b0ec18977c25ebf2811f5cadf9"><div class="ttname"><a href="class_company.html#af69dc1b0ec18977c25ebf2811f5cadf9">Company::getAllPlanes</a></div><div class="ttdeci">vector&lt; Plane * &gt; getAllPlanes() const</div><div class="ttdef"><b>Definition:</b> Company.cpp:27</div></div>
+<div class="ttc" id="aclass_company_html_afa18a4625079c494575f66aae25af329"><div class="ttname"><a href="class_company.html#afa18a4625079c494575f66aae25af329">Company::addPlane</a></div><div class="ttdeci">void addPlane(Plane &amp;plane)</div><div class="ttdef"><b>Definition:</b> Company.cpp:389</div></div>
+<div class="ttc" id="aclass_employee_html"><div class="ttname"><a href="class_employee.html">Employee</a></div><div class="ttdef"><b>Definition:</b> Employee.h:11</div></div>
+<div class="ttc" id="aclass_flight_html"><div class="ttname"><a href="class_flight.html">Flight</a></div><div class="ttdef"><b>Definition:</b> Flight.h:32</div></div>
+<div class="ttc" id="aclass_luggage_html"><div class="ttname"><a href="class_luggage.html">Luggage</a></div><div class="ttdef"><b>Definition:</b> Luggage.h:33</div></div>
+<div class="ttc" id="aclass_passenger_html"><div class="ttname"><a href="class_passenger.html">Passenger</a></div><div class="ttdef"><b>Definition:</b> Passenger.h:11</div></div>
 <div class="ttc" id="aclass_plane_html"><div class="ttname"><a href="class_plane.html">Plane</a></div><div class="ttdef"><b>Definition:</b> Plane.h:17</div></div>
+<div class="ttc" id="aclass_service_html"><div class="ttname"><a href="class_service.html">Service</a></div><div class="ttdef"><b>Definition:</b> Service.h:8</div></div>
+<div class="ttc" id="aclass_transport_html"><div class="ttname"><a href="class_transport.html">Transport</a></div><div class="ttdef"><b>Definition:</b> Transport.h:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

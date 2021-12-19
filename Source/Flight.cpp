@@ -118,7 +118,7 @@ void Flight::addPassenger(Passenger& passenger) {
         for (vector<Luggage*>::iterator it = passengerLuggage.begin() ; it != passengerLuggage.end() ; it++) {
 
             if ((*it)->getPlaneHold())
-                if ((*it)->getTotalVolume() > MAX_HAND_LUGGAGE_VOLUME || (*it)->getWeight() > MAX_HAND_LUGGAGE_HEIGHT)
+                if ((*it)->getTotalVolume() > MAX_HAND_LUGGAGE_VOLUME || (*it)->getWeight() > MAX_HAND_LUGGAGE_WEIGHT)
                     (*it)->setPlaneHold(false);
 
             if (!((*it)->getPlaneHold())) {

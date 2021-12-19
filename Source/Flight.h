@@ -4,8 +4,8 @@
 /**
  * Definition of the maximum characteristics in a hand luggage
  */
-#define MAX_HAND_LUGGAGE_VOLUME 1000
-#define MAX_HAND_LUGGAGE_HEIGHT 10
+#define MAX_HAND_LUGGAGE_VOLUME 4400
+#define MAX_HAND_LUGGAGE_WEIGHT 10
 
 #include <string>
 #include <vector>
