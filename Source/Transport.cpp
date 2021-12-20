@@ -40,7 +40,7 @@ bool Transport::operator < (const Transport &transport) const {
 ostream& operator<<(ostream &os, const Transport &transport) {
     os << "Tipo: " << transport.TYPE <<
         "\nDistancia ao aeroporto: " << transport.DISTANCE <<
-        "\nHora de partida: " << transport.DATE << endl;
+        " m\nHora de partida: " << transport.DATE << endl;
     return os;
 }
 
