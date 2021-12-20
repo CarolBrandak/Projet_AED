@@ -124,6 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5ac64d9ef95ac38213341f14f0c9553e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00081cd70347db4416d49a4de03640da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_service.html">Service</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#a00081cd70347db4416d49a4de03640da">findService</a> (<a class="el" href="class_date.html">Date</a> &amp;date)</td></tr>
 <tr class="separator:a00081cd70347db4416d49a4de03640da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db1d711c0d51cbd92daad4aeaeb1508"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_service.html">Service</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#a8db1d711c0d51cbd92daad4aeaeb1508">findService</a> (<a class="el" href="class_employee.html">Employee</a> &amp;employee)</td></tr>
+<tr class="separator:a8db1d711c0d51cbd92daad4aeaeb1508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18f96d14c42759ec4adbb5ba2cf32114"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_employee.html">Employee</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#a18f96d14c42759ec4adbb5ba2cf32114">findEmployee</a> (const string &amp;name)</td></tr>
 <tr class="separator:a18f96d14c42759ec4adbb5ba2cf32114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaed4b538b45c5fcafb858b72518b2e0c"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_employee.html">Employee</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#aaed4b538b45c5fcafb858b72518b2e0c">getEmployees</a> ()</td></tr>
@@ -427,7 +429,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a00081cd70347db4416d49a4de03640da" name="a00081cd70347db4416d49a4de03640da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00081cd70347db4416d49a4de03640da">&#9670;&nbsp;</a></span>findService()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00081cd70347db4416d49a4de03640da">&#9670;&nbsp;</a></span>findService() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -441,9 +443,34 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >A function that try to find a <a class="el" href="class_service.html">Service</a> based on its date </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. A function that try to find a <a class="el" href="class_service.html">Service</a> based on its date </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">date</td><td>- a <a class="el" href="class_date.html">Date</a> object passed by reference containing the date of wanted service </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="class_service.html">Service</a> pointer object </dd></dl>
+
+</div>
+</div>
+<a id="a8db1d711c0d51cbd92daad4aeaeb1508" name="a8db1d711c0d51cbd92daad4aeaeb1508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db1d711c0d51cbd92daad4aeaeb1508">&#9670;&nbsp;</a></span>findService() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_service.html">Service</a> * Plane::findService </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_employee.html">Employee</a> &amp;&#160;</td>
+          <td class="paramname"><em>employee</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. A function that try to find a <a class="el" href="class_service.html">Service</a> based on its employee </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">employee</td><td>- a <a class="el" href="class_employee.html">Employee</a> object passed by reference containing employee </td></tr>
   </table>
   </dd>
 </dl>
