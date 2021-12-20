@@ -35,8 +35,7 @@ void Service::setResponsible(const Employee &employee) {
 }
 
 bool Service::operator == (const Service &service) const {
-    return ID == service.ID && TYPE == service.TYPE && DATE == service.DATE &&
-            responsible == service.responsible;
+    return ID == service.ID && TYPE == service.TYPE && DATE == service.DATE;
 }
 
 bool Service::operator < (const Service &service) const {

@@ -2,6 +2,7 @@
 #define PROJECT_AED_MENU_CPP
 
 #include "Menu.h"
+#include <bits/stdc++.h>
 
 Menu::Menu() {
     this->company = new Company("AirED");
@@ -1088,15 +1089,14 @@ void Menu::listEmployees() {
     vector<Employee> employees = {};
 
     if (type == 'T')
-        for (Service *service : company->getAllServices())
-            employees.push_back(service->getResponsible());
+        for (Service *service : company->getAllServices()) employees.push_back(service->getResponsible());
+
     else {
         string id;
         cout << "ID do aviao: "; cin >> id;
         Plane *plane = company->findPlane(id);
         if (plane)
-            for (Service *service : plane->getServices())
-                employees.push_back(service->getResponsible());
+            for (Service *service : plane->getServices()) employees.push_back(service->getResponsible());
         else {
             cout << "Aviao nao encontrado" << endl;
             getMenu();
@@ -1119,11 +1119,11 @@ void Menu::listEmployees() {
         } while (option < 1 || option > 2);
 
         switch (option) {
-            case 1: sort(employees.begin(), employees.end(), byEmployeeName); break;
+            case 1: sort(employees.begin(), employees.end()); break;
             case 2: sort(employees.begin(), employees.end(), byEmployeeAge); break;
         }
 
-        for (const Employee &employee : employees) cout << employee << endl;
+        for (Employee employee : employees) cout << employee << endl;
 
     } else {
         cout << "O aviao selecionado nao possui qualquer funcionario" << endl;

@@ -136,21 +136,46 @@ class Menu {
         void listTransports();
 
         /**
-         * A function to fill a Plane data
-         * @param id - a string containing the id of plane
-         * @return a Plane object
+         * Function used to receive as input the data necessary
+         * to create a Plane type object.
+         * @param id - a string containing the id of plane according to its order
+         * @return Plane type object filled with data
          */
         Plane fillPlaneData(const string &id);
 
         /**
-         *
-         * @param id
-         * @return
+         * Function used to receive as input the data necessary
+         * to create a Flight type object.
+         * @param id - the id to be applied to the flight according to its plane and order
+         * @return Flight type object filled with data
          */
         Flight fillFlightData(const string &id);
+        /**
+         * Function used to receive as input the data necessary
+         * to create a Passenger type object.
+         * @param id - the id to be applied to the passenger according to its order in the flight
+         * @return Passenger type object filled with data
+         */
         Passenger fillPassengerData(const string &id);
+        /**
+         * Function used to receive as input the data necessary
+         * to create a Luggage type object.
+         * @param id - the id to be applied to the luggage according to its owner (the passenger)
+         * @return Luggage type object filled with data
+         */
         Luggage fillLuggageData(const string &id);
+        /**
+         * Function used to receive as input the data necessary
+         * to create an Employee type object.
+         * @return Employee type object filled with data
+         */
         Employee fillEmployeeData();
+        /**
+         * Function used to receive as input the data necessary
+         * to create a Transport type object.
+         * @param id - the id to be applied to the transport according to its flight
+         * @return Transport type object filled with data
+         */
         Transport fillTransportData(const string &id);
         Service fillServiceData(const string &id);
         Date fillDateData();
