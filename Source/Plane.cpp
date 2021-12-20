@@ -93,7 +93,7 @@ string Plane::getNextFlightID() {
 void Plane::setNextServiceAsDone() {
     if (!servicesToBeMade.empty()) {
         madeServices.push_back(servicesToBeMade.front());
-        cout << "Realizado o servico " << *servicesToBeMade.front() << endl;
+        cout << "Realizado o servico\n" << *servicesToBeMade.front() << endl;
         servicesToBeMade.pop();
     } else {
         cout << "Nao ha mais servicos para efetuar" << endl;

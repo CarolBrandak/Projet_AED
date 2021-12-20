@@ -11,7 +11,7 @@ Company::~Company() {
 
 Company::Company(string name) : NAME(name) {
     readPlanes();
-    this->nextPlaneID = allPlanes.size();
+    this->nextPlaneID = stoi(allPlanes[allPlanes.size()-1]->getID());
 }
 
 void Company::presentation() {

@@ -26,7 +26,10 @@ void Menu::getMenu() {
             case 9: buyTicket(); break;
             case 10: cancelTicket(); break;
         }
-    } else exit(0);
+    } else {
+        company->save();
+        exit(0);
+    }
 }
 
 void Menu::mainMenu() {
@@ -180,13 +183,14 @@ void Menu::flightDataMenu() {
         case 2: {
             string origin, destination;
             cout << "Por favor introduza a cidade de origem: ";
-            cin >> origin;
+            getline(cin, origin);
             cout << "Por favor introduza a cidade de destino: ";
-            cin >> destination;
+            getline(cin, destination);
             Flight* flight = company->findFlight(origin, destination);
             if (flight) {
                 company->removeFlight(*flight);
                 company->save();
+                cout << "Voo removido com sucesso" << endl;
             } else cout << "O voo com origem " << origin << " e destino " << destination << " nao existe" << endl;
             getMenu();
             break;
@@ -196,9 +200,9 @@ void Menu::flightDataMenu() {
         case 4: {
             string origin, destination;
             cout << "Por favor introduza a cidade de origem: ";
-            cin >> origin;
+            getline(cin, origin);
             cout << "Por favor introduza a cidade de destino: ";
-            cin >> destination;
+            getline(cin, destination);
             Flight* flight = company->findFlight(origin, destination);
             if (flight) cout << *flight;
             else cout << "Voo nao encontrado na base de dados" << endl;
@@ -232,8 +236,10 @@ void Menu::passengerDataMenu() {
     string origin, destination, passport;
     switch (option) {
         case 1: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight* flight = company->findFlight(origin,destination);
             if (flight) {
                 try {
@@ -249,8 +255,10 @@ void Menu::passengerDataMenu() {
             break;
         }
         case 2: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight* flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Passaporte do passageiro: "; cin >> passport;
@@ -268,8 +276,10 @@ void Menu::passengerDataMenu() {
         }
         case 3: listPassengers(); break;
         case 4: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Passaporte do passageiro: "; cin >> passport;
@@ -307,8 +317,10 @@ void Menu::luggageDataMenu() {
     string origin, destination, passport, id;
     switch (option) {
         case 1: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Passaporte do passageiro: "; cin >> passport;
@@ -328,8 +340,10 @@ void Menu::luggageDataMenu() {
             break;
         }
         case 2: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Introduza o passaporte do passageiro: "; cin >> passport;
@@ -347,8 +361,10 @@ void Menu::luggageDataMenu() {
         }
         case 3: listLuggages(); break;
         case 4: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 cout << "Id da barragem a procurar: "; cin >> id;
@@ -513,8 +529,10 @@ void Menu::transportDataMenu() {
     string origin, destination;
     switch (option) {
         case 1: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 try {
@@ -534,8 +552,10 @@ void Menu::transportDataMenu() {
             break;
         }
         case 2: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 try {
@@ -554,8 +574,10 @@ void Menu::transportDataMenu() {
         }
         case 3: listTransports(); getMenu(); break;
         case 4: {
-            cout << "Por favor introduza a cidade de origem: "; cin >> origin;
-            cout << "Por favor introduza a cidade de destino: "; cin >> destination;
+            cout << "Por favor introduza a cidade de origem: ";
+            getline(cin, origin);
+            cout << "Por favor introduza a cidade de destino: ";
+            getline(cin, destination);
             Flight *flight = company->findFlight(origin, destination);
             if (flight) {
                 if (!flight->getAllTransports().empty()) {
@@ -574,7 +596,8 @@ void Menu::transportDataMenu() {
                             string type;
                             cout << "Tipo: "; cin >> type;
                             vector<Transport*> t = flight->searchTransport(type);
-                            for (Transport *transport : t) cout << *transport << endl;
+                            if (!t.empty()) for (Transport *transport : t) cout << *transport << endl;
+                            else cout << "Não existe transporte com essa caracteristica" << endl;
                         } else {
                             int distance;
                             cout << "Distancia (em metros): "; cin >> distance;
@@ -634,12 +657,11 @@ void Menu::buyTicket() {
     unsigned int quantityOfPassengers;
 
     string origin, destination;
-    Flight* flight;
-    cout << "De onde quer viajar?" << endl;
-    cin >> origin;
-    cout << "Para onde quer viajar?" << endl;
-    cin >> destination;
-    flight = company->findFlight(origin, destination);
+    cout << "Por favor introduza a cidade de origem: ";
+    getline(cin, origin);
+    cout << "Por favor introduza a cidade de destino: ";
+    getline(cin, destination);
+    Flight* flight = company->findFlight(origin, destination);
     if(flight) {
         cout << "Informacao do voo escolhido: " << endl;
         cout << *flight << endl;
@@ -680,9 +702,10 @@ void Menu::buyTicket() {
                         "adicao, excede o limite" << endl;
             }
         }
-        menuState.pop();
-        getMenu();
     }
+    cout << "Nao existe voo disponivel no momento" << endl;
+    menuState.pop();
+    getMenu();
 }
 
 void Menu::cancelTicket() {
@@ -692,10 +715,10 @@ void Menu::cancelTicket() {
     bool answer = true;
     bool respostaValida = false;
     do {
-        cout << "De onde quer viajar?" << endl;
-        cin >> origin;
-        cout << "Para onde quer viajar?" << endl;
-        cin >> destination;
+        cout << "Por favor introduza a cidade de origem: ";
+        getline(cin, origin);
+        cout << "Por favor introduza a cidade de destino: ";
+        getline(cin, destination);
         Flight *flight = company->findFlight(origin, destination);
         if (flight) {
             cout << "Numero de passaporte: ";
@@ -727,32 +750,22 @@ void Menu::allLists() {
     int option;
     do {
         cout << "=====================================" << endl;
-        cout << "1 - Listar Avioes" << endl;
-        cout << "2 - Listar Voos" << endl;
-        cout << "3 - Listar Passageiros" << endl;
-        cout << "4 - Listar Bagagens" << endl;
-        cout << "5 - Listar Servicos" << endl;
-        cout << "6 - Listar Funcionarios" << endl;
-        cout << "7 - Listar Transportes" << endl;
-        cout << "8 - Voltar para tras" << endl;
+        cout << "1 - Listar Voos" << endl;
+        cout << "2 - Listar Transportes" << endl;
+        cout << "3 - Voltar para tras" << endl;
         cout << "Escolha: ";
         cin >> option;
         cout << "=====================================" << endl;
-        if (option < 1 || option > 8) cout << "Erro, por favor tente novamente!" << endl;
+        if (option < 1 || option > 3) cout << "Erro, por favor tente novamente!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
 
-    } while (option < 1 || option > 8);
+    } while (option < 1 || option > 3);
 
     switch (option) {
-        case 1: listPlanes(); break;
-        case 2: listFlights(); break;
-        case 3: listPassengers(); break;
-        case 4: listLuggages(); break;
-        case 5: listServices(); break;
-        case 6: listEmployees(); break;
-        case 7: listTransports(); break;
-        case 8: menuState.pop(); getMenu(); break;
+        case 1: listFlights(); break;
+        case 2: listTransports(); break;
+        case 3: menuState.pop(); getMenu(); break;
     }
 }
 
@@ -773,8 +786,10 @@ Flight Menu::fillFlightData(const string &id) {
     int year, month, day, hour, minute, duration;
     Date d = fillDateData();
     cout << "Duracao (em minutos): "; cin >> duration;
-    cout << "Origem: "; cin >> origin; cin.clear(); cin.ignore(1000, '\n');
-    cout << "Destino: "; cin >> destination;cin.clear(); cin.ignore(1000, '\n');
+    cout << "Por favor introduza a cidade de origem: ";
+    getline(cin, origin);
+    cout << "Por favor introduza a cidade de destino: ";
+    getline(cin, destination);
     cout << "Nome do aeroporto de destino: "; getline(cin, airportName);
     return Flight(id, d, duration, origin, Airport(airportName, destination));
 }
@@ -948,8 +963,10 @@ void Menu::listPassengers() {
     if (type == 'T') passengers = company->getAllPassengers();
     else {
         string origin, destination;
-        cout << "Origem do voo: "; cin >> origin;
-        cout << "Destino do voo: "; cin >> destination;
+        cout << "Por favor introduza a cidade de origem: ";
+        getline(cin, origin);
+        cout << "Por favor introduza a cidade de destino: ";
+        getline(cin, destination);
         Flight *flight = company->findFlight(origin, destination);
         if (flight) passengers = flight->getPassengers();
         else {
@@ -996,8 +1013,10 @@ void Menu::listLuggages() {
     if (type == 'T') luggage = company->getAllLuggages();
     else {
         string origin, destination;
-        cout << "Origem do voo: "; cin >> origin;
-        cout << "Destino do voo: "; cin >> destination;
+        cout << "Por favor introduza a cidade de origem: ";
+        getline(cin, origin);
+        cout << "Por favor introduza a cidade de destino: ";
+        getline(cin, destination);
         Flight *flight = company->findFlight(origin, destination);
         if (flight) luggage = flight->getLuggage();
         else {
@@ -1135,8 +1154,10 @@ void Menu::listTransports() {
     if (type == 'T') transports = company->getAllTransports();
     else {
         string origin, destination;
-        cout << "Origem do voo: "; cin >> origin;
-        cout << "Destino do voo: "; cin >> destination;
+        cout << "Por favor introduza a cidade de origem: ";
+        getline(cin, origin);
+        cout << "Por favor introduza a cidade de destino: ";
+        getline(cin, destination);
         Flight *flight = company->findFlight(origin, destination);
         if (flight) transports = flight->getAllTransports();
         else {
