@@ -395,11 +395,23 @@ void Menu::employeeDataMenu() {
             Plane *p = company->findPlane(id);
             if (p) {
                 try {
-                    Service s = fillServiceData(p->getID());
+                    string type;
+                    cin.clear(); cin.ignore(1000, '\n');
+                    cout << "Tipo: "; cin >> type;
+                    Date d = fillDateData();
+                    cout << d << endl;
+                    Employee e = fillEmployeeData();
+                    if (type.empty()) throw InvalidService(new Service(id, type, d, &e));
+                    Service s = Service(id, type, d, &e);
+                    cout << s.getServiceDate() << endl;
                     p->addService(s);
                     company->addService(s);
                     company->save();
                 } catch (InvalidService &error) {
+                    error.showError();
+                } catch (InvalidDate &error) {
+                    error.showError();
+                } catch (InvalidEmployee &error) {
                     error.showError();
                 }
             } else cout << "Nao existe na base de dados um aviao com id = " << id << endl;
@@ -812,7 +824,7 @@ Employee Menu::fillEmployeeData() {
     return Employee(name, age, gender);
 }
 
-Service Menu::fillServiceData(const string &id) {
+Service* Menu::fillServiceData(const string &id) {
 
     string type;
     int year, month, day, hour, minute;
@@ -821,7 +833,7 @@ Service Menu::fillServiceData(const string &id) {
     Date d = fillDateData();
     Employee e = fillEmployeeData();
     if (type.empty()) throw InvalidService(new Service(id, type, Date(year, month, day, hour, minute), &e));
-    return Service(id, type, Date(year, month, day, hour, minute), &e);
+    return new Service(id, type, Date(year, month, day, hour, minute), &e);
 }
 
 Date Menu::fillDateData() {
@@ -832,7 +844,7 @@ Date Menu::fillDateData() {
     cout << "Dia: "; cin >> day;
     cout << "Hora: "; cin >> hour;
     cout << "Minute: "; cin >> minute;
-    if (year < 2021 || month > 12 || day > 31 || hour > 23 || minute > 60) throw InvalidDate(Date(year, month, day, hour, minute));
+    if (year < 2021 || month > 12 || day > 31 || hour > 23 || minute > 60) throw InvalidDate(Date(day, month, year, hour, minute));
     return Date(day, month, year, hour, minute);
 }
 

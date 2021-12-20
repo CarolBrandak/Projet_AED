@@ -177,7 +177,7 @@ class Menu {
          * @return Transport type object filled with data
          */
         Transport fillTransportData(const string &id);
-        Service fillServiceData(const string &id);
+        Service* fillServiceData(const string &id);
         Date fillDateData();
 
     public:
