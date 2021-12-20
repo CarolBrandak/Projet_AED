@@ -1,6 +1,9 @@
 #ifndef PROJECT_AED_MENU_H
 #define PROJECT_AED_MENU_H
 
+/**
+ * Menu's numbers
+ */
 #define MAIN_MENU 0
 #define COMPANY_MENU 1
 #define PASSENGER_MENU 2
@@ -12,6 +15,11 @@
 #define TRANSPORT_DATA_MENU 8
 #define BUY_TICKET_MENU 9
 #define CANCEL_TICKET_MENU 10
+
+/**
+ * Key to enter in Admin Menu
+ */
+#define KEY "G50"
 
 #include <algorithm>
 #include "Utilities.h"

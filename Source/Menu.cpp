@@ -26,10 +26,7 @@ void Menu::getMenu() {
             case 9: buyTicket(); break;
             case 10: cancelTicket(); break;
         }
-    } else {
-        company->save();
-        exit(0);
-    }
+    } else exit(0);
 }
 
 void Menu::mainMenu() {
@@ -58,6 +55,15 @@ void Menu::mainMenu() {
 }
 
 void Menu::companyMenu() {
+
+    string inputKey;
+    cout << "Chave de acesso: "; getline(cin, inputKey);
+    if (inputKey != KEY) {
+        cout << "Acesso nao autorizado" << endl;
+        menuState.pop();
+        getMenu();
+        return;
+    }
 
     int option;
     do {
