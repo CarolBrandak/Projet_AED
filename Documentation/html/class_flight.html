@@ -130,6 +130,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9073d5c468bbf2717b241c35f20cdd00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda779b6b2403dd2bffd147778693a27"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_luggage.html">Luggage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#aeda779b6b2403dd2bffd147778693a27">findLuggage</a> (const string &amp;id)</td></tr>
 <tr class="separator:aeda779b6b2403dd2bffd147778693a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7339522e4f53b9b76e7f9205c7597d"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_luggage.html">Luggage</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#add7339522e4f53b9b76e7f9205c7597d">findPassengerLuggage</a> (const string &amp;passport)</td></tr>
+<tr class="separator:add7339522e4f53b9b76e7f9205c7597d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb472ee0ba93401ad3b77779d619e46a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#aeb472ee0ba93401ad3b77779d619e46a">operator==</a> (const <a class="el" href="class_flight.html">Flight</a> &amp;flight) const</td></tr>
 <tr class="separator:aeb472ee0ba93401ad3b77779d619e46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a49e16625e74c749234e114081d580c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight.html#a9a49e16625e74c749234e114081d580c">operator&lt;</a> (const <a class="el" href="class_flight.html">Flight</a> &amp;flight) const</td></tr>
@@ -406,6 +408,31 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="class_passenger.html">Passenger</a> pointer object </dd></dl>
+
+</div>
+</div>
+<a id="add7339522e4f53b9b76e7f9205c7597d" name="add7339522e4f53b9b76e7f9205c7597d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7339522e4f53b9b76e7f9205c7597d">&#9670;&nbsp;</a></span>findPassengerLuggage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_luggage.html">Luggage</a> * &gt; Flight::findPassengerLuggage </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>passport</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Find luggage in the flight based on passenger's passport </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">passport</td><td>- a string passed by reference that contains a passenger's passport </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing all the luggage associated to the passenger </dd></dl>
 
 </div>
 </div>
