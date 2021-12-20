@@ -206,11 +206,20 @@ class Plane {
         void addService(Service &service);
 
         /**
+         * @overload
          * A function that try to find a Service based on its date
          * @param date - a Date object passed by reference containing the date of wanted service
          * @return a Service pointer object
          */
         Service* findService(Date &date);
+
+        /**
+         * @overload
+         * A function that try to find a Service based on its employee
+         * @param employee - a Employee object passed by reference containing employee
+         * @return a Service pointer object
+        */
+        Service* findService(Employee &employee);
 
         /**
          * A function that try to find a Employee based on its name

@@ -469,8 +469,9 @@ void Menu::employeeDataMenu() {
                 try {
                     Employee *e = p->findEmployee(name);
                     if (e) {
-                        cout << *e << endl;
-                    } else cout << "Nao existe qualquer funcionario a trabalhar nessa data" << endl;
+                        Service *s = p->findService(*e);
+                        cout << *s << endl;
+                    } else cout << "Nao existe qualquer funcionario com esse nome" << endl;
                 } catch (InvalidEmployee &error) {
                     error.showError();
                 }

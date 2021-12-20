@@ -157,6 +157,15 @@ Service* Plane::findService(Date &date) {
     return nullptr;
 }
 
+Service* Plane::findService(Employee &employee) {
+    queue<Service*> copy = this->servicesToBeMade;
+    while (!copy.empty()) {
+        if (copy.front()->getResponsible() == &employee) return copy.front();
+        copy.pop();
+    }
+    return nullptr;
+}
+
 Employee* Plane::findEmployee(const string &name) {
     queue<Service*> copy = this->servicesToBeMade;
     while (!copy.empty()) {

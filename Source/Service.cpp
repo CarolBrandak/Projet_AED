@@ -46,8 +46,7 @@ bool Service::operator < (const Service &service) const {
 
 ostream & operator << (ostream & os, const Service &service) {
     os << "Tipo: " << service.TYPE <<
-        "\nData: " << service.DATE <<
-        "\nResponsavel: " << *(service.responsible);
+        "\nData: " << service.DATE <<  *(service.responsible);
     return os;
 }
 
