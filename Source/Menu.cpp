@@ -2,7 +2,6 @@
 #define PROJECT_AED_MENU_CPP
 
 #include "Menu.h"
-#include <bits/stdc++.h>
 
 Menu::Menu() {
     this->company = new Company("AirED");
@@ -820,8 +819,8 @@ Service Menu::fillServiceData(const string &id) {
     cout << "Tipo: "; cin >> type;
     Date d = fillDateData();
     Employee e = fillEmployeeData();
-    if (type.empty()) throw InvalidService(new Service(id, type, Date(year, month, day, hour, minute), e));
-    return Service(id, type, Date(year, month, day, hour, minute), e);
+    if (type.empty()) throw InvalidService(new Service(id, type, Date(year, month, day, hour, minute), &e));
+    return Service(id, type, Date(year, month, day, hour, minute), &e);
 }
 
 Date Menu::fillDateData() {
@@ -1086,7 +1085,7 @@ void Menu::listServices() {
 void Menu::listEmployees() {
 
     char type = totalOrPartial();
-    vector<Employee> employees = {};
+    vector<Employee*> employees = {};
 
     if (type == 'T')
         for (Service *service : company->getAllServices()) employees.push_back(service->getResponsible());
@@ -1119,11 +1118,11 @@ void Menu::listEmployees() {
         } while (option < 1 || option > 2);
 
         switch (option) {
-            case 1: sort(employees.begin(), employees.end()); break;
+            case 1: sort(employees.begin(), employees.end(), byEmployeeName); break;
             case 2: sort(employees.begin(), employees.end(), byEmployeeAge); break;
         }
 
-        for (Employee employee : employees) cout << employee << endl;
+        for (Employee *employee : employees) cout << *employee << endl;
 
     } else {
         cout << "O aviao selecionado nao possui qualquer funcionario" << endl;

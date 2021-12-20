@@ -150,7 +150,7 @@ void Company::readServices() {
             getline(file, age, ';');
             getline(file, gender);
 
-            services.push_back(new Service(id, type, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), Employee(name, stoi(age), gender[0])));
+            services.push_back(new Service(id, type, Date(stoi(day), stoi(month), stoi(year), stoi(hour), stoi(minute)), new Employee(name, stoi(age), gender[0])));
         }
     } else {
         throw FileNotFound(SERVICE_FILE);
@@ -341,7 +341,7 @@ void Company::saveServices() {
             Service* s = allServices[i];
             file << s->getID() << ";" << s->getServiceType() << ";" << s->getServiceDate().getYear() << ";" << s->getServiceDate().getMonth()
                  << ";" << s->getServiceDate().getDay() << ";" << s->getServiceDate().getHour() << ";" << s->getServiceDate().getMinute()
-                 << ";" << s->getResponsible().getName() << ";" << s->getResponsible().getAge() << ";" << s->getResponsible().getGender();
+                 << ";" << s->getResponsible()->getName() << ";" << s->getResponsible()->getAge() << ";" << s->getResponsible()->getGender();
             if (i + 1 != allServices.size()) file << endl;
         }
 
@@ -411,11 +411,11 @@ void Company::addTransport(Transport &transport) {
     allTransports.push_back(&transport);
 }
 
-bool Company::removePlane(const string &id) {                               // 1
+bool Company::removePlane(const string &id) {
     for (auto it = allPlanes.begin() ; it != allPlanes.end() ; it++) {
         if ((*it)->getID() == id) {
-            removeFlight(id);                                                   // 1
-            removeService(id);                                                  // 1
+            removeFlight(id);
+            removeService(id);
             allPlanes.erase(it);
             return true;
         }
@@ -485,15 +485,15 @@ void Company::removePassenger(Passenger &passenger) {
     }
 }
 
-void Company::removePassenger(const string &id) {                                               // 1-1 ou 1-1-1
+void Company::removePassenger(const string &id) {
     for (auto it = allPassengers.begin() ; it != allPassengers.end() ; it++) {
-        if ((*it)->getID().find('-') == (*it)->getID().find_last_of('-')) {             // 1-1
+        if ((*it)->getID().find('-') == (*it)->getID().find_last_of('-')) {
             if ((*it)->getID() == id) {
                 removeLuggage((*it)->getID());
                 allPassengers.erase(it);
                 it--;
             }
-        } else {                                                                        // 1-1-1
+        } else {
             if ((*it)->getID().substr(0, (*it)->getID().find_last_of('-')) == id) {
                 removeLuggage((*it)->getID());
                 allPassengers.erase(it);

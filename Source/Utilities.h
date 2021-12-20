@@ -5,19 +5,19 @@
 
 /**
 * Boolean function thar compares to Employees based on their names
-* @param e1 first Employee object that will be compared, passed by reference
-* @param e2 second Employee object that will be compared, passed by reference
+* @param e1 first Employee object that will be compared, passed by pointer
+* @param e2 second Employee object that will be compared, passed by pointer
 * @return if e1 has shorter name than e2, based on alphabetic order
 */
-bool byEmployeeName(const Employee &e1, const Employee &e2);
+bool byEmployeeName(const Employee *e1, const Employee *e2);
 
 /**
 * Boolean function thar compares to Employees based on their ages
-* @param e1 first Employee object that will be compared, passed by reference
-* @param e2 second Employee object that will be compared, passed by reference
+* @param e1 first Employee object that will be compared, passed by pointer
+* @param e2 second Employee object that will be compared, passed by pointer
 * @return if e1 has less age than e2
 */
-bool byEmployeeAge(const Employee &e1, const Employee &e2);
+bool byEmployeeAge(const Employee *e1, const Employee *e2);
 
 /**
 * Boolean function thar compares to Flights, based on their number of passengers

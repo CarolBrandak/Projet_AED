@@ -160,10 +160,8 @@ Service* Plane::findService(Date &date) {
 Employee* Plane::findEmployee(const string &name) {
     queue<Service*> copy = this->servicesToBeMade;
     while (!copy.empty()) {
-        if (copy.front()->getResponsible().getName() == name) {
-            Employee *employee = new Employee();
-            *employee = copy.front()->getResponsible();
-            return employee;
+        if (copy.front()->getResponsible()->getName() == name) {
+            return copy.front()->getResponsible();
         }
         copy.pop();
     }
@@ -174,9 +172,7 @@ vector<Employee*> Plane::getEmployees() {
     vector<Employee*> allEmployees = {};
     queue<Service*> copy = this->servicesToBeMade;
     while(!copy.empty()) {
-        Employee currentEmployee = copy.front()->getResponsible();
-        Employee* reference = &currentEmployee;
-        allEmployees.push_back(reference);
+        allEmployees.push_back(copy.front()->getResponsible());
         copy.pop();
     }
     return allEmployees;

@@ -18,10 +18,6 @@ bool Employee::operator < (const Employee &employee) const {
     return AGE < employee.AGE;
 }
 
-Employee& Employee::operator = (const Employee &employee) {
-    return *this;
-}
-
 ostream & operator << (ostream & os, const Employee &employee) {
     os  << "Nome: " << employee.NAME
         << "\nIdade: " << employee.AGE

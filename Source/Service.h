@@ -24,7 +24,7 @@ class Service {
         /**
          * @var responsible - Employee type attribute that contains the information of the responsible for the service
          */
-        Employee responsible;
+        Employee* responsible;
 
     public:
 
@@ -45,7 +45,7 @@ class Service {
          * @param date - a Date type object containing the Date of the service
          * @param responsible - a Employee type object, containing the Employee responsible for the service
          */
-        Service(string id, string type, Date date, Employee responsible);
+        Service(string id, string type, Date date, Employee* responsible);
 
         /**
          * Returns Service's id
@@ -69,13 +69,13 @@ class Service {
          * Returns the responsible of the service
          * @return an Employee object, containing the employee responsible for the service
          */
-        Employee getResponsible() const;
+        Employee* getResponsible() const;
 
         /**
          * Sets the responsible of the service
          * @param employee an Employee object, containing the new employee responsible for the service
          */
-        void setResponsible(const Employee &employee);
+        void setResponsible(Employee &employee);
 
         /**
          * @overload

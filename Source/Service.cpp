@@ -7,7 +7,7 @@ Service::Service() : ID(""), TYPE(""), DATE(0, 0) {}
 
 Service::~Service() {}
 
-Service::Service(string id, string type, Date date, Employee responsible) :
+Service::Service(string id, string type, Date date, Employee* responsible) :
     responsible(responsible),
     ID(id),
     TYPE(type),
@@ -22,7 +22,7 @@ string Service::getServiceType() const {
     return TYPE;
 }
 
-Employee Service::getResponsible() const {
+Employee* Service::getResponsible() const {
     return responsible;
 }
 
@@ -30,8 +30,8 @@ Date Service::getServiceDate() const {
     return DATE;
 }
 
-void Service::setResponsible(const Employee &employee) {
-    this->responsible = employee;
+void Service::setResponsible(Employee &employee) {
+    this->responsible = &employee;
 }
 
 bool Service::operator == (const Service &service) const {
@@ -47,7 +47,7 @@ bool Service::operator < (const Service &service) const {
 ostream & operator << (ostream & os, const Service &service) {
     os << "Tipo: " << service.TYPE <<
         "\nData: " << service.DATE <<
-        "\nResponsavel: " << service.responsible;
+        "\nResponsavel: " << *(service.responsible);
     return os;
 }
 
