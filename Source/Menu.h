@@ -150,6 +150,7 @@ class Menu {
          * @return Flight type object filled with data
          */
         Flight fillFlightData(const string &id);
+
         /**
          * Function used to receive as input the data necessary
          * to create a Passenger type object.
@@ -157,6 +158,7 @@ class Menu {
          * @return Passenger type object filled with data
          */
         Passenger fillPassengerData(const string &id);
+
         /**
          * Function used to receive as input the data necessary
          * to create a Luggage type object.
@@ -164,12 +166,14 @@ class Menu {
          * @return Luggage type object filled with data
          */
         Luggage fillLuggageData(const string &id);
+
         /**
          * Function used to receive as input the data necessary
          * to create an Employee type object.
          * @return Employee type object filled with data
          */
         Employee fillEmployeeData();
+
         /**
          * Function used to receive as input the data necessary
          * to create a Transport type object.
@@ -177,7 +181,12 @@ class Menu {
          * @return Transport type object filled with data
          */
         Transport fillTransportData(const string &id);
-        Service* fillServiceData(const string &id);
+
+        /**
+         * Function used to receive as input the data necessary
+         * to create a Date type object.
+         * @return Date type object filled with data
+         */
         Date fillDateData();
 
     public:

@@ -229,27 +229,31 @@ class Company {
          * @param flight - flight to be added
          */
         void addFlight(Flight &flight);
+
         /**
          * Remove flight from the vector that contains all flights in the program
          * @param flight - flight to be removed
          */
         void removeFlight(Flight &flight);
+
         /**
          * Remove flight from vector that hocontainslds all flights in the program
          * @param id - id of the flight to be removed
          */
-        void removeFlight(const string &id); //
+        void removeFlight(const string &id);
 
         /**
          * Adds luggage to vector that contains all luggages in the program
          * @param l - luggage to be added
          */
         void addLuggage(Luggage &l);
+
         /**
          * Removes luggage from vector that contains all luggages in the program
          * @param id - id of the luggage to be removed
          */
         void removeLuggage(const string &id);
+
         /**
          * Removes luggage from vector that contains all luggages in the program
          * @param l - luggage to be removed
@@ -261,11 +265,13 @@ class Company {
          * @param passenger - passenger to be added
          */
         void addPassenger(Passenger &passenger);
+
         /**
          * Removes passenger from vector that contains all passengers in the program
          * @param id - id of the passenger to be removed
          */
         void removePassenger(const string &id);
+
         /**
          * Removes passenger from vector that contains all passengers in the program
          * @param passenger - passenger to be removed
@@ -277,16 +283,19 @@ class Company {
          * @param service - service to be added
          */
         void addService(Service &service);
+
         /**
          * Removes service from vector that contains all of the services in the program
          * @param id - id of the service to be removed
          */
         void removeService(const string &id);
+
         /**
          * Removes service from vector that contains all of the services in the program
          * @param service - service to be removed
          */
         void removeService(Service &service);
+
         /**
          * Sets the responsible for a specific service
          * @param service - service to be made
@@ -299,17 +308,18 @@ class Company {
          * @param transport - transport to be added
          */
         void addTransport(Transport &transport);
+
         /**
          * Removes transport from vector that contains all of the transports in the program
          * @param id - id of the transport to be removed
          */
         void removeTransport(const string &id);
+
         /**
          * Removes transport from vector that contains all of the transport in the program
          * @param service - service to be removed
          */
         void removeTransport(Transport &transport);
-
 
         /**
          * A function that refreshes all data in database, based on reading files

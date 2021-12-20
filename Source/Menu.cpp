@@ -396,14 +396,10 @@ void Menu::employeeDataMenu() {
             if (p) {
                 try {
                     string type;
-                    cin.clear(); cin.ignore(1000, '\n');
                     cout << "Tipo: "; cin >> type;
                     Date d = fillDateData();
-                    cout << d << endl;
                     Employee e = fillEmployeeData();
-                    if (type.empty()) throw InvalidService(new Service(id, type, d, &e));
-                    Service s = Service(id, type, d, &e);
-                    cout << s.getServiceDate() << endl;
+                    Service s = Service(p->getID(), type, d, &e);
                     p->addService(s);
                     company->addService(s);
                     company->save();
@@ -822,18 +818,6 @@ Employee Menu::fillEmployeeData() {
     cout << "Genero: "; cin >> gender;
     if (name.empty() || age < 0 || age > 120) throw InvalidEmployee(Employee(name, age, gender));
     return Employee(name, age, gender);
-}
-
-Service* Menu::fillServiceData(const string &id) {
-
-    string type;
-    int year, month, day, hour, minute;
-    cin.clear(); cin.ignore(1000, '\n');
-    cout << "Tipo: "; cin >> type;
-    Date d = fillDateData();
-    Employee e = fillEmployeeData();
-    if (type.empty()) throw InvalidService(new Service(id, type, Date(year, month, day, hour, minute), &e));
-    return new Service(id, type, Date(year, month, day, hour, minute), &e);
 }
 
 Date Menu::fillDateData() {
