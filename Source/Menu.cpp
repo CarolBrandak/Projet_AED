@@ -178,10 +178,14 @@ void Menu::flightDataMenu() {
             cin >> id;
             Plane *plane = company->findPlane(id);
             if (plane) {
-                Flight newFlight = fillFlightData(plane->getNextFlightID());
-                plane->addFlight(newFlight);
-                company->addFlight(newFlight);
-                company->save();
+                try {
+                    Flight newFlight = fillFlightData(plane->getNextFlightID());
+                    plane->addFlight(newFlight);
+                    company->addFlight(newFlight);
+                    company->save();
+                } catch (InvalidDate &error) {
+                    error.showError();
+                }
             } else cout << "O aviao com id " << id << " nao existe" << endl;
             getMenu();
             break;
@@ -603,7 +607,7 @@ void Menu::transportDataMenu() {
                             cout << "Tipo: "; cin >> type;
                             vector<Transport*> t = flight->searchTransport(type);
                             if (!t.empty()) for (Transport *transport : t) cout << *transport << endl;
-                            else cout << "Não existe transporte com essa caracteristica" << endl;
+                            else cout << "Nao existe transporte com essa caracteristica" << endl;
                         } else {
                             int distance;
                             cout << "Distancia (em metros): "; cin >> distance;
@@ -677,37 +681,42 @@ void Menu::buyTicket() {
         Plane *plane = company->findPlane(flight->getID().substr(0,flight->getID().find('-')));
         if(flightPassengersAfterAdd <= plane->getMaxPassengersCapacity()) {
             short int cont = 1, quantityOfLuggage;
-            vector<Passenger*> allPassengers;
-            vector<Luggage*> allLuggage;
+            vector<Passenger *> allPassengers;
+            vector<Luggage *> allLuggage;
             short int totalWeight = 0;
-            while(cont <= quantityOfPassengers) {
+            while (cont <= quantityOfPassengers) {
                 cout << "Insira os dados o " << cont << "o passageiro" << endl;
                 Passenger passenger = fillPassengerData(flight->getNextPassengerID());
                 cout << "Quantas malas tem o " << passenger.getName() << "?" << endl;
                 cin >> quantityOfLuggage;
-                for(short int contLuggage = 1; contLuggage <= quantityOfLuggage; contLuggage++) {
-                    cout << "Insira os dados da " << contLuggage << "a baggagem" << endl;
+                for (short int contLuggage = 1; contLuggage <= quantityOfLuggage; contLuggage++) {
+                    cout << "Insira os dados da " << contLuggage << "a bagagem" << endl;
                     Luggage luggage = fillLuggageData(passenger.getID());
                     totalWeight += luggage.getWeight();
                     passenger.addLuggage(luggage);
                     allLuggage.push_back(&luggage);
+                    company->addLuggage(luggage);
+                    company->save();
                 }
                 allPassengers.push_back(&passenger);
+                company->addPassenger(passenger);
+                company->save();
                 cont++;
             }
             if (plane->getMaxWeightCapacity() >= (totalWeight + flight->getWeightQuantity())) {
-                for (Passenger *passenger : allPassengers) {
-                    flight->addPassenger(*passenger);
-                    company->addPassenger(*passenger);
-                }
-                for (Luggage *luggage : allLuggage) company->addLuggage(*luggage);
+                for (Passenger *passenger: allPassengers) flight->addPassenger(*passenger);
                 company->save();
                 cout << "O(s) passageiro(s) foram adicionados ao voo!" << endl;
             } else {
-                cout << "Nao foi possivel adicionar o(s) passageiro(s) no voo porque o peso total do aviao apos a vossa"
-                        "adicao, excede o limite" << endl;
+                cout << "Nao foi possivel adicionar o(s) passageiro(s) no voo porque o peso total do aviao excede o limite" << endl;
+                for (Passenger *p : allPassengers) company->removePassenger(*p);
+                for (Luggage *l : allLuggage) company->removeLuggage(*l);
             }
+        } else {
+            cout << "Nao ha capacidade neste voo para tantas pessoas" << endl;
         }
+        menuState.pop();
+        getMenu();
     }
     cout << "Nao existe voo disponivel no momento" << endl;
     menuState.pop();
@@ -738,7 +747,7 @@ void Menu::cancelTicket() {
         }
 
         do {
-            cout << "Quer cancelar outro bilhete? S/N"; cin >> op;
+            cout << "Quer cancelar outro bilhete? S/N: "; cin >> op;
             if(op == 'S' || op == 's') { respostaValida = true; }
             else if(op == 'N' || op == 'n') { answer = false; respostaValida = true;}
 
@@ -792,6 +801,7 @@ Flight Menu::fillFlightData(const string &id) {
     int year, month, day, hour, minute, duration;
     Date d = fillDateData();
     cout << "Duracao (em minutos): "; cin >> duration;
+    cin.clear(); cin.ignore(1000, '\n');
     cout << "Por favor introduza a cidade de origem: ";
     getline(cin, origin);
     cout << "Por favor introduza a cidade de destino: ";

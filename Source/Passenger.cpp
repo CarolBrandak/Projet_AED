@@ -67,7 +67,7 @@ ostream & operator << (ostream & os, const Passenger &passenger) {
         "\nIdade: " << passenger.AGE <<
         "\nGenero: " << passenger.GENDER <<
         "\nPassaporte: " << passenger.PASSPORT <<
-        "\nNumero de malas: " << passenger.getLuggage().size() << endl;
+        "\nNumero de malas de mao: " << passenger.getLuggage().size() << endl;
     return os;
 }
 
